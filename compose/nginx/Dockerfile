@@ -1,7 +1,7 @@
-FROM nginx:alpine
+FROM nginx:latest
 
-# Copy Nginx config
-COPY default.conf /etc/nginx/conf.d/default.conf
+COPY nginx.conf /etc/nginx/nginx.conf
 
-# Expose Nginx port
 EXPOSE 8080
+
+CMD ["nginx", "-g", "daemon off;"]
