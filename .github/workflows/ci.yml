@@ -1,0 +1,20 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Build Apache/PHP
+        run: docker build -t twm-apache ./compose/apache-php
+
+      - name: Build Nginx
+        run: docker build -t twm-nginx ./compose/nginx

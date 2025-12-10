@@ -1,0 +1,16 @@
+
+---
+
+## **7. LICENSE**
+
+- Standard **Apache 2.0 License**, typical for BCGov public repos.
+
+---
+
+### ✅ Next Steps
+
+1. Add your **TWM PHP source code** into `docker/apache-php/src/`.  
+2. Build and test locally:
+
+```bash
+docker-compose up --build
