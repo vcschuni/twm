@@ -1,0 +1,5 @@
+{
+	name: "ServerStatus",						// Plugin Class Name - DO NOT MODIFY [required]
+	tabName: "Server Status",					// Tab name [required]
+	enabled: true						        // Whether plugin is enabled [required]
+}

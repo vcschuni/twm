@@ -1,0 +1,107 @@
+<style>
+    .fl-legend-container{
+        width: 200px;
+        height: 291px;
+        min-width: 200px;
+        min-height: 291px;
+        display: none;
+        flex-direction: column;
+        background-color: white;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        border: 0px solid black;
+        z-index: 11;
+        border-radius: 5px 5px 5px 5px;
+    }
+    .fl-legend-btn-div {
+        bottom: 40px;
+        left: 6px;
+    }
+    .fl-legend-header{
+        display: flex;
+        height: 30px;
+        width: 100%;
+        padding: 5px;
+    }
+    .fl-legend-body{
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+        overflow-x: hidden;
+        margin-bottom: 15px;
+        max-width: 100%;
+        border-radius: 0px 0px 5px 5px;
+    }
+    .fl-lock-btn {
+		position: absolute;
+		top: 4px;
+		right: 24px;
+		cursor: pointer;
+		color: silver;
+        font-size: 12px;
+		font-weight: normal;
+	}
+    .fl-lock-btn-locked {
+		color: red;
+	}
+    .fl-legend-body-error{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        max-width: 100%;
+        min-height: 85%;
+        text-align: center;
+        color: silver;
+        font-size: 1.2em;
+        border-radius: 0px 0px 5px 5px;
+    }
+    .fl-legend-exit-btn{
+        position: absolute;
+        top: 3px;
+        right: 5px;
+        cursor: pointer;
+        font-size: 12px;
+        font-weight: normal;
+        color: silver;
+    }
+    .fl-legend-exit-btn:hover{
+        color: grey;
+    }
+    .fl-legend-header-text{
+        cursor: default;
+        font-size: 1.1em;
+    }
+    .fl-legend-body-text{
+        font-size: 0.8em;
+        padding-left: 5px;
+    }
+
+    @media only screen and (max-width: 768px) {
+        .fl-legend-body{
+            display: flex;
+            flex-direction: column;
+            overflow-y: scroll;
+            overflow-x: auto;
+            max-width: 100%;
+            border-radius: 0px 0px 5px 5px;
+        }
+    }
+    
+    
+</style>
+
+<div class="fl-legend-btn-div ol-control" id="fl-legend-btn-div" title="Legend">
+    <button id="fl-legend-btn">L</button>
+</div>
+
+<div class="fl-legend-container" id="fl-legend-container" data-window-state="unlocked">
+    <div class="fl-legend-header" id="fl-legend-header">
+            <h4 class="fl-legend-header-text" id="fl-legend-header-text">Map Legend</h4> 
+            <div class="fl-lock-btn"><span class="oi oi-lock-unlocked"></span></div>
+            <div class="fl-legend-exit-btn" id="fl-legend-exit-btn"><span class="oi oi-x" id="legend-oi-exit"></span></div>
+    </div>
+
+    <div class="fl-legend-body" id="fl-legend-body">
+       
+    </div>
+    
+</div>

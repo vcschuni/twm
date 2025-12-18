@@ -1,0 +1,62 @@
+<style>
+	.i2t-message {
+		font-size: 13px;
+		font-style: italic;
+		text-align: center;
+		margin: 25px 0px 0px 0px;
+	}
+	.i2t-feature-table {
+		font-size: 0.70rem;
+		max-width: 100%;
+	}
+	.i2t-feature-buttons {
+		display: table-cell;
+		white-space: nowrap;
+		vertical-align: middle;
+	}
+	.i2t-feature-title {
+		padding-left: 5px;
+		display: table-cell;
+		vertical-align: middle;
+	}
+	.i2t-feature-field-name {
+		white-space: nowrap;
+		width: 40px;
+		text-align: right;
+	}
+</style>
+
+<!-- Instructions Message DIV -->
+<div id="i2t-instructions" class="i2t-message" style="display:none;">Click/tap on map features to learn more about them</div>
+
+<!-- No Results Message DIV -->
+<div id="i2t-no-results" class="i2t-message" style="display:none;">Sorry, couldn't find anything...</div>
+
+<!-- Results DIV -->
+<div id="i2t-results" style="display:none;">
+	<!-- Features (using template) inserted here -->
+</div>
+
+<!-- Feature Template (Hidden) [table-striped] -->
+<table class="table table-sm i2t-feature-table i2t-feature-table-template" style="display:none;">
+	<tbody>
+		<thead class="thead-dark">
+			<tr>
+				<th scope="col" colspan="2">
+					<div class="i2t-feature-buttons">
+						<button type="button" class="btn btn-secondary btn-sm Identify2TabZoomTo">
+							<span class="oi oi-zoom-in" title="Zoom to"></span>
+						</button>
+						<button type="button" class="btn btn-secondary btn-sm Identify2TabNavigateTo" style="display:none;">
+							<span class="oi oi-location" title="Navigate to"></span>							
+						</button>
+					</div>
+					<div class="i2t-feature-title">
+						<!-- Feature title inserted here -->
+					</div>
+				</th>
+			</tr>
+		</thead>
+			<!-- Feature detail inserted here -->
+	</tbody>
+</table>

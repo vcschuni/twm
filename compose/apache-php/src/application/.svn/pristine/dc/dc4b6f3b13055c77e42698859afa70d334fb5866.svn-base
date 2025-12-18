@@ -1,0 +1,326 @@
+<style>
+    
+    
+    .pp-form-group {
+        padding: 10px;
+        flex: 1;
+    }
+    
+    .skill-list {
+        display: flex;
+        flex-wrap: wrap;
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        }
+    
+    .skill-list li {
+        margin: 5px;
+        padding: 6px 12px;
+        background-color: #f1f1f1;
+        border-radius: 30px;
+        display: flex;
+        align-items: center;
+    }
+    @media (max-width: 768px) {
+    .skill-list {
+        flex-direction: column;
+    }
+    }
+    
+    .remove-skill {
+        padding: 3px;
+        margin-top: -15px;
+        cursor: pointer;
+        color: red;
+        font-weight: bold;
+    }
+    
+    #remove-aboutme {
+        cursor: pointer;
+        font-weight: bold;
+        font-size: small;
+        float: inline-end;
+        opacity: 1; /* Ensures the red color is fully visible */
+    }
+    
+    .buttons {
+        padding: 25px;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    
+    #pp-contact-image {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-width: 180px;
+        height: auto;
+    }
+    
+    #imagePreview {
+        border: 1px solid #000102;
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+    
+    .imageButtonContainer {
+        padding-top: 4px;
+        display: flex;
+        justify-content: space-evenly;
+    }
+    
+    #videoPreview {
+        height: 200px;
+    }
+    
+    #countdown {
+        font-size: 24px;
+        color: red;
+        font-weight: bold;
+        position: absolute;
+        margin: 75px;
+    }
+    
+    #city-suggestions, #skill-suggestions {
+        display: none;
+        max-height: 150px;
+        overflow-y: auto;
+        position: relative;
+        z-index: 1000;
+        background-color: white; /* Ensure the background is white */
+        border: 1px solid #dee2e6; /* Add a border */
+        width: 100%; /* Match the width of the input field */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+    }
+    
+    .city-suggestion-item:hover, .skill-suggestion-item:hover {
+        background-color: #f0f0f0; /* Light gray background */
+        cursor: pointer; /* Change cursor to pointer */
+    }
+    
+    .dropdown-item {
+        padding: 8px 12px;
+        cursor: pointer;
+    }
+    
+    .dropdown-item:hover {
+        background-color: #f1f1f1;
+    }
+    
+    .aboutme {
+        padding: 6px;
+        border: 1px solid #dee2e6;
+        margin-bottom: 10px;
+        background: #f1f1f1;
+    }
+    
+    .image-note {
+        font-size: 10px;
+        color: red;
+    }
+    #staff-container {
+        display: flex;
+        flex-direction: "";
+        gap: 10px;
+        }
+
+    @media (max-width: 1600px) {
+        #staff-container {
+        display: flex;
+        flex-direction: "";
+        gap: 10px;
+        }
+    }
+    @media (max-width: 1000px) {
+        #staff-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        }
+        
+
+    }
+    
+    @media (min-width: 768px) {
+       
+        
+    .contact-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    }
+    .dates-info-group, .location-info-group, .work-info-group {
+        flex-direction: row;
+    }
+    
+    .pp-form-group {
+        flex: 1;
+    min-width: 200px; /* Adjust as needed */
+    }
+    }
+    
+    @media (min-width: 992px) {
+        .pp-form-group {
+            flex: 1 1 30%;
+        }
+    }
+    
+    @media (max-width: 767px) {
+        #pp-contact-image {
+            order: -1; /* Move to the top */
+        }
+    }
+    </style>
+    
+    <div class="pp-main-content">
+        <div class="pp-staff-container" id="staff-container">
+            <div class="contact-image" id="pp-contact-image">
+                <img id="imagePreview" src="application/plugins/PeopleViewer/img/person.jpg" alt="Contact Image">
+                <video id="videoPreview" style="display: none;" autoplay></video>
+                <div class="imageButtonContainer">
+                    <input type="file" id="fileInput" accept="image/*" style="display: none;">
+                    <button tabindex="-1" title="Upload Image" id="uploadimage" class="btn btn-sm btn-outline-secondary" type="button"><img src="application/plugins/PeopleViewer/img/uil--image-upload.png" alt="Trulli" width="20" height="22" style="vertical-align: text-bottom;"></button>
+                    <button tabindex="-1" title="Take Screenshot" id="takeScreenshot" class="btn btn-sm btn-outline-secondary" type="button"><img src="application/plugins/PeopleViewer/img/uil--camera.png" alt="Trulli" width="20" height="22" style="vertical-align: text-bottom;"></button>
+                </div>
+                <div id="countdown" style="font-size: 24px; color: red;"></div>
+                <div class="image-note">Please upload a clear photo of your face (no sunglasses, hats, etc)</div>
+                <!-- Bootstrap Toggle Switch -->
+                <div class="form-check form-switch mt-3" id="superuser-container">
+                    <input class="form-check-input" type="checkbox" id="isSuperuser">
+                    <label class="form-check-label" for="isSuperuser">Is Superuser?</label>
+            </div>
+            </div>
+            <div class="contact-info">
+                <div class="contact-group">
+                    <div class="pp-form-group">
+                        <label for="fName">First Name</label>
+                        <input type="text" autocomplete="off" class="form-control" id="fName">
+                    </div>
+                    <div class="pp-form-group">
+                        <label for="lName">Last Name</label>
+                        <input type="text" autocomplete="off" class="form-control" id="lName">
+                    </div>
+                    <div class="pp-form-group">
+                        <label for="pronouns">Pronouns</label>
+                        <input type="text" autocomplete="off" class="form-control" id="pronouns">
+                    </div>
+                    <div class="pp-form-group" id="pp-IDIR-group">
+                        <label for="IDIR">IDIR</label>
+                        <input type="text" autocomplete="off" style="width: auto;" class="form-control" id="IDIR">
+                    </div>
+                </div>
+                <div class="work-info-group">
+                    <div class="pp-form-group">
+                        <label for="title">Email</label>
+                        <input type="text" autocomplete="off" class="form-control" id="email">
+                    </div>
+                    <div class="pp-form-group">
+                        <label for="title">Title</label>
+                        <input type="text" autocomplete="off" class="form-control" id="Title">
+                    </div>
+                    <div class="pp-form-group">
+                        <label for="Work Unit">Work Unit</label>
+                        <select class="form-select" aria-label="Default select example" id="workunit">
+                            <option value="Data Services">Data Services</option>
+                            <option value="Design and Client Relations">Design and Client Relations</option>
+                            <option value="Digital Delivery">Digital Delivery</option>
+                            <option value="Office of MCIO">Office of MCIO</option>
+                            <option value="Strategy and Governance">Strategy and Governance</option>
+                            <option value="Technology Services">Technology Services</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="location-info-group">
+                    <div class="pp-form-group">
+                        <label for="location">Which city do you live in?</label>
+                        <input type="text" autocomplete="off" class="form-control" id="location" placeholder="Enter place name">
+                        <ul class="list-group" id="city-suggestions"></ul>
+                    </div>
+                    <div class="pp-form-group">
+                        <label for="office">What is your regional office?</label>
+                        <select class="form-select" autocomplete="off" aria-label="Default select example" id="office">
+                            <option value=""></option>
+                            <option value="Chilliwack">Chilliwack</option>
+                            <option value="Comox">Comox</option>
+                            <option value="Coquitlam">Coquitlam</option>
+                            <option value="Cranbrook">Cranbrook</option>
+                            <option value="Fort St.John">Fort St.John</option>
+                            <option value="Victoria">Victoria</option>
+                            <option value="Kamloops">Kamloops</option>
+                            <option value="Kelowna">Kelowna</option>
+                            <option value="Nanaimo">Nanaimo</option>
+                            <option value="Nelson">Nelson</option>
+                            <option value="Other">Other</option>
+                            <option value="Prince George">Prince George</option>
+                            <option value="Quesnel">Quesnel</option>
+                            <option value="Smithers">Smithers</option>
+                            <option value="Terrace">Terrace</option>
+                            <option value="Vernon">Vernon</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="dates-info-group">
+                    <div class="pp-form-group">
+                        <label for="IMBdate">Date you started with IMB</label>
+                        <input type="date" class="form-control" id="IMBdate" required>
+                    </div>
+                    <div class="pp-form-group">
+                        <label for="publicservicedate">Date you started with the BC Public Service</label>
+                        <input type="date" class="form-control" id="publicservicedate" required>
+                    </div>
+                </div>
+                <div class="pp-form-group" style="position: relative;">
+                    <label for="skillInput">Skills and Knowledge Areas</label>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" id="skillInput" autocomplete="off" placeholder="Enter a skill">
+                        <div id="skill-suggestions" class="dropdown-menu"></div>
+                        <div class="input-group-append">
+                            <button type="button" id="addskillbutton" style="display: none;" class="btn btn-success">Add New Skill and Knowledge Area</button>
+                        </div>
+                    </div>
+                    <ul class="skill-list" id="skillsList"></ul>
+                </div>
+                <div class="pp-form-group">
+                    <label for="skillInput">About me</label>
+                    <div class="input-group mb-3">
+                        <select id="aboutme" class="form-select">
+                            <option value="">Select one...</option>
+                            <option>I’m known for... (eng., a fun habit, talent, or signature dish)</option>
+                            <option>Two truths and a lie about me are...</option>
+                            <option>The one thing I can’t live without is...</option>
+                            <option>The best piece of advice I’ve ever received is...</option>
+                            <option>If I could only eat one type of food for the rest of my life, it would be...</option>
+                            <option>If I won the lottery tomorrow, the first thing I’d do is...</option>
+                            <option>My go-to comfort activity after a long day is...</option>
+                            <option>If I were an animal, I’d be a...</option>
+                            <option>The fictional character I relate to the most is...</option>
+                            <option>The most spontaneous thing I’ve ever done is...</option>
+                            <option>On a Sunday morning, you can usually find me...</option>
+                            <option>If I had a time machine, the first thing I’d do is...</option>
+                            <option>A personal mantra or motto I live by is...</option>
+                            <option>The most unexpected thing on my bucket list is...</option>
+                            <option>I can’t stop talking about...</option>
+                            <option>A skill I’m secretly working on is...</option>
+                        </select>
+                        <div class="input-group-append">
+                            <button type="button" id="add-about-me-button" class="btn btn-success">Add</button>
+                        </div>
+                    </div>
+                    <div class="aboutme-container" id="aboutme-container"></div>
+                </div>
+            </div>
+    
+            <!-- Hidden video element to capture the webcam stream -->
+            <video id="video" autoplay style="display: none;"></video>
+            <canvas id="canvas" style="display: none;"></canvas>
+        </div>
+    </div>
+    <div class="buttons">
+        <button class="btn btn-sm btn-danger btn-delete col-5" id="delete-person-button" type="button">Delete</button>
+        <button class="btn btn-sm btn-success btn-save col-5" id="save-person-button" type="button">Save</button>
+        <button class="btn btn-sm btn-success btn-save col-5" id="create-person-button" type="button">Create</button>
+    </div>

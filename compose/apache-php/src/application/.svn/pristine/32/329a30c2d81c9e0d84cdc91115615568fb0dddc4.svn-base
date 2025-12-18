@@ -1,0 +1,269 @@
+{
+	name: "LayerEditor",			// Plugin Class Name - DO NOT MODIFY [required]
+	tabName: "Editor",				// Tab name [required]
+	enabled: true,					// Whether plugin is enabled [required]
+	autoEdit: true,					// If app has single editable layer, will auto show editor tool when enabled, default is false
+	formEmail:true					// Adds a email button to the top of the edit form to allow the user to email the contents of the form. default is false
+}
+
+
+// This is how a typical edit layer is configured:
+
+new ol.layer.Vector({
+	title: "ISS Features",
+	type: "overlay",
+	visible: true,
+	editable: true,					// Allows layer to be editable [required]
+	controls: {
+		point: true,				// Shows the add point tool and allows points to be added [required]
+		linestring: true,			// Shows the add line tool and allows lines to be added [required]
+		polygon: true,				// Shows the add polygon tool and allows polygons to be added [required]
+		modify: true,				// Shows the modify tool and allows features to be modified (geometry and/or attributes) [required]
+		delete: true				// Shows the delete tool and allows features to be deleted [required]
+	},
+	allowedModifications: {			// Configures how the modify tool works [required]
+		geometry: true,				// Allows feature geometry to be modified [required]
+		attributes: true			// Allows feature attributes to be modified [required]
+	},
+	attributeTransforms: { 			// Allows attributes to be mapped (targetfield: "sourcefield")
+		NAME: "CONTRACT_AREA_NAME",
+		DESCRIPTION: "CONTRACT_AREA_NUMBER"
+	},
+	source: new ol.source.Vector({
+		format: new ol.format.GeoJSON({extractGeometryName: true}),
+		loader: function(extent, resolution, projection) {
+			// Get the vector source and remove any exisitng features
+			var vectorSource = this;
+			vectorSource.clear();
+			
+			// Set layer source namespace, name, url, and geometry column name [ALL REQUIRED BY EDITING PLUGIN]
+			vectorSource.layerNamespace = "iss";
+			vectorSource.layerName = "ISS_FEATURES";
+			vectorSource.layerUrl = "../path-to-geoserver/wfs";
+			vectorSource.geometryColumnName = "GEOMETRY";
+			
+			// Build the URL
+			this.params = {
+				service: "WFS",
+				version: "1.1.1",
+				request: "GetFeature",
+				typeName: vectorSource.layerNamespace+":"+vectorSource.layerName,
+				outputFormat: "application/json",
+				srsName: app.map.getView().getProjection().getCode()
+			}
+			var url = vectorSource.layerUrl+"?"+$.param(this.params);
+			
+			// Issue and handle the feature request
+			$.ajax({
+				url: url,
+				type:"GET",
+				dataType: "json"
+			}).done(function(response) {
+				var features = vectorSource.getFormat().readFeatures(response, {
+					featureProjection: projection
+				});
+				vectorSource.addFeatures(features);
+			}).fail(function(jqxhr, settings, exception) {
+				logger("ERROR", "Error loading " + vectorSource.layerName);
+			});
+		}					
+	}),
+	style: new ol.style.Style({
+		fill: new ol.style.Fill({
+			color: 'rgba(255, 255, 255, 0.3)'
+		}),
+		stroke: new ol.style.Stroke({
+			color: '#38afff',
+			width: 2
+		}),
+		image: new ol.style.Circle({
+			radius: 7,
+			stroke: new ol.style.Stroke({
+				color: 'white',
+				width: 2
+			}),
+			fill: new ol.style.Fill({
+				color: '#38afff'
+			})
+		})
+	}),
+	fields: [
+		{
+			name: "FEATURE_ID",
+			nameTransform: function() { return "Feature ID"; }
+		},
+		{
+			name: "NAME",
+			searchable: true,
+			title: true,
+			nameTransform: function() { return "Name"; },
+			filterable: true,													// Makes field available for filter
+			filterOptions: {													// Filter options
+				chartSummarize:true,											// Makes available for Filter Charting
+				filterType: "multiselect",										//Control Type for filter
+				order: 2														// Input postion on filter screen
+			}
+			editable: true
+			proximity: {														// If set, will add proximity button next to field 
+				layerName: "CHRIS RFI Roads",									// The layer that the proximity will be conducted on
+				field: "NE_DESCR"												// The field of the layer that will be used to display data
+			},
+		},
+		{
+			name: "DESCRIPTION",
+			searchable: true,
+			nameTransform: function() { return "Description"; },
+			editable: true,														// Makes field editable (defaults to false)
+			controlType: "html-input"											// Control type (defaults to simple inputs based on datatype)
+		},																		// One of: html-input, textarea-input, text-input, number-input, date-time-input, none				
+		{
+			name: "FEATURE_TYPE",
+			searchable: true,
+			nameTransform: function() { return "Type"; },
+			editable: true,														// Makes field editable (defaults to false)
+			valueOptions: ["Cat","Dog","Squirrel","Mouse","Rat","Cow"]			// Restricts field to an option list (overrides controlType)
+		},
+		{
+			name: "CREATED_TIMESTAMP",
+			nameTransform: function() { return "Created"; },
+			editable: true,
+			controlType: "no-input"
+		},
+		{
+			name: "UPDATED_TIMESTAMP",
+			nameTransform: function() { return "Updated"; }
+		},
+		{
+			name: "CATEGORY",												
+			nameTransform: function() { return "Category"; },
+			valueTransform: function(value) { 	
+				if (value) { 
+					return "<b>" + value + "</b>"; 
+				} else { 
+					return false; 
+				} 
+			},
+			editable: true,
+			categories: [
+				"Maintenance Concerns",
+				"Safety Concerns",
+				"Signage Requests",
+				"Drainage Issues",
+				"Unauthorized Use of Ministry Lands",
+				"Driveway/Access Concerns",
+				"Road Research Request",
+				"Load Restrictions",
+				"Other",
+			],
+			controlType: "category-input",										//Creates dropdown of categories and on selection, adjusts the subcategory-input dropdown 
+		},
+		{
+			name: "SUBCATEGORY",
+			nameTransform: function() { return "Subcategory"; },
+			valueTransform: function(value) { if (value) { return "<b>"+value+"</b>"; } else { return false; } },
+			editable: true,
+			subCategories: [{
+				"type": "Maintenance Concerns",
+				"parentField": "CATEGORY",
+				"value": ["Surface Maintenance","Drainage Maintenance","Winter Maintenance", 
+				"Roadside Maintenance", "Traffic Maintenance", "Structures Maintenance",
+					"Pavement Markings", "Electrical", "Other"],
+				},	
+				{
+				"type": "Safety Concerns",
+				"parentField": "CATEGORY",
+				"value": ["Road Conditions", "Intersections", "Speed", "Street", 
+				"Lighting Request", "Signal Request", "Pedestrian Safety", "Requests", 
+					"Fatalities", "Other"],
+				},	
+				{
+				"type": "Signage Requests",
+				"parentField": "CATEGORY",
+				"value": ["Regulatory Signs","Parking and Stopping Signs",
+				"Pedestrian and School Signs","Bicycle Signs","Roundabout Signs","Commercial Vehicle Signs",
+				"Warning Signs","Construction Signs",
+					"Information Signs","Guide Signs","Service and Attraction Signs",
+					"Wine Route Signs","Farmer's Market Signs","Circle Route Signs",
+					"Visitor Centre Signs","Adopt a Highway Signs","Other Signs",
+					],
+				},	
+				{
+				"type": "Unauthorized Use of Ministry Lands",
+				"parentField": "CATEGORY",
+				"value": ["Encroachment","Encampments","Parking","Abandoned Vehicles",
+					],
+				},
+			],
+			controlType: "subcategory-input",                                   //Creates dropdown of subcategories based on the selection from the category-input 
+		},
+		{
+			name: "REPORT",
+			//hideFromEditor: true,
+			nameTransform: function() { return "Report on Actions Taken/Remarks"; },
+			valueTransform: function(value) {
+				if (typeof value === "string") {
+					try {
+						value = JSON.parse(value); // Convert JSON string to an array
+					} catch (e) {
+						console.error("Failed to parse value as JSON:", e);
+						return false;
+					}
+				}
+				if (value && Array.isArray(value)) { 
+					console.log(value);
+					let html = "";
+					$.each(value, function(index, item) {
+					html += `
+						<div class="card mb-1">
+							<div class="card-body p-2">
+								<h6 class="card-title mb-1" style="font-size: .875rem;">${item.userID || "Unknown"}</h6>
+								<h6 class="card-subtitle mb-1 text-muted" style="font-size: .875rem;">
+									${new Date(item.date).toLocaleString() || "Unknown Date"}
+								</h6>
+								<p class="card-text">${item.comment || "No details provided"}</p>
+							</div>
+						</div>
+					`;
+					});
+					return html;
+				} else { 
+					return false; 
+				} 
+			},
+			editable: true,
+			controlType: "comment-input"										 //Comment input that will add comment inputs to the field div, This will include username, datetime and the comment and save as a object
+		},
+		{
+			name: "UPDATED_BY",
+			nameTransform: function() { return "Last Updated By"; },
+			valueTransform: function(value) { if (value) { return value; } else { return false; } },
+			controlType: "update-by",											//Will populate this field on database insert with the username from siteminder plugin
+			editable: false,
+			
+		},
+		{
+			name: "EXTERNAL_LAST_UPDATE_TIMESTAMP",
+			searchable: false,
+			nameTransform: function(name) { return "Last Updated:"; },
+			valueTransform: function(value) { if (value) { return value; } else { return false; } },
+			defaultValue: function() { 
+				return new Date().toISOString(); // Returns the current UTC time in ISO format
+			},
+			valueTransform: function(value) { if (value) { return value; } else { return false; } },
+			controlType: "update-datetime_UTC",									//Will populate the current datetime in UTC
+		},
+		{
+			name: "CONCURRENCY_CONTROL_NUMBER",
+			searchable: true,
+			editable: true,
+			visible: false,
+			nameTransform: function(name) { return "Concurrency Control Number:"; },
+			valueTransform: function(value) { if (value) { return value; } else { return 1; } },
+			controlType: "autoincrementor",										//Will autoincrement the field before insert to the dataabase
+			
+		}
+		
+		
+		
+	]
+})

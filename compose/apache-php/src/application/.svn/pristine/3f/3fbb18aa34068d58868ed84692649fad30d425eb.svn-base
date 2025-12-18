@@ -1,0 +1,97 @@
+{
+	name: "Markup",	        									// Plugin Class Name - DO NOT MODIFY [required]
+	tabName: "Markup",											// Tab name [required]
+	enabled: true,												// Whether plugin is enabled [required]
+	controls: {
+		Point: true,
+		LineString: true,
+		Polygon: true,
+		Text: false,
+		Delete: true,
+		Colour: true,
+		Size: true
+	},
+	colour: {
+		default: "#1abc9c", // turquoise
+		allowRecent: true, // Allow recent colours to be used
+		numberRecentColours: 5, // Number of recent colours to store
+		palette: [
+			"#1abc9c", // turquoise
+			"#16a085", // green sea
+			"#2ecc71", // emerald
+			"#27ae60", // nephritis
+			"#3498db", // peter river
+			"#2980b9", // belize hole
+			"#9b59b6", // amethyst
+			"#8e44ad", // wisteria
+			"#34495e", // wet asphalt
+			"#2c3e50", // midnight blue
+			"#f1c40f", // sun flower
+			"#f39c12", // orange
+			"#e67e22", // carrot
+			"#d35400", // pumpkin
+			"#e74c3c", // alizarin
+			"#c0392b", // pomegranate
+			"#ecf0f1", // clouds
+			"#bdc3c7", // silver
+			"#95a5a6", // concrete
+			"#7f8c8d", // asbestos
+		],
+	},
+	icons: {
+		default:
+			'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 8 8"> <path d="M3 0c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z" transform="translate(1 1)" fill="%23ffffff"/> </svg>',
+		palette: [
+			"oi-media-record", // circle
+			"oi-pin", // push pin
+			"oi-bolt", // lightening bolt
+			"oi-ban", // circle with slash
+			"oi-bell", // bell
+			"oi-arrow-circle-bottom", // arrow pointing down
+			"oi-arrow-circle-left", // arrow pointing left
+			"oi-arrow-circle-right", // arrow pointing right
+			"oi-arrow-circle-top", // arrow pointing up
+			"oi-cart", // shopping cart
+			"oi-circle-x", // circle with x
+			"oi-circle-check", // circle with check
+			"oi-cloud", // cloud
+			"oi-cloudy", // partly cloudy
+			"oi-rain", // cloud with rain
+			"oi-camera-slr", // camera
+			"oi-compass", // compass
+			"oi-dollar", // dollar sign
+			"oi-droplet", // droplet
+			"oi-flag", // flag
+			"oi-fire", // fire
+			"oi-flash", // arrow lightening bolt
+			"oi-home", // house
+			"oi-heart", // heart
+			"oi-map-marker", // map marker
+			"oi-magnifying-glass", // magnifying glass
+			"oi-key", // key
+			"oi-location", // compass arrow
+			"oi-person", // single person
+			"oi-people", // group of people
+			"oi-pencil", // pencil
+			"oi-move", // all four direction arrows
+			"oi-musical-note", // musical note
+			"oi-plus", // plus sign
+			"oi-pie-chart", // pie chart
+			"oi-star", // star
+			"oi-tag", // price tag
+			"oi-thumb-up", // thumb up
+			"oi-thumb-down", // thumb down
+			"oi-warning", // exclamation point in triangle
+			"oi-video", // video camera
+			"oi-wifi", // wifi
+			"oi-media-stop", // square
+			"oi-medical-cross", // medical cross
+			"oi-moon", // half moon
+		],
+	},
+	size: {
+		default: 3,
+		min: 1,
+		max: 10,
+	}
+}

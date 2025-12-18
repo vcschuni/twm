@@ -1,0 +1,51 @@
+<style>	
+	.rdm-feature-field-label {
+		width: 130px;
+	}
+</style>
+
+<!-- Feature editor form template (hidden) -->
+<div class="rdm-feature-editor-form" style="display:none;">
+	<div class="input-group input-group-sm mb-1">
+		<span class="input-group-text rdm-feature-field-label">Feature Name</span>
+		<input type="text" class="rdm-feature-field-FEATURE_NAME form-control" data-field-name="FEATURE_NAME" data-original-value="" value="">
+	</div>
+	
+	<div class="input-group input-group-sm mb-1">
+		<span class="input-group-text rdm-feature-field-label">Feature Type</span>
+		<select type="number" class="rdm-feature-field-FEATURE_TYPE_ID form-control form-select form-select-sm" data-field-name="FEATURE_TYPE_ID" data-original-value=""></select>
+	</div>
+	
+	<div class="input-group input-group-sm mb-1">
+		<span class="input-group-text rdm-feature-field-label">Owner</span>
+		<select type="number" class="rdm-feature-field-GROUP_ID form-control form-select form-select-sm" data-field-name="GROUP_ID" data-original-value=""></select>
+	</div>
+	
+	<div class="input-group input-group-sm mb-1">
+		<span class="input-group-text rdm-feature-field-label">Description</span>
+		<textarea class="rdm-feature-field-FEATURE_DESCRIPTION form-control" data-field-name="FEATURE_DESCRIPTION" data-original-value="" rows="3"></textarea>
+	</div>
+	
+	<div class="input-group input-group-sm mb-1">
+		<span class="input-group-text rdm-feature-field-label">Source System</span>
+		<select type="number" class="rdm-feature-field-SOURCE_SYSTEM_ID form-control form-select form-select-sm" data-field-name="SOURCE_SYSTEM_ID" data-original-value=""></select>
+	</div>
+	
+	<div class="input-group input-group-sm mb-1">
+		<span class="input-group-text rdm-feature-field-label">Source System Key</span>
+		<input type="text" class="rdm-feature-field-SOURCE_SYSTEM_FK form-control" data-field-name="SOURCE_SYSTEM_FK" data-original-value="" value="">
+	</div>
+	
+	<!-- Buttons -->
+	<div class="row mt-3 mb-0">
+		<div class="col-6 pe-1">
+			<button class="btn btn-sm btn-block btn-danger btn-delete" type="button" style="display:none;">Delete</button>
+		</div>
+		<div class="col-6 ps-1">
+			<button class="btn btn-sm btn-block btn-success btn-save" type="button" style="display:none;">Save</button>
+		</div>
+		<div class="col-12">
+			<button class="btn btn-sm btn-block btn-success btn-create" type="button" style="display:none;">Create</button>
+		</div>
+	</div>
+</div>

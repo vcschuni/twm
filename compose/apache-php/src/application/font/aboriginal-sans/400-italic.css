@@ -1,0 +1,6 @@
+@font-face {
+	font-family: aboriginal sans;
+	font-style: italic;
+	font-weight: 400;
+	src: local('Aboriginal Sans'), url(AboriginalSansITALIC.woff) format('woff')
+}

@@ -1,0 +1,19 @@
+<h4>Introduction</h4>
+	<p>
+		Transportation Web Map (TWM) is a configurable template built on open source mapping technologies 
+		that can be quickly deployed to provide spatial data visualization and discovery.
+	</p>
+	<p>
+		Specific data may be presented as the primary focus of the map and additional functions added to 
+		enhance the viewers experience.
+	</p>
+	<p>
+		Additional spatial data from MoTT's web map services, as well as those of DataBC, may be searched 
+		and added to the map.
+	</p>
+	
+<h4>Credits</h4>
+	<p>
+		TWM is created and supported by the MoTT IMB Spatial Team. To find existing TWM 
+		deployments and learn more about how the TWM can be used for your data, send an email to <a href="mailto:IMBSpatial@gov.bc.ca?subject=Public TWM Inquiry">MoTT IMB Spatial Team</a>.
+	</p>

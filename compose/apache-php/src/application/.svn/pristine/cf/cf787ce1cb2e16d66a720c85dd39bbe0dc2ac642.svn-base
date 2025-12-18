@@ -1,0 +1,55 @@
+<style>
+
+	.dso-offices {	
+		font-size: 13px;
+		line-height: 1.7;
+	}
+	.dso-offices .phone {
+		width: 25%
+	}
+	.MOTI_DISTRICT-header {
+		display: flex;
+    	color: rgb(31, 29, 29);
+    	background-color: #ffffff;
+    	justify-content: center;
+	}
+	.card-header {
+		display: flex;
+    	color: white;
+    	background-color: #003366;
+    	justify-content: center;
+	}
+	
+	#DS-filter-container {
+		display: flex;
+		flex-direction: column;
+    	
+	}
+
+	.DS-filter-group{
+		display: flex;
+   		justify-content: center;
+    	padding-top: 16px;
+
+	}
+
+</style>
+
+<h4>MoTT Development Services Offices</h4>
+	<p>
+		The Ministry of Transportation and Transit (MoTT) has offices thoughout BC to assist you with your application.
+	</p>
+	<p>
+		Click (or tap) on the map to find the right office to serve you.
+	</p>
+
+
+<div id="DS-contact-container" class="">
+	
+		
+		<h6>Service Locations by District and EDAS Identifier:</h6>
+		
+
+	<div id="DS-contact-list" class="card-deck mt-4"></div>
+</div>
+

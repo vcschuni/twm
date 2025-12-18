@@ -1,0 +1,36 @@
+<style>
+	.lc-downloader-form-label{
+		width: 82px;
+	}
+	.lc-downloader-details {
+		font-size: 0.75em;
+		padding: 0px 40px 0px 40px;
+	}
+</style>
+<form class="lc-download-form">
+
+	<!-- Layer to Download (readonly) -->
+	<div class="input-group input-group-sm mb-3">
+		<span class="input-group-text lc-downloader-form-label">Layer</span>
+		<input id="lc-output-layer" type="text" class="form-control" readonly>
+	</div>
+
+	<!-- Output Format Chooser -->
+	<div class="input-group input-group-sm mb-3">
+		<span class="input-group-text lc-downloader-form-label">Format</span>
+		<select id="lc-output-format" class="form-select form-select-sm"></select>
+	</div>
+	
+	<!-- Output Projection Chooser -->
+	<div class="input-group input-group-sm mb-3">
+		<span class="input-group-text lc-downloader-form-label">Projection</span>
+		<select id="lc-output-projection" class="form-select form-select-sm"></select>
+	</div>
+	
+	<p class="lc-downloader-details">
+	* Only features within the map extent will be downloaded.<br>
+	* The number of features available for download may be restricted.<br>
+	* Downloads may take a few moments to begin.
+	</p>
+	
+</form>

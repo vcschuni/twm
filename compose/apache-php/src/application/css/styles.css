@@ -1,0 +1,387 @@
+/* OpenLayers Overrides */
+.ol-zoom {
+	left: unset;
+	right: 8px;
+}
+.ol-overlay-container {
+	z-index: 100;
+}
+.ol-compass  {
+	left: unset;
+	top: unset;
+	position: unset;
+}
+.ol-rotate-reset  {
+	left: unset;	
+	right: 60px;
+}
+.ol-rotate.ol-unselectable.ol-control {
+	left: unset;	
+	right: 60px;
+}
+.ol-attribution a {
+  color: black;
+}
+.ol-attribution ul {
+  color: black;
+}
+.ol-control button {
+	background-color: rgba(0, 60, 136, 0.5);
+	color: white;
+}
+.ol-control button:hover,
+.ol-control button:focus {
+	color: white;
+}
+
+/* Bootstrap Overrides */
+.tab-pane {
+	height: 100%;
+	overflow-y: auto;
+	padding: 15px;
+}
+.table .thead-dark th {
+	color: #FFFFFF;
+	background-color: #003366;
+	border-bottom: 1px;
+}
+.nav-tabs {
+	border-bottom: none;
+}
+
+/* jQueryUI Overrides & Additions */
+.ui-autocomplete {
+	z-index: 1050;
+	-webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+	overflow-y: auto;
+	overflow-x: hidden;
+	max-height: 450px;
+	padding-bottom: 4px;
+}
+.ui-autocomplete-category {
+	font-weight: bold;
+	font-style: italic;
+	font-size: 12px;
+	color: #003366;
+	margin: 10px 6px 2px 6px;
+	line-height: 1.25;
+	border-bottom: 1px solid silver;
+}
+.ui-menu-item {
+	font-size: 11px;
+	padding: 0 10px;
+}
+
+/* Bootstrap Overrides & Additions */
+.navbar-brand {
+	overflow-x: hidden;
+}
+
+/* Bootstrap Scrolling Tabs Overrides & Additions */
+.scrtabs-tab-scroll-arrow {
+	text-align: center;
+	border: none;
+}
+
+/* Bootbox Overrides & Additions */
+.bootbox.modal {
+	z-index: 9999 !important;
+}
+
+/* TWM Application Styling */
+html, body {
+	height: 100%;
+	width: 100%;
+	padding: 0px;
+	margin: 0px;
+}
+
+@media (min-width: 768px) {
+	.form-inline #uberSearch {
+		width: 300px;
+	}
+}
+
+.twm-header {
+	background-color: #003366;
+	border-bottom: 2px solid #F6BD14;
+	flex-wrap: nowrap;
+}
+#appImage {
+	width: 126px;
+	height: 30px;
+	content:url(../img/header-logo.png);
+}
+#mainMenuOptions {
+	min-width: 300px;
+}
+#mainMenuOptions .menu-icon {
+	font-size: 12px;
+	margin-right: 7px;
+	text-align: center;
+	width: 20px;
+}
+.dropdown-item {
+    max-width: 100%; /* Ensure it doesn't exceed the parent width */
+    word-wrap: break-word; /* Break long words to prevent overflow */
+    overflow-wrap: break-word; /* Ensure compatibility with modern browsers */
+    white-space: normal; /* Allow text to wrap to the next line */
+    overflow: hidden; /* Hide any overflowing content */
+    text-overflow: ellipsis; /* Add ellipsis for overflowing text */
+}
+
+
+#notificationMenuOptions {
+    min-width: 300px;
+    max-width: 90%; /* Default max width as a percentage of the screen */
+    width: auto; /* Allow it to shrink dynamically */
+}
+
+@media (max-width: 768px) {
+    #notificationMenuOptions {
+        max-width: 80%; /* Shrink further for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    #notificationMenuOptions {
+        max-width: 95%; /* Almost full width for very small screens */
+    }
+}
+#notificationMenuOptions .menu-icon {
+	font-size: 12px;
+	margin-right: 7px;
+	text-align: center;
+	width: 20px;
+}
+#sidebar {
+	display: none; /* Set dynamically via jQuery */
+	resize: horizontal;
+	overflow: hidden;
+	position: fixed;
+	top: 56px; /* Maybe set dynamically via jQuery if navbar changes in size */
+	bottom: 0px;
+	left: 0px;
+	width: 0px; /* Set dynamically via jQuery */
+	background-color: #f5f5f5;
+}
+#sidebar-tab-navs  {
+    max-height: 42px; /* hack to ensure sizing is correct until the scrolling tabs extension can process it */
+}
+.sidebar-tab-container {
+	height: 100%;
+	padding: 25px 10px 10px 10px;
+}
+.sidebar-collapse-btn {
+	position: absolute;
+	top: 4px;
+	right: 6px;
+	cursor: pointer;
+	color: silver;
+}
+.sidebar-collapse-btn:hover {
+	color: #808080;
+}
+.sidebar-expander {
+	display: none;  /* Set dynamically via jQuery */
+	position: fixed;
+	top: 56px; /* Maybe set dynamically via jQuery if navbar changes in size */
+	bottom: 0px;
+	font-size: 14px;
+	left: 0px;
+	width: 20px;
+	background-color: #f5f5f5;
+	border-right: 1px solid #939393;
+}
+
+.sidebar-expand-btn {
+	cursor: pointer;
+	color: #003366;
+	position: fixed;
+	top: 48%;
+	left: 5px;
+	width: 19px;
+}
+.sidebar-expand-btn:hover {
+	color: #808080;
+}
+.app-version {
+	padding-left: 5px;
+	font-size: 9px;
+	font-weight: bold;
+}
+
+#loadingScreenProgress {
+	height: unset;
+	display: none;
+	position: absolute;
+	bottom: 18px;
+	left: 15px;
+	right: 15px;
+}
+#loadingScreenProgress .progress-bar {
+	width: 100%;
+}
+
+.content {
+	position: fixed;
+	top: 56px; /* Maybe set dynamically via jQuery if navbar changes in size */
+	bottom: 0px;
+	left: 0px; /* Set dynamically via jQuery */
+	right: 0px;
+	padding: 0px;
+	margin: 0px;
+}
+.map {
+	height: 100%;
+	width: 100%;
+	
+	
+}
+.twm-app-card {
+    max-width: 335px;    
+}
+.twm-app-card:hover {
+    box-shadow: 4px 4px 2px silver;    
+    transform: scale(1.02);
+	cursor: pointer;
+}
+
+/* Map Popup */
+.ol-popup {
+	display: none;
+	position: absolute;
+	background-color: white;
+	box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+	padding: 0px 0px 2px 0px;
+	border-radius: 4px;
+	border: 1px solid #cccccc;
+	bottom: 20px;
+	left: -50px;
+	min-width: 285px;
+	cursor: default;
+}
+.ol-popup:after, .ol-popup:before {
+	top: 100%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+.ol-popup:after {
+	border-top-color: white;
+	border-width: 10px;
+	left: 48px;
+	margin-left: -10px;
+}
+.ol-popup:before {
+	border-top-color: #cccccc;
+	border-width: 11px;
+	left: 48px;
+	margin-left: -11px;
+}
+.ol-popup-closer {
+	font-size: 11px;
+	position: absolute;
+	top: 3px;
+	right: 5px;
+	cursor: pointer;
+	color: #FFFFFF;
+}
+.ol-popup-closer:hover {
+	color: #808080;
+}
+.ol-popup-content {
+	max-width: 100%;
+	resize: horizontal;
+	overflow: hidden;
+}
+
+/* Logger classes */
+.logger-error {
+	font-family: 'Courier New', monospace;
+	font-size: 12px;
+	color: red;
+}
+.logger-warn {
+	font-family: 'Courier New', monospace;
+	font-size: 12px;
+	color: orange;
+}
+.logger-info {
+	font-family: 'Courier New', monospace;
+	font-size: 12px;
+	color: #404040;
+}
+@keyframes tilt-shake {
+    0% { transform: rotate(0deg); }
+    10% { transform: rotate(-20deg); }
+	20% { transform: rotate(20deg); }
+	30% { transform: rotate(-20deg); }
+	40% { transform: rotate(20deg); }
+	50% { transform: rotate(-20deg); }
+    60% { transform: rotate(20deg); }
+    70% { transform: rotate(-20deg); }
+	80% { transform: rotate(20deg); }
+	90% { transform: rotate(-20deg); }
+    100% { transform: rotate(0deg); }
+	
+}
+
+.tilt-shake {
+    animation: tilt-shake 0.9s ease-in-out;
+}
+/* Bottom Bar Styles */
+.bottom-bar {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 40%;
+    min-height: 60px;
+    max-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    border-top: 1px solid #ddd;
+    z-index: 10;
+    background: #fff;
+}
+.bottom-bar-expand-btn{
+	cursor: pointer;
+    color: #003366;
+    width: 87px;
+    display: flex;
+    justify-content: space-evenly;
+}
+.bottom-bar-expander{
+    padding: 2px;
+    display: none;
+    height: -webkit-fill-available;
+    border-top: 1px solid #939393;
+    text-align: -webkit-center;
+    background-color: #f5f5f5;
+}
+.bottom-bar-expand-btn:hover {
+	color: #808080;
+}
+
+.bottom-bar-controls{
+	margin-bottom: -30px;
+	display: flex;
+    flex-direction: row-reverse;
+}
+
+* Show only when .map is visible */
+.map .bottom-bar-expander,
+.map + .bottom-bar-expander,
+.map ~ .bottom-bar-expander {
+    text-align: -webkit-center;
+    border-top: 1px solid #939393;
+    background-color: #f5f5f5;
+}
+
+

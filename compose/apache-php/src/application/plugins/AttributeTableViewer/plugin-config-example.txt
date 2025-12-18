@@ -1,0 +1,6 @@
+{
+	name: "AttributeTableViewer",	// Plugin Class Name - DO NOT MODIFY [required]
+	pageSize: 100,					// Attribute Table content size per page
+	maxTextLength:50,				//Max text size for attribute values
+	enabled: true								// Whether plugin is enabled [required]
+}

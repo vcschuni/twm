@@ -1,0 +1,262 @@
+<style>
+.BL {
+ background-color: deepskyblue;
+}
+.OR {
+ background-color: darkorange;
+}
+.GR {
+ background-color: lightgreen;
+}
+.BR {
+ background-color: saddlebrown;
+}
+.SL {
+ background-color: silver;
+}
+.WT {
+ background-color: white;
+}
+.RD {
+ background-color: red;
+}
+.BK {
+	color: white;
+ background-color: black;
+}
+.YL {
+ background-color: yellow;
+}
+.VT {
+ background-color: violet;
+}
+.RO {
+ background-color: mistyrose;
+}
+.AQ {
+ background-color: aqua;
+}
+/*
+.b-r-top{
+  border-right: thin black solid;
+  border-bottom: thin black solid;
+  height: 10vh;
+  overflow: auto;
+}
+*/
+.b-r{
+  border-right: thin black solid;
+  height: 100vh;
+  overflow: auto;
+}
+.mfn-lhs-num .mfn-lhs-start .mfn-lhs-end .mfn-lhs-cbl_c .mfn-lhs-str_c .mfn-rhs-num .mfn-rhs-start .mfn-rhs-end .mfn-rhs-cbl_c .mfn-rhs-str_c  {
+
+}
+.mfn-rhs-cable,.mfn-lhs-cable, .mfn-connection-type, .mfn-connection-controls {
+display: inline-block;
+vertical-align: top;
+}
+.mfn-fldset{
+  border-color: black;
+  border-style: solid;
+}
+.mfn-icon-start{
+  background-image : url(./application/plugins/MFNaddConnection/img/startPin.png);
+  background-size: cover;
+  display: inline-block;
+  height: 15px;
+  width: 21px;
+}
+.mfn-icon-end{
+  background-image : url(./application/plugins/MFNaddConnection/img/endPin.png);
+  background-size: cover;
+  display: inline-block;
+  height: 15px;
+  width: 21px;
+}
+.mfn-icon-manage{
+  background-image : url(./application/plugins/MFNaddConnection/img/mfnManageFibre.png);
+  background-size: cover;
+  display: inline-block;
+  height: 25px;
+  width: 25px;
+}
+.mfn-connection-nix-icon{
+  background-image : url(./application/lib/open-iconic-1.1.1/svg/circle-x.svg);
+  background-size: cover;
+  display: inline-block;
+  height: 15px;
+  width: 15px;
+}	
+.mfn-connection-cut-icon{
+  background-image : url(./application/plugins/MFNaddConnection/img/scissors.svg);
+  background-size: cover;
+  display: inline-block;
+  height: 15px;
+  width: 15px;
+}	
+.mfn-connection-info-icon{
+  background-image : url(./application/lib/open-iconic-1.1.1/svg/info.svg);
+  background-size: cover;
+  display: inline-block;
+  height: 15px;
+  width: 15px;
+}	
+
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+    font-family: monospace, monospace; 
+}
+.mfn-b-r {
+	overflow-y: scroll;
+}
+.mfn-validation-error {
+	border: solid 2px #FF0000;  
+}
+#mfn-connection-location-form {
+	display: none;
+	margin: 30px 0 0 0;
+}
+	
+
+</style>
+
+
+<!-- basic editing form for Connection Location 
+
+-->
+<form id="mfn-connection-location-form" class="border p-2 layer-switcher lc-fs-layer-adder" style="display: none;"> <!-- was "display: block" -->
+	<!--legend class="w-auto">Connection Location</legend-->
+		<!-- Inputs will be added here dynamically -->
+	<div class="input-group input-group-sm mb-1" style="">
+		<div class="input-group-prepend">
+			<span class="input-group-text border-0 bg-transparent justify-content-end le-attr-input-label">Type</span>
+		</div>
+		<select class="le-form-input custom-select" key="LOCATION_TYPE"><option value="Junction Box">Junction Box</option><option value="Cabinet">Cabinet</option><option value="Vault">Vault</option><option value="Building">Building</option></select>
+	</div><div class="input-group input-group-sm mb-1" style="">
+		<div class="input-group-prepend">
+			<span class="input-group-text border-0 bg-transparent justify-content-end le-attr-input-label">Name</span>
+		</div>
+		<input type="text" class="le-form-input form-control" key="LOCATION_NAME" required>
+	</div><div class="input-group input-group-sm mb-1" style="">
+		<div class="input-group-prepend">
+			<span class="input-group-text border-0 bg-transparent justify-content-end le-attr-input-label">Address&nbsp;
+				 <button id="mfn-reverse-geocode1" type="button" title="Nearest Street Address" class="btn btn-outline-info btn-sm justify-content-end "><span class="oi oi-envelope-closed"></span></button>
+				 <button id="mfn-reverse-geocode2" type="button" title="Nearest Intersection" class="btn btn-outline-info btn-sm justify-content-end "><span class="oi oi-signpost"></span></button>
+				 <button id="mfn-reverse-geocode3" type="button" title="Lat/Long"class="btn btn-outline-info btn-sm justify-content-end "><span class="oi oi-map-marker"></span></button></span>		
+		</div>
+		<input type="text" class="le-form-input form-control" key="LOCATION_ADDRESS">
+	</div><div class="input-group input-group-sm mb-1" style="">
+		<div class="input-group-prepend">
+			<span class="input-group-text border-0 bg-transparent justify-content-end le-attr-input-label">Notes</span>
+		</div>
+		<input type="text" class="le-form-input form-control" key="LOCATION_NOTES">
+	</div>
+	<div class="input-group input-group-sm justify-content-end  mb-1" style="">
+		<button id="mfn-cancel-location" type="button" class="btn btn-outline-secondary">Cancel</button>
+		<button id="mfn-save-location" type="button" class="btn btn-outline-success">Save</button>
+	</div>
+</form>
+
+<!-- moved to see if this allows containing div to be emptied -->
+
+<div class="row">
+		<form>
+			
+			<fieldset class="mfn-fldset border p2" id="mfn-connected-fs">
+				<legend id="mfn-connected-legend"></legend>
+				<div id="mfn-connected-top">
+
+				</div>
+			</fieldset>
+		</form>
+</div>
+<div id="mfn-l_and_r" class="row" >
+	<div id="mfn-lhs" class="mfn-b-r col-sm-6" >		
+		<!-- this is where mfn-lhs-form-template goes -->
+	</div>
+	<div id="mfn-rhs" class="mfn-b-r col-sm-6" >		
+		<!-- this is where mfn-rhs-form-template goes -->
+	</div>
+
+</div>
+
+
+		<form id="mfn-lhs-form-template">
+			<fieldset class="mfn-fldset-border p2" id="mfn-lhs-fs">
+				<legend id="mfn-lhs-legend"></legend>
+				<div class="mfn-lhs-top">
+					<!-- this is where mfn-lhs-template goes -->
+				</div>
+			</fieldset>
+		</form>
+
+					<div id="mfn-lhs-template">
+						<span title="Connect" class="mfn-lhs-add"></span>
+						<label>
+							<span class="mfn-lhs-num"></span>
+							<span class="mfn-lhs-start"></span>
+							<span class="mfn-lhs-cbl_c"></span>
+							<span class="mfn-lhs-str_c"></span>
+							<span class="mfn-lhs-end"></span>
+							<span class="mfn-lhs-info"></span>
+							<span title="Cut" class="mfn-lhs-cut"></span>
+						</label>
+					</div>
+
+		<form id="mfn-rhs-form-template">
+			<fieldset class="mfn-fldset-border p2" id="mfn-rhs-fs">
+				<legend id="mfn-rhs-legend"></legend>
+				<div class="mfn-rhs-top">
+					<!-- this is where mfn-rhs-template goes -->
+				</div>
+			</fieldset>
+		</form>
+
+
+					<div id="mfn-rhs-template">
+						<span title="Connect" class="mfn-rhs-add"></span>
+						<label>
+							<span class="mfn-rhs-num"></span>
+							<span class="mfn-rhs-start"></span>
+							<span class="mfn-rhs-cbl_c"></span>
+							<span class="mfn-rhs-str_c"></span>
+							<span class="mfn-rhs-end"></span>
+						</label>
+					</div>
+
+					<div id="mfn-connected-template">
+						<label>
+							<div class="mfn-lhs-cable">
+							<span class="mfn-lhs-num"></span>
+							<span class="mfn-lhs-start"></span>
+							<span class="mfn-lhs-cbl_c"></span>
+							<span class="mfn-lhs-str_c"></span>
+							</div>
+							<div class="mfn-connection-type">
+							<span class="mfn-connection-type"></span>
+							<span class="mfn-node-name"></span>
+							</div>
+							<div class="mfn-rhs-cable">
+							<span class="mfn-rhs-num"></span>
+							<span class="mfn-rhs-cbl_c"></span>
+							<span class="mfn-rhs-str_c"></span>
+							<span class="mfn-rhs-end"></span>
+							</div>
+						</label>
+							<div class="mfn-connection-controls">
+							<span class="mfn-node-active">
+							<input type="checkbox" class="btn-check mfn-active-check"  autocomplete="off">
+							<label class="btn btn-outline-primary" >Active</label>
+							</span>
+							
+							<span class="mfn-connection-info"></span>
+							<span title="Save" class="mfn-connection-ok"></span>
+							<span title="Cancel" class="mfn-connection-nix"></span>
+							</div>
+					</div>
+
+

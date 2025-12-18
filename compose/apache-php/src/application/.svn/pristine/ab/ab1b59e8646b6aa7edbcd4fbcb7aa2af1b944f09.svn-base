@@ -1,0 +1,90 @@
+<style>
+	.ls-with-chevron span {
+		font-size: 9px;
+		margin-right: 4px;
+	}
+	.ls-with-chevron[aria-expanded='true'] span {
+		display: block;
+		transform: rotate(180deg) !important;
+	}
+	#ls-search-controls .form-check {
+		font-size: 13px;
+		line-height: 1.7;
+		margin-left: 5px;
+	}
+	#ls-search-controls .form-check .form-check-label {
+		max-width: 100%;
+	}
+	
+	#ls-fs-search-results {
+		margin-bottom: 20px;
+	}
+	#ls-fs-search-results legend {
+		font-size: 15px;
+		font-weight: bold;
+		margin-bottom: 0px;
+	}
+	.ls-feature-table {
+		font-size: 0.75rem;
+		max-width: 100%;
+		margin-bottom: 2px;
+		border-bottom: 1px solid #dee2e6;
+	}
+	.ls-tr-feature:hover {
+		cursor: pointer;
+	}
+</style>
+
+<form id="ls-form">
+
+	<!-- Searchable Layer Selector -->
+	<div id="ls-search-layer-select-container" class="input-group input-group-sm mb-3" style="display:none;">
+		<span class="input-group-text">Search Layer</span>
+		<select id="ls-search-layer-select" class="form-select form-select-sm"></select>
+	</div>
+
+	<!-- Search controls -->
+	<div class="mb-3">
+		<a id="ls-search-control" data-bs-toggle="collapse" href="#ls-search-control-container" role="button" aria-expanded="true" aria-controls="ls-search-control-container" class="btn btn-sm btn-light btn-block col-12 shadow-sm ls-with-chevron">
+			<p class="d-flex align-items-center justify-content-between mb-0">Search<span class="oi oi-chevron-bottom"></span></p>
+		</a>
+		<div id="ls-search-control-container" class="collapse show shadow-sm">
+			<div class="card">
+				<div id="ls-search-controls" class="card-body">
+					<!-- one or more search controls will be added here -->
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- Results fieldset -->
+	<fieldset id="ls-fs-search-results" class="border p-2" style="display:none;">
+		<legend class="w-auto">Results</legend>
+		<div id="ls-search-results">
+			<table class="table table-sm ls-feature-table">
+				<tbody>
+					<!-- Search results inserted here -->
+				</tbody>
+			</table>
+		</div>
+	</fieldset>
+	
+</form>
+
+<!-- Hidden templates for search controls -->
+<div class="form-check ls-search-control ls-checkbox-template" style="display:none;">
+	<label class="form-check-label">
+		<input type="checkbox" class="form-check-input">
+		<span class="title"></span>
+	</label>
+</div>
+
+<div class="input-group input-group-sm mb-2 ls-search-control ls-textfield-template" style="display:none;">
+	<span class="input-group-text"></span>
+	<input type="text" class="form-control" placeholder="">
+</div>
+
+<div class="input-group input-group-sm mb-2 ls-search-control ls-numberfield-template" style="display:none;">
+	<span class="input-group-text"></span>
+	<input type="number" class="form-control" placeholder="">
+</div>

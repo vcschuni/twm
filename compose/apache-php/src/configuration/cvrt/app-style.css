@@ -1,0 +1,11 @@
+/* Bootstrap Overrides */
+.table .thead-dark th {
+  background-color: #004b8e;
+  border-bottom: 1px;
+}
+
+/* TWM Application Styling */
+.twm-header {
+	background-color: #004b8e;
+	border-bottom: 0px;
+}

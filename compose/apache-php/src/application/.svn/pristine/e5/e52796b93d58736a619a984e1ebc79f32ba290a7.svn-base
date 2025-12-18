@@ -1,0 +1,236 @@
+
+
+<style>
+
+.pp-form-group{
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.contact-group{
+    display: flex;
+}
+.dates-info-group{
+    display: flex;
+}
+.location-info-group{
+    display: flex;
+}
+.work-info-group{
+    display: grid;
+}
+.skill-list {
+    width: 100%;
+    height: max-content;
+    border: 1px solid #dee2e6;
+    padding: 10px;
+    display: inline-flex;
+    justify-content: flex-start;
+    list-style-type: none;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+    flex-wrap: wrap;
+
+}
+.skill-list li {
+    background-color: #f1f1f1;
+    margin-bottom: 5px;
+    padding: 2px 5px;
+    border-radius: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.remove-skill {
+    padding: 3px;
+    margin-top: -15px;
+    cursor: pointer;
+    color: red;
+    font-weight: bold;
+}
+.buttons{
+    padding: 25px;
+}
+#imagePreview{
+    border: 4px solid #fff;
+    height: 200px;
+    width: 200px;
+    object-fit: cover;
+    margin-top: -100px;
+    border-radius: 50%;
+}
+/* Style for highlighting items on hover */
+.suggestion-item:hover {
+      background-color: #f0f0f0; /* Light gray background */
+      cursor: pointer; /* Change cursor to pointer */
+    }
+
+
+/* Style for highlighting items on hover */
+.staff-header {
+    background-color: rgb(129, 167, 170);
+    height: 125px;
+    text-align-last: end;
+    }
+.staff-name{
+    font-size: larger;
+    font-weight: bold;
+
+}
+.staff-pronouns{
+    font-size: smaller;
+
+}
+.staff-title{
+    font-size: medium;
+    font-weight: 400;
+
+}
+.contact-info{
+    padding-top: 10px;
+
+}
+.staff-profile-info{
+    text-align: -webkit-center;
+    padding-bottom: 20px;
+    
+}
+.work-info-group{
+    display: flex;
+}
+
+.location-info-group{
+    display: flex;
+    flex-direction: column;
+
+}
+
+.office-location{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.contact-toolbar{
+    padding-top: 4px;
+
+}   
+#staff-dates{
+    display: flex;
+    justify-content: space-evenly;
+
+}.IMB-dates{
+    display: flex;
+    flex-direction: column;
+
+}
+.PSA-dates{
+    display: flex;
+    flex-direction: column;
+
+}
+#skill-pill{
+    margin: 6px;  
+}
+#skillcontainer{
+    border-radius: 1px;
+    border-top: 2px solid #041b32ad;
+    padding-top: 6px;
+    padding-bottom: 6px;
+}
+#aboutme{
+    padding-top: 6px;
+    padding-bottom: 6px;
+    border-radius: 1px;
+    border-top: 2px solid #041b32ad;
+}
+.answer{
+    margin-left: 10px;
+    margin-top: -20px;
+
+}
+#pp-staff-edit-profile-btn{
+    font-size: 12px;
+    margin: 5px;
+    background: white;
+    --bs-btn-hover-color: #212529;
+
+}
+
+
+
+</style>
+
+
+
+<div class="pp-main-content">
+    <div class="staff-header">
+        <button class="btn btn btn btn-outline-secondary pp-staff-edit-profile-btn" id="pp-staff-edit-profile-btn" type="button" title="Edit Profile"></span>Edit Profile
+        </button>
+    </div>
+    <div class="staff-profile-info">
+        <div class="contact-image" id="pp-contact-image">
+            <img id="imagePreview" src="application/plugins/PeopleViewer/img/person.jpg" alt="Contact Image">
+        </div>
+        <div class="staff-name" id="staff-name"></div>
+        <div class="staff-pronouns" id="staff-pronouns"></div>
+        <div class="staff-title" id ="staff-title"></div>
+        <div class="city-location" id ="city-location"></div>
+        <div class="office-location">
+            <div style="padding-right: 4px;"class="office-location-label">Office Location:</div>
+            <div class="office-location-value" id="office-location-value"></div>
+            
+        </div>
+        
+        
+        
+        
+        <div class="contact-toolbar">
+                <button tabindex="-1" id="staff-teams" class="btn btn-sm btn-outline-secondary" type="button"><img src="application/plugins/PeopleViewer/img/logos-MSteams.png" alt="Trulli" width="20" height="22" style="vertical-align: text-bottom;"></button>
+                <button tabindex="-1" id="staff-email" class="btn btn-sm btn-outline-secondary" type="button"><img src="application/plugins/PeopleViewer/img/logos-outlook.png" alt="Trulli" width="20" height="22" style="vertical-align: text-bottom;"></button>
+                
+
+        </div>
+        <div class="staff-dates" id ="staff-dates">
+            <div class="IMB-dates">Years in IMB:
+                <div class="IMB-date-total" id="IMB-date-total"></div>
+                
+            </div>
+            <div class="PSA-dates">Years in Public Service:
+                <div class="PSA-date-total" id="PSA-date-total"></div>
+            </div>
+            
+        </div>
+    </div>
+    <div class="pp-staff-container" id="staff-container">
+        <div class="skillcontainer" id="skillcontainer">
+            <h5>Skills and Knowledge Areas</h5>
+            <div class="profile-skill-list" id="profile-skill-list"></div>
+        </div>
+        <div class="aboutme" id="aboutme">
+            <h5>About Me</h5>
+            <div class="aboutMeContainer" id="aboutMeContainer"></div>
+            
+        </div>
+    </div>
+    
+
+
+       
+
+        
+          
+            
+           
+        
+    
+    
+</div>
+
+
+
+
+
+  
+
+	

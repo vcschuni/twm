@@ -1,0 +1,56 @@
+<style>
+.lr-filter-filter-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 20px;
+	
+}
+.lr-chart-btn {
+	background: none;
+	border: none;
+	padding: 0;
+	cursor: pointer;
+}
+.lr-chart-btn img {
+	width: 18px;
+	height: 18px;
+	
+}
+.form-select{
+	font-size: .875rem;
+}
+.mb-2{
+	font-size: .875rem;
+}
+.form-control{
+	font-size: .875rem;
+}
+
+
+</style>
+
+<!-- Add dropdown select menu -->
+<div class="mb-2" style="display:none;">
+	<label for="filter-options">Filtered Layer</label>
+	<select class="form-select" id="filter-options"></select>
+</div>
+
+<!-- Filter template -->
+<fieldset class="border p-2 layer-switcher lr-fs-filters" style="display:none;">
+	<div class="lr-filter-filter-header">
+		<legend class="w-auto" id="lr-filter-layer-title">Filters</legend>
+		<button id="lr-create-chart-btn" class="lr-chart-btn" type="button">
+			<img src="application/plugins/Filter/img/bar-chart.png" alt="Chart">
+		</button>
+	</div>
+	<div id="lr-filters-container">
+		<!-- Filters will be dynamically inserted here -->
+	</div>
+	<div class="text-end">
+		<button id="lr-apply-filters-btn" class="btn btn-sm btn-primary" type="button">Apply Filters</button>
+		<button id="lr-clear-filters-btn" class="btn btn-sm btn-secondary" type="button">Clear Filters</button>
+	</div>
+</fieldset>
+
+

@@ -1,0 +1,6 @@
+{
+	name: "UberSearchBCGeographicalNameSearchAddOn",		// Plugin Class Name - DO NOT MODIFY [required]
+	enabled: true,											// Whether plugin is enabled [required]
+	maxResults: 5,											// Max results to return [required]
+	url: "https://apps.gov.bc.ca/pub/bcgnws/names/search"	// BCGNWS Url
+}

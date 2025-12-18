@@ -1,0 +1,4 @@
+{
+	name: "UberSearchCoordinateSearchAddOn",	// Plugin Class Name - DO NOT MODIFY [required]
+	enabled: true								// Whether plugin is enabled [required]
+}

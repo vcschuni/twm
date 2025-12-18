@@ -1,0 +1,264 @@
+<style>
+
+.profile-of-the-day-header{
+    text-align: center;
+}
+
+.profile-of-the-day-footer{
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 10px;
+}
+.potd-staff-title{
+    font-size: 14px;
+}
+.potd-work-unit{
+    font-size: 14px;
+}
+.potd-city-location{
+    font-size: 14px;
+}
+
+#potd-imagePreview {
+    border: 1px solid #000102;
+    object-fit: cover;
+    width: 140px;
+    height: 150px;
+    border-radius: 10px; /* Add this line to round the edges */
+    }
+
+.profile-of-the-day-details{
+    display: flex;
+    
+}
+#profileOfTheDay{
+    background: #ffffff;
+    border-bottom-left-radius: 10px; /* Add this line to round the bottom-left edge */
+    border-bottom-right-radius: 10px; /* Add this line to round the bottom-right edge */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: -10px;
+    margin-left: -10px;
+    margin-right: -10px;
+    padding: 6px;
+    border: 1px solid #ddd;
+
+
+}
+
+.potd-office-location{
+    display: flex;
+    font-size: 14px;
+
+
+}
+
+.potd-staff-name{
+    font-weight: bolder;
+    font-size: larger;
+}
+
+.potd-IMB-dates{
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.potd-PSA-dates{
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.potd-information{
+    padding-left: 14px;
+}
+.potd-years-of-service{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;   
+}
+
+.potd-aboutme{
+    font-size: 14px;
+
+}
+#potd-get-to-know{
+    padding: 10px;
+}
+#potd-about-me{
+    padding: 10px;
+}
+.profile-of-the-day{
+    padding: 10px;
+
+}
+.profile-of-the-day-content{
+    display: flex;
+    padding-top: 25px;
+    justify-content: space-around;
+    flex-direction: row;
+
+}
+#POTD-accordian-title{
+    font-size: 16px;
+}
+@media (max-width: 1600px) {
+    .potd-aboutme{
+    font-size: 14px;
+    padding-top: 15px;
+    }
+    .profile-of-the-day-content {
+        display: flex;
+        padding-top: 25px;
+        justify-content: space-around;
+        flex-direction: column;
+        }
+    .potd-years-of-service{
+        padding-top: 10px;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+    }
+    .potd-PSA-dates{
+        font-size: 14px;
+        display: flex;
+        flex-direction: row;
+    }
+    .potd-IMB-dates{
+        font-size: 14px;
+        display: flex;
+        flex-direction: row;
+    }
+}
+
+@media (max-width: 450px) {
+    .potd-information{
+    margin-top: 0px; 
+    padding-left: 0px;
+
+    }
+    #potd-imagePreview {
+    border: 1px solid #000102;
+    object-fit: cover;
+    width: 50%;
+    height: 150px;
+    border-radius: 10px;
+    }
+    .potd-aboutme{
+    font-size: 14px;
+    padding-top: 15px;
+    }
+    .profile-of-the-day-details{
+    display: flex;
+    flex-direction: column;
+    
+    }
+    .profile-of-the-day-content {
+        display: flex;
+        padding-top: 25px;
+        justify-content: space-around;
+        flex-direction: column;
+        }
+    .potd-years-of-service{
+        margin-top: -0px;  
+        display: flex;
+        flex-direction: column;
+    }
+    .potd-PSA-dates{
+        font-size: 14px;
+        display: flex;
+        flex-direction: row;
+    }
+    .potd-IMB-dates{
+        font-size: 14px;
+        display: flex;
+        flex-direction: row;
+    }
+    #person-card{
+    width: 95px;
+    height: max-content;
+
+    }
+}
+.potd-accordian-title-button {
+    background-color: #000;
+    color: #fff;
+}
+#potd-accordion-button{
+    background-color: rgb(129 167 170 / 20%); 
+    height: 35px;
+    
+}
+#potd-accordian-title{
+    font-size: 16px;
+}
+
+
+</style>
+
+
+<div class="accordion accordion-flush" id="accordionFlushExample">
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapse show" id="potd-accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse-POTD" aria-expanded="false" aria-controls="flush-collapse-POTD">
+          <div class="accordian-tile" id="potd-accordian-title">Profile Of The Day:</div>
+        </button>
+      </h2>
+      <div id="flush-collapse-POTD" class="accordion-collapse collapse show" data-bs-parent="#accordionFlushExample">
+        <div class="profile-of-the-day" id="profileOfTheDay">
+            <div class="profile-of-the-day-header">
+                <!-- <h4>Profile of the Day</h4> -->
+            </div>
+            <div class="profile-of-the-day-content" id="profile-of-the-day-content">
+                <div class="get-to-know" id="potd-get-to-know">
+                    <div class="profile-of-the-day-details">
+                        <div class="potd-contact-image" id="potd-contact-image">
+                            <img id="potd-imagePreview" src="application/plugins/PeopleViewer/img/person.jpg" alt="Contact Image">
+                        </div>
+                        <div class="potd-information">
+                            <div class="potd-staff-name" id="potd-staff-name"></div>
+                            <div class="potd-staff-pronouns" id="potd-staff-pronouns"></div>
+                            <div class="potd-staff-title" id="potd-staff-title"></div>
+                            <div class="potd-work-unit" id="potd-work-unit"></div>
+                            <div class="potd-city-location" id="potd-city-location"></div>
+                            <div class="potd-office-location">
+                                <div style="padding-right: 4px;" class="potd-office-location-label">Office:</div>
+                                <div class="potd-office-location-value" id="potd-office-location-value"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="potd-years-of-service" id="potd-years-of-service">
+                        <div class="potd-IMB-dates" id="potd-IMB-dates">
+                            <div style="padding-right: 4px;" class="potd-office-location-label">Years in IMB:</div>
+                            <div class="potd-IMB-date-total" id="potd-IMB-date-total"></div>
+                        </div>
+                        <div class="potd-PSA-dates" id="potd-PSA-dates">
+                            <div style="padding-right: 4px;" class="potd-office-location-label">Years in Public Service:</div>
+                            <div class="potd-PSA-date-total" id="potd-PSA-date-total"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-me"id="potd-about-me">
+                    <div class="potd-aboutme" id="potd-aboutme">
+                        <h5>About Me</h5>
+                        <div class="potd-aboutMeContainer" id="potd-aboutMeContainer"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="profile-of-the-day-footer"></div>
+        </div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+

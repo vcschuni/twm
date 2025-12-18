@@ -1,0 +1,28 @@
+{
+	name: "LayerController",			// Plugin Class Name - DO NOT MODIFY [required]
+	tabName: "Layers",					// Tab name [required]
+	enabled: true,						// Whether plugin is enabled [required]
+	group: "Group A",					// Give a group name to the layer. This option will enable an alternate layer controller design.
+	testLayer: false,	                // Automatically display a test layer... For styling development
+	styler: false,                      // Show the styler for vector layers
+	layerDownloads: {					// Whether plugin should allow layer download (depends also on source server) [optional]
+		enabled: true,
+		maxFeatures: 500
+	},
+	additionalSources: [				// Additional GetCapabilities resources [optional]
+		{
+			name: "MoTT Public",								// Source name [optional]
+			url: returnEnvironmentUrl("ogs-public") + "/ows"	// Source URL [required] - includes 'environment' helper function for public TWM
+		},
+		{
+			name: "MoTT Internal",
+			url: "../path-to-geoserver/ows",
+			filter: "cwr:",										// Filters results based on NAME					
+			withCredentials: true								// Make cross-site Access-Control requests using credentials [optional - default is false]
+		},
+		{
+			name: "BCGW",
+			url: "https://openmaps.gov.bc.ca/geo/ows"
+		}
+	]
+}

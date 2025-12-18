@@ -1,0 +1,320 @@
+<style>
+	#lc-overlay-filter-operator {
+		max-width: 87px;
+	}
+	.lc-filter-col-field {
+		padding-left: 16px;
+		width: 45%;
+	}
+	.lc-filter-col-operator {
+		padding-left: 5px;
+		width: 15%;
+	}
+	.lc-filter-col-value {
+		padding-left: 5px;
+		width: 30%;
+	}
+	.lc-filter-col-clear {
+		padding-left: 0px;
+		width: 10%;
+	}
+	.weight-widget {
+		transform: scale(0.9);
+		width: 10rem;
+		margin: 0 0 0 0.5rem;
+	}
+	.weight {
+		margin-left: -7px;
+	}
+	.colour {
+		width: 2rem;
+		height: 2rem;
+		cursor: pointer;
+		border-radius: 0.5rem;
+		margin: 0 0.5rem 0 0.5rem;
+		transition: all 0.2s ease;
+		transform: scale(1);
+	}
+	.colour:hover {
+		transition: all 0.2s ease;
+		transform: scale(1.1);
+	}
+	.colour.poly-stroke {
+		border-style: solid;
+		border-width: 3px;
+		margin-left: 1.5rem;
+	}
+	.symbol-widget {
+		margin-top: 0.5rem;
+	}
+	.symbol-widget .font-btn:hover {
+		transform: scale(1.9);
+	}
+	.symbol-widget .font-btn {
+		top: 3px;
+		cursor: pointer;
+		border-radius: 0.5rem;
+		margin: 0 0.5rem 0 0.5rem;
+		transition: all 0.2s ease;
+		transform: scale(1.8);
+	}
+	.font-pallet {
+		display: none;
+		position: absolute;
+		width: 100px;
+		/* height: 200px; */
+		z-index: 999;
+		background: rgba(255,255,255,.85);
+		border-radius: 5px;
+		box-sizing: content-box;
+		margin: -10px 0 0 8px;
+	}
+	.pallet-symbols {
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+		grid-row-gap: 10px;
+		grid-column-gap: 5px;
+		transform: scale(0.7);
+	}
+	.pallet-symbols .pallet-btn {
+		transition: all 0.2s ease;
+		transform: scale(1);
+	}
+	.pallet-symbols .pallet-btn:hover {
+		transform: scale(1.2);
+	}
+	#lc-overlay-styler {
+		display: grid;
+		width: 100%;
+		margin-bottom: 10px;
+	}
+	#lc-overlay-content{
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding-left: 10px;
+		border-style: none none none solid;
+		border-width: 1px;
+		border-color: rgba(0,0,0,0.2);
+		width: 100%;
+	}
+	#lc-overlay-menu div:hover {
+		transition: all 0.2s ease;
+		transform: scale(1.05);
+	}
+	#lc-overlay-menu {
+		padding-right: 10px;
+	}
+	#lc-overlay-menu div {
+		border-radius: 5px;
+		padding: 0 5px 0 5px;
+		cursor: pointer;
+		font-weight: bold;
+		transform: scale(1);
+		font-size: 13px;
+		color:rgb(63, 63, 63);
+	}
+	#lc-overlay-content .styler {
+		display: none;
+		align-items: center;
+	}
+	#lc-overlay-menu div.active {
+		background: #005cc8;
+		font-weight: bolder;
+		color: white;
+	}
+	/* Point styler on by default */
+	#lc-overlay-content .point.styler {
+		display: flex;
+	}
+	#lc-overlay-content .widget.line-size {
+		max-width: 200px;
+	}
+	#lc-overlay-content .widget {
+		flex-wrap: wrap;
+		display: flex;
+		justify-content: center;
+		height: 60px;
+	}
+	#lc-overlay-content .widget.size {
+		width: 135px;
+	}
+	#lc-overlay-content .widget.size .weight {
+		margin-left: 10px;
+	}
+	#lc-overlay-content .widget.colour {
+		width: 60px;
+	}
+	#lc-overlay-content .widget.font {
+		width: 60px;
+		margin-left: 20px;
+	}
+	.modal-dialog {
+		max-width: 550px;
+	}
+	.lc-time-filter {
+		font-size: 13px;
+		padding: 6px;
+	}
+</style>
+
+<form class="lc-layer-editor-form">
+
+	<!-- lc-overlay-styler goes here. File in same directory. -->
+	<div id="lc-overlay-styler">
+
+		<div id="lc-overlay-menu">
+			<div data-feature="point" class="active">Point</div>
+			<div data-feature="line">Line</div>
+			<div data-feature="polygon">Polygon</div>
+		</div>
+
+		<div id="lc-overlay-content">
+			
+			<!-- Point Styler -->
+			<div class="point styler">
+				<!-- Colour -->
+				<div class="widget colour">
+					<div class="colour point-fill"></div>
+					<div class="label">Colour</div>
+				</div>
+
+				<!-- Size -->
+				<div class="widget point-size">
+					<div class="weight-widget">
+						<input type="number" value="8" min="0" step="1" max="50"/>
+					</div>
+					<div class="weight">Size</div>
+				</div>
+
+				<!-- Symbol-->
+				<div class="widget point-font">
+					<div class="symbol-widget">
+						<div class="font-btn oi oi-media-record">
+							<div class="font-pallet">
+								<div class="pallet-symbols">
+									<div class="oi oi-media-record pallet-btn"></div>
+									<div class="oi oi-pin pallet-btn"></div>
+									<div class="oi oi-bolt pallet-btn"></div>
+									<div class="oi oi-ban pallet-btn"></div>
+									<div class="oi oi-bell pallet-btn"></div>
+									<div class="oi oi-arrow-circle-bottom pallet-btn"></div>
+									<div class="oi oi-arrow-circle-left pallet-btn"></div>
+									<div class="oi oi-arrow-circle-right pallet-btn"></div>
+									<div class="oi oi-arrow-circle-top pallet-btn"></div>
+									<div class="oi oi-cart pallet-btn"></div>
+									<div class="oi oi-circle-x pallet-btn"></div>
+									<div class="oi oi-circle-check pallet-btn"></div>
+									<div class="oi oi-cloud pallet-btn"></div>
+									<div class="oi oi-cloudy pallet-btn"></div>
+									<div class="oi oi-rain pallet-btn"></div>
+									<div class="oi oi-camera-slr pallet-btn"></div>
+									<div class="oi oi-compass pallet-btn"></div>
+									<div class="oi oi-dollar pallet-btn"></div>
+									<div class="oi oi-droplet pallet-btn"></div>
+									<div class="oi oi-flag pallet-btn"></div>
+									<div class="oi oi-fire pallet-btn"></div>
+									<div class="oi oi-flash pallet-btn"></div>
+									<div class="oi oi-home pallet-btn"></div>
+									<div class="oi oi-heart pallet-btn"></div>
+									<div class="oi oi-map-marker pallet-btn"></div>
+									<div class="oi oi-magnifying-glass pallet-btn"></div>
+									<div class="oi oi-key pallet-btn"></div>
+									<div class="oi oi-location pallet-btn"></div>
+									<div class="oi oi-person pallet-btn"></div>
+									<div class="oi oi-people pallet-btn"></div>
+									<div class="oi oi-pencil pallet-btn"></div>
+									<div class="oi oi-move pallet-btn"></div>
+									<div class="oi oi-musical-note pallet-btn"></div>
+									<div class="oi oi-plus pallet-btn"></div>
+									<div class="oi oi-pie-chart pallet-btn"></div>
+									<div class="oi oi-star pallet-btn"></div>
+									<div class="oi oi-tag pallet-btn"></div>
+									<div class="oi oi-thumb-up pallet-btn"></div>
+									<div class="oi oi-thumb-down pallet-btn"></div>
+									<div class="oi oi-warning pallet-btn"></div>
+									<div class="oi oi-video pallet-btn"></div>
+									<div class="oi oi-wifi pallet-btn"></div>
+									<div class="oi oi-media-stop pallet-btn"></div>
+									<div class="oi oi-medical-cross pallet-btn"></div>
+									<div class="oi oi-moon pallet-btn"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="label">Symbol</div>
+				</div>
+			</div>
+
+			<!-- Line Styler -->
+			<div class="line styler">
+				<!-- Colour -->
+				<div class="widget colour">
+					<div class="colour line-fill"></div>
+					<div class="label">Colour</div>
+				</div>
+
+				<!-- Size -->
+				<div class="widget line-size">
+					<div class="weight-widget">
+						<input type="number" value="2" min="0" step="1" max="20"/>
+					</div>
+					<div class="weight">Width</div>
+				</div>
+			</div>
+
+			<!-- Polygon Styler -->
+			<div class="polygon styler">
+				<!-- Fill -->
+				<div class="widget colour" style="margin-right:15px;">
+					<div class="colour poly-fill"></div>
+					<div class="label">Fill</div>
+				</div>
+
+				<!-- Stroke -->
+				<div class="widget colour" style="margin-left: -10px; margin-right:15px;">
+					<div class="colour poly-stroke"></div>
+					<div class="label" style="margin-left: 12px;">Outline</div>
+				</div>
+
+				<!-- Size -->
+				<div class="widget poly-size">
+					<div class="weight-widget">
+						<input type="number" value="2" min="0" step="1" max="20"/>
+					</div>
+					<div class="weight">Outline Width</div>
+				</div>
+			</div>
+
+			<div class="text styler">Text styling coming soon</div>
+		</div> <!-- End of overlay content-->
+	</div> <!-- End of overlay styler-->
+
+	<!-- Opacity -->
+	<div class="input-group input-group-sm mb-2">
+		<span class="input-group-text">Layer Transparency</span>
+		<input id="lc-overlay-transparency" type="range" class="form-control form-control-sm form-range" step="0.1" min="0" max="1">
+	</div>
+	
+	<!-- Time Filter -->
+	<div class="form-group mb-2 border rounded lc-time-filter" style="display:none;">
+		<label id="lc-overlay-time-filter-column" class="mb-2">Time Filter</label>
+		<div id="lc-overlay-time-filter" class="ms-2 me-2 mb-1"></div>
+	</div>
+	
+	<!-- Filter -->
+	<div id="lc-overlay-filter" class="input-group input-group-sm mb-2" style="display:none;">
+		<span class="input-group-text">Filter</span>
+		<select id="lc-overlay-filter-field" class="form-select"></select>
+		<select id="lc-overlay-filter-operator" class="form-select">
+			<option value="=">=</option>
+			<option value="neq"><></option>
+			<option value="gt">&gt;</option>
+			<option value="lt">&lt;</option>
+			<option value="LIKE">LIKE</option>
+		</select>
+		<input id="lc-overlay-filter-value" type="text" class="form-control">
+		<button id="lc-overlay-filter-clear" class="btn btn-danger" type="button" title="Clear filter"><span class="oi oi-x"></span></button>
+	</div>
+	
+</form>

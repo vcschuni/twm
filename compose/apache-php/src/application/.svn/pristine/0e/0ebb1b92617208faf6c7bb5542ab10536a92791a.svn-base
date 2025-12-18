@@ -1,0 +1,8 @@
+{
+	name: "ShowClickCoordinates",
+	enabled: true,
+	displayLocatedRight: true,				// default is true
+	displayLocatedTop: true,				// default is true
+	displayHorizontalOffset:'8px',			// how far from left or right edge of the map
+	displayVerticallOffset:'8px'			// how far from top or bottom edge of the map
+}

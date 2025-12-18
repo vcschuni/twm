@@ -1,0 +1,8 @@
+		{
+			name: "MeasureTool",					// add distance measure tool
+			enabled: true,							// toggle on/off
+			type: 'LineString',						// must be 'LineString' or 'Polygon'
+			buttonLocatedRight: false,				// default is true
+			buttonLocatedTop: true,				// default is false
+			buttonLocationOffset:'10.0em'			// how far from Top or Bottom of map frame
+		},

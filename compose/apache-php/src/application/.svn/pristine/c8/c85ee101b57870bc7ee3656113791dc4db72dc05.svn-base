@@ -1,0 +1,33 @@
+Version 1.4
+
+/ Reduced size for several parts of the function
+# Fixed security issues
++ 538 bytes gzipped // 727 bytes minified
+
+Version 1.3.5
+
+/ Reduced size for several parts of the function
++ 543 bytes gzipped // 729 bytes minified
+
+Version 1.3
+
+/ Reduced size for several parts of the function
++ 545 bytes gzipped // 731 bytes minified
+
+Version 1.2
+
+/ Reduced size for several parts of the function
++ 549 bytes gzipped // 752 bytes minified
+
+Version 1.1
+
+/ Reduced size for several parts of the function
+# Allow "deg" unit in HSL
+# Allow decimal numbers in HSL
+# Fixed a bug for short hexadecimal
++ 558 bytes gzipped // 762 bytes minified
+
+Version 1.0
+
++ Original release
++ 553 bytes gzipped // 773 bytes minified

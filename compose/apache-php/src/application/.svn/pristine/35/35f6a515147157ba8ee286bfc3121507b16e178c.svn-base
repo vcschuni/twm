@@ -1,0 +1,95 @@
+<style>
+	.ae-input-label {
+		width: 75px;
+		display: block;
+		text-align: right;
+	}
+	.ae-criteria-label {
+		width: 150px;
+		display: block;
+		text-align: right;
+	}
+	#ae-export-link {
+		display: block;
+		text-align: center;
+	}
+	.ae-with-chevron[aria-expanded='true'] span {
+		display: block;
+		transform: rotate(180deg) !important;
+	}
+	.ae-instructions {
+		font-size: 13px;
+		font-style: italic;
+	}
+	.ae-instructions ul {
+		margin-top: 5px;
+		list-style-type: none;
+		padding-left: 1.2em;
+	}
+	.ae-instructions ul li span {
+		width: 15px;
+		text-align: center;
+	}
+	
+</style>
+
+<!-- Export Layer Selector -->
+<div class="input-group input-group-sm mb-3">
+	<span class="input-group-text ae-input-label">Layer</span>
+	<select id="ae-layer2export-select" class="form-select form-select-sm"></select>
+</div>
+
+<!-- Export Type Selector -->
+<div class="input-group input-group-sm mb-3">
+	<span class="input-group-text ae-input-label">Type</span>
+	<select id="ae-export-type-select" class="form-select form-select-sm"></select>
+</div>
+
+<!-- Filter Criteria Fieldset -->
+<fieldset class="border p-2 layer-switcher ae-fs-filter">
+	<legend class="w-auto">Filter Criteria</legend>
+	<div class="ae-fs-content">
+		<!-- criteria inserted here -->
+	</div>
+</fieldset>
+
+<!-- Export button -->
+<button id="ae-export-btn" class="btn btn-sm btn-block btn-success" type="button" disabled>Download</button>
+<div id="ae-export-status"></div>
+<a id="ae-export-link" href="#nothing"></a>
+
+<!-- Template: Criteria "Select" Input -->
+<div class="input-group input-group-sm mb-3 ae-criteria-select-template" style="display:none;">
+	<span class="input-group-text ae-criteria-label"></span>
+	<select class="form-select form-select-sm"></select>
+</div>
+
+<!-- Template: Criteria "Text" Input -->
+<div class="input-group input-group-sm mb-3 ae-criteria-text-template" style="display:none;">
+	<span class="input-group-text ae-criteria-label"></span>
+	<input type="text" class="form-control" placeholder="">
+</div>
+<p/>
+<!-- Notes on KML with styling export -->
+<div class="mb-3">
+	<a data-bs-toggle="collapse" href="#ae-intructions-panel" role="button" aria-expanded="false" aria-controls="ae-intructions-panel" class="btn btn-sm btn-light btn-block col-12 shadow-sm ae-with-chevron">
+		<p class="d-flex align-items-center justify-content-between mb-0">Notes on KML with styling export<span class="oi oi-chevron-bottom"></span></p>
+	</a>
+	<div id="ae-intructions-panel" class="collapse shadow-sm">
+		<div class="card">
+			<div class="card-body ae-instructions">
+				<p>This type of KML export uses the <b>current map extent</b> to limit which features are downloaded.</p>
+				<b>This type of KML export may fail if:</b>
+				<ul>
+					<li>The request is of too many features</li>
+					<li>The request covers too large an area</li>
+				</ul>
+				<b>Therefore if the KML download fails:</b>
+				<ul>
+					<li>Zoom the map closer and/or</li>
+					<li>Pan the map to an area with fewer features.</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>

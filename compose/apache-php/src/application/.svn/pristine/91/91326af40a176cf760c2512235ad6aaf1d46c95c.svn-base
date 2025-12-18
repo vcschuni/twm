@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- Meta -->
+		<meta charset="utf-8" />
+		<meta name="description" content="BC Ministry of Transportation and Transit Web Map">
+		<meta name="keywords" content="TWM, Web Mapping Framework, BC Ministry of Transportation and Transit, MoTT">
+		<meta name="author" content="BC Ministry of Transportation and Transit">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no, user-scalable=no">
+		
+		<!-- Title -->
+		<title>Transportation Web Map</title>
+		
+		<!-- Favicon -->
+		<link rel="icon" type="image/png" href="img/favicon.png">
+		
+		<!-- JS -->
+		<script type="text/javascript" src="lib/jquery/jquery-3.7.1.min.js"></script>
+		<script type="text/javascript" src="lib/openlayers-7.2.2/ol.js"></script>
+		<script type="text/javascript" src="inc/environments.js"></script>
+		<script type="text/javascript" src="inc/common.js"></script>
+		
+		<!-- Scripts -->
+		<script type="text/javascript">
+			/**
+			 * GLOBALS
+			 * Variables/objects required in a global context.
+			 */
+			var app = new Object();
+			app.config = new Object();
+			
+			/**
+			 * Function: loadConfig
+			 * @param (string) config name
+			 * @returns () nothing
+			 * Function that loads the requested configuration file
+			 */
+			function loadConfig(name) {
+				$.getScript("../configuration/" + name + "/app-config.js")
+				.done(function(script, textStatus) {
+					showConfig(name);
+				})
+				.fail(function(jqxhr, settings, exception) {
+					$("#content").html("{}");
+				}); 
+			}
+						
+			/**
+			 * Function: showConfig
+			 * @param (string) config name
+			 * @returns () nothing
+			 * Function that shows the config file contents
+			 */
+			function showConfig(name) {
+				// Convert json state into a string
+				var content = JSON.stringify(app.config);
+				
+				// Display on screen
+				$("#content").html(content);
+			}
+			
+			/**
+			 * Function: Document onReady
+			 * @param () none
+			 * @returns () nothing
+			 * Function that runs when the document is ready
+			 */
+			$(document).ready(function() {
+				// Load the requested config
+				var configName = getUrlParameterByName("c");
+				if (configName) {
+					loadConfig(configName);
+				} else {
+					$("#content").html("{}");
+				}
+			});
+		
+		</script>	
+	</head>
+	<body>
+		<div id="content"></div>
+	</body>
+</html>

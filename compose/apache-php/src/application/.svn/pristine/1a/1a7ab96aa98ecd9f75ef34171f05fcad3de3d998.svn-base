@@ -1,0 +1,48 @@
+<style>	
+	.rdm-user-field-label {
+		width: 130px;
+	}
+</style>
+
+<!-- User Editor Form template (hidden) -->
+<div class="rdm-user-form" style="display:none;">
+	<div class="input-group input-group-sm mb-1">
+		<span class="input-group-text rdm-user-field-label">User Directory</span>
+		<select type="text" class="rdm-user-field-USER_DIRECTORY form-control form-select form-select-sm" data-field-name="USER_DIRECTORY" data-original-value=""></select>
+	</div>
+
+	<div class="input-group input-group-sm mb-1">
+		<span class="input-group-text rdm-user-field-label">Username</span>
+		<input type="text" class="rdm-user-field-USERNAME form-control" data-field-name="USERNAME" data-original-value="" value="">
+	</div>
+	
+	<div class="input-group input-group-sm mb-1">
+		<span class="input-group-text rdm-user-field-label">First Name</span>
+		<input type="text" class="rdm-user-field-FNAME form-control" data-field-name="FNAME" data-original-value="" value="">
+	</div>	
+
+	<div class="input-group input-group-sm mb-1">
+		<span class="input-group-text rdm-user-field-label">Last Name</span>
+		<input type="text" class="rdm-user-field-LNAME form-control" data-field-name="LNAME" data-original-value="" value="">
+	</div>		
+	
+	<div class="input-group input-group-sm mb-1">
+		<span class="input-group-text rdm-user-field-label">Enabled</span>
+		<select type="number" class="rdm-user-field-IS_ENABLED form-control form-select form-select-sm" data-field-name="IS_ENABLED" data-original-value=""></select>
+	</div>
+	
+	<div class="input-group input-group-sm mb-1">
+		<span class="input-group-text rdm-user-field-label">Superuser</span>
+		<select type="number" class="rdm-user-field-IS_SUPERUSER form-control form-select form-select-sm" data-field-name="IS_SUPERUSER" data-original-value=""></select>
+	</div>
+
+	<!-- Buttons -->
+	<div class="mt-3 mb-0 text-center">
+		<button class="btn btn-sm btn-light btn-manage-user-groups col-12" type="button" style="display:none;">Manage User's Groups</button>
+	</div>
+	<div class="mt-3 mb-0 text-center">
+		<button class="btn btn-sm btn-danger btn-delete col-5" type="button" style="display:none;">Delete</button>
+		<button class="btn btn-sm btn-success btn-save col-5" type="button" style="display:none;">Save</button>
+		<button class="btn btn-sm btn-success btn-create col-5" type="button" style="display:none;">Create</button>
+	</div>
+</div>

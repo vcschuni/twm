@@ -1,0 +1,49 @@
+<style>
+	.main-text {
+		font-size: 13px;
+		padding: 5%;
+	}
+	.main-text h4 {
+		font-size: 17px;
+		padding-bottom: 2px;
+		border-bottom: 1px solid silver;
+	}
+	.main-text p {
+		text-align: justify;
+		margin: 0px;
+	}
+</style>
+<div class="main-text">
+	<center><h4>Welcome to CHRIS Web Map for Contractors</h4></center>
+	<p>
+		The Corporate Highway and Resource Information System (CHRIS) contains all road Network and Inventory information for which the Ministry of Transportation and Transit is responsible. The system is comprised of three major components: a Desktop Application, a Field Data Collection Unit and CHRIS Web. CHRIS Web provides the ability to generate data from the CHRIS database ranging from maps to detailed reports on the Network and over 40 Inventory Types.
+	</p>
+	<br>
+	<p>
+		Please note the following before using this applications:
+	</p>
+	<ul>
+		<li>Reports are generated from nightly snapshots of the CHRIS database.</li>
+		<li>The quality and completeness of data vary across the province and across Inventory Types.</li>
+		<li>The CHRIS database is continuously being updated with new or changed Network and Inventory.</li>
+		<li>Report results can be complex; contact the CHRIS Administrator to ensure correct interpretation.</li>
+	</ul>
+
+	<p>
+		For assistance with using this application, please contact the CHRIS Administrator:
+	</p>
+	<ul>
+		<li>Email: <a href="mailto:Maintenance.Programs@gov.bc.ca">Maintenance.Programs@gov.bc.ca</a></li>
+	</ul>
+
+
+	<br>
+	<center><h4>Copyright / Disclaimer</h4></center>
+	<p>
+		The material contained in this website is owned by the Government of British Columbia and protected by copyright law. It may not be reproduced or redistributed without prior written permission of the Province of British Columbia. To request permission to reproduce all or part of the material on this website, please complete the Copyright Permission Request Form which can be accessed through the Copyright Information Page.
+	</p>
+	<br>
+	<p>
+		<b>CAUTION:</b> Maps obtained using this site are not designed to assist in navigation. These maps may be generalized and may not reflect current conditions. Uncharted hazards may exist. <b>DO NOT USE THIS MAP FOR NAVIGATIONAL PURPOSES!</b>
+	</p>
+</div>

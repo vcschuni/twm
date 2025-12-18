@@ -1,0 +1,242 @@
+<style>
+	#rdm-welcome {
+		font-size: 15px;
+		margin: 0px 0px 10px 10px;
+	}
+	#rdm-welcome img {
+		width: 100%;
+	}
+	.rdm-resolution-statistics-table {
+		font-size: 0.85rem;
+		border-collapse: separate !important;
+		border-spacing: 0px;
+		border-radius: 5px;
+		border: 1px solid #ced4da;
+	}
+	.rdm-resolution-statistics-table thead {
+		background-color: #E9ECEF;
+	}
+	.rdm-resolution-statistics-table th {
+		text-align: center;
+		font-weight: bold;
+		vertical-align: middle;
+	}
+	.rdm-resolution-statistics-table td {
+		border: none;
+		text-align: center;
+		font-weight: bold;
+		vertical-align: middle;
+	}
+	
+	#rdm-location-fieldset {
+		margin-bottom: 20px;
+		background-color: #f5f5f5;
+		border-radius: 5px;
+		position: relative;
+	}
+	#rdm-location-fieldset legend {
+		float: none;
+		font-size: 15px;
+		font-weight: bold;
+		margin-bottom: 0px;
+		padding-bottom: 3px;
+	}
+	#rdm-location-close {
+		position: absolute;
+		top: -32px;
+		right: 10px;
+		color: silver;
+		cursor: pointer;
+		font-size: 11px;
+		font-weight: bold;
+		padding: 2px 4px 0px 4px;
+		border-top-left-radius: 5px;
+		border-top-right-radius: 5px;
+		border-left: 1px solid #dee2e6;
+		border-top: 1px solid #dee2e6;
+		border-right: 1px solid #dee2e6;
+		background-color: #f5f5f5;
+	}
+	#rdm-location-close:hover {
+		color: #808080;
+	}
+	.rdm-location-field-label {
+		width: 135px;
+	}
+	.rdm-restriction-form {
+		width: 100%;
+	}
+	.rdm-restriction-field-label {
+		width: 137px;
+	}
+	.rdm-restriction-field-label sup {
+		margin-left: 3px;
+		font-weight: heavy;
+		color: blue;
+	}
+	.rdm-restriction-field-label sup:hover {
+		cursor: pointer;
+	}
+	
+	.rdm-superscript-red {
+		color: red;
+		vertical-align: super;
+		font-size: 10px;
+		font-weight: bold;
+	}
+	
+	.rdm-location-detail-table {
+		font-size: 0.85rem;
+		border-collapse: separate !important;
+		border-spacing: 0px;
+		border-radius: 5px;
+		border: 1px solid #ced4da;
+	}
+	.rdm-location-detail-table thead {
+		background-color: #E9ECEF;
+	}
+	.rdm-location-detail-table th {
+		text-align: center;
+		font-weight: normal;
+		vertical-align: middle;
+	}
+	.rdm-location-detail-table td {
+		border: none;
+		text-align: center;
+		vertical-align: middle;
+	}
+	.rdm-location-detail-table tr:first-child th:first-child {
+		border-radius: 5px 0 0 0;
+	}
+	.rdm-location-detail-table tr:first-child th:last-child {
+		border-radius: 0 5px 0 0;
+		border-bottom: 1px solid #ced4da;
+	}
+	#rdm-location-restrictions {
+		font-size: 14px;
+	}
+	.rdm-treeview-restrictions-parent {
+		background-color: #E9ECEF;
+	}
+	.rdm-popup-btn {
+		width: 34px;
+	}
+	.rdm-streetview-btn {
+		height: 22px;
+		background-image: url("application/plugins/RestrictionDataManager/img/streetview-icon.png");
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: center;
+	}
+</style>
+
+<!-- Welcome -->
+<div id="rdm-welcome">
+	<h5 class="rdm-user mb-3">Welcome</h5>
+	
+	<img src="application/plugins/RestrictionDataManager/img/welcome.jpg">
+	
+	<table class="table table-sm mt-3 rdm-resolution-statistics-table">
+		<thead>
+			<tr>
+				<th>Resolved Locations</th>
+				<th>Problem Locations</th>
+				<th>Unresolved Locations</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td id="rdm-resolved-count" class="text-success">-</td>
+				<td id="rdm-problem-count" class="text-warning">-</td>
+				<td id="rdm-unresolved-count" class="text-danger">-</td>
+			</tr>
+		</tbody>
+	</table>
+	
+	<div class="float-end mt-3 mb-0">
+		<button id="rdm-location-create-btn" class="btn btn-sm btn-success" type="button" style="display:none;">Create New Restriction Location</button>
+	</div>
+</div>
+
+<!-- Location / restriction fieldset -->
+<fieldset id="rdm-location-fieldset" class="border p-2" style="display:none;">
+	<legend id="rdm-location-title" class="w-auto">New Location</legend>
+
+	<div id="rdm-location-close">CLOSE</div>
+	
+	<div class="rdm-location-fieldset-content mt-3">
+		
+		<!-- Location Input -->
+		<div class="input-group input-group-sm mb-1 rdm-search-point">
+			<span class="input-group-text rdm-location-field-label">Coordinates</span>
+			<input id="rdm-location-coordinates" type="text" class="form-control rdm-location-input" data-field-name="GEOMETRY" data-original-value="" placeholder="Enter Coordinates (longitude, latitude)" DISABLED>
+			<button id="rdm-get-location-from-map-btn" class="btn btn-outline-secondary" type="button" title="Define location from map"><span class="oi oi-map-marker text-success"></span></button>
+		</div>
+		
+		<!-- Road Name -->
+		<div class="input-group input-group-sm mb-1">
+			<span class="input-group-text rdm-location-field-label">Road Name</span>
+			<input id="rdm-location-road-name" type="text" class="form-control" data-field-name="ROAD_NAME" data-original-value="" aria-label="Enter a road name" value="" DISABLED>
+		</div>
+		
+		<!-- Linked to Feature -->
+		<div class="input-group input-group-sm mb-1">
+			<span class="input-group-text rdm-location-field-label">Linked to Feature</span>
+			<input id="rdm-location-feature-id" type="text" class="form-control" data-field-name="FEATURE_ID" data-original-value="" value="" DISABLED>
+			<button id="rdm-location-clear-feature-btn" class="btn btn-secondary" type="button" title="Clear"><span class="oi oi-x"></span></button>
+		</div>
+		
+		<!-- Owner -->
+		<div class="input-group input-group-sm mb-1">
+			<span class="input-group-text rdm-location-field-label">Owner</span>
+			<select id="rdm-location-group-id" type="number" class="form-control form-select form-select-sm" data-field-name="GROUP_ID" data-original-value="" DISABLED></select>
+		</div>
+		
+		<!-- Internal Comment -->
+		<div class="input-group input-group-sm mb-2">
+			<span class="input-group-text rdm-location-field-label">Internal Comment</span>
+			<textarea id="rdm-location-internal-comment" class="form-control" data-field-name="INTERNAL_COMMENT" data-original-value="" rows="2"></textarea>
+		</div>
+		
+		<!-- Location Errors -->
+		<div id="rdm-location-errors" class="input-group input-group-sm mb-2">
+			<span class="input-group-text rdm-location-field-label">Errors</span>
+			<select id="rdm-location-errors-select" class="form-select form-select-sm" size="2"></select>
+		</div>
+		
+		<!-- Location Detail -->
+		<table class="table table-sm rdm-location-detail-table">
+			<thead>
+				<tr>
+					<th rowspan="2">Linked ITN Segment ID</th>
+					<th colspan="3">Match Score</th>
+				</tr>
+				<tr>
+					<th>Overall</th>
+					<th>Spatial</th>
+					<th>Name</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td id="rdm-location-network-fk">-</td>
+					<td id="rdm-location-overall-match">-</td>
+					<td id="rdm-location-spatial-match">-</td>
+					<td id="rdm-location-name-match">-</td>
+				</tr>
+			</tbody>
+		</table>
+		
+		<!-- Buttons -->
+		<div class="mb-3 text-center">
+			<button id="rdm-location-delete-btn" class="btn btn-sm btn-danger col-3" type="button" DISABLED>Delete</button>
+			<button id="rdm-location-validate-btn" class="btn btn-sm btn-warning col-3 ms-1 me-1" type="button" DISABLED>Validate</button>
+			<button id="rdm-location-save-btn" class="btn btn-sm btn-success col-3" type="button" DISABLED>Save</button>
+		</div>
+		
+		<!-- Restrictions Tree View -->
+		<div id="rdm-location-restrictions" style="display:none;"></div>
+
+	</div>
+</fieldset>
+

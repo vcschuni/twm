@@ -1,0 +1,356 @@
+<style>
+	#restriction-list {
+		width: fit-content;
+		padding-right: 15px;
+	}
+	#restriction-list .restriction {
+		margin: 1rem 0rem 1rem 0rem;
+		width: fit-content;
+		background: #1d4a8b;
+		border: 3px solid #1d4a8b;
+		border-radius: 5px;
+	}
+	#restriction-list .restriction:hover {
+		cursor: pointer;
+		/*border: 2px solid #cffbff;*/
+	}
+	#restriction-list .restriction-header {
+		color: #ffffff;
+		padding: 0.2rem 0.4rem 0.4rem 0.4rem;
+	}
+	#restriction-list .structure-name {
+		font-weight: bold;
+		font-size: 15px;
+	}
+	#restriction-list .rf-streetview-btn {
+		float: right;
+		height: 18px;
+		width: 18px;
+		margin: 2px 2px 0px 12px;
+		background-image: url("application/plugins/RestrictionFinder/img/streetview-icon.png");
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: center;
+	}
+	#restriction-list .structure-id {
+		font-size: 11px;
+		font-style: italic;
+		border-bottom: 1px solid silver;
+	}
+	#restriction-list .route-name {
+		font-weight: bold;
+		font-size:12px;
+	}
+	#restriction-list .restriction-lanes {
+		display: flex;
+		justify-content: center;
+		padding-left: 0.4rem;
+		padding-right: 0.4rem;
+	}
+	#restriction-list .arrow {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 1.5rem;
+	}
+	#restriction-list .lane {
+		text-align: center;
+		padding: 0.25rem;
+		min-width: 85px;
+	}
+	.sw-direction {
+		min-width: 85px;
+		margin: 0 0 0 0;
+		border-right: 2px solid #ffaa00;
+		/*border-left: 1px solid rgba(0,0,0,0.4);*/
+		background-color: #ffffff;
+	}
+	.lane-direction-divider {
+		margin: 0 0 0 0;
+		width: 2px;
+		background-color: #ffffff;
+	}
+	.ne-direction {
+		min-width: 85px;
+		margin: 0 0 0 0;
+		border-left: 2px solid #ffaa00;
+		/*border-right: 1px solid rgba(0,0,0,0.4);*/
+		background-color: #ffffff;
+	}
+	.sw-direction-lanes {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+	}
+	.sw-direction-lanes div.lane {
+		border-left: 1px dashed rgba(0,0,0,0.4);
+	}
+	.sw-direction-lanes div.lane:first-child {
+		border: 0;
+	}
+	.ne-direction-lanes {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+	}
+	.ne-direction-lanes div.lane{
+		border-right: 1px dashed rgba(0,0,0,0.4);
+	}
+	.ne-direction-lanes div.lane:last-child {
+		border: 0;
+	}
+	.direction-name {
+		background: #3d6fcc;
+		color: white;
+		text-align: center;
+	}
+	.lane-number {
+		font-size: 12px;
+	}
+	.restriction-value {
+		font-size: 14px;
+		font-weight: bold;
+	}
+	.hasViolation {
+		color: #ff0000;
+	}
+	.hasNoViolation {
+		color: #228b22;
+	}	
+	#restriction-list .restriction-footer {
+		color: white;
+		min-height: 8px;
+		font-size: 12px;
+		padding: 0.1rem 0.3rem 0.1rem 0.3rem;
+	}
+	.rf-with-chevron[aria-expanded='true'] span {
+		display: block;
+		transform: rotate(180deg) !important;
+	}
+	.rf-instructions {
+		font-size: 13px;
+		font-style: italic;
+	}
+	.rf-instructions ul {
+		margin-top: 5px;
+		list-style-type: none;
+		padding-left: 1.2em;
+	}
+	.rf-instructions ul li span {
+		width: 15px;
+		text-align: center;
+	}
+	.rf-move-handle {
+		padding: 4px 4px 0px 0px;
+		color: #E0E0E0;
+	}
+	.rf-move-handle:hover {
+		cursor: move;
+	}
+	
+	/* Summary Table */
+	#rf-summary {
+		margin: 40px 0px 0px 0px;
+	}
+	#rf-summary .rf-parent-table {
+		font-size: 0.75rem;
+		border-bottom: 1px solid #dee2e6;
+		border-radius: 5px;
+		border-collapse: separate;
+		border-spacing: 0px;
+	}
+	#rf-summary .rf-parent-table th {
+		width: 33%;
+		text-align: center;
+		vertical-align: middle;
+		background-color: #004b8e;
+	}
+	#rf-summary .rf-parent-table th:first-child {
+		border-radius: 5px 0px 0px 0px;
+	}
+	#rf-summary .rf-parent-table th:last-child {
+		border-radius: 0px 5px 0px 0px;
+	}
+	#rf-summary .rf-parent-table td {
+		font-weight: bold;
+		text-align: center;
+		vertical-align: middle;
+	}
+	#rf-summary .rf-parent-table td:first-child {
+		border-left: 1px solid #dee2e6;
+	}
+	#rf-summary .rf-parent-table td:last-child {
+		border-right: 1px solid #dee2e6;
+	}
+	
+	/* Directions Table (within Summary Table) */
+	#rf-summary .rf-directions-table {
+		font-size: 0.75rem;
+		border-spacing: 0px;
+		border: none;
+	}
+	#rf-summary .rf-directions-table tr:hover {
+		cursor: pointer;
+		background: #cffbff;
+	}
+	#rf-summary .rf-directions-table td {
+		vertical-align: middle;
+		font-weight: normal;
+	}
+	#rf-summary .rf-directions-table td:first-child {
+		width: 16px;
+		text-align: center;
+		border: none;
+	}
+	#rf-summary .rf-directions-table td:first-child img{
+		height: 12px;
+		width: 12px;
+	}
+	#rf-summary .rf-directions-table td:last-child {
+		text-align: left;
+		border: none;
+	}
+	#rf-message {
+		font-size: 14px;
+		font-style: italic;
+		font-weight: bold;
+		color: red;
+		text-align: center;
+		padding: 10px 0px 10px 0px;
+		margin-bottom: 15px;
+	}
+	.rf-credits {
+		font-size: 9px;
+		font-style: italic;
+		text-align: center;
+	}
+	
+	/* Generic Styles */
+	.rf-red {
+		color: #FF0000;
+	}
+	.rf-green {
+		color: #28a745;
+	}
+</style>
+
+<!-- Instructions -->
+<div class="mb-3">
+	<a tabindex="-1" data-bs-toggle="collapse" href="#rf-intructions-panel" role="button" aria-expanded="false" aria-controls="rf-intructions-panel" class="btn btn-sm btn-light btn-block col-12 shadow-sm rf-with-chevron">
+		<p class="d-flex align-items-center justify-content-between mb-0">Instructions<span class="oi oi-chevron-bottom"></span></p>
+	</a>
+	<div id="rf-intructions-panel" class="collapse shadow-sm">
+		<div class="card">
+			<div class="card-body rf-instructions">
+				<b>Generate a route using the following functions:</b>
+				<ul>
+					<li><span class="oi oi-map-marker"></span> - Select a location from the map</li>
+					<li><span class="oi oi-info"></span> - Entering an address (e.g. 723 Smith Ave, Johnsonville)</li>
+					<li><span class="oi oi-info"></span> - Entering a keyword ('Border' for a list of border crossings)</li>
+					<li><span class="oi oi-info"></span> - Entering a longitude &amp; latitude</li>
+					<li><span class="oi oi-location"></span> - Using your current location</li>
+					<li><span class="oi oi-x"></span> - Remove a route point</li>
+					<li id="rf-route-point-add-instructions" style="display:none;"><span class="oi oi-plus"></span> - Add a way point</li>
+				</ul>
+				<b>Find restrictions by:</b>
+				<ul>
+					<li>- Entering the vehicle dimensions</li>
+					<li>- Click the Find Restrictions button</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+<form id="restriction-finder-form">
+
+	<!-- Route controls -->
+	<div class="row">
+		<div id="rf-route-points" class="col pe-1">
+			<!-- Route point inputs get inserted here -->
+		</div>
+		
+		<!-- Extra buttons -->
+		<div class="col-sm-auto col-auto ps-1">
+			<!-- Reverse Route -->
+			<div class="mb-2">
+				<button tabindex="-1" id="rf-reverse-route-btn" class="btn btn-sm btn-outline-secondary" type="button" title="Reverse Route" disabled><span class="oi oi-loop-square text-danger"></span></button>
+			</div>
+			
+			<!-- Add Route Point Control (only shown if configured) -->
+			<div id="rf-route-point-add-div" class="mb-2" style="display:none;">
+				<button tabindex="-1" id="rf-route-point-add-btn" class="btn btn-sm btn-outline-secondary" type="button" title="Add Route Point"><span class="oi oi-plus text-primary"></span></button>
+			</div>
+		</div>
+		
+	</div>
+	
+	<!-- Dimensions -->
+	<div class="input-group input-group-sm mt-1 mb-3">
+		<span class="input-group-text">Height</span>
+		<input id="rf-height-input" type="number" class="form-control me-1" aria-label="Enter a height" value="0">
+		<span class="input-group-text ms-1">Width</span>
+		<input id="rf-width-input" type="number" class="form-control" aria-label="Enter a width" value="0">
+	</div>
+		
+	<!-- Clear & Find Buttons -->
+	<div class="input-group input-group-sm mb-3">
+		<button id="rf-clear-all-btn" class="btn btn-danger col-6" type="button">Clear All</button>
+		<button id="rf-find-restrictions-btn" class="btn btn-success col-6" type="button" disabled>Find Restrictions</button>
+	</div>
+
+</form>
+
+<!-- Summary Table -->
+<div id="rf-summary" style="display:none;">
+	<table class="table table-sm rf-parent-table">
+		<thead class="thead-dark">
+			<tr>
+				<th>Travel Distance</th>
+				<th>Height Violations</th>
+				<th>Width Violations</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td id="rf-td-routeDistance"></td>
+				<td id="rf-td-heightViolations"></td>
+				<td id="rf-td-widthViolations"></td>
+			</tr>
+			<tr>
+				<td class="tdDirections" colspan="3">
+					<a data-bs-toggle="collapse" href="#rf-directions-panel" role="button" aria-expanded="false" aria-controls="rf-directions-panel" class="btn btn-sm btn-light btn-block col-12 shadow-sm rf-with-chevron">
+						<p class="d-flex align-items-center justify-content-between mb-0">Travel Directions<span class="oi oi-chevron-bottom"></span></p>
+					</a>
+					<div id="rf-directions-panel" class="collapse shadow-sm">
+						<div class="card">
+							<div id="rf-directions" class="card-body">
+								<!-- travel directions dynamically inserted here -->
+							</div>
+						</div>
+					</div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<!-- Restrictions List -->
+<div id="restriction-list"></div>
+	
+<!-- Message div -->
+<div id="rf-message" style="display:none;">	</div>
+
+<!-- Credits -->
+<div class="rf-credits">
+	BC Address Geocoder &amp; BC Route Planner services provided by DataBC
+</div>
+
+<!-- Waypoint Template (hidden) -->
+<div class="rf-route-point input-group input-group-sm mb-2 rf-waypoint rf-route-point-template" style="display:none;">
+	<div class="rf-move-handle" title="Move"><span class="oi oi-menu"></span></div>
+	<button tabindex="-1" class="btn btn-outline-secondary rf-get-location-from-map-btn" type="button" title="Define from map" tabindex=-1><span class="oi oi-map-marker"></span></button>
+	<input type="text" class="form-control rf-location-input" placeholder="Enter route point">
+	<button tabindex="-1" class="btn btn-outline-secondary rf-get-geolocation-btn" type="button" title="Use current location" tabindex=-1><span class="oi oi-location text-success"></span></button>
+	<button tabindex="-1" class="btn btn-outline-secondary rf-delete-route-point-btn" type="button" title="Remove way point" tabindex=-1><span class="oi oi-x text-danger"></span></button>
+</div>

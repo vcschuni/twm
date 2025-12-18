@@ -1,0 +1,12 @@
+<style>
+	.about-text {
+		padding: 5%;
+	}
+</style>
+<div class="about-text">
+	<p>
+		The Transportation Web Map (TWM) is created and supported by the MoTT IMB Spatial Team. To find 
+		existing TWM deployments and learn more about how the TWM can be used for your data, send an email to 
+		<a href="mailto:IMBSpatial@gov.bc.ca?subject=Public TWM Inquiry">MoTT IMB Spatial Team</a>.
+	</p>
+</div>

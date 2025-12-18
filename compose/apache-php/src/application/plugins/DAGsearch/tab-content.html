@@ -1,0 +1,179 @@
+<style>
+	.dagSearch-with-chevron[aria-expanded='true'] span {
+		display: block;
+		transform: rotate(180deg) !important;
+	}
+	.dagSearch-instructions {
+		font-size: 13px;
+		font-style: italic;
+	}
+	.dagSearch-instructions ul {
+		margin-top: 5px;
+		list-style-type: none;
+		padding-left: 1.2em;
+	}
+	.dagSearch-instructions ul li span {
+		width: 15px;
+		text-align: center;
+	}
+	.dagSearch-message {
+		font-size: 13px;
+		font-style: italic;
+		text-align: center;
+		margin: 25px 0px 0px 0px;
+	}
+	.dagSearch-treeview-layer {
+		font-size: 13px;
+	}
+	.dagSearch-treeview-feature {
+		font-size: 13px;
+		color: blue
+	}
+	.dagSearchBtn {
+		margin-right: 10px;
+		margin-left: 10px;
+	}
+	.dagSearchBtn .dagSearch-search-point {
+		margin-right: 10px;
+		margin-left: 10px;
+	}
+	
+	#dagSearch-fs-filter-controls {
+		margin-bottom: 20px;
+	}
+	#dagSearch-fs-filter-controls legend {
+		font-size: 15px;
+		font-weight: bold;
+		margin-bottom: 0px;
+	}
+	#dagSearch-filter-controls {
+		padding: 0px 10px 0px 10px;
+	}
+	#dagSearch-filter-controls .form-check {
+		font-size: 13px;
+		line-height: 1.7;
+		margin-left: 5px;
+	}
+	#dagSearch-filter-controls .form-check .form-check-label {
+		max-width: 100%;
+	}
+	.dagSearch-chartDiv {
+		width: 100%;
+		min-width: 300px;
+		min-height: 300px;
+	}
+	
+	select:-internal-list-box {
+		white-space: pre-wrap !important;
+	}
+	.dropdown-toggle  { 
+		font-size: 0.875rem !important;
+	}
+	.dagSearch-amount .dagSearch-amount1 {
+		height: calc(1.5em + 0.5rem) !important;
+		border: 1px solid #ced4da;		
+	}
+	.dagSearch-amount .dagSearch-amount2 {
+		height: calc(1.5em + 0.5rem) !important;
+		border: 1px solid #ced4da;		
+	}
+
+
+</style>
+
+<!-- Filter fieldset -->
+<fieldset id="dagSearch-fs-filter-controls" class="border p-2" style="display:none;">
+	<legend class="w-auto">Filters</legend>
+	<div id="dagSearch-filter-controls">
+		<!-- one or more controls will be added here -->
+	</div>
+</fieldset>
+
+<!-- filters -->
+<div class="input-group input-group-sm mb-2 dagSearch-filter-control dagSearch-option-template" style="display:none;">
+	<span class="input-group-text border-0 bg-transparent justify-content-end le-attr-input-label"></span>
+	<select multiple class="dagSearch-form-input col-12"></select>
+</div>
+
+
+<div class="input-group input-group-sm mb-2  dagSearch-filter-control dagSearch-number-range-template" style="display:none;">
+	<span class="input-group-text border-0 bg-transparent justify-content-end le-attr-input-label"></span>		
+	<div class="dagSearch-amount input-group input-group-sm mb-2 container-fluid ">
+		<div  title="Enter dates or drag sliders" class="row">
+			<div class="col-lg-6 dagSearch-amount d-flex" >
+				<label class="d-flex">
+					<input type="date" class="dagSearch-amount1 form-control" >
+					<span> &nbsp; </span>
+				</label>
+				<label class="d-flex">
+					<input type="date" class="dagSearch-amount2 form-control" >
+					<span></span>
+				</label>
+			</div>
+		</div>
+	</div>
+	
+	<div class="input-group input-group-sm mb-2">
+		<span class="dagSearch-slider-range form-control" style="height: 10px;"></span>
+	</div>
+</div>
+	
+
+<!-- Area of Interest Instructions -->
+<div class="mb-3">
+	<a data-bs-toggle="collapse" href="#dagSearch-intructions-panel" role="button" aria-expanded="false" aria-controls="dagSearch-intructions-panel" class="btn btn-sm btn-light btn-block col-12 shadow-sm dagSearch-with-chevron">
+		<p class="d-flex align-items-center justify-content-between mb-0">Area of Interest Instructions<span class="oi oi-chevron-bottom"></span></p>
+	</a>
+	<div id="dagSearch-intructions-panel" class="collapse shadow-sm">
+		<div class="card">
+			<div class="card-body dagSearch-instructions">
+				<b>Find Applications in an area of interest:</b>
+				<ul>
+						<ol>
+							<li><span class="oi oi-pencil"></span> - Select the draw tool and outline the area of interest on the map;</li>
+							<li> - Click to draw the vertices of a polygon or;<br/>
+							 - Click while pressing the SHIFT key to draw freehand;</li>
+							<li> - Complete the polygon by RIGHT clicking the last vertex; </li>
+							<li> - Click SEARCH below to fetch all locations in area of interest.</li>
+						</ol>
+						<ul>
+							<li><span class="oi oi-x"></span> - Clears the search area.
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+<form id="dagSearch-form">
+
+	<!-- Search location -->
+	<div class="input-group input-group-sm mb-3 dagSearch-search-point">
+		<div>
+			<button class="btn btn-outline-secondary dagSearch-get-location-from-map-btn dagSearchBtn" type="button" title="Draw on map"><span class="oi oi-pencil text-success"></span></button>
+		</div>
+			<button class="btn btn-outline-secondary dagSearch-clear-input-btn dagSearchBtn" type="button" title="Clear"><span class="oi oi-x"></span></button>
+		</div>
+	</div>
+
+	<div class="input-group input-group-sm mb-3 dagSearch-search-button-group">
+	
+		<!-- Search button -->
+		<div class="text-start mb-3">
+			<button id="dagSearch-overlay-search-btn" class="btn btn-sm btn-success dagSearchBtn" type="button" disabled>Search</button>
+		</div>
+		
+		<!-- Send button -->
+		<div class="text-end mb-3">
+			<button id="dagSearch-overlay-sendAll-btn" class="btn btn-sm btn-success dagSearchBtn type="button" disabled>Send Selected</button>
+		</div>
+	</div>	
+	
+	<!-- No Results Message DIV -->
+	<div id="dagSearch-no-results" class="dagSearch-message" style="display:none;">Sorry, couldn't find anything...</div>
+	
+	<!-- Results Message DIV -->
+	<div id="dagSearch-results" class=""></div>
+	
+</form>

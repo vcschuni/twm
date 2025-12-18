@@ -1,0 +1,64 @@
+
+<style>
+	.mfw-window {
+		overflow: hidden;
+		top: 0px;
+		left: 0px;
+		background-color: #ffffff;
+		resize: both;
+		border: 1px solid rgba(0,0,0,.125);
+		border-radius: 0.3rem;
+		padding: 0px;
+		margin: 0px;
+	}
+	.mfw-header {
+		border-bottom: 1px solid silver;
+		padding: 10px 36px 10px 10px;
+	}
+	.mfw-title {
+		cursor: move;
+		font-size: 13px;
+		font-weight: bold;
+		white-space: nowrap;
+		overflow: hidden;
+	}
+	.mfw-close-btn {
+		position: absolute;
+		top: 3px;
+		right: 5px;
+		cursor: pointer;
+		color: silver;
+		font-size: 12px;
+		font-weight: normal;
+	}
+	.mfw-close-btn:hover {
+		color: #808080;
+	}
+	.mfw-lock-btn {
+		position: absolute;
+		top: 4px;
+		right: 24px;
+		cursor: pointer;
+		color: silver;
+		font-size: 12px;
+		font-weight: normal;
+	}
+	.mfw-lock-btn-locked {
+		color: red;
+	}
+	.mfw-content {
+		width: 100%;
+		padding: 10px;
+		overflow-x: hidden;
+		overflow-y: auto;
+	}
+</style>
+
+<div class="mfw-window-template mfw-window" data-window-state="unlocked" style="display:none;">
+	<div class="mfw-header">
+		<div class="mfw-title"></div>
+		<div class="mfw-lock-btn"><span class="oi oi-lock-unlocked"></span></div>
+		<div class="mfw-close-btn"><span class="oi oi-x"></span></div>
+	</div>
+	<div class="mfw-content"></div>
+</div>

@@ -1,0 +1,8 @@
+
+{
+	name: "ZoomToUTM",					// add UTM zoom-to tool
+	enabled: true,							// toggle on/off
+	buttonLocatedRight: false,				// default is true
+	buttonLocatedTop: true,				// default is false
+	buttonLocationOffset:'20.0em'			// how far from Top or Bottom of map frame
+},

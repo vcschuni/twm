@@ -1,0 +1,12 @@
+.circleci/
+.git/
+.github/
+coverage/
+docs/
+examples/
+test/
+.editorconfig
+.eslintrc
+webpack.*.cjs
+rollup.config.js
+tsconfig*.json

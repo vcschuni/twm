@@ -1,0 +1,124 @@
+<style>
+	.rdm-re-map {
+		width: 100%;
+		height: 125px;
+		border: 1px solid rgba(0,0,0,.125);
+		border-radius: 0.25rem;
+	}
+</style>
+
+<!-- Restriction form template (hidden) -->
+<div class="rdm-restriction-form" style="display:none;">
+	<div class="rdm-re-map mb-1"></div>
+
+	<div class="input-group input-group-sm mb-1">
+		<span class="input-group-text rdm-restriction-field-label">Restriction Type</span>
+		<select type="number" class="rdm-restriction-field-RESTRICTION_TYPE_ID form-control form-select form-select-sm" data-field-name="RESTRICTION_TYPE_ID" data-original-value=""></select>
+	</div>
+		
+	<div class="input-group input-group-sm mb-1">
+		<span class="input-group-text rdm-restriction-field-label">Travel Direction</span>
+		<select type="number" class="rdm-restriction-field-TRAVEL_DIRECTION_ID form-control form-select form-select-sm" data-field-name="TRAVEL_DIRECTION_ID" data-original-value="" DISABLED></select>
+	</div>
+	
+	<!-- this element is hidden, but still used by the form to track azimuth changes -->
+	<div class="input-group input-group-sm mb-1" style="display:none;">
+		<span class="input-group-text rdm-restriction-field-label">Azimuth</span>
+		<input type="number" class="rdm-restriction-field-RESTRICTION_AZIMUTH form-control" data-field-name="RESTRICTION_AZIMUTH" data-original-value="" value="" DISABLED>
+	</div>
+
+	<div class="input-group input-group-sm mb-1">
+		<span class="input-group-text rdm-restriction-field-label">Lane Number</span>
+		<input type="number" class="rdm-restriction-field-LANE_NUMBER form-control" data-field-name="LANE_NUMBER" data-original-value="" value="">
+	</div>
+	
+	<div class="input-group input-group-sm mb-1">
+		<span class="input-group-text rdm-restriction-field-label">Lane Type</span>
+		<select type="number" class="rdm-restriction-field-LANE_TYPE_ID form-control form-select form-select-sm" data-field-name="LANE_TYPE_ID" data-original-value=""></select>
+	</div>
+	
+	<!--
+	<div class="input-group input-group-sm mb-1">
+		<span class="input-group-text rdm-restriction-field-label">Lane Subtype</span>
+		<select type="number" class="rdm-restriction-field-LANE_SUB_TYPE_ID form-control form-select form-select-sm" data-field-name="LANE_SUB_TYPE_ID" data-original-value=""></select>
+	</div>
+	-->
+
+	<div class="input-group input-group-sm mb-1">
+		<span class="input-group-text rdm-restriction-field-label">Limit Flag</span>
+		<input type="number" class="rdm-restriction-field-LIMIT_FLAG form-control" data-field-name="LIMIT_FLAG" data-original-value="" value="">
+	</div>
+
+	<div class="input-group input-group-sm mb-1">
+		<span class="input-group-text rdm-restriction-field-label">Measured Value</span>
+		<input type="number" class="rdm-restriction-field-MEASURED_VALUE form-control" data-field-name="MEASURED_VALUE" data-original-value="" value="">
+	</div>
+	
+	<div class="input-group input-group-sm mb-1">
+		<span class="input-group-text rdm-restriction-field-label">Policy Value</span>
+		<input type="number" class="rdm-restriction-field-POLICY_VALUE form-control" data-field-name="POLICY_VALUE" data-original-value="" value="">
+	</div>
+	
+	<div class="input-group input-group-sm mb-1">
+		<span class="input-group-text rdm-restriction-field-label">Permitable Value</span>
+		<input type="number" class="rdm-restriction-field-PERMITABLE_VALUE form-control" data-field-name="PERMITABLE_VALUE" data-original-value="" value="">
+		<span class="input-group-text rdm-restriction-units"></span>
+	</div>
+	
+	<div class="input-group input-group-sm mb-1">
+		<span class="input-group-text rdm-restriction-field-label">Signed Value</span>
+		<input type="number" class="rdm-restriction-field-SIGNED_VALUE form-control" data-field-name="SIGNED_VALUE" data-original-value="" value="">
+	</div>
+	
+	<div class="input-group input-group-sm mb-1">
+		<span class="input-group-text rdm-restriction-field-label">Start Date</span>
+		<input type="date" class="rdm-restriction-field-START_DATE form-control" data-field-name="START_DATE" data-original-value="" value="">
+	</div>
+	
+	<div class="input-group input-group-sm mb-1">
+		<span class="input-group-text rdm-restriction-field-label">End Date</span>
+		<input type="date" class="rdm-restriction-field-END_DATE form-control" data-field-name="END_DATE" data-original-value="" value="">
+	</div>
+	
+	<div class="input-group input-group-sm mb-1">
+		<span class="input-group-text rdm-restriction-field-label">Enabled</span>
+		<select type="number" class="rdm-restriction-field-IS_ENABLED form-control form-select form-select-sm" data-field-name="IS_ENABLED" data-original-value=""></select>
+	</div>
+	
+	<div class="input-group input-group-sm mb-1">
+		<span class="input-group-text rdm-restriction-field-label">Temporary</span>
+		<select type="number" class="rdm-restriction-field-IS_TEMPORARY form-control form-select form-select-sm" data-field-name="IS_TEMPORARY" data-original-value=""></select>
+	</div>
+	
+	<div class="input-group input-group-sm mb-1">
+		<span class="input-group-text rdm-restriction-field-label">Internal Comment</span>
+		<textarea class="rdm-restriction-field-INTERNAL_COMMENT form-control" data-field-name="INTERNAL_COMMENT" data-original-value="" rows="2"></textarea>
+	</div>
+	
+	<div class="input-group input-group-sm mb-1">
+		<span class="input-group-text rdm-restriction-field-label">Public Comment</span>
+		<textarea class="rdm-restriction-field-PUBLIC_COMMENT form-control" data-field-name="PUBLIC_COMMENT" data-original-value="" rows="2"></textarea>
+	</div>
+	
+	<div class="input-group input-group-sm mb-1">
+		<span class="input-group-text rdm-restriction-field-label">Ticket URL</span>
+		<input type="text" class="rdm-restriction-field-JIRA_TICKET form-control" data-field-name="JIRA_TICKET" data-original-value="" value="">
+	</div>
+	
+	<div class="input-group input-group-sm mb-1">
+		<span class="input-group-text rdm-restriction-field-label">Last Updated By</span>
+		<input type="text" class="rdm-restriction-field-APP_LAST_UPDATE_USERID form-control" data-field-name="APP_LAST_UPDATE_USERID" data-original-value="" value="">
+	</div>
+	
+	<div class="input-group input-group-sm mb-1">
+		<span class="input-group-text rdm-restriction-field-label">Last Updated On</span>
+		<input type="timestamp" class="rdm-restriction-field-APP_LAST_UPDATE_TIMESTAMP form-control" data-field-name="APP_LAST_UPDATE_TIMESTAMP" data-original-value="" value="">
+	</div>
+	
+	<!-- Buttons -->
+	<div class="mt-2 mb-0 text-center">
+			<button class="btn btn-sm btn-danger btn-delete col-5" type="button" style="display:none;">Delete</button>
+			<button class="btn btn-sm btn-success btn-save col-5" type="button" style="display:none;">Save</button>
+			<button class="btn btn-sm btn-success btn-create col-5" type="button" style="display:none;">Create</button>
+	</div>
+</div>
