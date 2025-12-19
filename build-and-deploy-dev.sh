@@ -11,7 +11,7 @@ NGINX_CTX="compose/nginx"
 echo "Switching to $PROJ"
 oc project "$PROJ"
 
-echo "Cleaning ALL old resources…"
+echo "Cleaning ALL old resources..."
 
 # Deployments
 oc delete deployment "${APP}-apache" --ignore-not-found
@@ -20,7 +20,7 @@ oc delete deployment "${APP}-nginx" --ignore-not-found
 # Services
 oc delete svc "${APP}-apache" --ignore-not-found
 oc delete svc "${APP}-nginx" --ignore-not-found
-oc delete svc "${APP}-internal" --ignore-not-found
+oc delete svc "${APP}-localhost" --ignore-not-found
 
 # Routes
 oc delete route "$APP" --ignore-not-found
@@ -39,37 +39,37 @@ oc delete pod -l build="${APP}-nginx" --ignore-not-found || true
 oc delete is "${APP}-apache" --ignore-not-found
 oc delete is "${APP}-nginx" --ignore-not-found
 
-echo "Deploying Apache (port 8081)…"
+echo "Deploying Apache (port 8081)..."
 oc new-app "$REPO" \
   --name="${APP}-apache" \
   --context-dir="$APACHE_CTX" \
   --strategy=docker
 
-echo "Building Apache image…"
+echo "Building Apache image..."
 oc start-build "${APP}-apache" --follow
 
-echo "Waiting for Apache deployment…"
+echo "Waiting for Apache deployment..."
 oc rollout status deployment/"${APP}-apache" --timeout=300s
 
-echo "Exposing Apache internally on port 8081…"
+echo "Exposing Apache internally on port 8081..."
 oc expose deployment "${APP}-apache" \
-  --name="${APP}-internal" \
+  --name="${APP}-localhost" \
   --port=8081 \
   --dry-run=client -o yaml | oc apply -f -
 
-echo "Deploying Nginx (port 8080)…"
+echo "Deploying Nginx (port 8080)..."
 oc new-app "$REPO" \
   --name="${APP}-nginx" \
   --context-dir="$NGINX_CTX" \
   --strategy=docker
 
-echo "Building Nginx image…"
+echo "Building Nginx image..."
 oc start-build "${APP}-nginx" --follow
 
-echo "Waiting for Nginx deployment…"
+echo "Waiting for Nginx deployment..."
 oc rollout status deployment/"${APP}-nginx" --timeout=300s
 
-echo "Exposing Nginx externally on port 8080…"
+echo "Exposing Nginx externally on port 8080..."
 oc expose deployment "${APP}-nginx" \
   --name="${APP}" \
   --port=8080 \
