@@ -1,55 +1,63 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+# ----------------------------
+# Config
+# ----------------------------
 APP="twm-public"
 PROJ="80c8d5-dev"
 REPO="https://github.com/vcschuni/twm.git"
-
 APACHE_CTX="compose/apache-php"
 NGINX_CTX="compose/nginx"
 
+# Verify passed arg and show help if required
+OPTIONS=("deploy" "remove")
+if [[ ! " ${OPTIONS[*]} " == *" $1 "* ]]; then
+	echo ""
+	echo "  USAGE: build.sh <deploy|remove>"
+	echo "EXAMPLE: build.sh deploy"
+	echo ""
+	exit
+fi
+
+# ----------------------------
+# Switch to DEV project
+# ----------------------------
 echo ">>> Switching to project $PROJ"
 oc project "$PROJ"
 
+# ----------------------------
+# Cleanup
+# ----------------------------
 echo ">>> Cleaning ALL old resources..."
-
-# ----------------------------
-# Delete deployments
-# ----------------------------
 oc delete deployment "${APP}-apache" --ignore-not-found
 oc delete deployment "${APP}-nginx" --ignore-not-found
 
-# ----------------------------
-# Delete services
-# ----------------------------
 oc delete svc "${APP}-apache" --ignore-not-found
 oc delete svc "${APP}-nginx" --ignore-not-found
-oc delete svc "${APP}-apache-svc" --ignore-not-found
 
-# ----------------------------
-# Delete routes
-# ----------------------------
 oc delete route "$APP" --ignore-not-found
 
-# ----------------------------
-# Delete BuildConfigs
-# ----------------------------
 oc delete bc "${APP}-apache" --ignore-not-found
 oc delete bc "${APP}-nginx" --ignore-not-found
 
-# ----------------------------
-# Delete builds + pods
-# ----------------------------
 oc delete builds -l build="${APP}-apache" --ignore-not-found
 oc delete builds -l build="${APP}-nginx" --ignore-not-found
 oc delete pod -l build="${APP}-apache" --ignore-not-found || true
 oc delete pod -l build="${APP}-nginx" --ignore-not-found || true
 
-# ----------------------------
-# Delete ImageStreams
-# ----------------------------
 oc delete is "${APP}-apache" --ignore-not-found
 oc delete is "${APP}-nginx" --ignore-not-found
+
+# ----------------------------
+# Stop here if remove was requested
+# ----------------------------
+if [[ "$1" == "remove" ]]; then
+	echo ""
+	echo "Remove completed successfully"
+	echo ""
+	exit
+fi
 
 # ----------------------------
 # Deploy Apache
@@ -71,11 +79,6 @@ oc expose deployment "${APP}-apache" \
   --name="${APP}-apache" \
   --port=8081 \
   --dry-run=client -o yaml | oc apply -f -
-
-# ----------------------------
-# Clean Nginx service before deploying
-# ----------------------------
-oc delete svc "${APP}-nginx" --ignore-not-found
 
 # ----------------------------
 # Deploy Nginx
