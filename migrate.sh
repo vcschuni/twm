@@ -12,6 +12,18 @@ DEV_PROJ="80c8d5-dev"
 # TEST namespace
 TEST_PROJ="80c8d5-test"
 
+# ----------------------------
+# Verify passed arg and show help if required
+# ----------------------------
+OPTIONS=("migrate-to-test" "remove-from-test")
+if [[ ! " ${OPTIONS[*]} " == *" $1 "* ]]; then
+    echo ""
+    echo "  USAGE: migrate.sh <${OPTIONS[*]// /|}>"
+    echo "EXAMPLE: migrate.sh ${OPTIONS[0]}"
+    echo ""
+    exit
+fi
+
 # -----------------------------
 # Switch to TEST project
 # -----------------------------
@@ -28,11 +40,26 @@ oc delete deployment "${APP}-nginx" --ignore-not-found
 
 oc delete svc "${APP}-apache" --ignore-not-found
 oc delete svc "${APP}-nginx" --ignore-not-found
+oc delete svc "${APP}" --ignore-not-found
 
 oc delete route "$APP" --ignore-not-found
 
 oc delete is "${APP}-apache" --ignore-not-found
 oc delete is "${APP}-nginx" --ignore-not-found
+
+# ----------------------------
+# Stop here if remove was requested
+# ----------------------------
+if [[ "$1" == "remove" ]]; then
+	oc get pods -o wide
+	oc get svc
+	oc get routes
+	oc get builds
+	echo ""
+	echo ">>> Remove completed successfully"
+	echo ""
+	exit
+fi
 
 # -----------------------------
 # Tag DEV images into TEST

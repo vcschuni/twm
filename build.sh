@@ -10,14 +10,17 @@ REPO="https://github.com/vcschuni/twm.git"
 APACHE_CTX="compose/apache-php"
 NGINX_CTX="compose/nginx"
 
+# ----------------------------
 # Verify passed arg and show help if required
+# ----------------------------
 OPTIONS=("deploy" "remove")
-if [[ ! " ${OPTIONS[*]} " == *" $1 "* ]]; then
-	echo ""
-	echo "  USAGE: build.sh <deploy|remove>"
-	echo "EXAMPLE: build.sh deploy"
-	echo ""
-	exit
+ACTION="${1:-}"
+if [[ ! " ${OPTIONS[*]} " =~ " ${ACTION} " ]]; then
+    echo
+    echo "USAGE: $(basename "$0") <${OPTIONS[*]// /|}>"
+    echo "EXAMPLE: $(basename "$0") ${OPTIONS[0]}"
+    echo
+    exit 1
 fi
 
 # ----------------------------
@@ -35,6 +38,7 @@ oc delete deployment "${APP}-nginx" --ignore-not-found
 
 oc delete svc "${APP}-apache" --ignore-not-found
 oc delete svc "${APP}-nginx" --ignore-not-found
+oc delete svc "${APP}" --ignore-not-found
 
 oc delete route "$APP" --ignore-not-found
 
@@ -52,9 +56,13 @@ oc delete is "${APP}-nginx" --ignore-not-found
 # ----------------------------
 # Stop here if remove was requested
 # ----------------------------
-if [[ "$1" == "remove" ]]; then
+if [[ "${ACTION}" == "remove" ]]; then
+	oc get pods -o wide
+	oc get svc
+	oc get routes
+	oc get builds
 	echo ""
-	echo "Remove completed successfully"
+	echo ">>> Remove completed successfully"
 	echo ""
 	exit
 fi
