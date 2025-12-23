@@ -24,7 +24,7 @@ oc delete deployment "${APP}-nginx" --ignore-not-found
 # ----------------------------
 oc delete svc "${APP}-apache" --ignore-not-found
 oc delete svc "${APP}-nginx" --ignore-not-found
-oc delete svc "${APP}-internal" --ignore-not-found
+oc delete svc "${APP}-localhost" --ignore-not-found
 
 # ----------------------------
 # Delete routes
@@ -68,7 +68,7 @@ oc rollout status deployment/"${APP}-apache" --timeout=300s
 
 echo "🔷 Exposing Apache internally on port 8081…"
 oc expose deployment "${APP}-apache" \
-  --name="${APP}-internal" \
+  --name="${APP}-localhost" \
   --port=8081 \
   --dry-run=client -o yaml | oc apply -f -
 
