@@ -8,10 +8,10 @@ REPO="https://github.com/vcschuni/twm.git"
 APACHE_CTX="compose/apache-php"
 NGINX_CTX="compose/nginx"
 
-echo "🔷 Switching to project $PROJ"
+echo ">>> Switching to project $PROJ"
 oc project "$PROJ"
 
-echo "🔷 Cleaning ALL old resources..."
+echo ">>> Cleaning ALL old resources..."
 
 # ----------------------------
 # Delete deployments
@@ -54,21 +54,21 @@ oc delete is "${APP}-nginx" --ignore-not-found
 # ----------------------------
 # Deploy Apache
 # ----------------------------
-echo "🔷 Deploying Apache (internal, port 8081)…"
+echo ">>> Deploying Apache (internal, port 8081)..."
 oc new-app "$REPO" \
   --name="${APP}-apache" \
   --context-dir="$APACHE_CTX" \
   --strategy=docker
 
-echo "🔷 Building Apache image…"
+echo ">>> Building Apache image..."
 oc start-build "${APP}-apache" --follow
 
-echo "🔷 Waiting for Apache deployment rollout…"
+echo ">>> Waiting for Apache deployment rollout..."
 oc rollout status deployment/"${APP}-apache" --timeout=300s
 
-echo "🔷 Exposing Apache internally on port 8081…"
+echo ">>> Exposing Apache internally on port 8081..."
 oc expose deployment "${APP}-apache" \
-  --name="${APP}-apache-svc" \
+  --name="${APP}-apache" \
   --port=8081 \
   --dry-run=client -o yaml | oc apply -f -
 
@@ -80,19 +80,19 @@ oc delete svc "${APP}-nginx" --ignore-not-found
 # ----------------------------
 # Deploy Nginx
 # ----------------------------
-echo "🔷 Deploying Nginx (external, port 8080)…"
+echo ">>> Deploying Nginx (external, port 8080)..."
 oc new-app "$REPO" \
   --name="${APP}-nginx" \
   --context-dir="$NGINX_CTX" \
   --strategy=docker
 
-echo "🔷 Building Nginx image…"
+echo ">>> Building Nginx image..."
 oc start-build "${APP}-nginx" --follow
 
-echo "🔷 Waiting for Nginx deployment rollout…"
+echo ">>> Waiting for Nginx deployment rollout..."
 oc rollout status deployment/"${APP}-nginx" --timeout=300s
 
-echo "🔷 Exposing Nginx externally on port 8080…"
+echo ">>> Exposing Nginx externally on port 8080..."
 oc expose deployment "${APP}-nginx" \
   --name="${APP}" \
   --port=8080 \
@@ -107,10 +107,10 @@ oc expose service "${APP}-nginx" --name=twm-public --port=8080
 # ----------------------------
 # Final status
 # ----------------------------
-echo "🔷 Current Resources:"
+echo ">>> Current Resources:"
 oc get pods -o wide
 oc get svc
 oc get routes
 oc get builds
 
-echo "✅ COMPLETE — Nginx → Apache (8081) deployed!"
+echo ">>> COMPLETE — Nginx → Apache (8081) deployed!"
