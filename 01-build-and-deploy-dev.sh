@@ -99,6 +99,12 @@ oc expose deployment "${APP}-nginx" \
   --dry-run=client -o yaml | oc apply -f -
 
 # ----------------------------
+# Expose Service
+# ----------------------------
+echo "Exposing Service"
+oc expose service "${APP}-nginx" --name=twm-public --port=8080
+
+# ----------------------------
 # Final status
 # ----------------------------
 echo "🔷 Current Resources:"
