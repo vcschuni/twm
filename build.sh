@@ -33,25 +33,9 @@ oc project "$PROJ"
 # Cleanup
 # ----------------------------
 echo ">>> Cleaning ALL old resources..."
-oc delete deployment "${APP}-apache" --ignore-not-found
-oc delete deployment "${APP}-nginx" --ignore-not-found
-
-oc delete svc "${APP}-apache" --ignore-not-found
-oc delete svc "${APP}-nginx" --ignore-not-found
-oc delete svc "${APP}" --ignore-not-found
-
-oc delete route "$APP" --ignore-not-found
-
-oc delete bc "${APP}-apache" --ignore-not-found
-oc delete bc "${APP}-nginx" --ignore-not-found
-
-oc delete builds -l build="${APP}-apache" --ignore-not-found
-oc delete builds -l build="${APP}-nginx" --ignore-not-found
-oc delete pod -l build="${APP}-apache" --ignore-not-found || true
-oc delete pod -l build="${APP}-nginx" --ignore-not-found || true
-
-oc delete is "${APP}-apache" --ignore-not-found
-oc delete is "${APP}-nginx" --ignore-not-found
+oc delete all -l app="${APP}" --ignore-not-found --wait=true
+oc delete builds -l app="${APP}" --ignore-not-found --wait=true
+oc delete is -l app="${APP}" --ignore-not-found --wait=true
 
 # ----------------------------
 # Stop here if remove was requested
@@ -74,10 +58,8 @@ echo ">>> Deploying Apache (internal, port 8081)..."
 oc new-app "$REPO" \
   --name="${APP}-apache" \
   --context-dir="$APACHE_CTX" \
-  --strategy=docker
-
-echo ">>> Building Apache image..."
-oc start-build "${APP}-apache" --follow
+  --strategy=docker \
+  --labels=app="${APP}"
 
 echo ">>> Waiting for Apache deployment rollout..."
 oc rollout status deployment/"${APP}-apache" --timeout=300s
@@ -86,7 +68,8 @@ echo ">>> Exposing Apache internally on port 8081..."
 oc expose deployment "${APP}-apache" \
   --name="${APP}-apache" \
   --port=8081 \
-  --dry-run=client -o yaml | oc apply -f -
+  --dry-run=client -o yaml \
+  --labels=app="${APP}" | oc apply -f -
 
 # ----------------------------
 # Deploy Nginx
@@ -95,25 +78,24 @@ echo ">>> Deploying Nginx (external, port 8080)..."
 oc new-app "$REPO" \
   --name="${APP}-nginx" \
   --context-dir="$NGINX_CTX" \
-  --strategy=docker
-
-echo ">>> Building Nginx image..."
-oc start-build "${APP}-nginx" --follow
+  --strategy=docker \
+  --labels=app="${APP}"
 
 echo ">>> Waiting for Nginx deployment rollout..."
 oc rollout status deployment/"${APP}-nginx" --timeout=300s
 
 echo ">>> Exposing Nginx externally on port 8080..."
 oc expose deployment "${APP}-nginx" \
-  --name="${APP}" \
+  --name="${APP}-nginx" \
   --port=8080 \
-  --dry-run=client -o yaml | oc apply -f -
+  --dry-run=client -o yaml \
+  --labels=app="${APP}" | oc apply -f -
 
 # ----------------------------
 # Expose Service
 # ----------------------------
-echo "Exposing Service"
-oc expose service "${APP}-nginx" --name=twm-public --port=8080
+echo ">>> Creating external route..."
+oc expose service "${APP}-nginx" --name="${APP}" --labels=app="${APP}"
 
 # ----------------------------
 # Final status

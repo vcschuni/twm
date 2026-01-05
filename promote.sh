@@ -57,15 +57,9 @@ oc project "$DST_PROJ"
 # Clean up old destination resources
 # -----------------------------
 echo "Cleaning old resources in $DST_PROJ..."
-
-oc delete deployment "${APP}-apache" --ignore-not-found
-oc delete deployment "${APP}-nginx" --ignore-not-found
-
-oc delete svc "${APP}-apache" --ignore-not-found
-oc delete svc "${APP}-nginx" --ignore-not-found
-oc delete svc "${APP}" --ignore-not-found
-
-oc delete route "$APP" --ignore-not-found
+oc delete all -l app="${APP}" --ignore-not-found --wait=true
+oc delete builds -l app="${APP}" --ignore-not-found --wait=true
+oc delete is -l app="${APP}" --ignore-not-found --wait=true
 
 # -----------------------------
 # Tag source images into destination
@@ -78,33 +72,45 @@ oc tag "${SRC_PROJ}/${APP}-nginx:${SRC_VERSION}" "${DST_PROJ}/${APP}-nginx:${DST
 # Deploy Apache in destination
 # -----------------------------
 echo ">>> Deploying Apache (port 8081)..."
-oc new-app "${APP}-apache:${DST_VERSION}" --name="${APP}-apache" --allow-missing-images
+oc new-app "${APP}-apache:${DST_VERSION}" \
+  --name="${APP}-apache" \
+  --allow-missing-images \
+  --labels=app="${APP}"
+
 oc rollout status deployment/"${APP}-apache" --timeout=300s
 
 echo ">>> Exposing Apache internally on port 8081..."
 oc expose deployment "${APP}-apache" \
   --name="${APP}-apache" \
   --port=8081 \
+  --labels=app="${APP}" \
   --dry-run=client -o yaml | oc apply -f -
 
 # -----------------------------
 # Deploy Nginx in destination
 # -----------------------------
 echo ">>> Deploying Nginx (port 8080)..."
-oc new-app "${APP}-nginx:${DST_VERSION}" --name="${APP}-nginx" --allow-missing-images
+oc new-app "${APP}-nginx:${DST_VERSION}" \
+  --name="${APP}-nginx" \
+  --allow-missing-images \
+  --labels=app="${APP}"
+  
 oc rollout status deployment/"${APP}-nginx" --timeout=300s
 
 echo ">>> Exposing Nginx externally on port 8080..."
 oc expose deployment "${APP}-nginx" \
-  --name="${APP}" \
+  --name="${APP}-nginx" \
   --port=8080 \
+  --labels=app="${APP}" \
   --dry-run=client -o yaml | oc apply -f -
 
 # -----------------------------
 # Expose public route
 # -----------------------------
 echo ">>> Creating public route..."
-oc expose service "${APP}" --port=8080
+oc expose service "${APP}-nginx" \
+  --name="${APP}" \
+  --labels=app="${APP}"
 
 # -----------------------------
 # Show destination resources
