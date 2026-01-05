@@ -1,8 +1,0 @@
-{
-  "tilejson": "2.2.0",
-  "tiles": [
-    "path/to/tiles/{z}/{x}/{y}.png"
-  ],
-  "maxzoom": 20,
-  "minzoom": 0
-}
