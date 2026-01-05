@@ -6,8 +6,12 @@ RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf \
     && sed -i 's/<VirtualHost \*:80>/<VirtualHost \*:8081>/' /etc/apache2/sites-enabled/000-default.conf \
     && sed -i 's/<VirtualHost \*:80>/<VirtualHost \*:8081>/g' /etc/apache2/sites-enabled/*.conf || true
 
-# Enable mods
+# Copy custom apache conf
+COPY cache-headers.conf /etc/apache2/conf-available/cache-headers.conf
+
+# Enable mods / configs
 RUN a2enmod headers
+RUN a2enconf cache-headers
 
 # Copy application source into Apache docroot
 COPY src/ /var/www/html/
