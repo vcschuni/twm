@@ -10,11 +10,13 @@ RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf \
 RUN a2enmod headers
 
 # Set caching headers for static content
-RUN echo "<IfModule mod_headers.c>
-    <FilesMatch \"\\.(html|css|js|json|png|jpg|jpeg|gif|ico)$\">
-        Header set Cache-Control \"public, max-age=172800, must-revalidate\"
+RUN cat <<'EOF' >> /etc/apache2/conf-available/cache-headers.conf
+<IfModule mod_headers.c>
+    <FilesMatch "\.(html|css|js|json|png|jpg|jpeg|gif|ico)$">
+        Header set Cache-Control "public, max-age=172800, must-revalidate"
     </FilesMatch>
-</IfModule>" >> /etc/apache2/conf-available/cache-headers.conf
+</IfModule>
+EOF
 RUN a2enconf cache-headers
 
 # Copy application source into Apache docroot
