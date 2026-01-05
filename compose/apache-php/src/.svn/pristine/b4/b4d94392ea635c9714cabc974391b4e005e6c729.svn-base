@@ -1,0 +1,19 @@
+<style>
+	.about-text {
+		padding: 5%;
+	}
+</style>
+<div class="about-text">
+	<h4>Traffic Data Program</h4>
+	<p>
+		The Ministry of Transportation and Transit's Traffic Data Program monitors traffic at various locations 
+		throughout British Columbia. Traffic data collection is a worldwide activity used to determine current traffic 
+		patterns and help predict future traffic trends.
+	</p>
+
+	<p>
+		Ministry staff uses the information to help support planning, design, construction, and operation of the ministry 
+		road network. The findings can also be useful for a wide range of stakeholders, including consultants, developers, 
+		other levels of government, and the general public.
+	</p>
+</div>

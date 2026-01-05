@@ -1,0 +1,5 @@
+{
+	name: "FloatingLegend",				// Plugin Class Name - DO NOT MODIFY [required]
+	enabled: true,						// Whether plugin is enabled [required]
+	layersToBeShown: []					// Layer names to be specfically displayed (Use empty array to show all layers)
+}

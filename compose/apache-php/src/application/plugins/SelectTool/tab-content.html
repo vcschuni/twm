@@ -1,0 +1,231 @@
+<style>
+
+#myTabContent {
+	border: var(--bs-card-border-width) solid var(--bs-card-border-color);
+    border-radius: var(--bs-card-border-radius);
+}
+
+#st-feature-button {
+	width: -webkit-fill-available;
+    text-align: unset;
+}
+
+.st-search-point {
+	display: flex;
+    align-items: center;
+}
+	
+.st-search-line {
+	display: flex;
+    align-items: center;
+}
+
+.st-search-polygon, .st-search-line {
+	display: flex;
+    align-items: center;
+	padding-bottom: 10px;
+}
+.st-tab{
+	display: flex;
+    align-items: center;
+
+}
+.st-route-item{
+	display: flex;
+    justify-content: space-between;
+	align-items: center;
+	border-radius: 8px; /* Add this line to round the bottom-left edge */
+    margin-bottom: 10px;
+    padding: 8px;
+    border: 1px solid #ddd;
+	background: #dddddd30;
+
+}
+#Select-tab-content{
+	font-size: .875rem;
+}
+
+.st-find-close-button-container{
+	display: flex;
+	width: min-content;
+
+}
+#st-layer-downloader{
+	margin-right: 6px;
+    align-self: anchor-center;
+    height: 30px;
+
+}
+.accordion-header{
+	display: flex;
+}
+#st-resultAccordian{
+	padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 15px;
+}
+
+</style>
+<div class="select-tab-container">
+	<ul class="nav nav-tabs select-tabs" id="select-tab-navs" role="tablist">
+		<li class="nav-item" role="presentation">
+		<button class="nav-link active st-tab" id="st-point-tab" value="Point" data-bs-toggle="tab" data-bs-target="#st-point-tab-pane" type="button" role="tab" aria-controls="st-point-tab-pane" aria-selected="true">
+			<img class='st-point-tab-img' style="height: 20px;"src="application/plugins/SelectTool/img/ph--dot-outline-light.svg">
+			<div class="st-point-tab-name" style="margin-left: 4px;">Point</div>
+		</button>
+		</li>
+		<li class="nav-item" role="presentation">
+		<button class="nav-link st-tab" id="st-line-tab" value="LineString" data-bs-toggle="tab" data-bs-target="#st-line-tab-pane" type="button" role="tab" aria-controls="st-line-tab-pane" aria-selected="false">
+			<img class='st-line-tab-img' style="height: 20px;"src="application/plugins/SelectTool/img/ph--line-segments-light.svg">
+			<div class="st-line-tab-name" style="margin-left: 4px;">Line</div>
+		</button>
+		</li>
+		<li class="nav-item" role="presentation">
+		<button class="nav-link st-tab" id="st-polygon-tab" value="Polygon" data-bs-toggle="tab" data-bs-target="#st-polygon-tab-pane" type="button" role="tab" aria-controls="st-polygon-tab-pane" aria-selected="false">
+			<img class='st-polygon-tab-img' style="height: 20px;"src="application/plugins/SelectTool/img/ph--polygon-light.svg">
+			<div class="st-polygon-tab-name" style="margin-left: 4px;">Polygon</div>
+		</button>
+		</li>
+		<li class="nav-item" role="presentation">
+		<button class="nav-link st-tab" id="st-router-tab" value="Route" data-bs-toggle="tab" data-bs-target="#st-router-tab-pane" type="button" role="tab" aria-controls="st-router-tab-pane" aria-selected="false" style="display:none;" disabled>
+			<div class="st-router-tab-name" style="margin-left: 4px;">By Route</div>
+		</button>
+		</li>
+		<li class="nav-item" role="presentation">
+		<button class="nav-link st-tab" id="st-byFeature-tab" value="Route" data-bs-toggle="tab" data-bs-target="#st-byFeature-tab-pane" type="button" role="tab" aria-controls="st-byFeature-tab-pane" aria-selected="false" style="display:none;" disabled>
+			<div class="st-byFeature-tab-name" style="margin-left: 4px;">By Feature</div>
+		</button>
+		</li>
+
+	</ul>
+
+	<div class="tab-content" id="myTabContent">
+		<div class="tab-pane fade show active" id="st-point-tab-pane" role="tabpanel" aria-labelledby="st-point-tab" tabindex="0">
+		
+		<!-- Search location -->
+		<div class="input-group input-group-sm mb-3 st-search-point">
+			<button class="btn btn-outline-secondary st-get-location-from-map-btn" type="button" title="Define from map"><span class="oi oi-map-marker text-success"></span></button>
+			<input type="text" class="form-control st-location-input" placeholder="Define a location to search from">
+			<button class="btn btn-outline-secondary st-get-geolocation-point-btn" type="button" title="Use current location"><span class="oi oi-location text-success"></span></button>
+			<button class="btn btn-outline-secondary st-clear-input-point-btn" type="button" title="Clear"><span class="oi oi-x"></span></button>
+		</div>
+		
+		<!-- Search distance -->
+		<div class="input-group input-group-sm mb-3">
+			<span class="input-group-text">Search Distance</span>
+			<input id="st-search-distance-input" type="number" class="form-control" min="0" aria-label="Enter Search Distance" value=0>
+			<button type="button" class="btn btn-outline-secondary" id="st-point-unit-toggle">km</button>
+		</div>
+		
+		<!-- Search button -->
+		<div class="st-find-close-button-container mb-3">
+			<button id="st-overlay-search-btn" class="btn btn-sm btn-success col-12" type="button" style="margin-right: 6px;" disabled>Find Features</button>
+			<button id="st-point-clear-btn" class="btn btn-sm btn-danger col-12" type="button">Clear</button>
+		</div>
+		
+		<!-- No Results Message DIV -->
+		<div id="fp-no-results" class="st-message" style="display:none;">Sorry, couldn't find anything...</div>
+		
+		<!-- Results Message DIV -->
+		<div id="st-results" class=""></div>
+		
+		
+		
+		
+		<!--	<div class="st-search-point">-->
+		<!--	<button class="btn btn-outline-secondary btn-sm st-draw-point-btn" type="button" title="Define from map"><span class="oi oi-map-marker text-success"></span></button>-->
+		<!--	<div class="define-on-map-label"> Define on Map</div>-->
+		<!--	</div>-->
+		</div>
+
+
+
+		<div class="tab-pane fade" id="st-line-tab-pane" role="tabpanel" aria-labelledby="st-line-tab" tabindex="0">
+			<div class="st-search-line">
+				
+					<button class="btn btn-outline-secondary btn-sm st-draw-line-btn" type="button" title="Define from map"><span class="oi oi-map-marker text-success"></span></button>
+					<div class="define-on-map-label"style="margin-left: 6px;font-size: .875rem;"> Define on Map</div>
+			
+			
+			</div>
+			<!-- Search distance -->
+			<div class="input-group input-group-sm mb-3">
+				<span class="input-group-text">Search Distance</span>
+				<input id="st-lineString-search-distance-input" type="number" class="form-control" min="0" aria-label="Enter Search Distance" value=0>
+				<button type="button" class="btn btn-outline-secondary" id="st-lineString-unit-toggle">km</button>
+			</div>
+			
+			<!-- Search button -->
+			<div class="st-find-close-button-container mb-3">
+				<button id="st-lineString-overlay-search-btn" class="btn btn-sm btn-success col-12" type="button" style="margin-right: 6px;" disabled>Find Features</button>
+				<button id="st-lineString-clear-btn" class="btn btn-sm btn-danger col-12" type="button">Clear</button>
+			</div>
+		</div>
+		
+		
+		
+		
+		
+		
+		<div class="tab-pane fade" id="st-polygon-tab-pane" role="tabpanel" aria-labelledby="st-polygon-tab" tabindex="0">
+			<div class="st-search-polygon" style="padding-bottom: 10px;">
+			<button class="btn btn-outline-secondary btn-sm st-draw-polygon-btn" type="button" title="Define from map"><span class="oi oi-map-marker text-success"></span></button>
+			<div class="define-on-map-label" style="margin-left: 6px;font-size: .875rem;"> Define on Map</div>
+
+		</div>
+
+		<!-- Search button -->
+			<div class="st-find-close-button-container mb-3">
+				<button id="st-polygon-overlay-search-btn" class="btn btn-sm btn-success col-12" type="button" style="margin-right: 6px;" disabled>Find Features</button>
+				<button id="st-polygon-clear-btn" class="btn btn-sm btn-danger col-12" type="button">Clear</button>
+			</div>
+		</div>
+
+
+
+
+		<div class="tab-pane fade" id="st-router-tab-pane" role="tabpanel" aria-labelledby="st-router-tab" tabindex="0">
+			<div class="st-route-container" id="st-route-container"></div>
+			<!-- Search distance -->
+			<div class="input-group input-group-sm mb-3">
+				<span class="input-group-text">Search Distance</span>
+				<input id="st-router-search-distance-input" type="number" class="form-control" min="0" aria-label="Enter Search Distance" value=0>
+				<button type="button" class="btn btn-outline-secondary" id="st-router-unit-toggle">km</button>
+			</div>
+			
+			<!-- Search button -->
+			<div class="st-find-close-button-container mb-3">
+				<button id="st-route-search-btn" class="btn btn-sm btn-success col-12" type="button" style="margin-right: 6px;" disabled>Find Features</button>
+				<button id="st-route-clear-btn" class="btn btn-sm btn-danger col-12" type="button">Clear</button>
+			</div>
+			
+
+		</div>
+
+		<div class="tab-pane fade" id="st-byFeature-tab-pane" role="tabpanel" aria-labelledby="st-byFeature-tab" tabindex="0">
+			<div class="st-feature-container" id="st-feature-container"></div>
+			<!-- Search button -->
+			<div class="st-find-close-button-container mb-3">
+				<button id="st-byFeature-search-btn" class="btn btn-sm btn-success col-12" type="button" style="margin-right: 6px;" disabled>Find Features</button>
+				<button id="st-byFeature-clear-btn" class="btn btn-sm btn-danger col-12" type="button">Clear</button>
+			</div>
+			
+
+		</div>
+		<h6 class="mb-2" id="st-results-title" style="margin-left: 15px; display: none;">Search Results</h6>
+		<div class="accordion" id="st-resultAccordian">
+			
+
+		</div>
+
+
+
+
+	</div>
+</div>
+
+
+
+
+
+

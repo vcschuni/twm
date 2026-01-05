@@ -1,0 +1,173 @@
+<style>
+	.dr-with-chevron[aria-expanded='true'] span {
+		display: block;
+		transform: rotate(180deg) !important;
+	}
+	.dr-instructions {
+		font-size: 13px;
+		font-style: italic;
+	}
+	.dr-instructions ul {
+		margin-top: 5px;
+		list-style-type: none;
+		padding-left: 1.2em;
+	}
+	.dr-instructions ul li span {
+		width: 15px;
+		text-align: center;
+	}
+	.dr-move-handle {
+		padding: 4px 4px 0px 0px;
+		color: #E0E0E0;
+	}
+	.dr-move-handle:hover {
+		cursor: move;
+	}
+	.dr-route-statistics-table {
+		font-size:0.75rem;
+		max-width:100%;
+	}
+	#dr-route-failure {
+		font-size: 14px;
+		font-style: italic;
+		font-weight: bold;
+		color: red;
+		text-align: center;
+		margin-bottom: 15px;
+	}
+	#dr-message {
+		font-size: 14px;
+		font-style: italic;
+		font-weight: bold;
+		color: red;
+		text-align: center;
+		padding: 10px 0px 10px 0px;
+		margin-bottom: 15px;
+	}
+	.dr-credits {
+		font-size: 9px;
+		font-style: italic;
+		text-align: center;
+	}
+	
+	/* Directions Table (within Summary DIV) */
+	#dr-summary .dr-directions-table {
+		font-size: 0.75rem;
+		border-spacing: 0px;
+		border: none;
+	}
+	#dr-summary .dr-directions-table tr:hover {
+		cursor: pointer;
+		background: #cffbff;
+	}
+	#dr-summary .dr-directions-table td {
+		vertical-align: middle;
+		font-weight: normal;
+	}
+	#dr-summary .dr-directions-table td:first-child {
+		width: 16px;
+		text-align: center;
+		border: none;
+	}
+	#dr-summary .dr-directions-table td:first-child img{
+		height: 12px;
+		width: 12px;
+	}
+	#dr-summary .dr-directions-table td:last-child {
+		text-align: left;
+		border: none;
+	}
+	.dr-route-select-container{
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+		padding-bottom: 6px;
+	}
+	.dr-route-select-title{
+		padding-left: 6px;
+		font-size: .875rem;
+
+	}
+
+</style>
+
+<!-- Instructions -->
+<div class="mb-3">
+	<a tabindex="-1" data-bs-toggle="collapse" href="#dr-instructions-panel" role="button" aria-expanded="false" aria-controls="dr-instructions-panel" class="btn btn-sm btn-light btn-block col-12 shadow-sm dr-with-chevron">
+		<p class="d-flex align-items-center justify-content-between mb-0">Instructions<span class="oi oi-chevron-bottom"></span></p>
+	</a>
+	<div id="dr-instructions-panel" class="collapse shadow-sm">
+		<div class="card">
+			<div class="card-body dr-instructions">
+				<b>Generate a route using the following functions:</b>
+				<ul>
+					<li><span class="oi oi-map-marker"></span> - Select a location from the map</li>
+					<li><span class="oi oi-info"></span> - Entering keywords</li>
+					<li><span class="oi oi-info"></span> - Entering a longitude &amp; latitude</li>
+					<li><span class="oi oi-location"></span> - Using your current location</li>
+					<li><span class="oi oi-x"></span> - Remove a route point</li>
+					<li id="dr-route-point-add-instructions" style="display:none;"><span class="oi oi-plus"></span> - Add a route point</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+<form id="simple-router-form">
+
+	<!-- Route controls -->
+	<div class="row">
+		<div id="dr-route-points" class="col pe-1">
+			<!-- Route point inputs get inserted here -->
+		</div>
+		
+		<!-- Extra buttons -->
+		<div class="col-sm-auto col-auto ps-1">
+			<!-- Reverse Route -->
+			<div class="mb-2">
+				<button tabindex="-1" id="dr-reverse-route-btn" class="btn btn-sm btn-outline-secondary" type="button" title="Reverse Route" disabled><span class="oi oi-loop-square text-danger"></span></button>
+			</div>
+			
+			<!-- Add Route Point Control (only shown if configured) -->
+			<div id="dr-route-point-add-div" class="mb-2" style="display:none;">
+				<button tabindex="-1" id="dr-route-point-add-btn" class="btn btn-sm btn-outline-secondary" type="button" title="Add Route Point"><span class="oi oi-plus text-primary"></span></button>
+			</div>
+		</div>
+		
+	</div>
+				
+</form>
+<div class="dr-route-select-container" style="display:none;">
+	<button class="btn btn-sm btn-outline-secondary dr-add-route-to-select-btn" id="dr-add-route-to-select-btn" type="button" title="Add Route to Select Tool"><span class="oi oi-plus text-success"></span>Add Route to Select Tool</button>
+	
+</div>
+<!-- Summary Table -->
+<div id="dr-summary" tabindex="-1" class="mt-2 mb-3" style="display:none;">
+	<a data-bs-toggle="collapse" href="#dr-directions-panel" role="button" aria-expanded="false" aria-controls="dr-directions-panel" class="btn btn-sm btn-light btn-block col-12 shadow-sm dr-with-chevron">
+		<p id="dr-directions-title" class="d-flex align-items-center justify-content-between mb-0">Travel Directions<span class="oi oi-chevron-bottom"></span></p>
+	</a>
+	<div id="dr-directions-panel" class="collapse shadow-sm">
+		<div class="card">
+			<div id="dr-directions" class="card-body">
+				<!-- travel directions dynamically inserted here -->
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Message div -->
+<div id="dr-message" style="display:none;">	</div>
+
+<!-- Credits -->
+<div class="dr-credits">
+	BC Address Geocoder &amp; BC Route Planner services provided by DataBC
+</div>
+
+<!-- Waypoint Template (hidden) -->
+<div class="dr-route-point input-group input-group-sm mb-2 dr-route-point dr-route-point-template" style="display:none;">
+	<div class="dr-move-handle" title="Move"><span class="oi oi-menu"></span></div>
+	<button tabindex="-1" class="btn btn-outline-secondary dr-get-location-from-map-btn" type="button" title="Define from map"><span class="oi oi-map-marker"></span></button>
+	<input type="text" class="form-control dr-location-input" placeholder="Enter route point">
+	<button tabindex="-1" class="btn btn-outline-secondary dr-get-geolocation-btn" type="button" title="Use current location"><span class="oi oi-location text-success"></span></button>
+	<button tabindex="-1" class="btn btn-outline-secondary dr-delete-route-point-btn" type="button" title="Remove route point"><span class="oi oi-x text-danger"></span></button>
+</div>

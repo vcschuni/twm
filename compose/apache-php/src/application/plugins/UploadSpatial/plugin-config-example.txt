@@ -1,0 +1,11 @@
+{
+	name: "UploadSpatial",										// Plugin Class Name - DO NOT MODIFY [required]
+	tabName: "Upload",											// Tab name [required]
+	enabled: true,												// Whether plugin is enabled [required]
+	unsupportedTypeMessage:'Sorry, file type not supported' 	// Message displayed for unsupported file types [required]
+	'application/vnd.google-earth.kml+xml': { 					// File Mime type
+		dropMessage: "I like to eat KML files", 				// Message displayed on mouse over with file
+		processingMessage: "YUM YUM YUM!", 						// Message displayed after dropping the file
+		errorMessage: "File must be valid KML." 				// Message displayed after an error message
+	}
+}

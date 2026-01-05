@@ -1,0 +1,4604 @@
+{
+	"version": 8,
+	"sprite": "https://www.arcgis.com/sharing/rest/content/items/b1624fea73bd46c681fab55be53d96ae/resources/sprites/sprite-1668107067528",
+	"glyphs": "https://tiles.arcgis.com/tiles/ubm4tcTYICKBpist/arcgis/rest/services/BC_BASEMAP/VectorTileServer/resources/styles/../fonts/{fontstack}/{range}.pbf",
+	"sources": {
+		"esri": {
+			"type": "vector",
+			"attribution": "Ministry of Land, Water and Resource Stewardship - GeoBC Branch",
+			"bounds": [-146.197, 42.5262, -105.679, 65.0753],
+			"minzoom": 0,
+			"maxzoom": 19,
+			"scheme": "xyz",
+			"url": "https://tiles.arcgis.com/tiles/ubm4tcTYICKBpist/arcgis/rest/services/BC_BASEMAP/VectorTileServer",
+			"tiles": ["https://tiles.arcgis.com/tiles/ubm4tcTYICKBpist/arcgis/rest/services/BC_BASEMAP/VectorTileServer/tile/{z}/{y}/{x}.pbf"]
+		},
+		"hillshade": {
+			"type": "vector",
+			"attribution": "Ministry of Land, Water and Resource Stewardship - GeoBC Branch",
+			"minzoom": 0,
+			"maxzoom": 19,
+			"url": "https://tiles.arcgis.com/tiles/ubm4tcTYICKBpist/arcgis/rest/services/BC_Basemap_Vector_Hillshade/VectorTileServer",
+			"tiles": ["https://tiles.arcgis.com/tiles/ubm4tcTYICKBpist/arcgis/rest/services/BC_Basemap_Vector_Hillshade/VectorTileServer/tile/{z}/{y}/{x}.pbf"]
+		}
+	},
+	"layers": [{
+			"id": "TOPO/BC Terrestrial/Solid",
+			"type": "fill",
+			"source": "esri",
+			"source-layer": "BC Terrestrial (Base)",
+			"layout": {},
+			"paint": {
+				"fill-color": "#EFE7DD"
+			}
+		}, {
+			"id": "PARKS/Non BC/USA",
+			"type": "fill",
+			"source": "esri",
+			"source-layer": "Outside BC (USA)",
+			"layout": {},
+			"paint": {
+				"fill-color": "#DDE6C3",
+				"fill-opacity": 0.6
+			}
+		}, {
+			"id": "PARKS/Non BC/Canada",
+			"type": "fill",
+			"source": "esri",
+			"source-layer": "Outside BC (Canada)",
+			"layout": {},
+			"paint": {
+				"fill-color": "#DDE6C3",
+				"fill-opacity": 0.6
+			}
+		}, {
+			"id": "PARKS/National/Terrestrial_Solid",
+			"type": "fill",
+			"source": "esri",
+			"source-layer": "National",
+			"filter": ["==", "_symbol", 1],
+			"layout": {},
+			"paint": {
+				"fill-opacity": 0.2,
+				"fill-color": "#D4E6B8"
+			},
+			"showProperties": false
+		}, {
+			"id": "PARKS/National/Marine_Solid",
+			"type": "fill",
+			"source": "esri",
+			"source-layer": "National",
+			"filter": ["==", "_symbol", 0],
+			"layout": {},
+			"paint": {
+				"fill-opacity": 0.2,
+				"fill-color": "#D4E6B8"
+			}
+		}, {
+			"id": "PARKS/Additional/Terrestrial_Solid",
+			"type": "fill",
+			"source": "esri",
+			"source-layer": "Additional [17 - 7]",
+			"filter": ["==", "_symbol", 1],
+			"minzoom": 6,
+			"layout": {},
+			"paint": {
+				"fill-color": "#D4E6B8"
+			},
+			"showProperties": false
+		}, {
+			"id": "PARKS/Additional/Marine_Solid",
+			"type": "fill",
+			"source": "esri",
+			"source-layer": "Additional [17 - 7]",
+			"filter": ["==", "_symbol", 0],
+			"minzoom": 6,
+			"layout": {},
+			"paint": {
+				"fill-color": "#D4E6B8"
+			}
+		}, {
+			"id": "PARKS/Provincial/Protected_Solid",
+			"type": "fill",
+			"source": "esri",
+			"source-layer": "Provincial",
+			"filter": ["==", "_symbol", 1],
+			"layout": {},
+			"paint": {
+				"fill-opacity": 0.2,
+				"fill-color": "#D4E6B8"
+			},
+			"showProperties": false
+		}, {
+			"id": "PARKS/Provincial/RecreationArea_Solid",
+			"type": "fill",
+			"source": "esri",
+			"source-layer": "Provincial",
+			"filter": ["==", "_symbol", 2],
+			"layout": {},
+			"paint": {
+				"fill-opacity": 0.2,
+				"fill-color": "#badba6"
+			},
+			"showProperties": false
+		}, {
+			"id": "PARKS/Provincial/Marine_Solid",
+			"type": "fill",
+			"source": "esri",
+			"source-layer": "Provincial",
+			"filter": ["==", "_symbol", 0],
+			"layout": {},
+			"paint": {
+				"fill-opacity": 0.2,
+				"fill-color": "#D4E6B8"
+			}
+		}, {
+			"id": "PARKS/Conservancies/Terrestrial_Solid",
+			"type": "fill",
+			"source": "esri",
+			"source-layer": "Prov Conservancies",
+			"filter": ["==", "_symbol", 1],
+			"layout": {},
+			"paint": {
+				"fill-opacity": 0.2,
+				"fill-color": "#C3DEC8"
+			},
+			"showProperties": false
+		}, {
+			"id": "PARKS/Conservancies/Marine_Solid",
+			"type": "fill",
+			"source": "esri",
+			"source-layer": "Prov Conservancies",
+			"filter": ["==", "_symbol", 0],
+			"layout": {},
+			"paint": {
+				"fill-opacity": 0.2,
+				"fill-color": "#C3DEC8"
+			},
+			"showProperties": false
+		}, {
+			"id": "PARKS/Regional/Terrestrial_Solid",
+			"type": "fill",
+			"source": "esri",
+			"source-layer": "Regional [17 - 10]",
+			"minzoom": 9,
+			"layout": {},
+			"paint": {
+				"fill-opacity": 0.2,
+				"fill-color": "#cae4c5"
+			},
+			"showProperties": false
+		}, {
+			"id": "WATER/Ocean",
+			"type": "fill",
+			"source": "esri",
+			"source-layer": "Ocean",
+			"layout": {},
+			"paint": {
+				"fill-color": "#B5CFE2"
+			}
+		}, {
+			"id": "PARKS/National/Terrestrial_Line",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "National",
+			"filter": ["==", "_symbol", 1],
+			"layout": {
+				"line-cap": "round",
+				"line-join": "round"
+			},
+			"paint": {
+				"line-opacity": 0.3,
+				"line-color": "#B0CC85"
+			}
+		}, {
+			"id": "PARKS/National/Marine_Line",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "National",
+			"filter": ["==", "_symbol", 0],
+			"layout": {
+				"line-cap": "round",
+				"line-join": "round"
+			},
+			"paint": {
+				"line-opacity": 0.3,
+				"line-color": "#82B4D9"
+			}
+		}, {
+			"id": "PARKS/Additional/Terrestrial_Line",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "Additional [17 - 7]",
+			"filter": ["==", "_symbol", 1],
+			"minzoom": 6,
+			"layout": {
+				"line-cap": "round",
+				"line-join": "round"
+			},
+			"paint": {
+				"line-color": "#B0CC85"
+			}
+		}, {
+			"id": "PARKS/Additional/Marine_Line",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "Additional [17 - 7]",
+			"filter": ["==", "_symbol", 0],
+			"minzoom": 6,
+			"layout": {
+				"line-cap": "round",
+				"line-join": "round"
+			},
+			"paint": {
+				"line-color": "#82B4D9"
+			}
+		}, {
+			"id": "PARKS/Additional/FullMarine_Pattern",
+			"type": "fill",
+			"source": "esri",
+			"source-layer": "Additional [17 - 7]",
+			"filter": ["==", "_symbol", 2],
+			"minzoom": 6,
+			"layout": {},
+			"paint": {
+				"fill-pattern": {
+					"base": 1,
+					"stops": [[0, "MarineSymbol S"], [8, "PARKS/Additional [17 - 7]/M/1"], [11, "Marine_XL"]]
+				}
+			}
+		}, {
+			"id": "PARKS/Additional/FullMarine_Line",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "Additional [17 - 7]",
+			"filter": ["==", "_symbol", 2],
+			"minzoom": 6,
+			"layout": {
+				"line-cap": "round",
+				"line-join": "round",
+				"visibility": "none"
+			},
+			"paint": {
+				"line-color": "#93BDDE",
+				"line-offset": -1
+			}
+		}, {
+			"id": "PARKS/Provincial/Protected_Line",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "Provincial",
+			"filter": ["==", "_symbol", 1],
+			"layout": {
+				"line-cap": "round",
+				"line-join": "round"
+			},
+			"paint": {
+				"line-opacity": 0.3,
+				"line-color": "#B0CC85"
+			}
+		}, {
+			"id": "PARKS/Provincial/RecreationArea_Line",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "Provincial",
+			"filter": ["==", "_symbol", 2],
+			"layout": {
+				"line-cap": "round",
+				"line-join": "round"
+			},
+			"paint": {
+				"line-opacity": 0.3,
+				"line-color": "#B0CC85"
+			}
+		}, {
+			"id": "PARKS/Provincial/Marine_Line",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "Provincial",
+			"filter": ["==", "_symbol", 0],
+			"layout": {
+				"line-cap": "round",
+				"line-join": "round"
+			},
+			"paint": {
+				"line-opacity": 0.3,
+				"line-color": "#82B4D9"
+			}
+		}, {
+			"id": "PARKS/Conservancies/Terrestrial_Line",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "Prov Conservancies",
+			"filter": ["==", "_symbol", 1],
+			"layout": {
+				"line-cap": "round",
+				"line-join": "round"
+			},
+			"paint": {
+				"line-opacity": 0.3,
+				"line-color": "#A3CCAB"
+			}
+		}, {
+			"id": "PARKS/Conservancies/Marine_Line",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "Prov Conservancies",
+			"filter": ["==", "_symbol", 0],
+			"layout": {
+				"line-cap": "round",
+				"line-join": "round"
+			},
+			"paint": {
+				"line-opacity": 0.2,
+				"line-color": "#82B4D9"
+			}
+		}, {
+			"id": "WATER/Streams/Lg Scale",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "Streams [12 - 17]",
+			"minzoom": 11,
+			"layout": {
+				"line-cap": "round",
+				"line-join": "round"
+			},
+			"paint": {
+				"line-color": "#B5CFE2",
+				"line-width": 1.33333
+			}
+		}, {
+			"id": "WATER/Streams/Sm Scale",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "Streams [6 - 11]",
+			"minzoom": 5,
+			"maxzoom": 11,
+			"layout": {
+				"line-cap": "round",
+				"line-join": "round"
+			},
+			"paint": {
+				"line-color": "#B5CFE2",
+				"line-width": 1.33333
+			}
+		}, {
+			"id": "WATER/Wetlands/Trans",
+			"type": "fill",
+			"source": "esri",
+			"source-layer": "Wetlands [10 - 17]",
+			"minzoom": 9,
+			"layout": {},
+			"paint": {
+				"fill-opacity": 0.1,
+				"fill-color": "#8bf3ca"
+			},
+			"showProperties": false
+		}, {
+			"id": "WATER/Wetlands/Pattern",
+			"type": "fill",
+			"source": "esri",
+			"source-layer": "Wetlands [10 - 17]",
+			"minzoom": 9,
+			"layout": {},
+			"paint": {
+				"fill-pattern": "WATER/Wetlands [10 - 17]/1"
+			}
+		}, {
+			"id": "WATER/River Poly/Fill",
+			"type": "fill",
+			"source": "esri",
+			"source-layer": "Wide Rivers [6 - 17]",
+			"minzoom": 5,
+			"layout": {},
+			"paint": {
+				"fill-color": "#B5CFE2"
+			}
+		}, {
+			"id": "WATER/River Poly/Line",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "Wide Rivers [6 - 17]",
+			"minzoom": 5,
+			"layout": {
+				"line-cap": "round",
+				"line-join": "round"
+			},
+			"paint": {
+				"line-color": "#B5CFE2",
+				"line-width": {
+					"stops": [[3, 1], [16, 1.33333]]
+				}
+			}
+		}, {
+			"id": "WATER/Lakes/Lg Scale",
+			"type": "fill",
+			"source": "esri",
+			"source-layer": "Lakes [10 - 17]",
+			"minzoom": 9,
+			"layout": {},
+			"paint": {
+				"fill-color": "#B5CFE2"
+			}
+		}, {
+			"id": "WATER/Lakes/Sm Scale",
+			"type": "fill",
+			"source": "esri",
+			"source-layer": "Lakes [5 - 9]",
+			"minzoom": 4,
+			"maxzoom": 9,
+			"layout": {},
+			"paint": {
+				"fill-color": "#B5CFE2"
+			}
+		}, {
+			"id": "BOUNDARIES AND PLACES/OSM Buildings",
+			"type": "fill",
+			"source": "esri",
+			"source-layer": "OSM Buildings [17 -16]",
+			"minzoom": 15,
+			"layout": {},
+			"paint": {
+				"fill-color": "#E6E0DA",
+				"fill-outline-color": "#D9D2C8"
+			}
+		}, {
+			"id": "TRANSPORTATION/Railroads/Main/Line",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "Railroads [17 - 11]",
+			"filter": ["==", "_symbol", 0],
+			"minzoom": 10,
+			"layout": {
+				"line-join": "round"
+			},
+			"paint": {
+				"line-color": "#9C9C9C",
+				"line-width": 1.06667
+			}
+		}, {
+			"id": "TRANSPORTATION/Railroads/Main/Hatch",
+			"type": "symbol",
+			"source": "esri",
+			"source-layer": "Railroads [17 - 11]",
+			"filter": ["==", "_symbol", 0],
+			"minzoom": 10,
+			"layout": {
+				"symbol-placement": "line",
+				"icon-image": "TRANSPORTATION/Railroads [17 - 11]/Main; Connecting; Crossover/0",
+				"icon-rotate": -90,
+				"symbol-spacing": 20,
+				"icon-rotation-alignment": "map",
+				"icon-allow-overlap": true
+			},
+			"paint": {
+				"icon-color": "#9C9C9C"
+			}
+		}, {
+			"id": "TRANSPORTATION/Railroads/Yards/Line[16-17]",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "Railroads [17 - 11]",
+			"filter": ["==", "_symbol", 1],
+			"minzoom": 16,
+			"layout": {
+				"line-join": "round"
+			},
+			"paint": {
+				"line-color": "#9C9C9C",
+				"line-width": 1.06667
+			}
+		}, {
+			"id": "TRANSPORTATION/Railroads/Yards/Hatch",
+			"type": "symbol",
+			"source": "esri",
+			"source-layer": "Railroads [17 - 11]",
+			"filter": ["==", "_symbol", 1],
+			"minzoom": 16,
+			"layout": {
+				"symbol-placement": "line",
+				"icon-image": "TRANSPORTATION/Railroads [17 - 11]/Yard; Siding; Spur; Wye/0",
+				"icon-rotate": -90,
+				"symbol-spacing": 20,
+				"icon-rotation-alignment": "map",
+				"icon-allow-overlap": true
+			},
+			"paint": {
+				"icon-color": "#9C9C9C"
+			}
+		}, {
+			"id": "TRANSPORTATION/Railroads/Yards/Line[13-16]",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "Railroads [17 - 11]",
+			"filter": ["==", "_symbol", 1],
+			"minzoom": 13,
+			"maxzoom": 16,
+			"layout": {
+				"line-join": "round"
+			},
+			"paint": {
+				"line-color": "#9C9C9C",
+				"line-width": 0.4
+			}
+		}, {
+			"id": "TRANSPORTATION/Railroads/Other/Line",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "Railroads [17 - 11]",
+			"filter": ["==", "_symbol", 2],
+			"minzoom": 10,
+			"layout": {
+				"line-join": "round"
+			},
+			"paint": {
+				"line-color": "#9C9C9C",
+				"line-width": 1.06667
+			}
+		}, {
+			"id": "TRANSPORTATION/Railroads/Other/Hatch",
+			"type": "symbol",
+			"source": "esri",
+			"source-layer": "Railroads [17 - 11]",
+			"filter": ["==", "_symbol", 2],
+			"minzoom": 10,
+			"layout": {
+				"symbol-placement": "line",
+				"icon-image": "TRANSPORTATION/Railroads [17 - 11]/<all other values>/0",
+				"icon-rotate": -90,
+				"symbol-spacing": 20,
+				"icon-rotation-alignment": "map",
+				"icon-allow-overlap": true
+			},
+			"paint": {
+				"icon-color": "#9C9C9C"
+			}
+		}, {
+			"id": "TRANSPORTATION/Non BC Roads/USA Ferries",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "Ferries - USA",
+			"layout": {
+				"line-join": "round"
+			},
+			"paint": {
+				"line-color": "#6690A4",
+				"line-dasharray": [30, 5],
+				"line-width": 0.266667
+			}
+		}, {
+			"id": "TRANSPORTATION/Non BC Roads/Lg Scale/Outline",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "Outside BC Roads [17 - 11]",
+			"minzoom": 10,
+			"layout": {},
+			"paint": {
+				"line-color": "#AD9393",
+				"line-width": {
+					"stops": [[3, 2.66667], [11, 4], [13, 4], [14, 6], [16, 10]]
+				}
+			}
+		}, {
+			"id": "TRANSPORTATION/Non BC Roads/Lg Scale/Centerline",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "Outside BC Roads [17 - 11]",
+			"minzoom": 10,
+			"layout": {},
+			"paint": {
+				"line-color": "#FFFFFF",
+				"line-width": {
+					"stops": [[3, 1.77778], [11, 2.66667], [13, 2.66667], [14, 4], [16, 6.66667]]
+				}
+			}
+		}, {
+			"id": "TRANSPORTATION/Non BC Roads/Sm Scale/Major Hwy/[9-10]Outline",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "Outside BC Hwy [10 - 5]",
+			"filter": ["==", "_symbol", 1],
+			"minzoom": 9,
+			"maxzoom": 10,
+			"layout": {},
+			"paint": {
+				"line-color": "#AD9393",
+				"line-width": {
+					"stops": [[9, 2.66667], [10, 4]]
+				}
+			}
+		}, {
+			"id": "TRANSPORTATION/Non BC Roads/Sm Scale/Minor Hwy/[9-10]Outline",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "Outside BC Hwy [10 - 5]",
+			"filter": ["==", "_symbol", 0],
+			"minzoom": 9,
+			"maxzoom": 10,
+			"layout": {},
+			"paint": {
+				"line-color": "#AD9393",
+				"line-width": {
+					"stops": [[9, 2.66667], [10, 4]]
+				}
+			}
+		}, {
+			"id": "TRANSPORTATION/Non BC Roads/Sm Scale/Major Hwy/[9-10]Centerline",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "Outside BC Hwy [10 - 5]",
+			"filter": ["==", "_symbol", 1],
+			"minzoom": 9,
+			"maxzoom": 10,
+			"layout": {},
+			"paint": {
+				"line-color": "#FFFFFF",
+				"line-width": {
+					"stops": [[9, 1.55556], [10, 2.33333]]
+				}
+			}
+		}, {
+			"id": "TRANSPORTATION/Non BC Roads/Sm Scale/Minor Hwy/[9-10]Centerline",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "Outside BC Hwy [10 - 5]",
+			"filter": ["==", "_symbol", 0],
+			"minzoom": 9,
+			"maxzoom": 10,
+			"layout": {},
+			"paint": {
+				"line-color": "#FFFFFF",
+				"line-width": {
+					"stops": [[9, 1.55556], [10, 2.33333]]
+				}
+			}
+		}, {
+			"id": "TRANSPORTATION/Non BC Roads/Sm Scale/Major Hwy/[7-9]Outline",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "Outside BC Hwy [10 - 5]",
+			"filter": ["==", "_symbol", 1],
+			"minzoom": 7,
+			"maxzoom": 9,
+			"layout": {},
+			"paint": {
+				"line-color": "#AD9393",
+				"line-width": 2.66667
+			}
+		}, {
+			"id": "TRANSPORTATION/Non BC Roads/Sm Scale/Minor Hwy/[7-9]Outline",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "Outside BC Hwy [10 - 5]",
+			"filter": ["==", "_symbol", 0],
+			"minzoom": 7,
+			"maxzoom": 9,
+			"layout": {},
+			"paint": {
+				"line-color": "#AD9393",
+				"line-width": 2.66667
+			}
+		}, {
+			"id": "TRANSPORTATION/Non BC Roads/Sm Scale/Major Hwy/[7-9]Centerline",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "Outside BC Hwy [10 - 5]",
+			"filter": ["==", "_symbol", 1],
+			"minzoom": 7,
+			"maxzoom": 9,
+			"layout": {},
+			"paint": {
+				"line-color": "#EFD2C4",
+				"line-width": 1.5
+			}
+		}, {
+			"id": "TRANSPORTATION/Non BC Roads/Sm Scale/Minor Hwy/[7-9]Centerline",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "Outside BC Hwy [10 - 5]",
+			"filter": ["==", "_symbol", 0],
+			"minzoom": 7,
+			"maxzoom": 9,
+			"layout": {},
+			"paint": {
+				"line-color": "#FFFFFF",
+				"line-width": 1.5
+			}
+		}, {
+			"id": "TRANSPORTATION/Non BC Roads/Sm Scale/Major Hwy/[4-7]Line",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "Outside BC Hwy [10 - 5]",
+			"filter": ["==", "_symbol", 1],
+			"minzoom": 4,
+			"maxzoom": 7,
+			"layout": {},
+			"paint": {
+				"line-color": "#CFC7C3",
+				"line-width": 2
+			}
+		}, {
+			"id": "TRANSPORTATION/DRA/Seasonal/[14-17]Line",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "DRA Seasonal Roads [17 - 14]",
+			"filter": ["==", "_symbol", 0],
+			"minzoom": 14,
+			"layout": {
+				"line-cap": "round",
+				"line-join": "round"
+			},
+			"paint": {
+				"line-color": "#BFAB86",
+				"line-width": 2.66667
+			}
+		}, {
+			"id": "TRANSPORTATION/DRA/Seasonal/[14-17]Dash",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "DRA Seasonal Roads [17 - 14]",
+			"filter": ["==", "_symbol", 0],
+			"minzoom": 14,
+			"layout": {
+				"line-cap": "round",
+				"line-join": "round"
+			},
+			"paint": {
+				"line-color": "#FFFFFF",
+				"line-dasharray": [5, 3],
+				"line-width": 1.33333
+			}
+		}, {
+			"id": "TRANSPORTATION/DRA/Seasonal/[13-14]Line",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "DRA Seasonal Roads [17 - 14]",
+			"filter": ["==", "_symbol", 0],
+			"minzoom": 13,
+			"maxzoom": 14,
+			"layout": {
+				"line-cap": "round",
+				"line-join": "round"
+			},
+			"paint": {
+				"line-color": "#CCB58F",
+				"line-width": 1.2
+			}
+		}, {
+			"id": "TRANSPORTATION/DRA/Trails/Demographic_Line",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "DRA Classified Roads [17 - 12]",
+			"filter": ["==", "_symbol", 9],
+			"minzoom": 13,
+			"layout": {
+				"line-cap": "round",
+				"line-join": "round"
+			},
+			"paint": {
+				"line-color": "#CCDEB4",
+				"line-width": {
+					"stops": [[14, 2.66667], [16, 3.33333], [18, 3.33333]]
+				}
+			}
+		}, {
+			"id": "TRANSPORTATION/DRA/Trails/Demographic_Dash",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "DRA Classified Roads [17 - 12]",
+			"filter": ["==", "_symbol", 9],
+			"minzoom": 13,
+			"layout": {
+				"line-join": "round"
+			},
+			"paint": {
+				"line-color": "#B2B2B2",
+				"line-dasharray": [3, 1],
+				"line-width": {
+					"stops": [[14, 1.06667], [16, 1.33333], [18, 1.33333]]
+				}
+			}
+		}, {
+			"id": "TRANSPORTATION/DRA/Trails/Trail",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "DRA Classified Roads [17 - 12]",
+			"filter": ["==", "_symbol", 10],
+			"minzoom": 14,
+			"layout": {
+				"line-join": "round"
+			},
+			"paint": {
+				"line-color": "#B2B2B2",
+				"line-dasharray": [3, 1],
+				"line-width": {
+					"stops": [[14, 1], [16, 1.33333], [18, 1.33333]]
+				}
+			}
+		}, {
+			"id": "TRANSPORTATION/DRA/Trails/Recreation",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "DRA Classified Roads [17 - 12]",
+			"filter": ["==", "_symbol", 11],
+			"minzoom": 14,
+			"layout": {
+				"line-join": "round"
+			},
+			"paint": {
+				"line-color": "#B2B2B2",
+				"line-dasharray": [3, 1],
+				"line-width": {
+					"stops": [[14, 1], [16, 1.33333], [18, 1.33333]]
+				}
+			}
+		}, {
+			"id": "TRANSPORTATION/DRA/Trails/Skid",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "DRA Classified Roads [17 - 12]",
+			"filter": ["==", "_symbol", 12],
+			"minzoom": 14,
+			"layout": {
+				"line-cap": "round",
+				"line-join": "round"
+			},
+			"paint": {
+				"line-color": "#CEB885",
+				"line-dasharray": [3],
+				"line-width": {
+					"stops": [[14, 1], [16, 1.33333], [18, 1.33333]]
+				}
+			}
+		}, {
+			"id": "TRANSPORTATION/DRA/Roads/Runway/Line",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "DRA Classified Roads [17 - 12]",
+			"filter": ["==", "_symbol", 13],
+			"minzoom": 11,
+			"layout": {
+				"line-cap": "round",
+				"line-join": "round"
+			},
+			"paint": {
+				"line-color": "#B2B2B2",
+				"line-width": {
+					"stops": [[11, 1.33333], [16, 4], [18, 6.66667]]
+				}
+			}
+		}, {
+			"id": "TRANSPORTATION/DRA/Ferry/[11-17]Line",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "DRA Classified Roads [17 - 12]",
+			"filter": ["==", "_symbol", 14],
+			"minzoom": 11,
+			"layout": {
+				"line-join": "round"
+			},
+			"paint": {
+				"line-color": "#6690A4",
+				"line-dasharray": [30, 5],
+				"line-width": 0.266667
+			}
+		}, {
+			"id": "TRANSPORTATION/DRA/Ferry/[4-11]Line",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "DRA Classified Roads [11 - 5]",
+			"filter": ["==", "_symbol", 4],
+			"maxzoom": 11,
+			"layout": {
+				"line-join": "round"
+			},
+			"paint": {
+				"line-color": "#6690A4",
+				"line-width": 0.266667,
+				"line-dasharray": [30, 5]
+			}
+		}, {
+			"id": "TRANSPORTATION/DRA/Roads/Local/[12-14]Line",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "DRA Classified Roads [17 - 12]",
+			"filter": ["==", "_symbol", 5],
+			"minzoom": 12,
+			"maxzoom": 14,
+			"layout": {
+				"line-cap": "round",
+				"line-join": "round"
+			},
+			"paint": {
+				"line-color": "#C9C9C9",
+				"line-width": 1.33333
+			}
+		}, {
+			"id": "TRANSPORTATION/DRA/Roads/Resource/[13-14]Line",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "DRA Classified Roads [17 - 12]",
+			"filter": ["==", "_symbol", 8],
+			"minzoom": 13,
+			"maxzoom": 14,
+			"layout": {
+				"line-cap": "round",
+				"line-join": "round"
+			},
+			"paint": {
+				"line-color": "#D9CECE",
+				"line-width": 1.33333
+			}
+		}, {
+			"id": "TRANSPORTATION/DRA/Roads/Arterial/[9-11]Line",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "DRA Classified Roads [11 - 5]",
+			"filter": ["==", "_symbol", 2],
+			"minzoom": 9,
+			"maxzoom": 11,
+			"layout": {
+				"line-cap": "round",
+				"line-join": "round"
+			},
+			"paint": {
+				"line-color": "#D9D9D9"
+			}
+		}, {
+			"id": "TRANSPORTATION/DRA/Roads/Collector/[9-11]Line",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "DRA Classified Roads [11 - 5]",
+			"filter": ["==", "_symbol", 3],
+			"minzoom": 9,
+			"maxzoom": 11,
+			"layout": {
+				"line-cap": "round",
+				"line-join": "round"
+			},
+			"paint": {
+				"line-color": "#E2E2E2",
+				"line-width": 0.666667
+			}
+		}, {
+			"id": "TRANSPORTATION/DRA/Roads/Hwy/[14-17]Outline",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "DRA Classified Roads [17 - 12]",
+			"filter": ["==", "_symbol", 0],
+			"minzoom": 14,
+			"layout": {
+				"line-cap": "round",
+				"line-join": "round"
+			},
+			"paint": {
+				"line-color": "#FEBE17",
+				"line-width": {
+					"stops": [[11, 6], [13, 6], [14, 6], [16, 10], [18, 12.6667]]
+				}
+			}
+		}, {
+			"id": "TRANSPORTATION/DRA/Roads/Ramps/HwyRamp/[14-17]Outline",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "DRA Classified Roads [17 - 12]",
+			"filter": ["==", "_symbol", 1],
+			"minzoom": 14,
+			"layout": {
+				"line-cap": "round",
+				"line-join": "round"
+			},
+			"paint": {
+				"line-color": "#FEBE17",
+				"line-width": {
+					"stops": [[14, 4], [16, 6.66667], [18, 9.33333]]
+				}
+			}
+		}, {
+			"id": "TRANSPORTATION/DRA/Roads/Ramps/Ramp/Outline",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "DRA Classified Roads [17 - 12]",
+			"filter": ["==", "_symbol", 2],
+			"minzoom": 11,
+			"layout": {
+				"line-cap": "round",
+				"line-join": "round"
+			},
+			"paint": {
+				"line-color": "#B2B2B2",
+				"line-width": {
+					"stops": [[11, 1.33333], [13, 2.66667], [14, 4], [16, 6.66667], [18, 9.33333]]
+				}
+			}
+		}, {
+			"id": "TRANSPORTATION/DRA/Roads/Arterial/[11-17]Outline",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "DRA Classified Roads [17 - 12]",
+			"filter": ["==", "_symbol", 3],
+			"minzoom": 11,
+			"layout": {
+				"line-cap": "round",
+				"line-join": "round"
+			},
+			"paint": {
+				"line-color": "#B2B2B2",
+				"line-width": {
+					"stops": [[11, 3.33333], [14, 6], [16, 10], [18, 12.6667]]
+				}
+			}
+		}, {
+			"id": "TRANSPORTATION/DRA/Roads/Collector/[11-17]Outline",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "DRA Classified Roads [17 - 12]",
+			"filter": ["==", "_symbol", 4],
+			"minzoom": 11,
+			"layout": {
+				"line-cap": "round",
+				"line-join": "round"
+			},
+			"paint": {
+				"line-color": "#B2B2B2",
+				"line-width": {
+					"stops": [[11, 3.33333], [14, 6], [16, 9.33333], [18, 12]]
+				}
+			}
+		}, {
+			"id": "TRANSPORTATION/DRA/Roads/Local/[14-17]Outline",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "DRA Classified Roads [17 - 12]",
+			"filter": ["==", "_symbol", 5],
+			"minzoom": 14,
+			"layout": {
+				"line-cap": "round",
+				"line-join": "round"
+			},
+			"paint": {
+				"line-color": "#B2B2B2",
+				"line-width": {
+					"stops": [[13, 2.66667], [14, 5.33333], [16, 8.66667], [18, 8.66667]]
+				}
+			}
+		}, {
+			"id": "TRANSPORTATION/DRA/Roads/Lanes/Outline",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "DRA Classified Roads [17 - 12]",
+			"filter": ["==", "_symbol", 6],
+			"minzoom": 13,
+			"layout": {
+				"line-cap": "round",
+				"line-join": "round"
+			},
+			"paint": {
+				"line-color": "#B2B2B2",
+				"line-width": {
+					"stops": [[13, 2], [14, 3], [16, 5], [18, 8]]
+				}
+			}
+		}, {
+			"id": "TRANSPORTATION/DRA/Roads/Driveways/Outline",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "DRA Classified Roads [17 - 12]",
+			"filter": ["==", "_symbol", 7],
+			"minzoom": 14,
+			"layout": {
+				"line-cap": "round",
+				"line-join": "bevel"
+			},
+			"paint": {
+				"line-color": "#B2B2B2",
+				"line-width": {
+					"stops": [[14, 1.33333], [16, 4], [18, 8]]
+				}
+			}
+		}, {
+			"id": "TRANSPORTATION/DRA/Roads/Resource/[14-17]Outline",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "DRA Classified Roads [17 - 12]",
+			"filter": ["==", "_symbol", 8],
+			"minzoom": 14,
+			"layout": {
+				"line-cap": "round",
+				"line-join": "round"
+			},
+			"paint": {
+				"line-color": "#B2B2B2",
+				"line-width": {
+					"stops": [[14, 2.66667], [16, 4], [18, 8]]
+				}
+			}
+		}, {
+			"id": "TRANSPORTATION/DRA/Roads/Hwy/[14-17]Centerline",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "DRA Classified Roads [17 - 12]",
+			"filter": ["==", "_symbol", 0],
+			"minzoom": 14,
+			"layout": {
+				"line-cap": "round",
+				"line-join": "round"
+			},
+			"paint": {
+				"line-color": "#FFFFFF",
+				"line-width": {
+					"stops": [[11, 4], [13, 4], [14, 4], [16, 6.66667], [18, 8.44444]]
+				}
+			}
+		}, {
+			"id": "TRANSPORTATION/DRA/Roads/Ramps/HwyRamp/[14-17]Centerline",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "DRA Classified Roads [17 - 12]",
+			"filter": ["==", "_symbol", 1],
+			"minzoom": 14,
+			"layout": {
+				"line-cap": "round",
+				"line-join": "round"
+			},
+			"paint": {
+				"line-color": "#FFFFFF",
+				"line-width": {
+					"stops": [[14, 2.4], [16, 4], [18, 5.6]]
+				}
+			}
+		}, {
+			"id": "TRANSPORTATION/DRA/Roads/Ramps/Ramp/Centerline",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "DRA Classified Roads [17 - 12]",
+			"filter": ["==", "_symbol", 2],
+			"minzoom": 11,
+			"layout": {
+				"line-cap": "round",
+				"line-join": "round"
+			},
+			"paint": {
+				"line-color": "#FFFFFF",
+				"line-width": {
+					"stops": [[11, 0.8], [13, 1.6], [14, 2.4], [16, 4], [18, 5.6]]
+				}
+			}
+		}, {
+			"id": "TRANSPORTATION/DRA/Roads/Arterial/[11-17]Centerline",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "DRA Classified Roads [17 - 12]",
+			"filter": ["==", "_symbol", 3],
+			"minzoom": 11,
+			"layout": {
+				"line-cap": "round",
+				"line-join": "round"
+			},
+			"paint": {
+				"line-color": "#FFFFFF",
+				"line-width": {
+					"stops": [[11, 2.44444], [14, 4.4], [16, 7.33333], [18, 9.28889]]
+				}
+			}
+		}, {
+			"id": "TRANSPORTATION/DRA/Roads/Collector/[11-17]Centerline",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "DRA Classified Roads [17 - 12]",
+			"filter": ["==", "_symbol", 4],
+			"minzoom": 11,
+			"layout": {
+				"line-cap": "round",
+				"line-join": "round"
+			},
+			"paint": {
+				"line-color": "#FFFFFF",
+				"line-width": {
+					"stops": [[11, 2.38095], [14, 4.28571], [16, 6.66667], [18, 8.57143]]
+				}
+			}
+		}, {
+			"id": "TRANSPORTATION/DRA/Roads/Local/[14-17]Centerline",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "DRA Classified Roads [17 - 12]",
+			"filter": ["==", "_symbol", 5],
+			"minzoom": 14,
+			"layout": {
+				"line-cap": "round",
+				"line-join": "round"
+			},
+			"paint": {
+				"line-color": "#FFFFFF",
+				"line-width": {
+					"stops": [[13, 1.84615], [14, 3.69231], [16, 6], [18, 6]]
+				}
+			}
+		}, {
+			"id": "TRANSPORTATION/DRA/Roads/Lanes/Centerline",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "DRA Classified Roads [17 - 12]",
+			"filter": ["==", "_symbol", 6],
+			"minzoom": 13,
+			"layout": {
+				"line-cap": "round"
+			},
+			"paint": {
+				"line-color": "#FFFFFF",
+				"line-width": {
+					"stops": [[13, 1.2], [14, 1.8], [16, 3], [18, 4.8]]
+				}
+			}
+		}, {
+			"id": "TRANSPORTATION/DRA/Roads/Driveways/Centerline",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "DRA Classified Roads [17 - 12]",
+			"filter": ["==", "_symbol", 7],
+			"minzoom": 14,
+			"layout": {
+				"line-cap": "round"
+			},
+			"paint": {
+				"line-color": "#D7B09E",
+				"line-width": {
+					"stops": [[14, 0.666667], [16, 2], [18, 4]]
+				}
+			}
+		}, {
+			"id": "TRANSPORTATION/DRA/Roads/Resource/[14-17]Centerline",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "DRA Classified Roads [17 - 12]",
+			"filter": ["==", "_symbol", 8],
+			"minzoom": 14,
+			"layout": {
+				"line-cap": "round",
+				"line-join": "round"
+			},
+			"paint": {
+				"line-color": "#FFFFFF",
+				"line-width": {
+					"stops": [[14, 1.33333], [16, 2], [18, 4]]
+				}
+			}
+		}, {
+			"id": "TRANSPORTATION/DRA/Roads/Hwy/[11-14]Outline",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "DRA Classified Roads [17 - 12]",
+			"filter": ["==", "_symbol", 0],
+			"minzoom": 11,
+			"maxzoom": 14,
+			"layout": {
+				"line-join": "round"
+			},
+			"paint": {
+				"line-color": "#9C9C9C",
+				"line-width": 4
+			}
+		}, {
+			"id": "TRANSPORTATION/DRA/Roads/Ramps/HwyRamp/[11-14]Outline",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "DRA Classified Roads [17 - 12]",
+			"filter": ["==", "_symbol", 1],
+			"minzoom": 11,
+			"maxzoom": 14,
+			"layout": {
+				"line-join": "round"
+			},
+			"paint": {
+				"line-color": "#9C9C9C",
+				"line-width": {
+					"stops": [[11, 1.33333], [13, 2.66667], [14, 2.66667]]
+				}
+			}
+		}, {
+			"id": "TRANSPORTATION/DRA/Roads/Hwy/[11-14]Centerline",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "DRA Classified Roads [17 - 12]",
+			"filter": ["==", "_symbol", 0],
+			"minzoom": 11,
+			"maxzoom": 14,
+			"layout": {
+				"line-cap": "round",
+				"line-join": "round"
+			},
+			"paint": {
+				"line-color": "#FEBE17",
+				"line-width": 2.33333
+			}
+		}, {
+			"id": "TRANSPORTATION/DRA/Roads/Ramps/HwyRamp/[11-14]Centerline",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "DRA Classified Roads [17 - 12]",
+			"filter": ["==", "_symbol", 1],
+			"minzoom": 11,
+			"maxzoom": 14,
+			"layout": {
+				"line-cap": "round",
+				"line-join": "round"
+			},
+			"paint": {
+				"line-color": "#FEBE17",
+				"line-width": {
+					"stops": [[11, 0.666667], [13, 1.33333], [14, 1.33333]]
+				}
+			}
+		}, {
+			"id": "TRANSPORTATION/DRA/Roads/Hwy/Sm Scale/Major Hwy/[7-11]Outline",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "DRA Classified Roads [11 - 5]",
+			"filter": ["==", "_symbol", 0],
+			"minzoom": 7,
+			"maxzoom": 11,
+			"layout": {
+				"line-join": "round"
+			},
+			"paint": {
+				"line-color": "#9C9C9C",
+				"line-width": {
+					"stops": [[3, 2.66667], [9, 2.66667], [10, 4]]
+				}
+			}
+		}, {
+			"id": "TRANSPORTATION/DRA/Roads/Hwy/Sm Scale/Minor Hwy/[7-9]Outline",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "DRA Classified Roads [11 - 5]",
+			"filter": ["==", "_symbol", 1],
+			"minzoom": 7,
+			"maxzoom": 9,
+			"layout": {
+				"line-join": "round"
+			},
+			"paint": {
+				"line-color": "#B2B2B2",
+				"line-width": 2.66667
+			}
+		}, {
+			"id": "TRANSPORTATION/DRA/Roads/Hwy/Sm Scale/Minor Hwy/[9-11]Outline",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "DRA Classified Roads [11 - 5]",
+			"filter": ["==", "_symbol", 1],
+			"minzoom": 9,
+			"maxzoom": 11,
+			"layout": {
+				"line-join": "round"
+			},
+			"paint": {
+				"line-color": "#9C9C9C",
+				"line-width": {
+					"stops": [[3, 2.66667], [9, 2.66667], [10, 4]]
+				}
+			}
+		}, {
+			"id": "TRANSPORTATION/DRA/Roads/Hwy/Sm Scale/Major Hwy/[5-7]Line",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "DRA Classified Roads [11 - 5]",
+			"filter": ["==", "_symbol", 0],
+			"maxzoom": 7,
+			"layout": {
+				"line-join": "round"
+			},
+			"paint": {
+				"line-color": "#BFAC99",
+				"line-width": 2
+			}
+		}, {
+			"id": "TRANSPORTATION/DRA/Roads/Hwy/Sm Scale/Major Hwy/[7-11]Centerline",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "DRA Classified Roads [11 - 5]",
+			"filter": ["==", "_symbol", 0],
+			"minzoom": 7,
+			"maxzoom": 11,
+			"layout": {
+				"line-cap": "round",
+				"line-join": "round"
+			},
+			"paint": {
+				"line-color": "#FEBE17",
+				"line-width": {
+					"stops": [[3, 1.55556], [9, 1.55556], [10, 2.33333]]
+				}
+			}
+		}, {
+			"id": "TRANSPORTATION/DRA/Roads/Hwy/Sm Scale/Minor Hwy/[7-9]Centerline",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "DRA Classified Roads [11 - 5]",
+			"filter": ["==", "_symbol", 1],
+			"minzoom": 7,
+			"maxzoom": 9,
+			"layout": {
+				"line-cap": "round",
+				"line-join": "round"
+			},
+			"paint": {
+				"line-color": "#FEEDCB",
+				"line-width": 0.666667
+			}
+		}, {
+			"id": "TRANSPORTATION/DRA/Roads/Hwy/Sm Scale/Minor Hwy/[9-11]Centerline",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "DRA Classified Roads [11 - 5]",
+			"filter": ["==", "_symbol", 1],
+			"minzoom": 9,
+			"maxzoom": 11,
+			"layout": {
+				"line-cap": "round",
+				"line-join": "round"
+			},
+			"paint": {
+				"line-color": "#FEBE17",
+				"line-width": {
+					"stops": [[3, 1.55556], [9, 1.55556], [10, 2.33333]]
+				}
+			}
+		}, {
+			"id": "TRANSPORTATION/DRA/Trails/Overpass/TO",
+			"type": "symbol",
+			"source": "esri",
+			"source-layer": "DRA Overpasses [17 - 15]",
+			"filter": ["==", "_symbol", 11],
+			"minzoom": 14,
+			"layout": {
+				"symbol-placement": "line",
+				"icon-image": "TRANSPORTATION/DRA Overpasses [17 - 15]/Trail TO",
+				"icon-rotate": -90,
+				"icon-rotation-alignment": "map",
+				"icon-allow-overlap": true
+			},
+			"paint": {
+				"icon-color": "#B2B2B2"
+			}
+		}, {
+			"id": "TRANSPORTATION/DRA/Trails/Overpass/OO",
+			"type": "symbol",
+			"source": "esri",
+			"source-layer": "DRA Overpasses [17 - 15]",
+			"filter": ["==", "_symbol", 10],
+			"minzoom": 14,
+			"layout": {
+				"symbol-placement": "line",
+				"icon-image": "TRANSPORTATION/DRA Overpasses [17 - 15]/Trail OO",
+				"icon-rotate": -90,
+				"icon-rotation-alignment": "map",
+				"icon-allow-overlap": true
+			},
+			"paint": {
+				"icon-color": "#B2B2B2"
+			}
+		}, {
+			"id": "TRANSPORTATION/DRA/Trails/Overpass/FO",
+			"type": "symbol",
+			"source": "esri",
+			"source-layer": "DRA Overpasses [17 - 15]",
+			"filter": ["==", "_symbol", 9],
+			"minzoom": 14,
+			"layout": {
+				"symbol-placement": "line",
+				"icon-image": "TRANSPORTATION/DRA Overpasses [17 - 15]/Trail FO",
+				"icon-rotate": -90,
+				"icon-rotation-alignment": "map",
+				"icon-allow-overlap": true
+			},
+			"paint": {
+				"icon-color": "#B2B2B2"
+			}
+		}, {
+			"id": "TRANSPORTATION/DRA/Roads/Hwy/Overpass/Outline",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "DRA Overpasses [17 - 15]",
+			"filter": ["==", "_symbol", 0],
+			"minzoom": 14,
+			"layout": {
+				"line-join": "round"
+			},
+			"paint": {
+				"line-color": "#FEBE17",
+				"line-width": {
+					"stops": [[14, 6], [16, 10], [18, 12.6667]]
+				}
+			}
+		}, {
+			"id": "TRANSPORTATION/DRA/Roads/Ramps/HwyRamp/Overpass/Outline",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "DRA Overpasses [17 - 15]",
+			"filter": ["==", "_symbol", 1],
+			"minzoom": 14,
+			"layout": {
+				"line-join": "round"
+			},
+			"paint": {
+				"line-color": "#FEBE17",
+				"line-width": {
+					"stops": [[14, 4], [16, 6.66667], [18, 9.33333]]
+				}
+			}
+		}, {
+			"id": "TRANSPORTATION/DRA/Roads/Ramps/Overpass/Outline",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "DRA Overpasses [17 - 15]",
+			"filter": ["==", "_symbol", 2],
+			"minzoom": 14,
+			"layout": {
+				"line-join": "round"
+			},
+			"paint": {
+				"line-color": "#B2B2B2",
+				"line-width": {
+					"stops": [[14, 4], [16, 6.66667], [18, 9.33333]]
+				}
+			}
+		}, {
+			"id": "TRANSPORTATION/DRA/Roads/Arterial/Overpass/Outline",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "DRA Overpasses [17 - 15]",
+			"filter": ["==", "_symbol", 3],
+			"minzoom": 14,
+			"layout": {
+				"line-join": "round"
+			},
+			"paint": {
+				"line-color": "#B2B2B2",
+				"line-width": {
+					"stops": [[14, 6], [16, 10], [18, 12.6667]]
+				}
+			}
+		}, {
+			"id": "TRANSPORTATION/DRA/Roads/Collector/Overpass/Outline",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "DRA Overpasses [17 - 15]",
+			"filter": ["==", "_symbol", 4],
+			"minzoom": 14,
+			"layout": {
+				"line-join": "round"
+			},
+			"paint": {
+				"line-color": "#B2B2B2",
+				"line-width": {
+					"stops": [[14, 6], [16, 9.33333], [18, 12]]
+				}
+			}
+		}, {
+			"id": "TRANSPORTATION/DRA/Roads/Local/Overpass/Outline",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "DRA Overpasses [17 - 15]",
+			"filter": ["==", "_symbol", 5],
+			"minzoom": 14,
+			"layout": {
+				"line-join": "round"
+			},
+			"paint": {
+				"line-color": "#B2B2B2",
+				"line-width": {
+					"stops": [[14, 6], [16, 8.66667], [18, 12]]
+				}
+			}
+		}, {
+			"id": "TRANSPORTATION/DRA/Roads/Lanes/Overpass/Outline",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "DRA Overpasses [17 - 15]",
+			"filter": ["==", "_symbol", 6],
+			"minzoom": 14,
+			"layout": {
+				"line-join": "round"
+			},
+			"paint": {
+				"line-color": "#B2B2B2",
+				"line-width": {
+					"stops": [[14, 3], [16, 5], [18, 8]]
+				}
+			}
+		}, {
+			"id": "TRANSPORTATION/DRA/Roads/Driveways/Overpass/Outline",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "DRA Overpasses [17 - 15]",
+			"filter": ["==", "_symbol", 7],
+			"minzoom": 14,
+			"layout": {
+				"line-join": "bevel"
+			},
+			"paint": {
+				"line-color": "#B2B2B2",
+				"line-width": {
+					"stops": [[14, 1.33333], [16, 4], [18, 8]]
+				}
+			}
+		}, {
+			"id": "TRANSPORTATION/DRA/Roads/Resource/Overpass/Outline",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "DRA Overpasses [17 - 15]",
+			"filter": ["==", "_symbol", 8],
+			"minzoom": 14,
+			"layout": {
+				"line-join": "round"
+			},
+			"paint": {
+				"line-color": "#B2B2B2",
+				"line-width": {
+					"stops": [[14, 2.66667], [16, 4], [18, 8]]
+				}
+			}
+		}, {
+			"id": "TRANSPORTATION/DRA/Roads/Resource/Overpass/Centerline",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "DRA Overpasses [17 - 15]",
+			"filter": ["==", "_symbol", 8],
+			"minzoom": 14,
+			"layout": {
+				"line-cap": "round",
+				"line-join": "round"
+			},
+			"paint": {
+				"line-color": "#FFFFFF",
+				"line-width": {
+					"stops": [[14, 1.33333], [16, 2], [18, 4]]
+				}
+			}
+		}, {
+			"id": "TRANSPORTATION/DRA/Roads/Driveways/Overpass/Centerline",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "DRA Overpasses [17 - 15]",
+			"filter": ["==", "_symbol", 7],
+			"minzoom": 14,
+			"layout": {
+				"line-cap": "round"
+			},
+			"paint": {
+				"line-color": "#D7B09E",
+				"line-width": {
+					"stops": [[14, 0.666667], [16, 2], [18, 4]]
+				}
+			}
+		}, {
+			"id": "TRANSPORTATION/DRA/Roads/Lanes/Overpass/Centerline",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "DRA Overpasses [17 - 15]",
+			"filter": ["==", "_symbol", 6],
+			"minzoom": 14,
+			"layout": {
+				"line-cap": "round"
+			},
+			"paint": {
+				"line-color": "#FFFFFF",
+				"line-width": {
+					"stops": [[14, 1.8], [16, 3], [18, 4.8]]
+				}
+			}
+		}, {
+			"id": "TRANSPORTATION/DRA/Roads/Local/Overpass/Centerline",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "DRA Overpasses [17 - 15]",
+			"filter": ["==", "_symbol", 5],
+			"minzoom": 14,
+			"layout": {
+				"line-cap": "round",
+				"line-join": "round"
+			},
+			"paint": {
+				"line-color": "#FFFFFF",
+				"line-width": {
+					"stops": [[14, 4.15385], [16, 6], [18, 8.30769]]
+				}
+			}
+		}, {
+			"id": "TRANSPORTATION/DRA/Roads/Collector/Overpass/Centerline",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "DRA Overpasses [17 - 15]",
+			"filter": ["==", "_symbol", 4],
+			"minzoom": 14,
+			"layout": {
+				"line-cap": "round",
+				"line-join": "round"
+			},
+			"paint": {
+				"line-color": "#FFFFFF",
+				"line-width": {
+					"stops": [[14, 4.28571], [16, 6.66667], [18, 8.57143]]
+				}
+			}
+		}, {
+			"id": "TRANSPORTATION/DRA/Roads/Arterial/Overpass/Centerline",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "DRA Overpasses [17 - 15]",
+			"filter": ["==", "_symbol", 3],
+			"minzoom": 14,
+			"layout": {
+				"line-cap": "round",
+				"line-join": "round"
+			},
+			"paint": {
+				"line-color": "#FFFFFF",
+				"line-width": {
+					"stops": [[14, 4.4], [16, 7.33333], [18, 9.28889]]
+				}
+			}
+		}, {
+			"id": "TRANSPORTATION/DRA/Roads/Ramps/Overpass/Centerline",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "DRA Overpasses [17 - 15]",
+			"filter": ["==", "_symbol", 2],
+			"minzoom": 14,
+			"layout": {
+				"line-cap": "round",
+				"line-join": "round"
+			},
+			"paint": {
+				"line-color": "#FFFFFF",
+				"line-width": {
+					"stops": [[14, 2.4], [16, 4], [18, 5.6]]
+				}
+			}
+		}, {
+			"id": "TRANSPORTATION/DRA/Roads/Ramps/HwyRamp/Overpass/Centerline",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "DRA Overpasses [17 - 15]",
+			"filter": ["==", "_symbol", 1],
+			"minzoom": 14,
+			"layout": {
+				"line-cap": "round",
+				"line-join": "round"
+			},
+			"paint": {
+				"line-color": "#FFFFFF",
+				"line-width": {
+					"stops": [[14, 2.4], [16, 4], [18, 5.6]]
+				}
+			}
+		}, {
+			"id": "TRANSPORTATION/DRA/Roads/Hwy/Overpass/Centerline",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "DRA Overpasses [17 - 15]",
+			"filter": ["==", "_symbol", 0],
+			"minzoom": 14,
+			"layout": {
+				"line-cap": "round",
+				"line-join": "round"
+			},
+			"paint": {
+				"line-color": "#FFFFFF",
+				"line-width": {
+					"stops": [[14, 4], [16, 6.66667], [18, 8.44444]]
+				}
+			}
+		}, {
+			"id": "TRANSPORTATION/Skytrain/Other_Line",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "Skytrain [17-11]",
+			"filter": ["==", "_symbol", 4],
+			"minzoom": 10,
+			"layout": {
+				"line-join": "round"
+			},
+			"paint": {
+				"line-color": "#91A591",
+				"line-width": 1.06667
+			}
+		}, {
+			"id": "TRANSPORTATION/Skytrain/Other_Hatch",
+			"type": "symbol",
+			"source": "esri",
+			"source-layer": "Skytrain [17-11]",
+			"filter": ["==", "_symbol", 4],
+			"minzoom": 10,
+			"layout": {
+				"symbol-placement": "line",
+				"icon-image": "TRANSPORTATION/Skytrain [17-11]/<all other values>/0",
+				"icon-rotate": -90,
+				"symbol-spacing": 20,
+				"icon-rotation-alignment": "map",
+				"icon-allow-overlap": true
+			},
+			"paint": {
+				"icon-color": "#91A591"
+			}
+		}, {
+			"id": "TRANSPORTATION/Skytrain/Evergreen_Line",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "Skytrain [17-11]",
+			"filter": ["==", "_symbol", 1],
+			"minzoom": 10,
+			"layout": {
+				"line-join": "round"
+			},
+			"paint": {
+				"line-color": "#71945A",
+				"line-width": 1.06667
+			}
+		}, {
+			"id": "TRANSPORTATION/Skytrain/Evergreen_Hatch",
+			"type": "symbol",
+			"source": "esri",
+			"source-layer": "Skytrain [17-11]",
+			"filter": ["==", "_symbol", 1],
+			"minzoom": 10,
+			"layout": {
+				"symbol-placement": "line",
+				"icon-image": "TRANSPORTATION/Skytrain [17-11]/Evergreen Line/0",
+				"icon-rotate": -90,
+				"symbol-spacing": 20,
+				"icon-rotation-alignment": "map",
+				"icon-allow-overlap": true
+			},
+			"paint": {
+				"icon-color": "#71945A"
+			}
+		}, {
+			"id": "TRANSPORTATION/Skytrain/Canada_Line",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "Skytrain [17-11]",
+			"filter": ["==", "_symbol", 0],
+			"minzoom": 10,
+			"layout": {
+				"line-join": "round"
+			},
+			"paint": {
+				"line-color": "#4D8391",
+				"line-width": 1.06667
+			}
+		}, {
+			"id": "TRANSPORTATION/Skytrain/Canada_Hatch",
+			"type": "symbol",
+			"source": "esri",
+			"source-layer": "Skytrain [17-11]",
+			"filter": ["==", "_symbol", 0],
+			"minzoom": 10,
+			"layout": {
+				"symbol-placement": "line",
+				"icon-image": "TRANSPORTATION/Skytrain [17-11]/Canada Line/0",
+				"icon-rotate": -90,
+				"symbol-spacing": 20,
+				"icon-rotation-alignment": "map",
+				"icon-allow-overlap": true
+			},
+			"paint": {
+				"icon-color": "#4D8391"
+			}
+		}, {
+			"id": "TRANSPORTATION/Skytrain/Millenium_Line",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "Skytrain [17-11]",
+			"filter": ["==", "_symbol", 3],
+			"minzoom": 10,
+			"layout": {
+				"line-join": "round"
+			},
+			"paint": {
+				"line-color": "#CCA300",
+				"line-width": 1.33333
+			}
+		}, {
+			"id": "TRANSPORTATION/Skytrain/Millenium_Hatch",
+			"type": "symbol",
+			"source": "esri",
+			"source-layer": "Skytrain [17-11]",
+			"filter": ["==", "_symbol", 3],
+			"minzoom": 10,
+			"layout": {
+				"symbol-placement": "line",
+				"icon-image": "TRANSPORTATION/Skytrain [17-11]/Millenium Line/0",
+				"icon-rotate": -90,
+				"symbol-spacing": 20,
+				"icon-rotation-alignment": "map",
+				"icon-allow-overlap": true
+			},
+			"paint": {
+				"icon-color": "#CCA300"
+			}
+		}, {
+			"id": "TRANSPORTATION/Skytrain/Expo_Line",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "Skytrain [17-11]",
+			"filter": ["==", "_symbol", 2],
+			"minzoom": 10,
+			"layout": {
+				"line-join": "round"
+			},
+			"paint": {
+				"line-color": "#5B6D96",
+				"line-width": 1.06667
+			}
+		}, {
+			"id": "TRANSPORTATION/Skytrain/Expo_Hatch",
+			"type": "symbol",
+			"source": "esri",
+			"source-layer": "Skytrain [17-11]",
+			"filter": ["==", "_symbol", 2],
+			"minzoom": 10,
+			"layout": {
+				"symbol-placement": "line",
+				"icon-image": "TRANSPORTATION/Skytrain [17-11]/Expo Line/0",
+				"icon-rotate": -90,
+				"symbol-spacing": 20,
+				"icon-rotation-alignment": "map",
+				"icon-allow-overlap": true
+			},
+			"paint": {
+				"icon-color": "#5B6D96"
+			}
+		}, {
+			"id": "BOUNDARIES AND PLACES/Boundary/International_Outline",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "Political Boundary",
+			"filter": ["==", "_symbol", 0],
+			"layout": {
+				"line-cap": "round",
+				"line-join": "round"
+			},
+			"paint": {
+				"line-color": "rgba(130,130,130,0.75)",
+				"line-width": 2
+			}
+		}, {
+			"id": "BOUNDARIES AND PLACES/Boundary/Provincial_Outline",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "Political Boundary",
+			"filter": ["==", "_symbol", 1],
+			"layout": {
+				"line-cap": "round",
+				"line-join": "round"
+			},
+			"paint": {
+				"line-color": "rgba(204,204,204,0.5)",
+				"line-width": 4
+			}
+		}, {
+			"id": "BOUNDARIES AND PLACES/Boundary/Provincial_Centerline",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "Political Boundary",
+			"filter": ["==", "_symbol", 1],
+			"layout": {
+				"line-join": "round"
+			},
+			"paint": {
+				"line-color": "#4E4E4E",
+				"line-dasharray": [10, 5],
+				"line-width": 0.533333
+			}
+		}, {
+			"id": "BOUNDARIES AND PLACES/Boundary/State",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "Political Boundary",
+			"filter": ["==", "_symbol", 2],
+			"layout": {
+				"line-join": "round"
+			},
+			"paint": {
+				"line-color": "#4E4E4E",
+				"line-dasharray": [10, 10],
+				"line-width": 0.533333
+			}
+		}, {
+			"id": "TOPO/label/PhysiographicAreas/Label Geom",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "(L) Physiographic (Line) [6 - 14]",
+			"minzoom": 5,
+			"maxzoom": 14,
+			"layout": {
+				"line-cap": "round",
+				"line-join": "round"
+			},
+			"paint": {
+				"line-color": "rgba(181,207,226,0.02)",
+				"line-width": 0.0133333
+			}
+		}, {
+			"id": "TOPO/label/PhysiographicAreas/Point",
+			"type": "symbol",
+			"source": "esri",
+			"source-layer": "(L) Physiographic (Point) [6 - 14]",
+			"minzoom": 6,
+			"maxzoom": 14,
+			"layout": {
+				"visibility": "visible",
+				"text-size": 18.6667,
+				"icon-size": 1,
+				"text-font": ["Aboriginal Serif Bold"],
+				"text-max-width": 10,
+				"text-line-height": 1.2,
+				"text-padding": 2,
+				"text-letter-spacing": 1,
+				"text-allow-overlap": false,
+				"text-ignore-placement": false,
+				"text-justify": "center",
+				"text-rotation-alignment": "auto",
+				"text-optional": true,
+				"icon-allow-overlap": true,
+				"icon-optional": false,
+				"icon-ignore-placement": false,
+				"icon-rotation-alignment": "map",
+				"symbol-placement": "point",
+				"symbol-avoid-edges": false,
+				"symbol-spacing": 250,
+				"text-anchor": "center",
+				"icon-anchor": "center",
+				"icon-offset": [0, 0],
+				"text-offset": [0, 0],
+				"icon-rotate": 0,
+				"text-rotate": 0,
+				"text-max-angle": 45,
+				"text-field": "{_name}",
+				"icon-image": "TOPOGRAPHIC/(L) Physiographic (Point) [6 - 14]",
+				"text-transform": "none"
+			},
+			"paint": {
+				"icon-opacity": 1,
+				"text-opacity": 1,
+				"text-color": "rgba(140,115,84,0.4)",
+				"text-halo-width": 0,
+				"text-halo-blur": 0,
+				"text-translate-anchor": "map",
+				"icon-translate-anchor": "map",
+				"icon-translate": [0, 0],
+				"text-translate": [0, 0]
+			}
+		}, {
+			"id": "TOPO/label/PhysiographicAreas/Line",
+			"type": "symbol",
+			"source": "esri",
+			"source-layer": "(L) Physiographic (Line) [6 - 14]/label",
+			"minzoom": 5,
+			"maxzoom": 14,
+			"layout": {
+				"visibility": "visible",
+				"text-size": 18.6667,
+				"icon-size": 1,
+				"text-font": ["Aboriginal Serif Bold"],
+				"text-max-width": 10,
+				"text-line-height": 1.2,
+				"text-padding": 2,
+				"text-letter-spacing": 0.65,
+				"text-allow-overlap": false,
+				"text-ignore-placement": false,
+				"text-justify": "center",
+				"text-rotation-alignment": "auto",
+				"text-optional": true,
+				"icon-allow-overlap": false,
+				"icon-optional": false,
+				"icon-ignore-placement": false,
+				"icon-rotation-alignment": "auto",
+				"symbol-placement": "line",
+				"symbol-avoid-edges": false,
+				"symbol-spacing": 1000,
+				"text-anchor": "center",
+				"icon-anchor": "center",
+				"icon-offset": [0, 0],
+				"text-offset": [0, 0],
+				"icon-rotate": 0,
+				"text-rotate": 0,
+				"text-max-angle": 45,
+				"text-field": "{_name}",
+				"text-transform": "none"
+			},
+			"paint": {
+				"icon-opacity": 1,
+				"text-opacity": 1,
+				"text-color": "rgba(140,115,84,0.4)",
+				"text-halo-width": 0,
+				"text-halo-blur": 0,
+				"text-translate-anchor": "map",
+				"icon-translate-anchor": "map",
+				"icon-translate": [0, 0],
+				"text-translate": [0, 0]
+			}
+		}, {
+			"id": "PARKS/label/Additional/Geom",
+			"type": "circle",
+			"source": "esri",
+			"source-layer": "(L) Additional [17 - 7]",
+			"minzoom": 6,
+			"layout": {},
+			"paint": {
+				"circle-radius": 0.666667,
+				"circle-color": "rgba(181,207,226,0.01)",
+				"circle-stroke-color": "rgba(0,0,0,0)"
+			}
+		}, {
+			"id": "PARKS/label/National",
+			"type": "symbol",
+			"source": "esri",
+			"source-layer": "(L) National [13 -9]",
+			"minzoom": 8,
+			"maxzoom": 13,
+			"layout": {
+				"visibility": "visible",
+				"text-size": 12,
+				"icon-size": 1,
+				"text-font": ["Aboriginal Sans Regular"],
+				"text-max-width": 10,
+				"text-line-height": 1.2,
+				"text-padding": 2,
+				"text-letter-spacing": 0.15,
+				"text-allow-overlap": false,
+				"text-ignore-placement": false,
+				"text-justify": "center",
+				"text-rotation-alignment": "auto",
+				"text-optional": true,
+				"icon-allow-overlap": false,
+				"icon-optional": false,
+				"icon-ignore-placement": false,
+				"icon-rotation-alignment": "auto",
+				"symbol-placement": "point",
+				"symbol-avoid-edges": false,
+				"symbol-spacing": 250,
+				"text-anchor": "center",
+				"icon-anchor": "center",
+				"icon-offset": [0, 0],
+				"text-offset": [0, 0],
+				"icon-rotate": 0,
+				"text-rotate": 0,
+				"text-max-angle": 45,
+				"text-field": "{_name}",
+				"text-transform": "none"
+			},
+			"paint": {
+				"icon-opacity": 1,
+				"text-opacity": 0.7,
+				"text-color": "#66734C",
+				"text-halo-width": 0,
+				"text-halo-blur": 0,
+				"text-translate-anchor": "map",
+				"icon-translate-anchor": "map",
+				"icon-translate": [0, 0],
+				"text-translate": [0, 0]
+			}
+		}, {
+			"id": "PARKS/label/Provincial",
+			"type": "symbol",
+			"source": "esri",
+			"source-layer": "(L) Provincial [17 - 9]",
+			"minzoom": 7,
+			"layout": {
+				"visibility": "visible",
+				"text-size": 12,
+				"icon-size": 1,
+				"text-font": ["Aboriginal Sans Regular"],
+				"text-max-width": 10,
+				"text-line-height": 1.2,
+				"text-padding": 2,
+				"text-letter-spacing": 0.15,
+				"text-allow-overlap": false,
+				"text-ignore-placement": false,
+				"text-justify": "center",
+				"text-rotation-alignment": "auto",
+				"text-optional": true,
+				"icon-allow-overlap": false,
+				"icon-optional": false,
+				"icon-ignore-placement": false,
+				"icon-rotation-alignment": "auto",
+				"symbol-placement": "point",
+				"symbol-avoid-edges": false,
+				"symbol-spacing": 250,
+				"text-anchor": "center",
+				"icon-anchor": "center",
+				"icon-offset": [0, 0],
+				"text-offset": [0, 0],
+				"icon-rotate": 0,
+				"text-rotate": 0,
+				"text-max-angle": 45,
+				"text-field": "{_name}",
+				"text-transform": "none"
+			},
+			"paint": {
+				"icon-opacity": 1,
+				"text-opacity": 0.7,
+				"text-color": "#557842",
+				"text-halo-width": 0,
+				"text-halo-blur": 0,
+				"text-translate-anchor": "map",
+				"icon-translate-anchor": "map",
+				"icon-translate": [0, 0],
+				"text-translate": [0, 0]
+			}
+		}, {
+			"id": "PARKS/label/Conservancies",
+			"type": "symbol",
+			"source": "esri",
+			"source-layer": "(L) Prov Conservancies [17 - 9]",
+			"minzoom": 8,
+			"layout": {
+				"visibility": "visible",
+				"text-size": 12,
+				"icon-size": 1,
+				"text-font": ["Aboriginal Sans Regular"],
+				"text-max-width": 10,
+				"text-line-height": 1.2,
+				"text-padding": 2,
+				"text-letter-spacing": 0.15,
+				"text-allow-overlap": false,
+				"text-ignore-placement": false,
+				"text-justify": "center",
+				"text-rotation-alignment": "auto",
+				"text-optional": true,
+				"icon-allow-overlap": false,
+				"icon-optional": false,
+				"icon-ignore-placement": false,
+				"icon-rotation-alignment": "auto",
+				"symbol-placement": "point",
+				"symbol-avoid-edges": false,
+				"symbol-spacing": 250,
+				"text-anchor": "center",
+				"icon-anchor": "center",
+				"icon-offset": [0, 0],
+				"text-offset": [0, 0],
+				"icon-rotate": 0,
+				"text-rotate": 0,
+				"text-max-angle": 45,
+				"text-field": "{_name}",
+				"text-transform": "none"
+			},
+			"paint": {
+				"icon-opacity": 1,
+				"text-opacity": 0.7,
+				"text-color": "#40786A",
+				"text-halo-width": 0,
+				"text-halo-blur": 0,
+				"text-translate-anchor": "map",
+				"icon-translate-anchor": "map",
+				"icon-translate": [0, 0],
+				"text-translate": [0, 0]
+			}
+		}, {
+			"id": "PARKS/label/Additional/Marine",
+			"type": "symbol",
+			"source": "esri",
+			"source-layer": "(L) Additional [17 - 7]",
+			"filter": ["==", "_label_class1", 1],
+			"minzoom": 6,
+			"layout": {
+				"text-font": ["BC Sans Regular"],
+				"text-size": 12.6667,
+				"text-letter-spacing": 0.15,
+				"text-field": "{_name1}",
+				"text-optional": true
+			},
+			"paint": {
+				"text-color": "#5680BF",
+				"text-halo-color": "#B5CFE2",
+				"text-halo-width": 2.66667
+			}
+		}, {
+			"id": "PARKS/label/Additional/Terrestrial",
+			"type": "symbol",
+			"source": "esri",
+			"source-layer": "(L) Additional [17 - 7]",
+			"filter": ["==", "_label_class", 0],
+			"minzoom": 6,
+			"layout": {
+				"text-font": ["BC Sans Regular"],
+				"text-size": 12.6667,
+				"text-letter-spacing": 0.15,
+				"text-field": "{_name}",
+				"text-optional": true
+			},
+			"paint": {
+				"text-color": "#66734C"
+			}
+		}, {
+			"id": "PARKS/label/Regional/Single",
+			"type": "symbol",
+			"source": "esri",
+			"source-layer": "(L) Regional (Single) [17 - 10]",
+			"minzoom": 9,
+			"layout": {
+				"visibility": "visible",
+				"text-size": 12.3333,
+				"icon-size": 1,
+				"text-font": ["Aboriginal Sans Regular"],
+				"text-max-width": 10,
+				"text-line-height": 1.2,
+				"text-padding": 2,
+				"text-letter-spacing": 0.15,
+				"text-allow-overlap": false,
+				"text-ignore-placement": false,
+				"text-justify": "center",
+				"text-rotation-alignment": "auto",
+				"text-optional": true,
+				"icon-allow-overlap": false,
+				"icon-optional": false,
+				"icon-ignore-placement": false,
+				"icon-rotation-alignment": "auto",
+				"symbol-placement": "point",
+				"symbol-avoid-edges": false,
+				"symbol-spacing": 250,
+				"text-anchor": "center",
+				"icon-anchor": "center",
+				"icon-offset": [0, 0],
+				"text-offset": [0, 0],
+				"icon-rotate": 0,
+				"text-rotate": 0,
+				"text-max-angle": 45,
+				"text-field": "{_name}",
+				"text-transform": "none"
+			},
+			"paint": {
+				"icon-opacity": 1,
+				"text-opacity": 1,
+				"text-color": "#568575",
+				"text-halo-width": 0,
+				"text-halo-blur": 0,
+				"text-translate-anchor": "map",
+				"icon-translate-anchor": "map",
+				"icon-translate": [0, 0],
+				"text-translate": [0, 0]
+			}
+		}, {
+			"id": "PARKS/label/Regional/Multipart Outside",
+			"type": "symbol",
+			"source": "esri",
+			"source-layer": "(L) Regional (Multi Outside) [17 - 12]",
+			"minzoom": 11,
+			"layout": {
+				"visibility": "visible",
+				"text-size": 12.3333,
+				"icon-size": 1,
+				"text-font": ["Aboriginal Sans Regular"],
+				"text-max-width": 10,
+				"text-line-height": 1.2,
+				"text-padding": 2,
+				"text-letter-spacing": 0.15,
+				"text-allow-overlap": false,
+				"text-ignore-placement": false,
+				"text-justify": "center",
+				"text-rotation-alignment": "auto",
+				"text-optional": true,
+				"icon-allow-overlap": false,
+				"icon-optional": false,
+				"icon-ignore-placement": false,
+				"icon-rotation-alignment": "auto",
+				"symbol-placement": "point",
+				"symbol-avoid-edges": false,
+				"symbol-spacing": 250,
+				"text-anchor": "center",
+				"icon-anchor": "center",
+				"icon-offset": [0, 0],
+				"text-offset": [0, 0],
+				"icon-rotate": 0,
+				"text-rotate": 0,
+				"text-max-angle": 45,
+				"text-field": "{_name}",
+				"text-transform": "none"
+			},
+			"paint": {
+				"icon-opacity": 1,
+				"text-opacity": 1,
+				"text-color": "#568575",
+				"text-halo-width": 0,
+				"text-halo-blur": 0,
+				"text-translate-anchor": "map",
+				"icon-translate-anchor": "map",
+				"icon-translate": [0, 0],
+				"text-translate": [0, 0]
+			}
+		}, {
+			"id": "PARKS/label/Regional/Multipart Inside",
+			"type": "symbol",
+			"source": "esri",
+			"source-layer": "(L) Regional (Multi Inside) [17 - 10]",
+			"minzoom": 12,
+			"layout": {
+				"visibility": "visible",
+				"text-size": 12.3333,
+				"icon-size": 1,
+				"text-font": ["Aboriginal Sans Regular"],
+				"text-max-width": 10,
+				"text-line-height": 1.2,
+				"text-padding": 2,
+				"text-letter-spacing": 0.15,
+				"text-allow-overlap": false,
+				"text-ignore-placement": false,
+				"text-justify": "center",
+				"text-rotation-alignment": "auto",
+				"text-optional": true,
+				"icon-allow-overlap": false,
+				"icon-optional": false,
+				"icon-ignore-placement": false,
+				"icon-rotation-alignment": "auto",
+				"symbol-placement": "point",
+				"symbol-avoid-edges": false,
+				"symbol-spacing": 250,
+				"text-anchor": "center",
+				"icon-anchor": "center",
+				"icon-offset": [0, 0],
+				"text-offset": [0, 0],
+				"icon-rotate": 0,
+				"text-rotate": 0,
+				"text-max-angle": 45,
+				"text-field": "{_name}",
+				"text-transform": "none"
+			},
+			"paint": {
+				"icon-opacity": 1,
+				"text-opacity": 1,
+				"text-color": "#568575",
+				"text-halo-width": 0,
+				"text-halo-blur": 0,
+				"text-translate-anchor": "map",
+				"icon-translate-anchor": "map",
+				"icon-translate": [0, 0],
+				"text-translate": [0, 0]
+			}
+		}, {
+			"id": "TOPO/label/Islands/Multipart Islands",
+			"type": "symbol",
+			"source": "esri",
+			"source-layer": "(L) Islands (Multi) [17 - 6]",
+			"minzoom": 5,
+			"layout": {
+				"visibility": "visible",
+				"text-size": 14.6667,
+				"icon-size": 1,
+				"text-font": ["Aboriginal Serif Bold"],
+				"text-max-width": 10,
+				"text-line-height": 1.2,
+				"text-padding": 2,
+				"text-letter-spacing": 0.25,
+				"text-allow-overlap": false,
+				"text-ignore-placement": false,
+				"text-justify": "center",
+				"text-rotation-alignment": "auto",
+				"text-optional": true,
+				"icon-allow-overlap": false,
+				"icon-optional": false,
+				"icon-ignore-placement": false,
+				"icon-rotation-alignment": "auto",
+				"symbol-placement": "point",
+				"symbol-avoid-edges": false,
+				"symbol-spacing": 250,
+				"text-anchor": "center",
+				"icon-anchor": "center",
+				"icon-offset": [0, 0],
+				"text-offset": [0, 0],
+				"icon-rotate": 0,
+				"text-rotate": 0,
+				"text-max-angle": 45,
+				"text-field": "{_name}",
+				"text-transform": "none"
+			},
+			"paint": {
+				"icon-opacity": 1,
+				"text-opacity": 1,
+				"text-color": "rgba(104,104,104,0.6)",
+				"text-halo-width": 0,
+				"text-halo-blur": 0,
+				"text-translate-anchor": "map",
+				"icon-translate-anchor": "map",
+				"icon-translate": [0, 0],
+				"text-translate": [0, 0]
+			}
+		}, {
+			"id": "TOPO/label/Islands/Singlepart Islands",
+			"type": "symbol",
+			"source": "esri",
+			"source-layer": "(L) Islands (Single) [17 - 6]",
+			"minzoom": 5,
+			"layout": {
+				"visibility": "visible",
+				"text-size": 12,
+				"icon-size": 1,
+				"text-font": ["Aboriginal Serif Bold"],
+				"text-max-width": 10,
+				"text-line-height": 1.2,
+				"text-padding": 2,
+				"text-letter-spacing": 0.25,
+				"text-allow-overlap": false,
+				"text-ignore-placement": false,
+				"text-justify": "center",
+				"text-rotation-alignment": "auto",
+				"text-optional": true,
+				"icon-allow-overlap": false,
+				"icon-optional": false,
+				"icon-ignore-placement": false,
+				"icon-rotation-alignment": "auto",
+				"symbol-placement": "point",
+				"symbol-avoid-edges": false,
+				"symbol-spacing": 250,
+				"text-anchor": "center",
+				"icon-anchor": "center",
+				"icon-offset": [0, 0],
+				"text-offset": [0, 0],
+				"icon-rotate": 0,
+				"text-rotate": 0,
+				"text-max-angle": 45,
+				"text-field": "{_name}",
+				"text-transform": "none"
+			},
+			"paint": {
+				"icon-opacity": 1,
+				"text-opacity": 1,
+				"text-color": "rgba(104,104,104,0.6)",
+				"text-halo-width": 0,
+				"text-halo-blur": 0,
+				"text-translate-anchor": "map",
+				"icon-translate-anchor": "map",
+				"icon-translate": [0, 0],
+				"text-translate": [0, 0]
+			}
+		}, {
+			"id": "WATER/label/Bays & Channels/Label Geom",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "(L) Bays, Channels (Line) [15 - 6]",
+			"minzoom": 5,
+			"maxzoom": 15,
+			"layout": {
+				"line-cap": "round",
+				"line-join": "round"
+			},
+			"paint": {
+				"line-color": "rgba(181,207,226,0.02)",
+				"line-width": 0.0133333
+			}
+		}, {
+			"id": "WATER/label/Bays & Channels/Line",
+			"type": "symbol",
+			"source": "esri",
+			"source-layer": "(L) Bays, Channels (Line) [15 - 6]/label",
+			"minzoom": 5,
+			"maxzoom": 15,
+			"layout": {
+				"visibility": "visible",
+				"text-size": 12,
+				"icon-size": 1,
+				"text-font": ["Aboriginal Serif Italic"],
+				"text-max-width": 10,
+				"text-line-height": 1.2,
+				"text-padding": 2,
+				"text-letter-spacing": 0.15,
+				"text-allow-overlap": true,
+				"text-ignore-placement": false,
+				"text-justify": "center",
+				"text-rotation-alignment": "auto",
+				"text-optional": true,
+				"icon-allow-overlap": false,
+				"icon-optional": false,
+				"icon-ignore-placement": false,
+				"icon-rotation-alignment": "auto",
+				"symbol-placement": "line",
+				"symbol-avoid-edges": false,
+				"symbol-spacing": 1000,
+				"text-anchor": "center",
+				"icon-anchor": "center",
+				"icon-offset": [0, 0],
+				"text-offset": [0, 0],
+				"icon-rotate": 0,
+				"text-rotate": 0,
+				"text-max-angle": 45,
+				"text-field": "{_name}",
+				"text-transform": "none"
+			},
+			"paint": {
+				"icon-opacity": 1,
+				"text-opacity": 1,
+				"text-color": "#4B64AA",
+				"text-halo-width": 0,
+				"text-halo-blur": 0,
+				"text-translate-anchor": "map",
+				"icon-translate-anchor": "map",
+				"icon-translate": [0, 0],
+				"text-translate": [0, 0]
+			}
+		}, {
+			"id": "WATER/label/Streams/Label Geom",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "(L) Streams (Line) [17 - 6]",
+			"minzoom": 5,
+			"layout": {
+				"line-cap": "round",
+				"line-join": "round"
+			},
+			"paint": {
+				"line-color": "rgba(181,207,226,0.01)",
+				"line-width": 0.666667,
+				"line-opacity": 0.498
+			}
+		}, {
+			"id": "WATER/label/Streams/Line",
+			"type": "symbol",
+			"source": "esri",
+			"source-layer": "(L) Streams (Line) [17 - 6]/label",
+			"minzoom": 15,
+			"layout": {
+				"visibility": "visible",
+				"text-size": 11,
+				"icon-size": 1,
+				"text-font": ["Aboriginal Serif Italic"],
+				"text-max-width": 10,
+				"text-line-height": 1.2,
+				"text-padding": 2,
+				"text-letter-spacing": 0.15,
+				"text-allow-overlap": false,
+				"text-ignore-placement": false,
+				"text-justify": "center",
+				"text-rotation-alignment": "auto",
+				"text-optional": true,
+				"icon-allow-overlap": false,
+				"icon-optional": false,
+				"icon-ignore-placement": false,
+				"icon-rotation-alignment": "auto",
+				"symbol-placement": "line",
+				"symbol-avoid-edges": false,
+				"symbol-spacing": 1000,
+				"text-anchor": "center",
+				"icon-anchor": "center",
+				"icon-offset": [0, 0],
+				"text-offset": [0, 0],
+				"icon-rotate": 0,
+				"text-rotate": 0,
+				"text-max-angle": 45,
+				"text-field": "{_name}",
+				"text-transform": "none"
+			},
+			"paint": {
+				"icon-opacity": 1,
+				"text-opacity": 1,
+				"text-color": "#5680BF",
+				"text-halo-color": "rgba(239,231,221,0.75)",
+				"text-halo-width": 1.33333,
+				"text-halo-blur": 0,
+				"text-translate-anchor": "map",
+				"icon-translate-anchor": "map",
+				"icon-translate": [0, 0],
+				"text-translate": [0, 0]
+			}
+		}, {
+			"id": "WATER/label/Lakes/Label Geom",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "(L) Lakes (Single) [17 - 11]",
+			"minzoom": 10,
+			"layout": {
+				"line-cap": "round",
+				"line-join": "round"
+			},
+			"paint": {
+				"line-color": "rgba(181,207,226,0.01)",
+				"line-width": 0.0133333
+			}
+		}, {
+			"id": "WATER/label/Lakes/Line",
+			"type": "symbol",
+			"source": "esri",
+			"source-layer": "(L) Lakes (Single Line) [15 - 8]/label",
+			"minzoom": 7,
+			"maxzoom": 15,
+			"layout": {
+				"visibility": "visible",
+				"text-size": 12,
+				"icon-size": 1,
+				"text-font": ["Aboriginal Serif Italic"],
+				"text-max-width": 10,
+				"text-line-height": 1.2,
+				"text-padding": 2,
+				"text-letter-spacing": 0.15,
+				"text-allow-overlap": false,
+				"text-ignore-placement": false,
+				"text-justify": "center",
+				"text-rotation-alignment": "auto",
+				"text-optional": true,
+				"icon-allow-overlap": false,
+				"icon-optional": false,
+				"icon-ignore-placement": false,
+				"icon-rotation-alignment": "auto",
+				"symbol-placement": "line",
+				"symbol-avoid-edges": false,
+				"symbol-spacing": 1000,
+				"text-anchor": "center",
+				"icon-anchor": "center",
+				"icon-offset": [0, 0],
+				"text-offset": [0, 0],
+				"icon-rotate": 0,
+				"text-rotate": 0,
+				"text-max-angle": 45,
+				"text-field": "{_name}",
+				"text-transform": "none"
+			},
+			"paint": {
+				"icon-opacity": 1,
+				"text-opacity": 1,
+				"text-color": "#5B8C8C",
+				"text-halo-width": 0,
+				"text-halo-blur": 0,
+				"text-translate-anchor": "map",
+				"icon-translate-anchor": "map",
+				"icon-translate": [0, 0],
+				"text-translate": [0, 0]
+			}
+		}, {
+			"id": "WATER/label/Lakes/Point",
+			"type": "symbol",
+			"source": "esri",
+			"source-layer": "(L) Lakes (Single) [17 - 11]/label",
+			"minzoom": 10,
+			"layout": {
+				"visibility": "visible",
+				"text-size": 12,
+				"icon-size": 1,
+				"text-font": ["Aboriginal Serif Italic"],
+				"text-max-width": 10,
+				"text-line-height": 1.2,
+				"text-padding": 2,
+				"text-letter-spacing": 0.15,
+				"text-allow-overlap": false,
+				"text-ignore-placement": false,
+				"text-justify": "center",
+				"text-rotation-alignment": "auto",
+				"text-optional": true,
+				"icon-allow-overlap": false,
+				"icon-optional": false,
+				"icon-ignore-placement": false,
+				"icon-rotation-alignment": "auto",
+				"symbol-placement": "point",
+				"symbol-avoid-edges": false,
+				"symbol-spacing": 250,
+				"text-anchor": "center",
+				"icon-anchor": "center",
+				"icon-offset": [0, 0],
+				"text-offset": [0, 0],
+				"icon-rotate": 0,
+				"text-rotate": 0,
+				"text-max-angle": 45,
+				"text-field": "{_name}",
+				"text-transform": "none"
+			},
+			"paint": {
+				"icon-opacity": 1,
+				"text-opacity": 1,
+				"text-color": "#5B8C8C",
+				"text-halo-width": 0,
+				"text-halo-blur": 0,
+				"text-translate-anchor": "map",
+				"icon-translate-anchor": "map",
+				"icon-translate": [0, 0],
+				"text-translate": [0, 0]
+			}
+		}, {
+			"id": "WATER/label/Lakes/Groups Outside Point",
+			"type": "symbol",
+			"source": "esri",
+			"source-layer": "(L) Lakes (Multi Outside) [16 - 10]",
+			"minzoom": 9,
+			"layout": {
+				"visibility": "visible",
+				"text-size": 12,
+				"icon-size": 1,
+				"text-font": ["Aboriginal Serif Italic"],
+				"text-max-width": 10,
+				"text-line-height": 1.2,
+				"text-padding": 2,
+				"text-letter-spacing": 0.15,
+				"text-allow-overlap": false,
+				"text-ignore-placement": false,
+				"text-justify": "center",
+				"text-rotation-alignment": "auto",
+				"text-optional": true,
+				"icon-allow-overlap": false,
+				"icon-optional": false,
+				"icon-ignore-placement": false,
+				"icon-rotation-alignment": "auto",
+				"symbol-placement": "point",
+				"symbol-avoid-edges": false,
+				"symbol-spacing": 250,
+				"text-anchor": "center",
+				"icon-anchor": "center",
+				"icon-offset": [0, 0],
+				"text-offset": [0, 0],
+				"icon-rotate": 0,
+				"text-rotate": 0,
+				"text-max-angle": 45,
+				"text-field": "{_name}",
+				"text-transform": "none"
+			},
+			"paint": {
+				"icon-opacity": 1,
+				"text-opacity": 1,
+				"text-color": "#5B8C8C",
+				"text-halo-width": 0,
+				"text-halo-blur": 0,
+				"text-translate-anchor": "map",
+				"icon-translate-anchor": "map",
+				"icon-translate": [0, 0],
+				"text-translate": [0, 0]
+			}
+		}, {
+			"id": "WATER/label/Lakes/Groups Inside Point",
+			"type": "symbol",
+			"source": "esri",
+			"source-layer": "(L) Lakes (Multi Inside) [17 - 12]",
+			"minzoom": 11,
+			"layout": {
+				"visibility": "visible",
+				"text-size": 12,
+				"icon-size": 1,
+				"text-font": ["Aboriginal Serif Italic"],
+				"text-max-width": 10,
+				"text-line-height": 1.2,
+				"text-padding": 2,
+				"text-letter-spacing": 0.15,
+				"text-allow-overlap": false,
+				"text-ignore-placement": false,
+				"text-justify": "center",
+				"text-rotation-alignment": "auto",
+				"text-optional": true,
+				"icon-allow-overlap": false,
+				"icon-optional": false,
+				"icon-ignore-placement": false,
+				"icon-rotation-alignment": "auto",
+				"symbol-placement": "point",
+				"symbol-avoid-edges": false,
+				"symbol-spacing": 250,
+				"text-anchor": "center",
+				"icon-anchor": "center",
+				"icon-offset": [0, 0],
+				"text-offset": [0, 0],
+				"icon-rotate": 0,
+				"text-rotate": 0,
+				"text-max-angle": 45,
+				"text-field": "{_name}",
+				"text-transform": "none"
+			},
+			"paint": {
+				"icon-opacity": 1,
+				"text-opacity": 1,
+				"text-color": "#5B8C8C",
+				"text-halo-width": 0,
+				"text-halo-blur": 0,
+				"text-translate-anchor": "map",
+				"icon-translate-anchor": "map",
+				"icon-translate": [0, 0],
+				"text-translate": [0, 0]
+			}
+		}, {
+			"id": "TRANSPORTATION/label/Skytrain/Millenium Line",
+			"type": "symbol",
+			"source": "esri",
+			"source-layer": "Skytrain [17-11]/label",
+			"filter": ["==", "_label_class", 3],
+			"minzoom": 13,
+			"layout": {
+				"visibility": "visible",
+				"text-size": 11.6667,
+				"icon-size": 1,
+				"text-font": ["Aboriginal Sans Regular"],
+				"text-max-width": 10,
+				"text-line-height": 1.2,
+				"text-padding": 2,
+				"text-letter-spacing": 0,
+				"text-allow-overlap": false,
+				"text-ignore-placement": false,
+				"text-justify": "center",
+				"text-rotation-alignment": "auto",
+				"text-optional": true,
+				"icon-allow-overlap": false,
+				"icon-optional": false,
+				"icon-ignore-placement": false,
+				"icon-rotation-alignment": "auto",
+				"symbol-placement": "line",
+				"symbol-avoid-edges": false,
+				"symbol-spacing": 1000,
+				"text-anchor": "center",
+				"icon-anchor": "center",
+				"icon-offset": [0, 0],
+				"text-offset": [0, 0.2],
+				"icon-rotate": 0,
+				"text-rotate": 0,
+				"text-max-angle": 45,
+				"text-field": "{_name}",
+				"text-transform": "none"
+			},
+			"paint": {
+				"icon-opacity": 1,
+				"text-opacity": 1,
+				"text-color": "#B38F00",
+				"text-halo-color": "rgba(239,231,221,0.75)",
+				"text-halo-width": 2.66667,
+				"text-halo-blur": 0,
+				"text-translate-anchor": "map",
+				"icon-translate-anchor": "map",
+				"icon-translate": [0, 0],
+				"text-translate": [0, 0]
+			}
+		}, {
+			"id": "TRANSPORTATION/label/Skytrain/Expo Line",
+			"type": "symbol",
+			"source": "esri",
+			"source-layer": "Skytrain [17-11]/label",
+			"filter": ["==", "_label_class", 2],
+			"minzoom": 13,
+			"layout": {
+				"visibility": "visible",
+				"text-size": 11.6667,
+				"icon-size": 1,
+				"text-font": ["Aboriginal Sans Regular"],
+				"text-max-width": 10,
+				"text-line-height": 1.2,
+				"text-padding": 2,
+				"text-letter-spacing": 0,
+				"text-allow-overlap": false,
+				"text-ignore-placement": false,
+				"text-justify": "center",
+				"text-rotation-alignment": "auto",
+				"text-optional": true,
+				"icon-allow-overlap": false,
+				"icon-optional": false,
+				"icon-ignore-placement": false,
+				"icon-rotation-alignment": "auto",
+				"symbol-placement": "line",
+				"symbol-avoid-edges": false,
+				"symbol-spacing": 1000,
+				"text-anchor": "center",
+				"icon-anchor": "center",
+				"icon-offset": [0, 0],
+				"text-offset": [0, 0.2],
+				"icon-rotate": 0,
+				"text-rotate": 0,
+				"text-max-angle": 45,
+				"text-field": "{_name}",
+				"text-transform": "none"
+			},
+			"paint": {
+				"icon-opacity": 1,
+				"text-opacity": 1,
+				"text-color": "#5B6D96",
+				"text-halo-color": "rgba(239,231,221,0.75)",
+				"text-halo-width": 2.66667,
+				"text-halo-blur": 0,
+				"text-translate-anchor": "map",
+				"icon-translate-anchor": "map",
+				"icon-translate": [0, 0],
+				"text-translate": [0, 0]
+			}
+		}, {
+			"id": "TRANSPORTATION/label/Skytrain/Evergreen Line",
+			"type": "symbol",
+			"source": "esri",
+			"source-layer": "Skytrain [17-11]/label",
+			"filter": ["==", "_label_class", 1],
+			"minzoom": 13,
+			"layout": {
+				"visibility": "visible",
+				"text-size": 11.6667,
+				"icon-size": 1,
+				"text-font": ["Aboriginal Sans Regular"],
+				"text-max-width": 10,
+				"text-line-height": 1.2,
+				"text-padding": 2,
+				"text-letter-spacing": 0,
+				"text-allow-overlap": false,
+				"text-ignore-placement": false,
+				"text-justify": "center",
+				"text-rotation-alignment": "auto",
+				"text-optional": true,
+				"icon-allow-overlap": false,
+				"icon-optional": false,
+				"icon-ignore-placement": false,
+				"icon-rotation-alignment": "auto",
+				"symbol-placement": "line",
+				"symbol-avoid-edges": false,
+				"symbol-spacing": 1000,
+				"text-anchor": "center",
+				"icon-anchor": "center",
+				"icon-offset": [0, 0],
+				"text-offset": [0, 0.2],
+				"icon-rotate": 0,
+				"text-rotate": 0,
+				"text-max-angle": 45,
+				"text-field": "{_name}",
+				"text-transform": "none"
+			},
+			"paint": {
+				"icon-opacity": 1,
+				"text-opacity": 1,
+				"text-color": "#698A54",
+				"text-halo-color": "rgba(239,231,221,0.75)",
+				"text-halo-width": 2.66667,
+				"text-halo-blur": 0,
+				"text-translate-anchor": "map",
+				"icon-translate-anchor": "map",
+				"icon-translate": [0, 0],
+				"text-translate": [0, 0]
+			}
+		}, {
+			"id": "TRANSPORTATION/label/Skytrain/Canada Line",
+			"type": "symbol",
+			"source": "esri",
+			"source-layer": "Skytrain [17-11]/label",
+			"filter": ["==", "_label_class", 0],
+			"minzoom": 13,
+			"layout": {
+				"visibility": "visible",
+				"text-size": 11.6667,
+				"icon-size": 1,
+				"text-font": ["Aboriginal Sans Regular"],
+				"text-max-width": 10,
+				"text-line-height": 1.2,
+				"text-padding": 2,
+				"text-letter-spacing": 0,
+				"text-allow-overlap": false,
+				"text-ignore-placement": false,
+				"text-justify": "center",
+				"text-rotation-alignment": "auto",
+				"text-optional": true,
+				"icon-allow-overlap": false,
+				"icon-optional": false,
+				"icon-ignore-placement": false,
+				"icon-rotation-alignment": "auto",
+				"symbol-placement": "line",
+				"symbol-avoid-edges": false,
+				"symbol-spacing": 1000,
+				"text-anchor": "center",
+				"icon-anchor": "center",
+				"icon-offset": [0, 0],
+				"text-offset": [0, 0.2],
+				"icon-rotate": 0,
+				"text-rotate": 0,
+				"text-max-angle": 45,
+				"text-field": "{_name}",
+				"text-transform": "none"
+			},
+			"paint": {
+				"icon-opacity": 1,
+				"text-opacity": 1,
+				"text-color": "#497C8A",
+				"text-halo-color": "rgba(239,231,221,0.75)",
+				"text-halo-width": 2.66667,
+				"text-halo-blur": 0,
+				"text-translate-anchor": "map",
+				"icon-translate-anchor": "map",
+				"icon-translate": [0, 0],
+				"text-translate": [0, 0]
+			}
+		}, {
+			"id": "TRANSPORTATION/label/Hwy Shields/Non BC/Label Geom",
+			"type": "line",
+			"source": "esri",
+			"source-layer": "(L) Outside BC Hwy Symbols [14 - 7]",
+			"minzoom": 6,
+			"maxzoom": 14,
+			"layout": {
+				"line-cap": "round",
+				"line-join": "round"
+			},
+			"paint": {
+				"line-color": "rgba(255,255,255,0.01)",
+				"line-width": 0.666667
+			}
+		}, {
+			"id": "TRANSPORTATION/label/Hwy Shields/Non BC/Canada Shield",
+			"type": "symbol",
+			"source": "esri",
+			"source-layer": "(L) Outside BC Hwy Symbols [14 - 7]/label",
+			"filter": ["all", ["==", "_label_class", 3], ["==", "$type", "Point"]],
+			"minzoom": 6,
+			"maxzoom": 14,
+			"layout": {
+				"text-font": ["BC Sans Regular"],
+				"text-size": 9.33333,
+				"text-field": "{_name}",
+				"icon-image": "TRANSPORTATION/(L) Outside BC Hwy Symbols [14 - 7]/Other Canada",
+				"icon-keep-upright": true
+			},
+			"paint": {
+				"text-color": "#343434"
+			}
+		}, {
+			"id": "TRANSPORTATION/label/Hwy Shields/Non BC/Trans Canada 1",
+			"type": "symbol",
+			"source": "esri",
+			"source-layer": "(L) Outside BC Hwy Symbols [14 - 7]/label",
+			"filter": ["all", ["==", "_label_class", 2], ["==", "$type", "Point"]],
+			"minzoom": 6,
+			"maxzoom": 14,
+			"layout": {
+				"text-font": ["Arial Regular"],
+				"text-size": 10.6667,
+				"text-field": "{_name}",
+				"icon-image": "TRANSPORTATION/(L) Outside BC Hwy Symbols [14 - 7]/Trans Canada 1",
+				"icon-keep-upright": true
+			},
+			"paint": {
+				"text-color": "rgba(0,0,0,0.02)"
+			}
+		}, {
+			"id": "TRANSPORTATION/label/Hwy Shields/Non BC/US Interstate",
+			"type": "symbol",
+			"source": "esri",
+			"source-layer": "(L) Outside BC Hwy Symbols [14 - 7]/label",
+			"filter": ["all", ["==", "_label_class", 1], ["==", "$type", "Point"]],
+			"minzoom": 6,
+			"maxzoom": 14,
+			"layout": {
+				"text-font": ["BC Sans Regular"],
+				"text-size": 9.33333,
+				"text-offset": [0, 0.285714],
+				"text-field": "{_name}",
+				"icon-image": "TRANSPORTATION/(L) Outside BC Hwy Symbols [14 - 7]/US Interstate",
+				"icon-keep-upright": true,
+				"icon-offset": [0, 2]
+			},
+			"paint": {
+				"text-color": "#FFFFFF"
+			}
+		}, {
+			"id": "TRANSPORTATION/label/Hwy Shields/Non BC/US Shield",
+			"type": "symbol",
+			"source": "esri",
+			"source-layer": "(L) Outside BC Hwy Symbols [14 - 7]/label",
+			"filter": ["all", ["==", "_label_class", 0], ["==", "$type", "Point"]],
+			"minzoom": 6,
+			"maxzoom": 14,
+			"layout": {
+				"text-font": ["BC Sans Regular"],
+				"text-size": 9.33333,
+				"text-field": "{_name}",
+				"icon-image": "TRANSPORTATION/(L) Outside BC Hwy Symbols [14 - 7]/US Hwy",
+				"icon-keep-upright": true
+			},
+			"paint": {
+				"text-color": "#343434"
+			}
+		}, {
+			"id": "TRANSPORTATION/label/Hwy Shields/DRA/(R3) Hwy 1",
+			"type": "symbol",
+			"source": "esri",
+			"source-layer": "(L) DRA Hwy Symbols [14 - 7]/label",
+			"filter": ["all", ["==", "_label_class", 14], ["==", "$type", "Point"]],
+			"minzoom": 9,
+			"maxzoom": 14,
+			"layout": {
+				"text-font": ["Arial Regular"],
+				"text-size": 10.6667,
+				"text-field": "{_name}",
+				"text-allow-overlap": true,
+				"icon-image": "TRANSPORTATION/(L) DRA Hwy Symbols [14 - 7]/(R3) Hwy 1",
+				"icon-keep-upright": true
+			},
+			"paint": {
+				"text-color": "rgba(0,0,0,0.02)"
+			}
+		}, {
+			"id": "TRANSPORTATION/label/Hwy Shields/DRA/(R3) Hwy 3",
+			"type": "symbol",
+			"source": "esri",
+			"source-layer": "(L) DRA Hwy Symbols [14 - 7]/label",
+			"filter": ["all", ["==", "_label_class", 13], ["==", "$type", "Point"]],
+			"minzoom": 9,
+			"maxzoom": 14,
+			"layout": {
+				"text-font": ["Arial Bold"],
+				"text-size": 12,
+				"text-letter-spacing": 0.01,
+				"text-field": "{_name}",
+				"icon-image": "TRANSPORTATION/(L) DRA Hwy Symbols [14 - 7]/(R3) Hwy 3",
+				"icon-keep-upright": true
+			},
+			"paint": {
+				"text-color": "rgba(0,0,0,0.02)"
+			}
+		}, {
+			"id": "TRANSPORTATION/label/Hwy Shields/DRA/(R3) Hwy 5",
+			"type": "symbol",
+			"source": "esri",
+			"source-layer": "(L) DRA Hwy Symbols [14 - 7]/label",
+			"filter": ["all", ["==", "_label_class", 12], ["==", "$type", "Point"]],
+			"minzoom": 9,
+			"maxzoom": 14,
+			"layout": {
+				"text-font": ["Arial Bold"],
+				"text-size": 12,
+				"text-letter-spacing": 0.01,
+				"text-field": "{_name}",
+				"icon-image": "TRANSPORTATION/(L) DRA Hwy Symbols [14 - 7]/(R3) Hwy 5",
+				"icon-keep-upright": true
+			},
+			"paint": {
+				"text-color": "rgba(0,0,0,0.02)"
+			}
+		}, {
+			"id": "TRANSPORTATION/label/Hwy Shields/DRA/(R3) Other >2",
+			"type": "symbol",
+			"source": "esri",
+			"source-layer": "(L) DRA Hwy Symbols [14 - 7]/label",
+			"filter": ["all", ["==", "_label_class", 11], ["==", "$type", "Point"]],
+			"minzoom": 9,
+			"maxzoom": 14,
+			"layout": {
+				"text-font": ["Arial Narrow"],
+				"text-size": 10,
+				"text-field": "{_name}",
+				"icon-image": "TRANSPORTATION/(L) DRA Hwy Symbols [14 - 7]/(R3) Other >2",
+				"icon-keep-upright": true
+			},
+			"paint": {
+				"text-color": "#004DA8"
+			}
+		}, {
+			"id": "TRANSPORTATION/label/Hwy Shields/DRA/(R3) Other < 3",
+			"type": "symbol",
+			"source": "esri",
+			"source-layer": "(L) DRA Hwy Symbols [14 - 7]/label",
+			"filter": ["all", ["==", "_label_class", 10], ["==", "$type", "Point"]],
+			"minzoom": 9,
+			"maxzoom": 14,
+			"layout": {
+				"text-font": ["Arial Narrow"],
+				"text-size": 10,
+				"text-letter-spacing": 0.01,
+				"text-field": "{_name}",
+				"icon-image": "TRANSPORTATION/(L) DRA Hwy Symbols [14 - 7]/(R3) Other < 3",
+				"icon-keep-upright": true
+			},
+			"paint": {
+				"text-color": "#004DA8"
+			}
+		}, {
+			"id": "TRANSPORTATION/label/Hwy Shields/DRA/(R2) Hwy 1",
+			"type": "symbol",
+			"source": "esri",
+			"source-layer": "(L) DRA Hwy Symbols [14 - 7]/label",
+			"filter": ["all", ["==", "_label_class", 9], ["==", "$type", "Point"]],
+			"minzoom": 9,
+			"maxzoom": 14,
+			"layout": {
+				"text-font": ["Arial Regular"],
+				"text-size": 10.6667,
+				"text-field": "{_name}",
+				"text-allow-overlap": true,
+				"icon-image": "TRANSPORTATION/(L) DRA Hwy Symbols [14 - 7]/(R2) Hwy 1",
+				"icon-keep-upright": true
+			},
+			"paint": {
+				"text-color": "rgba(0,0,0,0.02)"
+			}
+		}, {
+			"id": "TRANSPORTATION/label/Hwy Shields/DRA/(R2) Hwy 3",
+			"type": "symbol",
+			"source": "esri",
+			"source-layer": "(L) DRA Hwy Symbols [14 - 7]/label",
+			"filter": ["all", ["==", "_label_class", 8], ["==", "$type", "Point"]],
+			"minzoom": 9,
+			"maxzoom": 14,
+			"layout": {
+				"text-font": ["Arial Bold"],
+				"text-size": 12,
+				"text-letter-spacing": 0.01,
+				"text-field": "{_name}",
+				"icon-image": "TRANSPORTATION/(L) DRA Hwy Symbols [14 - 7]/(R2) Hwy 3",
+				"icon-keep-upright": true
+			},
+			"paint": {
+				"text-color": "rgba(0,0,0,0.02)"
+			}
+		}, {
+			"id": "TRANSPORTATION/label/Hwy Shields/DRA/(R2) Hwy 5",
+			"type": "symbol",
+			"source": "esri",
+			"source-layer": "(L) DRA Hwy Symbols [14 - 7]/label",
+			"filter": ["all", ["==", "_label_class", 7], ["==", "$type", "Point"]],
+			"minzoom": 9,
+			"maxzoom": 14,
+			"layout": {
+				"text-font": ["Arial Bold"],
+				"text-size": 12,
+				"text-letter-spacing": 0.01,
+				"text-field": "{_name}",
+				"icon-image": "TRANSPORTATION/(L) DRA Hwy Symbols [14 - 7]/(R2) Hwy 5",
+				"icon-keep-upright": true
+			},
+			"paint": {
+				"text-color": "rgba(0,0,0,0.02)"
+			}
+		}, {
+			"id": "TRANSPORTATION/label/Hwy Shields/DRA/(R2) Other >2",
+			"type": "symbol",
+			"source": "esri",
+			"source-layer": "(L) DRA Hwy Symbols [14 - 7]/label",
+			"filter": ["all", ["==", "_label_class", 6], ["==", "$type", "Point"]],
+			"minzoom": 9,
+			"maxzoom": 14,
+			"layout": {
+				"text-font": ["Arial Narrow"],
+				"text-size": 10,
+				"text-field": "{_name}",
+				"icon-image": "TRANSPORTATION/(L) DRA Hwy Symbols [14 - 7]/(R2) Other >2",
+				"icon-keep-upright": true
+			},
+			"paint": {
+				"text-color": "#004DA8"
+			}
+		}, {
+			"id": "TRANSPORTATION/label/Hwy Shields/DRA/(R2) Other < 3",
+			"type": "symbol",
+			"source": "esri",
+			"source-layer": "(L) DRA Hwy Symbols [14 - 7]/label",
+			"filter": ["all", ["==", "_label_class", 5], ["==", "$type", "Point"]],
+			"minzoom": 9,
+			"maxzoom": 14,
+			"layout": {
+				"text-font": ["Arial Narrow"],
+				"text-size": 10,
+				"text-letter-spacing": 0.01,
+				"text-field": "{_name}",
+				"icon-image": "TRANSPORTATION/(L) DRA Hwy Symbols [14 - 7]/(R2) Other < 3",
+				"icon-keep-upright": true
+			},
+			"paint": {
+				"text-color": "#004DA8"
+			}
+		}, {
+			"id": "TRANSPORTATION/label/Hwy Shields/DRA/(R1) Hwy 1",
+			"type": "symbol",
+			"source": "esri",
+			"source-layer": "(L) DRA Hwy Symbols [14 - 7]/label",
+			"filter": ["all", ["==", "_label_class", 4], ["==", "$type", "Point"]],
+			"minzoom": 6,
+			"maxzoom": 14,
+			"layout": {
+				"text-font": ["Arial Regular"],
+				"text-size": 10.6667,
+				"text-field": "{_name}",
+				"text-allow-overlap": true,
+				"icon-image": "TRANSPORTATION/(L) DRA Hwy Symbols [14 - 7]/(R1) Hwy 1",
+				"icon-keep-upright": true
+			},
+			"paint": {
+				"text-color": "rgba(0,0,0,0.02)"
+			}
+		}, {
+			"id": "TRANSPORTATION/label/Hwy Shields/DRA/(R1) Hwy 3",
+			"type": "symbol",
+			"source": "esri",
+			"source-layer": "(L) DRA Hwy Symbols [14 - 7]/label",
+			"filter": ["all", ["==", "_label_class", 3], ["==", "$type", "Point"]],
+			"minzoom": 6,
+			"maxzoom": 14,
+			"layout": {
+				"text-font": ["Arial Bold"],
+				"text-size": 12,
+				"text-letter-spacing": 0.01,
+				"text-field": "{_name}",
+				"icon-image": "TRANSPORTATION/(L) DRA Hwy Symbols [14 - 7]/(R1) Hwy 3",
+				"icon-keep-upright": true
+			},
+			"paint": {
+				"text-color": "rgba(0,0,0,0.02)"
+			}
+		}, {
+			"id": "TRANSPORTATION/label/Hwy Shields/DRA/(R1) Hwy 5",
+			"type": "symbol",
+			"source": "esri",
+			"source-layer": "(L) DRA Hwy Symbols [14 - 7]/label",
+			"filter": ["all", ["==", "_label_class", 2], ["==", "$type", "Point"]],
+			"minzoom": 6,
+			"maxzoom": 14,
+			"layout": {
+				"text-font": ["Arial Bold"],
+				"text-size": 12,
+				"text-letter-spacing": 0.01,
+				"text-field": "{_name}",
+				"icon-image": "TRANSPORTATION/(L) DRA Hwy Symbols [14 - 7]/(R1) Hwy 5",
+				"icon-keep-upright": true
+			},
+			"paint": {
+				"text-color": "rgba(0,0,0,0.02)"
+			}
+		}, {
+			"id": "TRANSPORTATION/label/Hwy Shields/DRA/(R1) Other > 2",
+			"type": "symbol",
+			"source": "esri",
+			"source-layer": "(L) DRA Hwy Symbols [14 - 7]/label",
+			"filter": ["all", ["==", "_label_class", 1], ["==", "$type", "Point"]],
+			"minzoom": 6,
+			"maxzoom": 14,
+			"layout": {
+				"text-font": ["Arial Narrow"],
+				"text-size": 10,
+				"text-field": "{_name}",
+				"icon-image": "TRANSPORTATION/(L) DRA Hwy Symbols [14 - 7]/(R1) Other > 2",
+				"icon-keep-upright": true
+			},
+			"paint": {
+				"text-color": "#004DA8"
+			}
+		}, {
+			"id": "TRANSPORTATION/label/Hwy Shields/DRA/(R1) Other < 3",
+			"type": "symbol",
+			"source": "esri",
+			"source-layer": "(L) DRA Hwy Symbols [14 - 7]/label",
+			"filter": ["all", ["==", "_label_class", 0], ["==", "$type", "Point"]],
+			"minzoom": 6,
+			"maxzoom": 14,
+			"layout": {
+				"text-font": ["Arial Narrow"],
+				"text-size": 10,
+				"text-letter-spacing": 0.01,
+				"text-field": "{_name}",
+				"icon-image": "TRANSPORTATION/(L) DRA Hwy Symbols [14 - 7]/(R1) Other < 3",
+				"icon-keep-upright": true
+			},
+			"paint": {
+				"text-color": "#004DA8"
+			}
+		}, {
+			"id": "TRANSPORTATION/label/Road Names/Ferry",
+			"type": "symbol",
+			"source": "esri",
+			"source-layer": "(L) DRA Road Names [17 - 10]/label",
+			"filter": ["==", "_label_class", 2],
+			"minzoom": 9,
+			"layout": {
+				"visibility": "visible",
+				"text-size": 11,
+				"icon-size": 1,
+				"text-font": ["Aboriginal Sans Regular"],
+				"text-max-width": 10,
+				"text-line-height": 1.2,
+				"text-padding": 2,
+				"text-letter-spacing": 0.35,
+				"text-allow-overlap": false,
+				"text-ignore-placement": false,
+				"text-justify": "center",
+				"text-rotation-alignment": "auto",
+				"text-optional": true,
+				"icon-allow-overlap": false,
+				"icon-optional": false,
+				"icon-ignore-placement": false,
+				"icon-rotation-alignment": "auto",
+				"symbol-placement": "line",
+				"symbol-avoid-edges": false,
+				"symbol-spacing": 1000,
+				"text-anchor": "center",
+				"icon-anchor": "center",
+				"icon-offset": [0, 0],
+				"text-offset": [0, 0.2],
+				"icon-rotate": 0,
+				"text-rotate": 0,
+				"text-max-angle": 45,
+				"text-field": "{_name}",
+				"text-transform": "none"
+			},
+			"paint": {
+				"icon-opacity": 1,
+				"text-opacity": 1,
+				"text-color": "#2A637D",
+				"text-halo-width": 0,
+				"text-halo-blur": 0,
+				"text-translate-anchor": "map",
+				"icon-translate-anchor": "map",
+				"icon-translate": [0, 0],
+				"text-translate": [0, 0]
+			}
+		}, {
+			"id": "TRANSPORTATION/label/Road Names/Trail",
+			"type": "symbol",
+			"source": "esri",
+			"source-layer": "(L) DRA Road Names [17 - 10]/label",
+			"filter": ["==", "_label_class", 5],
+			"minzoom": 9,
+			"layout": {
+				"visibility": "visible",
+				"text-size": 11,
+				"icon-size": 1,
+				"text-font": ["Aboriginal Sans Regular"],
+				"text-max-width": 10,
+				"text-line-height": 1.2,
+				"text-padding": 2,
+				"text-letter-spacing": 0.1,
+				"text-allow-overlap": false,
+				"text-ignore-placement": false,
+				"text-justify": "center",
+				"text-rotation-alignment": "auto",
+				"text-optional": true,
+				"icon-allow-overlap": false,
+				"icon-optional": false,
+				"icon-ignore-placement": false,
+				"icon-rotation-alignment": "auto",
+				"symbol-placement": "line",
+				"symbol-avoid-edges": false,
+				"symbol-spacing": 1000,
+				"text-anchor": "center",
+				"icon-anchor": "center",
+				"icon-offset": [0, 0],
+				"text-offset": [0, 0],
+				"icon-rotate": 0,
+				"text-rotate": 0,
+				"text-max-angle": 45,
+				"text-field": "{_name}",
+				"text-transform": "none"
+			},
+			"paint": {
+				"icon-opacity": 1,
+				"text-opacity": 1,
+				"text-color": "#6E635E",
+				"text-halo-color": "#EDDFC7",
+				"text-halo-width": 0.666667,
+				"text-halo-blur": 0,
+				"text-translate-anchor": "map",
+				"icon-translate-anchor": "map",
+				"icon-translate": [0, 0],
+				"text-translate": [0, 0.2]
+			}
+		}, {
+			"id": "TRANSPORTATION/label/Road Names/Resource",
+			"type": "symbol",
+			"source": "esri",
+			"source-layer": "(L) DRA Road Names [17 - 10]/label",
+			"filter": ["==", "_label_class", 4],
+			"minzoom": 9,
+			"layout": {
+				"visibility": "visible",
+				"text-size": 11.6667,
+				"icon-size": 1,
+				"text-font": ["Aboriginal Sans Regular"],
+				"text-max-width": 10,
+				"text-line-height": 1.2,
+				"text-padding": 2,
+				"text-letter-spacing": 0.1,
+				"text-allow-overlap": false,
+				"text-ignore-placement": false,
+				"text-justify": "center",
+				"text-rotation-alignment": "auto",
+				"text-optional": true,
+				"icon-allow-overlap": false,
+				"icon-optional": false,
+				"icon-ignore-placement": false,
+				"icon-rotation-alignment": "auto",
+				"symbol-placement": "line",
+				"symbol-avoid-edges": false,
+				"symbol-spacing": 1000,
+				"text-anchor": "center",
+				"icon-anchor": "center",
+				"icon-offset": [0, 0],
+				"text-offset": [0, 0.2],
+				"icon-rotate": 0,
+				"text-rotate": 0,
+				"text-max-angle": 45,
+				"text-field": "{_name}",
+				"text-transform": "none"
+			},
+			"paint": {
+				"icon-opacity": 1,
+				"text-opacity": 1,
+				"text-color": "#595959",
+				"text-halo-width": 0,
+				"text-halo-blur": 0,
+				"text-translate-anchor": "map",
+				"icon-translate-anchor": "map",
+				"icon-translate": [0, 0],
+				"text-translate": [0, 0]
+			}
+		}, {
+			"id": "TRANSPORTATION/label/Road Names/Local",
+			"type": "symbol",
+			"source": "esri",
+			"source-layer": "(L) DRA Road Names [17 - 10]/label",
+			"filter": ["==", "_label_class", 3],
+			"minzoom": 9,
+			"layout": {
+				"visibility": "visible",
+				"text-size": 11.6667,
+				"icon-size": 1,
+				"text-font": ["Aboriginal Sans Regular"],
+				"text-max-width": 10,
+				"text-line-height": 1.2,
+				"text-padding": 2,
+				"text-letter-spacing": 0.2,
+				"text-allow-overlap": false,
+				"text-ignore-placement": false,
+				"text-justify": "center",
+				"text-rotation-alignment": "auto",
+				"text-optional": true,
+				"icon-allow-overlap": false,
+				"icon-optional": false,
+				"icon-ignore-placement": false,
+				"icon-rotation-alignment": "auto",
+				"symbol-placement": "line",
+				"symbol-avoid-edges": false,
+				"symbol-spacing": 1000,
+				"text-anchor": "center",
+				"icon-anchor": "center",
+				"icon-offset": [0, 0],
+				"text-offset": [0, 0.2],
+				"icon-rotate": 0,
+				"text-rotate": 0,
+				"text-max-angle": 45,
+				"text-field": "{_name}",
+				"text-transform": "none"
+			},
+			"paint": {
+				"icon-opacity": 1,
+				"text-opacity": 1,
+				"text-color": "#6B6B6B",
+				"text-halo-color": "rgba(255,255,255,0.8)",
+				"text-halo-width": 1.33333,
+				"text-halo-blur": 0,
+				"text-translate-anchor": "map",
+				"icon-translate-anchor": "map",
+				"icon-translate": [0, 0],
+				"text-translate": [0, 0]
+			}
+		}, {
+			"id": "TRANSPORTATION/label/Road Names/Collector 18K +",
+			"type": "symbol",
+			"source": "esri",
+			"source-layer": "(L) DRA Road Names [17 - 10]/label",
+			"filter": ["==", "_label_class", 7],
+			"minzoom": 9,
+			"maxzoom": 14,
+			"layout": {
+				"visibility": "visible",
+				"text-size": 11.6667,
+				"icon-size": 1,
+				"text-font": ["Aboriginal Sans Regular"],
+				"text-max-width": 10,
+				"text-line-height": 1.2,
+				"text-padding": 2,
+				"text-letter-spacing": 0.35,
+				"text-allow-overlap": false,
+				"text-ignore-placement": false,
+				"text-justify": "center",
+				"text-rotation-alignment": "auto",
+				"text-optional": true,
+				"icon-allow-overlap": false,
+				"icon-optional": false,
+				"icon-ignore-placement": false,
+				"icon-rotation-alignment": "auto",
+				"symbol-placement": "line",
+				"symbol-avoid-edges": false,
+				"symbol-spacing": 1000,
+				"text-anchor": "center",
+				"icon-anchor": "center",
+				"icon-offset": [0, 0],
+				"text-offset": [0, 0.2],
+				"icon-rotate": 0,
+				"text-rotate": 0,
+				"text-max-angle": 45,
+				"text-field": "{_name}",
+				"text-transform": "none"
+			},
+			"paint": {
+				"icon-opacity": 1,
+				"text-opacity": 1,
+				"text-color": "#6B6B6B",
+				"text-halo-color": "rgba(255,255,255,0.8)",
+				"text-halo-width": 1.33333,
+				"text-halo-blur": 0,
+				"text-translate-anchor": "map",
+				"icon-translate-anchor": "map",
+				"icon-translate": [0, 0],
+				"text-translate": [0, 0]
+			}
+		}, {
+			"id": "TRANSPORTATION/label/Road Names/Arterial 18K +",
+			"type": "symbol",
+			"source": "esri",
+			"source-layer": "(L) DRA Road Names [17 - 10]/label",
+			"filter": ["==", "_label_class", 6],
+			"minzoom": 9,
+			"maxzoom": 14,
+			"layout": {
+				"visibility": "visible",
+				"text-size": 12.3333,
+				"icon-size": 1,
+				"text-font": ["Aboriginal Sans Regular"],
+				"text-max-width": 10,
+				"text-line-height": 1.2,
+				"text-padding": 2,
+				"text-letter-spacing": 0.35,
+				"text-allow-overlap": false,
+				"text-ignore-placement": false,
+				"text-justify": "center",
+				"text-rotation-alignment": "auto",
+				"text-optional": true,
+				"icon-allow-overlap": false,
+				"icon-optional": false,
+				"icon-ignore-placement": false,
+				"icon-rotation-alignment": "auto",
+				"symbol-placement": "line",
+				"symbol-avoid-edges": false,
+				"symbol-spacing": 1000,
+				"text-anchor": "center",
+				"icon-anchor": "center",
+				"icon-offset": [0, 0],
+				"text-offset": [0, 0.2],
+				"icon-rotate": 0,
+				"text-rotate": 0,
+				"text-max-angle": 45,
+				"text-field": "{_name}",
+				"text-transform": "none"
+			},
+			"paint": {
+				"icon-opacity": 1,
+				"text-opacity": 1,
+				"text-color": "#474747",
+				"text-halo-color": "rgba(255,255,255,0.8)",
+				"text-halo-width": 1.33333,
+				"text-halo-blur": 0,
+				"text-translate-anchor": "map",
+				"icon-translate-anchor": "map",
+				"icon-translate": [0, 0],
+				"text-translate": [0, 0]
+			}
+		}, {
+			"id": "TRANSPORTATION/label/Road Names/Collector",
+			"type": "symbol",
+			"source": "esri",
+			"source-layer": "(L) DRA Road Names [17 - 10]/label",
+			"filter": ["==", "_label_class", 1],
+			"minzoom": 14,
+			"layout": {
+				"visibility": "visible",
+				"text-size": 12.3333,
+				"icon-size": 1,
+				"text-font": ["Aboriginal Sans Regular"],
+				"text-max-width": 10,
+				"text-line-height": 1.2,
+				"text-padding": 2,
+				"text-letter-spacing": 0.2,
+				"text-allow-overlap": false,
+				"text-ignore-placement": false,
+				"text-justify": "center",
+				"text-rotation-alignment": "auto",
+				"text-optional": true,
+				"icon-allow-overlap": false,
+				"icon-optional": false,
+				"icon-ignore-placement": false,
+				"icon-rotation-alignment": "auto",
+				"symbol-placement": "line",
+				"symbol-avoid-edges": false,
+				"symbol-spacing": 1000,
+				"text-anchor": "center",
+				"icon-anchor": "center",
+				"icon-offset": [0, 0],
+				"text-offset": [0, 0.2],
+				"icon-rotate": 0,
+				"text-rotate": 0,
+				"text-max-angle": 45,
+				"text-field": "{_name}",
+				"text-transform": "none"
+			},
+			"paint": {
+				"icon-opacity": 1,
+				"text-opacity": 1,
+				"text-color": "#474747",
+				"text-halo-color": "rgba(255,255,255,0.8)",
+				"text-halo-width": 1.33333,
+				"text-halo-blur": 0,
+				"text-translate-anchor": "map",
+				"icon-translate-anchor": "map",
+				"icon-translate": [0, 0],
+				"text-translate": [0, 0]
+			}
+		}, {
+			"id": "TRANSPORTATION/label/Road Names/Arterial",
+			"type": "symbol",
+			"source": "esri",
+			"source-layer": "(L) DRA Road Names [17 - 10]/label",
+			"filter": ["==", "_label_class", 0],
+			"minzoom": 14,
+			"layout": {
+				"visibility": "visible",
+				"text-size": 11.3333,
+				"icon-size": 1,
+				"text-font": ["Aboriginal Sans Regular"],
+				"text-max-width": 10,
+				"text-line-height": 1.2,
+				"text-padding": 2,
+				"text-letter-spacing": 0.2,
+				"text-allow-overlap": false,
+				"text-ignore-placement": false,
+				"text-justify": "center",
+				"text-rotation-alignment": "auto",
+				"text-optional": true,
+				"icon-allow-overlap": false,
+				"icon-optional": false,
+				"icon-ignore-placement": false,
+				"icon-rotation-alignment": "auto",
+				"symbol-placement": "line",
+				"symbol-avoid-edges": false,
+				"symbol-spacing": 1000,
+				"text-anchor": "center",
+				"icon-anchor": "center",
+				"icon-offset": [0, 0],
+				"text-offset": [0, 0.2],
+				"icon-rotate": 0,
+				"text-rotate": 0,
+				"text-max-angle": 45,
+				"text-field": "{_name}",
+				"text-transform": "none"
+			},
+			"paint": {
+				"icon-opacity": 1,
+				"text-opacity": 1,
+				"text-color": "#666666",
+				"text-halo-color": "rgba(255,255,255,0.8)",
+				"text-halo-width": 1.33333,
+				"text-halo-blur": 0,
+				"text-translate-anchor": "map",
+				"icon-translate-anchor": "map",
+				"icon-translate": [0, 0],
+				"text-translate": [0, 0]
+			}
+		}, {
+			"id": "BOUNDARIES AND PLACES/label/Populated Places/[9-13]Lg Pop",
+			"type": "symbol",
+			"source": "esri",
+			"source-layer": "(L) BC GNIS - Populated Places [6 - 13]",
+			"filter": ["==", "_symbol", 0],
+			"minzoom": 9,
+			"maxzoom": 13,
+			"layout": {
+				"icon-image": "BOUNDARIES AND PLACES/(L) BC GNIS - Populated Places [6 - 13]/Large Population",
+				"icon-rotation-alignment": "map",
+				"icon-allow-overlap": true
+			},
+			"paint": {
+				"icon-color": "rgba(239,212,179,0.01)"
+			}
+		}, {
+			"id": "BOUNDARIES AND PLACES/label/Populated Places/[9-13]Sm Pop",
+			"type": "symbol",
+			"source": "esri",
+			"source-layer": "(L) BC GNIS - Populated Places [6 - 13]",
+			"filter": ["==", "_symbol", 1],
+			"minzoom": 9,
+			"maxzoom": 13,
+			"layout": {
+				"icon-image": "BOUNDARIES AND PLACES/(L) BC GNIS - Populated Places [6 - 13]/Small Population",
+				"icon-rotation-alignment": "map",
+				"icon-allow-overlap": true
+			},
+			"paint": {
+				"icon-color": "rgba(239,212,179,0.01)"
+			}
+		}, {
+			"id": "BOUNDARIES AND PLACES/label/Populated Places/[5-9]Sm Pop",
+			"type": "symbol",
+			"source": "esri",
+			"source-layer": "(L) BC GNIS - Populated Places [6 - 13]",
+			"filter": ["==", "_symbol", 1],
+			"minzoom": 5,
+			"maxzoom": 9,
+			"layout": {
+				"icon-image": "BOUNDARIES AND PLACES/(L) BC GNIS - Populated Places [6 - 13]/Small Population_1",
+				"icon-rotation-alignment": "map",
+				"icon-allow-overlap": true
+			},
+			"paint": {
+				"icon-color": "#686868"
+			}
+		}, {
+			"id": "BOUNDARIES AND PLACES/label/Populated Places/[4-9]Lg Pop",
+			"type": "symbol",
+			"source": "esri",
+			"source-layer": "(L) BC GNIS - Populated Places [6 - 13]",
+			"filter": ["==", "_symbol", 0],
+			"minzoom": 4,
+			"maxzoom": 9,
+			"layout": {
+				"icon-allow-overlap": true,
+				"icon-rotation-alignment": "map",
+				"icon-image": "BOUNDARIES AND PLACES/(L) BC GNIS - Populated Places [6 - 13]/Large Population_1"
+			},
+			"paint": {}
+		}, {
+			"id": "BOUNDARIES AND PLACES/label/Populated Places/[12-13]All Pop Places",
+			"type": "symbol",
+			"source": "esri",
+			"source-layer": "(L) BC GNIS - Populated Places [6 - 13]",
+			"filter": ["==", "_label_class4", 4],
+			"minzoom": 12,
+			"maxzoom": 13,
+			"layout": {
+				"visibility": "visible",
+				"text-size": 12,
+				"icon-size": 1,
+				"text-font": ["Aboriginal Sans Regular"],
+				"text-max-width": 10,
+				"text-line-height": 1.2,
+				"text-padding": 2,
+				"text-letter-spacing": 0.05,
+				"text-allow-overlap": false,
+				"text-ignore-placement": false,
+				"text-justify": "center",
+				"text-rotation-alignment": "auto",
+				"text-optional": true,
+				"icon-allow-overlap": false,
+				"icon-optional": false,
+				"icon-ignore-placement": false,
+				"icon-rotation-alignment": "auto",
+				"symbol-placement": "point",
+				"symbol-avoid-edges": false,
+				"symbol-spacing": 250,
+				"text-anchor": "center",
+				"icon-anchor": "center",
+				"icon-offset": [0, 0],
+				"text-offset": [0, 0],
+				"icon-rotate": 0,
+				"text-rotate": 0,
+				"text-max-angle": 45,
+				"text-field": "{_name4}",
+				"text-transform": "none"
+			},
+			"paint": {
+				"icon-opacity": 1,
+				"text-opacity": 1,
+				"text-color": "#828282",
+				"text-halo-color": "rgba(239,231,221,0.5)",
+				"text-halo-width": 1.33333,
+				"text-halo-blur": 0,
+				"text-translate-anchor": "map",
+				"icon-translate-anchor": "map",
+				"icon-translate": [0, 0],
+				"text-translate": [0, 0]
+			}
+		}, {
+			"id": "BOUNDARIES AND PLACES/label/Populated Places/[10-12]Sm Pop",
+			"type": "symbol",
+			"source": "esri",
+			"source-layer": "(L) BC GNIS - Populated Places [6 - 13]",
+			"filter": ["==", "_label_class3", 3],
+			"minzoom": 10,
+			"maxzoom": 12,
+			"layout": {
+				"visibility": "visible",
+				"text-size": 12,
+				"icon-size": 1,
+				"text-font": ["Aboriginal Sans Regular"],
+				"text-max-width": 10,
+				"text-line-height": 1.2,
+				"text-padding": 2,
+				"text-letter-spacing": 0.05,
+				"text-allow-overlap": false,
+				"text-ignore-placement": false,
+				"text-justify": "center",
+				"text-rotation-alignment": "auto",
+				"text-optional": true,
+				"icon-allow-overlap": false,
+				"icon-optional": false,
+				"icon-ignore-placement": false,
+				"icon-rotation-alignment": "auto",
+				"symbol-placement": "point",
+				"symbol-avoid-edges": false,
+				"symbol-spacing": 250,
+				"text-anchor": "center",
+				"icon-anchor": "center",
+				"icon-offset": [0, 0],
+				"text-offset": [0, 0],
+				"icon-rotate": 0,
+				"text-rotate": 0,
+				"text-max-angle": 45,
+				"text-field": "{_name3}",
+				"text-transform": "none"
+			},
+			"paint": {
+				"icon-opacity": 1,
+				"text-opacity": 1,
+				"text-color": "#686868",
+				"text-halo-width": 0,
+				"text-halo-blur": 0,
+				"text-translate-anchor": "map",
+				"icon-translate-anchor": "map",
+				"icon-translate": [0, 0],
+				"text-translate": [0, 0]
+			}
+		}, {
+			"id": "BOUNDARIES AND PLACES/label/Populated Places/[11-12]Lg Pop",
+			"type": "symbol",
+			"source": "esri",
+			"source-layer": "(L) BC GNIS - Populated Places [6 - 13]",
+			"filter": ["==", "_label_class2", 2],
+			"minzoom": 11,
+			"maxzoom": 12,
+			"layout": {
+				"visibility": "visible",
+				"text-size": 13,
+				"icon-size": 1,
+				"text-font": ["Aboriginal Sans Regular"],
+				"text-max-width": 10,
+				"text-line-height": 1.2,
+				"text-padding": 2,
+				"text-letter-spacing": 0.05,
+				"text-allow-overlap": false,
+				"text-ignore-placement": false,
+				"text-justify": "left",
+				"text-rotation-alignment": "auto",
+				"text-optional": true,
+				"icon-allow-overlap": false,
+				"icon-optional": false,
+				"icon-ignore-placement": false,
+				"icon-rotation-alignment": "auto",
+				"symbol-placement": "point",
+				"symbol-avoid-edges": false,
+				"symbol-spacing": 250,
+				"text-anchor": "bottom-left",
+				"icon-anchor": "center",
+				"icon-offset": [0, 0],
+				"text-offset": {
+					"property": "_symbol",
+					"type": "categorical",
+					"default": [0.0673435, 0.232656],
+					"stops": [[0, [0.323296, -0.0250816]], [1, [0.291153, 0.00801364]]]
+				},
+				"icon-rotate": 0,
+				"text-rotate": 0,
+				"text-max-angle": 45,
+				"text-field": "{_name2}",
+				"text-transform": "none"
+			},
+			"paint": {
+				"icon-opacity": 1,
+				"text-opacity": 1,
+				"text-color": "#4E4E4E",
+				"text-halo-width": 0,
+				"text-halo-blur": 0,
+				"text-translate-anchor": "map",
+				"icon-translate-anchor": "map",
+				"icon-translate": [0, 0],
+				"text-translate": [0, 1]
+			}
+		}, {
+			"id": "BOUNDARIES AND PLACES/label/Populated Places/[5-10]Sm Pop",
+			"type": "symbol",
+			"source": "esri",
+			"source-layer": "(L) BC GNIS - Populated Places [6 - 13]",
+			"filter": ["==", "_label_class1", 1],
+			"minzoom": 5,
+			"maxzoom": 10,
+			"layout": {
+				"visibility": "visible",
+				"text-size": 12,
+				"icon-size": 1,
+				"text-font": ["Aboriginal Sans Regular"],
+				"text-max-width": 10,
+				"text-line-height": 1.2,
+				"text-padding": 2,
+				"text-letter-spacing": 0.05,
+				"text-allow-overlap": false,
+				"text-ignore-placement": false,
+				"text-justify": "left",
+				"text-rotation-alignment": "auto",
+				"text-optional": true,
+				"icon-allow-overlap": false,
+				"icon-optional": false,
+				"icon-ignore-placement": false,
+				"icon-rotation-alignment": "auto",
+				"symbol-placement": "point",
+				"symbol-avoid-edges": false,
+				"symbol-spacing": 250,
+				"text-anchor": "bottom-left",
+				"icon-anchor": "center",
+				"icon-offset": [0, 0],
+				"text-offset": {
+					"property": "_symbol",
+					"type": "categorical",
+					"default": [0.176777, 0.123223],
+					"stops": [[0, [0.512714, -0.215058]], [1, [0.470527, -0.17162]]]
+				},
+				"icon-rotate": 0,
+				"text-rotate": 0,
+				"text-max-angle": 45,
+				"text-field": "{_name1}",
+				"text-transform": "none"
+			},
+			"paint": {
+				"icon-opacity": 1,
+				"text-opacity": 1,
+				"text-color": "#686868",
+				"text-halo-width": 0,
+				"text-halo-blur": 0,
+				"text-translate-anchor": "map",
+				"icon-translate-anchor": "map",
+				"icon-translate": [0, 0],
+				"text-translate": [-3, 4]
+			}
+		}, {
+			"id": "BOUNDARIES AND PLACES/label/Populated Places/[5-11]Lg Pop",
+			"type": "symbol",
+			"source": "esri",
+			"source-layer": "(L) BC GNIS - Populated Places [6 - 13]",
+			"filter": ["==", "_label_class", 0],
+			"minzoom": 5,
+			"maxzoom": 11,
+			"layout": {
+				"visibility": "visible",
+				"text-size": 14,
+				"icon-size": 1,
+				"text-font": ["Aboriginal Sans Regular"],
+				"text-max-width": 10,
+				"text-line-height": 1.2,
+				"text-padding": 2,
+				"text-letter-spacing": 0.05,
+				"text-allow-overlap": false,
+				"text-ignore-placement": false,
+				"text-justify": "left",
+				"text-rotation-alignment": "auto",
+				"text-optional": true,
+				"icon-allow-overlap": false,
+				"icon-optional": false,
+				"icon-ignore-placement": false,
+				"icon-rotation-alignment": "auto",
+				"symbol-placement": "point",
+				"symbol-avoid-edges": false,
+				"symbol-spacing": 250,
+				"text-anchor": "bottom-left",
+				"icon-anchor": "center",
+				"icon-offset": [0, 0],
+				"text-offset": {
+					"property": "_symbol",
+					"type": "categorical",
+					"default": [0.141421, 0.158579],
+					"stops": [[0, [0.410171, -0.112046]], [1, [0.376421, -0.0772964]]]
+				},
+				"icon-rotate": 0,
+				"text-rotate": 0,
+				"text-max-angle": 45,
+				"text-field": "{_name}",
+				"text-transform": "none"
+			},
+			"paint": {
+				"icon-opacity": 1,
+				"text-opacity": 1,
+				"text-color": "#4E4E4E",
+				"text-halo-width": 0,
+				"text-halo-blur": 0,
+				"text-translate-anchor": "map",
+				"icon-translate-anchor": "map",
+				"icon-translate": [0, 0],
+				"text-translate": [-3, 4]
+			}
+		}, {
+			"id": "BOUNDARIES AND PLACES/label/Natural Historic Sites/National Historic Sites Point",
+			"type": "symbol",
+			"source": "esri",
+			"source-layer": "(L) BC GNIS - Natural & Historic Sites [17 - 13]",
+			"filter": ["==", "_symbol", 0],
+			"minzoom": 13,
+			"layout": {
+				"icon-allow-overlap": true,
+				"icon-rotation-alignment": "map",
+				"icon-image": "BOUNDARIES AND PLACES/(L) BC GNIS - Natural & Historic Sites [17 - 13]/National Historic Site"
+			},
+			"paint": {}
+		}, {
+			"id": "BOUNDARIES AND PLACES/label/Natural & Historic Sites/National Historic Sites",
+			"type": "symbol",
+			"source": "esri",
+			"source-layer": "(L) BC GNIS - Natural & Historic Sites [17 - 13]",
+			"filter": ["==", "_label_class2", 2],
+			"minzoom": 12,
+			"layout": {
+				"visibility": "visible",
+				"text-size": 11,
+				"icon-size": 1,
+				"text-font": ["Aboriginal Sans Regular"],
+				"text-max-width": 10,
+				"text-line-height": 1.2,
+				"text-padding": 2,
+				"text-letter-spacing": 0.01,
+				"text-allow-overlap": false,
+				"text-ignore-placement": false,
+				"text-justify": "left",
+				"text-rotation-alignment": "auto",
+				"text-optional": true,
+				"icon-allow-overlap": false,
+				"icon-optional": false,
+				"icon-ignore-placement": false,
+				"icon-rotation-alignment": "auto",
+				"symbol-placement": "point",
+				"symbol-avoid-edges": false,
+				"symbol-spacing": 250,
+				"text-anchor": "bottom-left",
+				"icon-anchor": "center",
+				"icon-offset": [0, 0],
+				"text-offset": [0.505228, -0.205228],
+				"icon-rotate": 0,
+				"text-rotate": 0,
+				"text-max-angle": 45,
+				"text-field": "{_name2}",
+				"text-transform": "none"
+			},
+			"paint": {
+				"icon-opacity": 1,
+				"text-opacity": 1,
+				"text-color": "#987B60",
+				"text-halo-width": 0,
+				"text-halo-blur": 0,
+				"text-translate-anchor": "map",
+				"icon-translate-anchor": "map",
+				"icon-translate": [0, 0],
+				"text-translate": [-2, 2]
+			}
+		}, {
+			"id": "BOUNDARIES AND PLACES/label/Natural & Historic Sites/Beaches, Bluffs, etc",
+			"type": "symbol",
+			"source": "esri",
+			"source-layer": "(L) BC GNIS - Natural & Historic Sites [17 - 13]",
+			"filter": ["==", "_label_class", 0],
+			"minzoom": 12,
+			"layout": {
+				"visibility": "visible",
+				"text-size": 11,
+				"icon-size": 1,
+				"text-font": ["Aboriginal Sans Regular"],
+				"text-max-width": 10,
+				"text-line-height": 1.2,
+				"text-padding": 2,
+				"text-letter-spacing": 0.01,
+				"text-allow-overlap": false,
+				"text-ignore-placement": false,
+				"text-justify": "center",
+				"text-rotation-alignment": "auto",
+				"text-optional": true,
+				"icon-allow-overlap": false,
+				"icon-optional": false,
+				"icon-ignore-placement": false,
+				"icon-rotation-alignment": "auto",
+				"symbol-placement": "point",
+				"symbol-avoid-edges": false,
+				"symbol-spacing": 250,
+				"text-anchor": "center",
+				"icon-anchor": "center",
+				"icon-offset": [0, 0],
+				"text-offset": [0, 0],
+				"icon-rotate": 0,
+				"text-rotate": 0,
+				"text-max-angle": 45,
+				"text-field": "{_name}",
+				"text-transform": "none"
+			},
+			"paint": {
+				"icon-opacity": 1,
+				"text-opacity": 1,
+				"text-color": "#987B60",
+				"text-halo-width": 0,
+				"text-halo-blur": 0,
+				"text-translate-anchor": "map",
+				"icon-translate-anchor": "map",
+				"icon-translate": [0, 0],
+				"text-translate": [0, 0]
+			}
+		}, {
+			"id": "BOUNDARIES AND PLACES/label/Natural & Historic Sites/Waterfalls",
+			"type": "symbol",
+			"source": "esri",
+			"source-layer": "(L) BC GNIS - Natural & Historic Sites [17 - 13]",
+			"filter": ["==", "_label_class1", 1],
+			"minzoom": 12,
+			"layout": {
+				"visibility": "visible",
+				"text-size": 11,
+				"icon-size": 1,
+				"text-font": ["Aboriginal Sans Regular"],
+				"text-max-width": 10,
+				"text-line-height": 1.2,
+				"text-padding": 2,
+				"text-letter-spacing": 0.01,
+				"text-allow-overlap": false,
+				"text-ignore-placement": false,
+				"text-justify": "center",
+				"text-rotation-alignment": "auto",
+				"text-optional": true,
+				"icon-allow-overlap": false,
+				"icon-optional": false,
+				"icon-ignore-placement": false,
+				"icon-rotation-alignment": "auto",
+				"symbol-placement": "point",
+				"symbol-avoid-edges": false,
+				"symbol-spacing": 250,
+				"text-anchor": "center",
+				"icon-anchor": "center",
+				"icon-offset": [0, 0],
+				"text-offset": [0, 0],
+				"icon-rotate": 0,
+				"text-rotate": 0,
+				"text-max-angle": 45,
+				"text-field": "{_name1}",
+				"text-transform": "none"
+			},
+			"paint": {
+				"icon-opacity": 1,
+				"text-opacity": 1,
+				"text-color": "#6E96AE",
+				"text-halo-width": 0,
+				"text-halo-blur": 0,
+				"text-translate-anchor": "map",
+				"icon-translate-anchor": "map",
+				"icon-translate": [0, 0],
+				"text-translate": [0, 0]
+			}
+		}, {
+			"id": "BOUNDARIES AND PLACES/label/Labeled Points/Mountain Peaks",
+			"type": "symbol",
+			"source": "esri",
+			"source-layer": "(L) BC GNIS - Peaks [17 - 13]",
+			"filter": ["==", "_symbol", 0],
+			"minzoom": 13,
+			"layout": {
+				"visibility": "visible",
+				"text-size": 12,
+				"icon-size": 1,
+				"text-font": ["Aboriginal Serif Regular"],
+				"text-max-width": 10,
+				"text-line-height": 1.2,
+				"text-padding": 2,
+				"text-letter-spacing": 0.02,
+				"text-allow-overlap": true,
+				"text-ignore-placement": false,
+				"text-justify": "left",
+				"text-rotation-alignment": "auto",
+				"text-optional": true,
+				"icon-allow-overlap": true,
+				"icon-optional": false,
+				"icon-ignore-placement": false,
+				"icon-rotation-alignment": "map",
+				"symbol-placement": "point",
+				"symbol-avoid-edges": false,
+				"symbol-spacing": 250,
+				"text-anchor": "bottom-left",
+				"icon-anchor": "center",
+				"icon-offset": [0, 0],
+				"text-offset": [0.540913, -0.215079],
+				"icon-rotate": 0,
+				"text-rotate": 0,
+				"text-max-angle": 45,
+				"text-field": "{_name}",
+				"icon-image": "BOUNDARIES AND PLACES/(L) BC GNIS - Peaks [17 - 13]/Mount; Mountain; Peak (2); Peaks",
+				"text-transform": "none"
+			},
+			"paint": {
+				"icon-opacity": 1,
+				"text-opacity": 1,
+				"text-color": "#B07B68",
+				"text-halo-width": 0,
+				"text-halo-blur": 0,
+				"text-translate-anchor": "map",
+				"icon-translate-anchor": "map",
+				"icon-translate": [0, 0],
+				"text-translate": [-2, 3]
+			}
+		}, {
+			"id": "BOUNDARIES AND PLACES/label/Labeled Points/FN Village",
+			"type": "symbol",
+			"source": "esri",
+			"source-layer": "(L) BC GNIS - FN Villages [17 - 12]",
+			"filter": ["==", "_symbol", 0],
+			"minzoom": 12,
+			"layout": {
+				"visibility": "visible",
+				"text-size": 11,
+				"icon-size": 1,
+				"text-font": ["Aboriginal Sans Regular"],
+				"text-max-width": 10,
+				"text-line-height": 1.2,
+				"text-padding": 2,
+				"text-letter-spacing": 0,
+				"text-allow-overlap": false,
+				"text-ignore-placement": false,
+				"text-justify": "left",
+				"text-rotation-alignment": "auto",
+				"text-optional": true,
+				"icon-allow-overlap": true,
+				"icon-optional": false,
+				"icon-ignore-placement": false,
+				"icon-rotation-alignment": "map",
+				"symbol-placement": "point",
+				"symbol-avoid-edges": false,
+				"symbol-spacing": 250,
+				"text-anchor": "bottom-left",
+				"icon-anchor": "center",
+				"icon-offset": [0, 0],
+				"text-offset": {
+					"property": "_symbol",
+					"type": "categorical",
+					"default": [0.0942809, 0.205719],
+					"stops": [[0, [0.452614, -0.155114]], [1, [0.407614, -0.108781]]]
+				},
+				"icon-rotate": 0,
+				"text-rotate": 0,
+				"text-max-angle": 45,
+				"text-field": "{_name}",
+				"icon-image": "BOUNDARIES AND PLACES/(L) BC GNIS - FN Villages [17 - 12]/First Nation Village",
+				"text-transform": "none"
+			},
+			"paint": {
+				"icon-opacity": 1,
+				"text-opacity": 1,
+				"text-color": "#828282",
+				"text-halo-width": 0,
+				"text-halo-blur": 0,
+				"text-translate-anchor": "map",
+				"icon-translate-anchor": "map",
+				"icon-translate": [1, 0],
+				"text-translate": [-3, 4]
+			}
+		}, {
+			"id": "BOUNDARIES AND PLACES/label/Labeled Points/Former FN Village",
+			"type": "symbol",
+			"source": "esri",
+			"source-layer": "(L) BC GNIS - FN Villages [17 - 12]",
+			"filter": ["==", "_symbol", 1],
+			"minzoom": 12,
+			"layout": {
+				"visibility": "visible",
+				"text-size": 11.6667,
+				"icon-size": 1,
+				"text-font": ["Aboriginal Sans Regular"],
+				"text-max-width": 10,
+				"text-line-height": 1.2,
+				"text-padding": 2,
+				"text-letter-spacing": 0.05,
+				"text-allow-overlap": false,
+				"text-ignore-placement": false,
+				"text-justify": "left",
+				"text-rotation-alignment": "auto",
+				"text-optional": true,
+				"icon-allow-overlap": true,
+				"icon-optional": false,
+				"icon-ignore-placement": false,
+				"icon-rotation-alignment": "map",
+				"symbol-placement": "point",
+				"symbol-avoid-edges": false,
+				"symbol-spacing": 250,
+				"text-anchor": "bottom-left",
+				"icon-anchor": "center",
+				"icon-offset": [0, 0],
+				"text-offset": {
+					"property": "_symbol",
+					"type": "categorical",
+					"default": [0.176777, 0.123223],
+					"stops": [[0, [0.512714, -0.215058]], [1, [0.470527, -0.17162]]]
+				},
+				"icon-rotate": 0,
+				"text-rotate": 0,
+				"text-max-angle": 45,
+				"text-field": "{_name}",
+				"icon-image": "BOUNDARIES AND PLACES/(L) BC GNIS - FN Villages [17 - 12]/Former First Nation Village",
+				"text-transform": "none"
+			},
+			"paint": {
+				"icon-opacity": 1,
+				"text-opacity": 1,
+				"text-color": "#4E4E4E",
+				"text-halo-width": 0,
+				"text-halo-blur": 0,
+				"text-translate-anchor": "map",
+				"icon-translate-anchor": "map",
+				"icon-translate": [0, 0],
+				"text-translate": [-3, 4]
+			}
+		}, {
+			"id": "BOUNDARIES AND PLACES/label/Prov & States",
+			"type": "symbol",
+			"source": "esri",
+			"source-layer": "(L) Prov & States [9 - 5]",
+			"minzoom": 4,
+			"maxzoom": 8,
+			"layout": {
+				"visibility": "visible",
+				"text-size": 11,
+				"icon-size": 1,
+				"text-font": ["Aboriginal Sans Regular"],
+				"text-max-width": 10,
+				"text-line-height": 1.2,
+				"text-padding": 10,
+				"text-letter-spacing": 0.1,
+				"text-allow-overlap": true,
+				"text-ignore-placement": false,
+				"text-justify": "center",
+				"text-rotation-alignment": "auto",
+				"text-optional": true,
+				"icon-allow-overlap": false,
+				"icon-optional": false,
+				"icon-ignore-placement": false,
+				"icon-rotation-alignment": "auto",
+				"symbol-placement": "point",
+				"symbol-avoid-edges": false,
+				"symbol-spacing": 250,
+				"text-anchor": "center",
+				"icon-anchor": "center",
+				"icon-offset": [0, 0],
+				"text-offset": [0, 0],
+				"icon-rotate": 0,
+				"text-rotate": 0,
+				"text-max-angle": 45,
+				"text-field": "{_name}",
+				"text-transform": "none"
+			},
+			"paint": {
+				"icon-opacity": 1,
+				"text-opacity": 1,
+				"text-color": "#828282",
+				"text-halo-width": 0,
+				"text-halo-blur": 0,
+				"text-translate-anchor": "map",
+				"icon-translate-anchor": "map",
+				"icon-translate": [0, 0],
+				"text-translate": [0, 0]
+			}
+		}
+	],
+	"_ssl": true,
+	"metadata": {
+		"arcgisStyleUrl": "https://www.arcgis.com/sharing/rest/content/items/b1624fea73bd46c681fab55be53d96ae/resources/styles/root.json",
+		"arcgisOriginalItemTitle": "BC Basemap Vector Tile Service (without hillshade)",
+		"arcgisQuickEditorWarning": true,
+		"arcgisEditorExtents": [{
+				"spatialReference": {
+					"latestWkid": 3857,
+					"wkid": 102100
+				},
+				"xmin": -13978133.730150875,
+				"ymin": 6258135.681492925,
+				"xmax": -13966152.225967191,
+				"ymax": 6271588.598471098
+			}, {
+				"spatialReference": {
+					"wkid": 4326
+				},
+				"xmin": -146.196974233818,
+				"ymin": 42.52621162210244,
+				"xmax": -105.67939610882874,
+				"ymax": 65.07528216228737
+			}, {
+				"spatialReference": {
+					"wkid": 4326
+				},
+				"xmin": -146.196974233818,
+				"ymin": 42.52621162210244,
+				"xmax": -105.67939610882874,
+				"ymax": 65.07528216228737
+			}, {
+				"spatialReference": {
+					"wkid": 4326
+				},
+				"xmin": -146.196974233818,
+				"ymin": 42.52621162210244,
+				"xmax": -105.67939610882874,
+				"ymax": 65.07528216228737
+			}
+		],
+		"arcgisMinimapVisibility": false
+	}
+}

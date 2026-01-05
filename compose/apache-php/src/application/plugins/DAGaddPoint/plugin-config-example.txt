@@ -1,0 +1,7 @@
+{
+	name: "DAGaddPoint",				// Plugin Class Name - DO NOT MODIFY [required]
+	enabled: true,							// toggle on/off
+	buttonLocatedRight: true,				// default is true
+	buttonLocatedTop: true,				// default is false
+	buttonLocationOffset:'11.0em'			// how far from Top or Bottom of map frame	
+}

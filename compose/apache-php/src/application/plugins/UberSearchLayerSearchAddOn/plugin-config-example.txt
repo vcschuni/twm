@@ -1,0 +1,15 @@
+{
+	name: "UberSearchLayerSearchAddOn",			// Plugin Class Name - DO NOT MODIFY [required]
+	enabled: true,								// Whether plugin is enabled [required]
+	maxResults: 5,								// Max results to return [required]
+	requestTimeout: 7500				// AJAX Timeout in milliseconds [optional - defaults to 5000]
+}
+
+To make an app-config.js layer searchable include following line in the field config.
+	searchable: true,
+	
+it is assumed that the field is text and the ilike CQL_FILTER will be used to search for matches in that field.
+
+To search a numeric field for an exact match also include the following line in the field config:
+	searchType: "number",
+	

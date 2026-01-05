@@ -1,0 +1,57 @@
+<style>
+	#lf-fs-filter-controls {
+		margin-bottom: 20px;
+	}
+	#lf-fs-filter-controls legend {
+		font-size: 15px;
+		font-weight: bold;
+		margin-bottom: 0px;
+	}
+	#lf-filter-controls {
+		padding: 0px 10px 0px 10px;
+	}
+	#lf-filter-controls .form-check {
+		font-size: 13px;
+		line-height: 1.7;
+		margin-left: 5px;
+	}
+	#lf-filter-controls .form-check .form-check-label {
+		max-width: 100%;
+	}
+</style>
+
+<form id="lf-form">
+
+	<!-- Filterable Layer Selector -->
+	<div id="lf-filter-layer-select-container" class="input-group input-group-sm mb-3" style="display:none;">
+		<span class="input-group-text">Filter Layer</span>
+		<select id="lf-filter-layer-select" class="form-select form-select-sm"></select>
+	</div>
+
+	<!-- Filter fieldset -->
+	<fieldset id="lf-fs-filter-controls" class="border p-2" style="display:none;">
+		<legend class="w-auto">Filter</legend>
+		<div id="lf-filter-controls">
+			<!-- one or more controls will be added here -->
+		</div>
+	</fieldset>
+	
+</form>
+
+<!-- Hidden templates for filter controls -->
+<div class="form-check lf-filter-control lf-checkbox-template" style="display:none;">
+	<label class="form-check-label">
+		<input type="checkbox" class="form-check-input">
+		<span class="title"></span>
+	</label>
+</div>
+
+<div class="input-group input-group-sm mb-2 lf-filter-control lf-textfield-template" style="display:none;">
+	<span class="input-group-text"></span>
+	<input type="text" class="form-control" placeholder="">
+</div>
+
+<div class="input-group input-group-sm mb-2 lf-filter-control lf-numberfield-template" style="display:none;">
+	<span class="input-group-text"></span>
+	<input type="number" class="form-control" placeholder="">
+</div>

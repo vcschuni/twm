@@ -1,0 +1,22 @@
+{
+	name: "ChartPlugin",				// Plugin Class Name - DO NOT MODIFY [required]
+	enabled: true					// Whether plugin is enabled [required]		
+}
+
+IMPORTANT: this plugin requires the MultiFloatingWindow plugin also be included in your app-config
+
+USAGE: 	app.plugins.ChartPlugin.open(title, labels, data, clickedFunction, width, height, location, openCallback, closeCallback, chartTypes) {
+	 * @param (string) title
+	 * @param ([string]) labels
+	 * @param ([number]) data
+	 * @param (function) clicked Data Point callback - OPTIONAL
+	 * @param (integer) width - OPTIONAL - DEFAULT 300px
+	 * @param (integer) height - IGNORED
+	 * @param (string) location ('left', 'right', 'middle')- OPTIONAL - DEFAULT 'left'
+	 * @param (function) openCallback - IGNORED
+	 * @param (function) closeCallback - OPTIONAL
+	 * @param ([string]) chartTypes - OPTIONAL
+	 * @returns (string) div id of floating window
+
+example:
+app.plugins.ChartPlugin.open("MyChart",["May","June","July"],[56,89,142],myChartClickedFunction,700,0,"left",{},{},["pie","doughnut","bar"]);

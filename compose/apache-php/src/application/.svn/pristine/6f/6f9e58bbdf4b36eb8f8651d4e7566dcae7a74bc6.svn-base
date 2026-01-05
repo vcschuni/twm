@@ -1,0 +1,14 @@
+{
+	name: "FeatureProximity",			// Plugin Class Name - DO NOT MODIFY [required]
+	tabName: "Proximity",				// Tab name [required]
+	enabled: true,						// Whether plugin is enabled [required]
+	visibleLayerSearchEnabled: true,	// Enable/disable layer search in typeahead autocomplete [optional - default false]
+	visibleLayerSearchMaxResults: 5,	// Max layer search results to display [required]
+	geoCoderEnabled: true,				// Enable/disable geocoder search in typeahead autocomplete [optional - default false]
+	geoCoderApiKey: "xyz1",				// API Key for DataBC GeoCoder [required]
+	geoCoderMaxResults: 5,				// Max geocoder search results to display [required]
+	defaultSearchRadiusKm: 10,			// Default serach radius in kilometres [required]
+	searchRadiusEditable: true,			// Whether the search radius can be changed [required]
+	showSearchRadiusOnMap: true,		// Show the search radius circle on the map [optional - default false]
+	proximitySearchMaxResults: 25 		// Max results to return per layer [required]
+}

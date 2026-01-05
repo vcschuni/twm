@@ -1,0 +1,17 @@
+<!-- Feature Manager -->
+<div id="rdm-feature-manager">
+	<!-- Filter/search -->
+	<div class="input-group input-group-sm mb-2">
+		<input id="rdm-feature-filter-input" type="text" class="form-control" placeholder="Filter" readonly>
+		<button id="rdm-reset-feature-filter-btn" class="btn btn-secondary" type="button" title="Reset"><span class="oi oi-x"></span></button>
+	</div>
+	<div class="input-group input-group-sm">
+		<select id="rdm-matching-features" class="form-select form-select-sm" size="10"></select>
+	</div>
+	
+	<!-- Buttons -->
+	<div class="mt-2 mb-0 text-center">
+		<button id="rdm-fm-edit-feature-button" class="btn btn-sm btn-secondary col-5" type="button" DISABLED>Edit</button>
+		<button id="rdm-fm-create-feature-button" class="btn btn-sm btn-success col-5" type="button">Create</button>
+	</div>
+</div>

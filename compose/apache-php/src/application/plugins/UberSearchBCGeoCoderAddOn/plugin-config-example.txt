@@ -1,0 +1,7 @@
+{
+	name: "UberSearchBCGeoCoderAddOn",						// Plugin Class Name - DO NOT MODIFY [required]
+	enabled: true,											// Whether plugin is enabled [required]
+	maxResults: 5,											// Max results to return [required]
+	url: "https://geocoder.api.gov.bc.ca/addresses.json",	// GeoCoder Url [required]
+	apiKey: "xyz1" 											// API Key [required]
+}

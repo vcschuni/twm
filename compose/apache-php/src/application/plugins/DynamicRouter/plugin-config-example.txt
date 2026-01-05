@@ -1,0 +1,13 @@
+{
+	name: "DynamicRouter",					// Plugin Class Name - DO NOT MODIFY [required]
+	tabName: "Router",						// Tab name [required]
+	enabled: true,							// Whether plugin is enabled [required]
+	allowWayPoints: true,					// Turn on/off the ability to add way points [optional - default false]
+	visibleLayerSearchEnabled: true,		// Enable/disable layer search in typeahead autocomplete [optional - default false]
+	visibleLayerSearchMaxResults: 5,		// Max layer search results to display [required]
+	geoCoderEnabled: true,					// Enable/disable geocoder search in typeahead autocomplete [optional - default false]
+	geoCoderApiKey: "xyz1",					// API Key for DataBC GeoCoder [required]
+	geoCoderMaxResults: 5,					// Max geocoder search results to display [required]
+	routerApiKey: "xyz2",					// API Key for DataBC Router [required]
+	showNavigateToButton: true				// Gives the user the ability to transfer navigation to a default navigation app (i.e. Google) [optional]
+}

@@ -1,0 +1,6 @@
+{
+	name: "Identify2Popup",				// Plugin Class Name - DO NOT MODIFY [required]
+	enabled: true,						// Whether plugin is enabled [required]
+	maxResults: 10,						// Max results to return per layer [required]
+	requestTimeout: 7500				// AJAX Timeout in milliseconds [optional - defaults to 5000]
+}

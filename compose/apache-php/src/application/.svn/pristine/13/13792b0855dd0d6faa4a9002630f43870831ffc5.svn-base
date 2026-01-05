@@ -1,0 +1,16 @@
+{
+	name: "MultiFloatingWindow",				// Plugin Class Name - DO NOT MODIFY [required]
+	enabled: true						        // Whether plugin is enabled [required]
+}
+
+USAGE: 
+
+	app.plugins.MultiFloatingWindow.open(windowId, windowTitle, windowContent, initialWidth, initialHeight, location, openCallback, closeCallback);
+	
+NOTES:
+
+	width, height, & location are optional
+	location is one of ('left' or 'right')
+	openCallback - function to call when the window is done opening
+	closeCallback - function to call when window is closed
+	

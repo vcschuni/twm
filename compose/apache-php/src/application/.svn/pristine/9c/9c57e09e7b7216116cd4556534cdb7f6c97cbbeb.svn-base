@@ -1,0 +1,7 @@
+{
+	name: "ZoomToInitialExtent",				// Plugin Class Name - DO NOT MODIFY [required]
+	enabled: true,						// Whether plugin is enabled [required]
+	buttonLocatedRight: false,				// default is true
+	buttonLocatedTop: true,				// default is false
+	buttonLocationOffset:'3.5em'			// how far from Top or Bottom of map frame
+}

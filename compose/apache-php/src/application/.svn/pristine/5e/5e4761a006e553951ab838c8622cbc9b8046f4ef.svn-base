@@ -1,0 +1,249 @@
+<style>
+  #le-markup-toolbar {
+    position: absolute;
+    top: 10px;
+    left: 8px;
+  }
+  .le-markup-btn:hover {
+    background-color: rgba(0, 60, 136, 0.7);
+  }
+  @keyframes zoom-in {
+    100% {
+      transform: translate(0, 0);
+    }
+  }
+  @keyframes zoom-out {
+    100% {
+      transform: translate(-50px, 0);
+    }
+  }
+  .le-markup-btn-grp {
+    border-radius: 4px;
+    border: solid;
+    border-width: 3px;
+    border-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.2);
+    margin-bottom: 5px;
+  }
+  .le-markup-btn-grp.in {
+    display: block;
+    /* animation: zoom-in 1s;
+    animation-timing-function: cubic-bezier(0.075, 1.82, 0.125, 1); */
+  }
+  /* Turn off animations for now */
+  .le-markup-btn-grp.out {
+    display: none;
+    /* animation: zoom-out 500ms;
+    animation-timing-function: ease-in-out; */
+  }
+  .le-markup-btn-grp.hidden {
+    transform: translate(-50px, 0);
+  }
+
+  .le-markup-btn.active {
+    background-color: rgba(255, 85, 0, 0.5);
+  }
+  .le-markup-btn.active[data-action="Delete"] {
+    background-color: rgba(255, 0, 0, 1);
+  }
+  .le-markup-btn {
+    pointer-events: fill;
+    line-height: 0.4em;
+    color: #fff;
+    border-radius: 2px;
+    background-color: rgba(0, 60, 136, 0.5);
+    position: relative;
+    border: solid;
+    border-width: 2px;
+    border-color: rgba(255, 255, 255, 0.4);
+    width: 26px;
+    height: 26px;
+    /* z-index: 10000000000; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  #sidebar {
+    z-index: 1;
+  }
+  .le-markup-btn-img {
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    /* z-index: 10000000000; */
+  }
+  .le-markup-text-input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 36px;
+    margin-top: -18px;
+    z-index: 10000000000;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    font-size: 1em;
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    text-align: left;
+    line-height: 1.5em;
+    border-radius: 20px;
+    padding: 10px;
+    box-sizing: border-box;
+    outline: none;
+    border: solid;
+    border-width: 2px;
+    border-color: rgba(255, 255, 255, 0.4);
+  }
+  .colorPickSelector {
+    border-radius: 5px;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    transition: all linear 0.2s;
+  }
+  .colorPickSelector:hover {
+    transform: scale(1.1);
+  }
+
+  .font-pallet {
+    display: none;
+    position: absolute;
+    width: 120px;
+    /* height: 200px; */
+    z-index: 999;
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 5px;
+    box-sizing: content-box;
+    /* margin: -10px 0 0 8px; */
+  }
+  .pallet-symbols {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-row-gap: 10px;
+    grid-column-gap: 5px;
+    transform: scale(1);
+    margin: 10px;
+  }
+
+  .width,
+  .point-font {
+    position: absolute;
+    top: 35px;
+    left: 45px;
+  }
+
+  .pallet-symbols .pallet-btn {
+    transition: all 0.2s ease;
+    transform: scale(1);
+  }
+  .pallet-symbols .pallet-btn:hover {
+    transform: scale(1.2);
+  }
+</style>
+<div id="le-markup-toolbar">
+  <div class="le-markup-btn-grp master">
+    <div
+      class="le-markup-btn master"
+      data-action="activate"
+      style="margin-bottom: 1px"
+      title="Markup Tools"
+    >
+      m
+    </div>
+  </div>
+
+  <div class="le-markup-btn-grp hide hidden out">
+    <div class="le-markup-btn" data-action="Point" title="Add a Point">
+      <div
+        style="
+          margin-bottom: 1px;
+          background-image: url('application/plugins/Markup/img/media-record.svg');
+          background-origin: content-box;
+          background-position: center;
+          background-repeat: no-repeat;
+          pointer-events: none;
+          width: 100%;
+          height: 100%;
+          filter: invert(1); /* Invert the colors */
+          transform: scale(1.7); /* Scale the image */
+        "
+      ></div>
+    </div>
+    <div
+      class="le-markup-btn"
+      data-action="LineString"
+      style="margin-bottom: 1px"
+      title="Add a Line"
+    >
+      <img
+        class="le-markup-btn-img"
+        src="application/plugins/Markup/img/line-icon.svg"
+      />
+    </div>
+    <div class="le-markup-btn" data-action="Polygon" title="Add a Polygon">
+      <img
+        class="le-markup-btn-img"
+        src="application/plugins/Markup/img/poly-icon.svg"
+      />
+    </div>
+    <div class="le-markup-btn" data-action="Text" title="Add Text">T</div>
+  </div>
+
+  <!-- Marker Style Controls -->
+  <div class="le-markup-btn-grp hide hidden out">
+    <div
+      class="le-markup-btn"
+      data-action="Colour"
+      style="margin-bottom: 1px"
+      title="Change Colour"
+    ></div>
+
+    <div
+      class="le-markup-btn"
+      data-action="Size"
+      style="margin-bottom: 1px"
+      title="Change Size"
+      contenteditable="true"
+    >
+      1
+    </div>
+  </div>
+
+  <div class="le-markup-btn-grp hide hidden out">
+    <div class="le-markup-btn" data-action="Download" title="Download Markup">
+      <div
+        style="
+          margin-bottom: 1px;
+          background-image: url('application/plugins/Markup/img/data-transfer-download.svg');
+          background-origin: content-box;
+          background-position: center;
+          background-repeat: no-repeat;
+          pointer-events: none;
+          width: 100%;
+          height: 100%;
+          filter: invert(1); /* Invert the colors */
+          transform: scale(1.7); /* Scale the image */
+        "
+      ></div>
+    </div>
+
+    <div class="le-markup-btn" data-action="Delete" title="Remove Markup">
+      <img
+        class="le-markup-btn-img"
+        src="application/plugins/Markup/img/delete-icon.svg"
+      />
+    </div>
+  </div>
+
+  <!-- Symbol-->
+  <div class="widget point-font">
+    <div class="symbol-widget">
+      <div class="font-pallet">
+        <div class="pallet-symbols"></div>
+      </div>
+    </div>
+  </div>
+</div>

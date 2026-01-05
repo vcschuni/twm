@@ -1,0 +1,750 @@
+class DAGsearch {
+// edit line 38	
+	/**
+	 * Function: constructor
+	 * @param () none
+	 * @returns () nothing
+	 * Function that initializes the class
+	 */
+	constructor() {
+		this.name = "DAGsearch";
+		this.version = 1.0;
+		this.author = "Peter Spry";
+		this.pcfg = getPluginConfig(this.name);
+		this.tabName = (this.pcfg.tabName) ? this.pcfg.tabName : "Search";
+		this.tabContentFile = "application/plugins/DAGsearch/tab-content.html";
+		this.response = "";
+		this.resultsTreeData = [];
+		this.tabNav; // jQuery element
+		this.tabContent // jQuery element
+		this.featureStore = [];  // Used to store all of the features and attributes
+		this.vectorDraw = {}; // map interaction for drawing search polygon
+		
+		// Create layer for drawing Area of Interst
+		this.markupSource = new ol.source.Vector();
+		this.vectorLayer = new ol.layer.Vector({
+		  title: "Markup Layer",
+		  source: this.markupSource,
+		});
+		app.map.addLayer(this.vectorLayer);
+		this.vectorLayer.setZIndex(nextAvailableOverlayLayerZIndex());		
+
+		// Search layer	
+		this.identQueue = [
+			{
+				type: "wfs",
+				name: "dagPoints",
+				desc: "Application Locations",
+				url: "../ogs-geoV06/ows",
+				geometry: "SHAPE",
+				transmitter: returnEnvironmentUrl("oas") + "/dag/SetSearchCriteria.do", // The posse function to accept values
+				layer:"dag:DAP_APPLICATION_LOCATION",
+				fieldToExtract:["APPLICATION_NUMBER","LOCATION_POSSE_OBJECTID"],
+				maxFeatures: 500
+			}
+		];
+		
+
+		// Filter definitions
+		// ["Approvals","Access","Utility Works","Road Works","Event","Filming","Municipal","Permit","Subdivision"]
+		this.filter = {
+			fields:[ 
+				{name: "APPLICATION_TYPE", prettyName: "Application Type", cql: "{{field}} in ({{value}})", type: "choice", options: ["Approval Application","Permit Application","Subdivision Application"]},
+				{name: "APPLICATION_STATUS_DESCRIPTION", prettyName: "Application Status", cql: "{{field}} in ({{value}})", type: "choice", options: ["Abandoned","Approved","Archived","Check Application","Closed","Denied","Final Approved","Final Not Approved","Final Review","New","Not Approved","PLR","PLRS","Pending","Preliminary Review","Review"]},
+				{name: "CREATE_DATETIME", prettyName: "Created Date", type: "dateRange", cql: "{{field}} BETWEEN {{from}} AND {{to}}", from:  new Date("October 1, 2008 12:00:00"), to: new Date()},
+				{name: "LAST_UPDATE_DATETIME", prettyName: "Last Updated Date", type: "dateRange", cql: "{{field}} BETWEEN {{from}} AND {{to}}", from:  new Date("October 1, 2008 12:00:00"), to: new Date()}
+			]
+		};
+				
+		// Add popup to map as confirmation of locations sent to POSSE
+		var popup = $("#popup");
+		$("#map").append(popup);	
+
+
+		this.addPlugin();
+	}
+
+	/**
+	 * Function: zeroPad
+	 * @param (number) num is javascript number to format
+	 * @param(number) places is how long the zero-padded string should be
+	 * @returns (string) A zero padded string version of the number
+	 */
+	zeroPad(num, places) {
+		var zero = places - num.toString().length + 1;
+		return Array(+(zero > 0 && zero)).join("0") + num;
+	}
+	/**
+	 * Function: formatDT
+	 * @param (Date) Javascript Date() object
+	 * @returns (string) Standard Date formatted string
+	 */
+	formatDT(dt) {
+		var year = dt.getFullYear();
+		var month = app.plugins.DAGsearch.zeroPad(dt.getMonth()+1, 2);
+		var date = app.plugins.DAGsearch.zeroPad(dt.getDate(), 2);
+		return year + '-' + month + '-' + date + 'Z';
+	}
+
+	/**
+	 * Function: formatDate
+	 * @param (date) Javascript Date object
+	 * @returns (string) Friendly formatted Date string
+	 */	
+	formatDate(date) {
+		var monthNames = [
+		"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ];
+		var day = app.plugins.DAGsearch.zeroPad(date.getDate(),2);
+		var monthIndex = app.plugins.DAGsearch.zeroPad(date.getMonth()+1,2);
+		var year = date.getFullYear();
+		return year+"-"+monthIndex+"-"+day; // monthNames[monthIndex] + ' ' +  day + ' ' + year;
+	}
+
+	/**
+	 * Function: getCqlFilter
+	 * @param () none
+	 * @returns () cql_filter string
+	 */
+	getCqlFilter() {
+		// Define and build the CQL Filter object (grouped by field name)
+		var cqlFilterObject = new Object();
+		$("#dagSearch-filter-controls").find(".dagSearch-filter-control").each(function() {
+			var fieldName = $(this).attr("fieldName");
+			var userFilter = $(this).attr("userFilter");
+			if (fieldName && userFilter) {
+				if (!cqlFilterObject[fieldName]) cqlFilterObject[fieldName] = [];
+				cqlFilterObject[fieldName].push(userFilter);
+			}
+		});
+		// Convert CQL filter object (which is already grouped) into a CQL filter array
+		var cqlFilterArray = [];
+		$.each(cqlFilterObject, function(fieldName, userFilters) {
+			cqlFilterArray.push("(" + userFilters.join(" OR ") + ")");
+		});
+		
+		// Convert CQL filter array into a string
+		var cqlFilter;
+		if (cqlFilterArray.length > 0) {
+			cqlFilter = cqlFilterArray.join(" AND ");
+		} 
+		
+		return cqlFilter;
+	}		
+	/**
+	 * Function: applyFilter
+	 * @param () none
+	 * @returns () nothing
+	 * Function that applies a filter
+	 */
+	applyFilter() {
+		var cqlFilter = app.plugins.DAGsearch.getCqlFilter();
+		// nothing to apply so bail
+		if (!cqlFilter) return;
+		
+		var filterLayer = null;
+		$.each(app.map.getLayers().getArray(), function(index, layer) {
+			// Get the layer ID
+			var layerId = ol.util.getUid(layer);
+			
+			// Determine if its configured for filtering
+			var addAsFilterLayer = false;
+			if (layer.get("isFilterLayer")) filterLayer = layer;
+
+		});		
+		
+		// Apply the CQL filter to the layer
+		setCqlFilter(filterLayer, app.plugins.DAGsearch.name, cqlFilter);		
+	}		
+
+	/**
+	 * Function: addFilterControls
+	 * @param () nothing
+	 * @returns () nothing
+	 * Function to filter controls to UI
+	 */
+	addFilterControls() {
+		// Remove existing filters and hide fieldset
+		$("#dagSearch-filter-controls").empty();
+		$("#dagSearch-fs-filter-controls").hide();
+		
+		// loop through filter definitions for each field
+		app.plugins.DAGsearch.filter.fields.forEach(function(field) {
+
+			// check for defined list of values
+			var valueOptions = [];
+			if (field.options) valueOptions = field.options;
+			
+			// Define the control
+			var control;
+	
+			// Build the control specific to field filter type
+			switch (field.type) {	
+				case "choice":
+					control = $(".dagSearch-option-template").clone(true);
+					control.removeClass("dagSearch-option-template");
+					control.find(".input-group-text").html(field.prettyName);
+					control.attr("fieldName", field.name);
+					control.find("select").attr("fieldName",field.name);
+					$.each(valueOptions, function(index, value) {
+						var option = $("<option></option>");
+						option.attr("value", value);
+						option.html(value);
+						control.find("select").append(option);
+					});
+					// Define the control's change function
+					control.find("select").on( 'change', function(){
+						if ($(this).val() != "") {
+							var cql = field.cql;
+							cql = cql.replace("{{field}}", field.name);
+							// deal with multiselect options	
+							if (Array.isArray($(this).val())) {
+								var values = "";
+								$(this).val().forEach(function(val) {
+									values = values + "'" + val + "',";
+								});
+								values = values.slice(0, -1); 
+								cql = cql.replace("{{value}}", values); 
+							} else {
+								cql = cql.replace("{{value}}",$(this).val());	
+							}							
+							control.attr("userFilter", cql);
+						} else {
+							control.attr("userFilter", null);
+						}
+						// Remember user input 
+						field.lastValue = $(this).val();
+						
+						// fancy checkboxes for Steve
+						control.find('select').attr("data-selected-text-format","count > 1");
+						control.find('select').attr("data-width","100%");
+						control.find('select').attr("data-size",10);
+						control.find('select').selectpicker();						
+						app.plugins.DAGsearch.applyFilter();						
+					});
+					break;
+					
+				case "dateRange":
+					control = $(".dagSearch-number-range-template").clone(true);
+					control.removeClass("dagSearch-number-range-template");
+					control.find(".input-group-text").html(field.prettyName);
+					control.attr("fieldName", field.name);
+					control.find(".dagSearch-amount1").val(app.plugins.DAGsearch.formatDate(field.from)); 
+					control.find(".dagSearch-amount2").val(app.plugins.DAGsearch.formatDate(field.to));			
+					control.find(".dagSearch-amount1").attr("min",app.plugins.DAGsearch.formatDate(field.from)); 
+					control.find(".dagSearch-amount1").attr("max",app.plugins.DAGsearch.formatDate(field.to)); 
+					control.find(".dagSearch-amount2").attr("min",app.plugins.DAGsearch.formatDate(field.from));	
+					control.find(".dagSearch-amount2").attr("max",app.plugins.DAGsearch.formatDate(field.to));			
+					control.find(".dagSearch-slider-range").slider({
+						range: true,
+						step: 1,
+						min: (field.from.getTime()),
+						max: (field.to.getTime()),
+						values: [(field.from.getTime()),(field.to.getTime())],
+						stop: function( event, ui ) {
+							if ((ui.values[ 0 ] == field.from) && (ui.values[ 1 ] == field.to)) { //  ignore slider filter
+								control.attr("userFilter", null);
+							}
+							var stopFrom = new Date(ui.values[0]);
+							var stopTo = new Date(ui.values[1]);
+							control.find(".dagSearch-amount1").val(app.plugins.DAGsearch.formatDate(stopFrom)); 
+							control.find(".dagSearch-amount2").val(app.plugins.DAGsearch.formatDate(stopTo));						
+							var cql = field.cql;
+							cql = cql.replaceAll("{{field}}",field.name );
+							cql = cql.replace("{{from}}",app.plugins.DAGsearch.formatDT(stopFrom) );
+							cql = cql.replace("{{to}}",app.plugins.DAGsearch.formatDT(stopTo)  );
+							control.attr("userFilter",cql);
+							app.plugins.DAGsearch.applyFilter();
+						},
+						slide: function (event, ui) {
+							var stopFrom = new Date(ui.values[0]);
+							var stopTo = new Date(ui.values[1]);
+							control.find(".dagSearch-amount1").val(app.plugins.DAGsearch.formatDate(stopFrom)); 
+							control.find(".dagSearch-amount2").val(app.plugins.DAGsearch.formatDate(stopTo));						
+						}
+						
+					});
+					control.find(".dagSearch-amount1").on('blur', function() { // update slider and prevent min > max
+						var newMinVal = new Date($(this).val()).getTime();
+						if (newMinVal < control.find(".dagSearch-slider-range").slider( "values", 1) ) {
+							control.find(".dagSearch-slider-range").slider( "values", 0, newMinVal );
+							var cql = field.cql;
+							cql = cql.replaceAll("{{field}}",field.name );
+							cql = cql.replace("{{from}}",app.plugins.DAGsearch.formatDT(new Date($(this).val())) );
+							cql = cql.replace("{{to}}",app.plugins.DAGsearch.formatDT(new Date(control.find(".dagSearch-slider-range").slider( "values", 1))));
+							control.attr("userFilter",cql);
+							app.plugins.DAGsearch.applyFilter();	
+						} else {
+							$(this).val(app.plugins.DAGsearch.formatDate(new Date(control.find(".dagSearch-slider-range").slider( "values", 0))));
+						}
+					});
+					control.find(".dagSearch-amount2").on('blur', function() { // update slider and prevent max < min
+
+						var newMaxVal =  new Date($(this).val()).getTime();
+						if (newMaxVal > control.find(".dagSearch-slider-range").slider( "values", 0) ) {
+							control.find(".dagSearch-slider-range").slider( "values", 1, newMaxVal );
+							var cql = field.cql;
+							cql = cql.replaceAll("{{field}}",field.name );
+							cql = cql.replace("{{from}}",app.plugins.DAGsearch.formatDT(new Date(control.find(".dagSearch-slider-range").slider( "values", 0))));
+							cql = cql.replace("{{to}}",app.plugins.DAGsearch.formatDT(new Date($(this).val()))  );
+							control.attr("userFilter",cql);
+							app.plugins.DAGsearch.applyFilter();					
+							
+						} else {
+							$(this).val(app.plugins.DAGsearch.formatDate(new Date(control.find(".dagSearch-slider-range").slider( "values", 1))));
+						}
+					});
+											
+					break;
+					
+				}
+				if (control) {
+					// Apply remembered state (if any) and trigger keyup event
+					if ("lastValue" in field) control.find("input").val(field.lastValue);
+					control.find("select").trigger("change");
+					$(".dagSearch-form-input").show();					
+					$("#dagSearch-filter-controls").append(control);
+					control.show();
+			
+				}	
+			
+		});
+		// Show the filters
+		$("#dagSearch-fs-filter-controls").show();	
+	}	
+	
+	/*
+	* Function: sendIds()
+	* Sends the complete list of found objectids 
+	* @param (string) a single objectid, optional
+	* @returns () nothing
+	*/
+	sendIds() {
+		var sessionId = getSessionId();
+		var url = app.plugins.DAGsearch.identQueue[0].transmitter+"?sessionId="+sessionId;
+		
+		var idList = "";
+		var nameList = "";
+		var message = "Sending one location...";
+		var idCount = 0;
+		// loop through featureStore and send all checked objectids to POSSE
+		app.plugins.DAGsearch.featureStore.forEach(function(feat,index) {
+			if ($('#dagSearchCheck-feature-'+index).is(':checked')) {
+				nameList += feat.fieldList[0]+",";
+				idList += feat.fieldList[1]+",";
+				idCount++;
+			}
+		});
+		idList = idList.slice(0, -1);
+		if (idCount > 1) {
+//			message = "Sending "+nameList+"... ";
+			message = "Sending "+idCount+" locations... ";
+		}
+		var options = {
+			layerid: "dap_application_locations",
+			LOCATION_POSSE_OBJECTID: idList
+		}
+		$("#popup-content").html(message);
+		$("#map #popup").show().delay(3000).fadeOut();
+		$.ajax({
+			type: "POST",
+			url: url,
+			data: options,
+			xhrFields: {
+				withCredentials: true
+			}
+		})		
+		// Handle the response
+		.done(function(response) {
+			bootbox.dialog({
+				title: "Send Result",
+				size: 'small',
+				message: response
+			});	
+		})
+		
+		// Handle a failure
+		.fail(function(jqxhr, settings, exception) {
+			logger("ERROR", app.plugins.DAGsearch.name + ": Error sending search result to POSSE");
+			return;
+		}); 
+	}	
+	
+	/*
+	* Function: toggleVector
+	* Turn on and off the vector marker tools
+	* @param () active
+	* @param () type
+	* @returns () nothing
+	*/
+	toggleVector(active) {
+		// Clear results
+		$("#dagSearch-results").empty();
+		$("#dagSearch-no-results").hide();
+		// Always remove a previous tool.
+		if (app.plugins.DAGsearch.vectorDraw) app.map.removeInteraction(app.plugins.DAGsearch.vectorDraw);
+		app.plugins.DAGsearch.markupSource.clear();
+		
+		const style = new ol.style.Style({
+				stroke: new ol.style.Stroke({
+					color: "rgba(255, 255, 0, 0.5)",
+					width: 8
+				}),
+					fill: new ol.style.Fill({
+					color: "rgba(255, 255, 0, 0.2)"
+				})
+			});	
+		
+		// If turning something on.
+		if (active) {
+			$("#dagSearch-overlay-search-btn").prop('disabled', true);
+			// set up polygon drawing
+			redirectMapSingleClickFunction("copy", null);
+			this.vectorDraw = new ol.interaction.Draw({
+				source: this.markupSource,
+				type: "Polygon",
+			});
+			app.map.addInteraction(this.vectorDraw);
+			app.plugins.DAGsearch.vectorDraw.on("drawend", function (e) {
+				e.feature.setStyle(style);
+				// Reset the map to default
+				app.map.removeInteraction(app.plugins.DAGsearch.vectorDraw);
+				active = false;
+				resetDefaultMapSingleClickFunction();
+				$("#dagSearch-overlay-search-btn").prop('disabled', false);
+				
+			});
+		}
+			
+	}
+	
+
+	/**
+	 * Function: findFeatures
+	 * @param () none
+	 * @returns () nothing
+	 * Function finds features using the specified search parameters
+	 */
+	findFeatures() {
+		// Check for an area of interest
+		if (app.plugins.DAGsearch.markupSource.getFeatures().length == 0) {
+			var errorNotice = bootbox.dialog({
+				title: "Error",
+				message: "<p class='text-center'>No area of interest has been drawn<br></p>",
+				closeButton: true
+			});
+			return;
+		}	
+		
+		// Clear the results tree and feature store
+		app.plugins.DAGsearch.featureStore = [];
+		app.plugins.DAGsearch.resultsTreeData = [];
+		
+		// Clear results
+		$("#dagSearch-results").empty();
+		$("#dagSearch-no-results").hide();
+				
+		// Add the tab spinner
+		var spinner = new Spinner(app.spinnerOptionsMedium).spin($(app.plugins.DAGsearch.tabContent)[0]);
+
+		// Define misc variables
+		var layersToSearchCount = app.plugins.DAGsearch.identQueue.length;
+		var layerSearchCompletedCount = 0;
+		
+		// Define the callback function that runs the aggregator after each layer returns a result
+		var callback = function(features){
+			// don't bother in nothing found
+			if (features.length > 0) app.plugins.DAGsearch.addToResultsTreeData(features);
+
+			// Increment the counter
+			layerSearchCompletedCount++;
+			
+			if (layerSearchCompletedCount >= layersToSearchCount) {
+				// Show results
+				app.plugins.DAGsearch.showResults();
+				
+				// Hide the search polygon if present
+				app.plugins.DAGsearch.markupSource.clear();
+				
+				// Stop showing busy
+				spinner.stop();
+			}
+		}
+		
+		// Transform the search polygon into the current layer's native projection and then convert into WKT
+		var searchPolygonInLayerNativeProj = transformFeature(app.plugins.DAGsearch.markupSource.getFeatures()[0],app.map.getView().getProjection().getCode(),"EPSG:3005"); 
+		var wktFormat = new ol.format.WKT();
+		var searchPolygonWKT = wktFormat.writeGeometry(searchPolygonInLayerNativeProj.getGeometry());
+		
+		app.plugins.DAGsearch.identQueue.forEach(function(l,index){
+			l.id = index;
+
+			// Build the CQL_FILTER statement 
+			var existingFilter = app.plugins.DAGsearch.getCqlFilter();
+			var cqlFilter = "INTERSECTS("+l.geometry+", "+searchPolygonWKT+")";
+			if (existingFilter) cqlFilter = cqlFilter + " AND " + existingFilter;
+			// Build the request options
+			var options = {
+				service: "WFS",
+				version: "2.0.0",
+				request: "GetFeature", 
+				typeNames: l.layer,
+				outputFormat: "application/json",
+				count: app.plugins.DAGsearch.pcfg.proximitySearchMaxResults,
+				srsName: app.map.getView().getProjection().getCode(),
+				cql_filter: cqlFilter
+			}
+
+			// Issue the request
+			$.ajax({
+				type: "POST",
+				url: l.url,
+				dataType: "json",
+				data: options,
+				xhrFields: {
+					withCredentials: true
+				}
+			})		
+			// Handle the response
+			.done(function(response) {
+				callback(response.features);
+			})
+			
+			// Handle a failure
+			.fail(function(jqxhr, settings, exception) {
+				logger("ERROR", app.plugins.DAGsearch.name + ": Error querying features");
+				callback([]);
+				return;
+			}); 
+			
+		});
+		
+	}
+	
+	/**
+	 * Function: notifyUserOfFailure
+	 * @param (errorText) String
+	 * @returns () nothing
+	 * Function that notifies user that the SM Session has expired
+	 */
+	notifyUserOfFailure(errorText) {
+			bootbox.dialog({
+				title: "DAGsearch query error",
+				message: "<br><center><span style='color:red;'>"+errorText+" </span></center><br>",
+				size: "medium",
+				closeButton: true
+			});
+	}	
+	
+	/**
+	 * Function: addToResultsTreeData
+	 * @param (object) features
+	 * @returns () nothing
+	 * Function that adds a result set to the tree view data array
+	 */
+	addToResultsTreeData(features) { 
+		// figure out which layer object this is for
+		var obj = {};
+		app.plugins.DAGsearch.identQueue.forEach(function(l,index){
+			if (l.layer.includes(features[0].id.slice(0,features[0].id.indexOf(".")))) {
+				obj = l;
+			}
+		});
+		
+		var parentNode = new Object();
+		parentNode.id = "dagSearchSelected";
+		parentNode.text = "Found Application Locations (" + features.length + ")";
+		parentNode.icon = "oi oi-folder";
+		parentNode.class = "dagSearch-treeview-layer";
+		parentNode.nodes = [];
+		$("#dagSearch-overlay-sendAll-btn").text("Send Selected ("+ features.length +")");
+		
+		// Build list of found locations
+		$.each(features, function(index,feature) {			
+			var checkbox = '<input type="checkbox" title="Checked locations will be sent" class="form-check-input dagSearchCheck" checked id=dagSearchCheck-feature-' + (app.plugins.DAGsearch.featureStore.length)+'>'; 
+			var fieldList = [feature.properties[obj.fieldToExtract[0]],feature.properties[obj.fieldToExtract[1]]];
+			var featureTitle = checkbox + feature.properties[obj.fieldToExtract[0]];
+			featureTitle +=  "</i></a><br/>";
+					
+			// attach function to send data back to Posse
+			feature.transmitter = obj.transmitter; 
+			feature.fieldList = fieldList;
+
+			// Add feature to feature store
+			app.plugins.DAGsearch.featureStore.push(feature);
+			
+			// Build the child (feature) node
+			var childNode = new Object();
+			childNode.id = "dagSearch-feature-" + (app.plugins.DAGsearch.featureStore.length - 1);
+			childNode.text = featureTitle;
+			childNode.class = "dagSearch-treeview-feature";
+			
+			// Add child node to parent (layer) node
+			parentNode.nodes.push(childNode);
+		});
+		
+		// Add the parent to the results tree data array
+		app.plugins.DAGsearch.resultsTreeData.push(parentNode);
+	}
+	
+	
+	/**
+	 * Function: showResults
+	 * @param () none
+	 * @returns () nothing
+	 * Function that show the results in a tree view
+	 */
+	showResults() {	
+		/* old
+		$( "#dagSearch-tree" ).accordion({active: 0, heightStyle: "content"});
+		*/
+		// Show tree if there are results
+		if (app.plugins.DAGsearch.resultsTreeData.length > 0) {
+			// Add a tree view div
+			$("#dagSearch-results").append("<div id='dagSearch-tree'></div>");
+			
+			// Register and build the treeview
+			$("#dagSearch-tree").bstreeview({
+				data: app.plugins.DAGsearch.resultsTreeData,
+				expandIcon: 'oi oi-minus',
+				collapseIcon: 'oi oi-plus',
+				indent: 1.6,
+				openNodeLinkOnNewTab: true
+			});
+			
+			// Add click event handlers to update checked list
+			$(".dagSearch-treeview-feature").click(function(node){
+				var featureStoreId = this.id.replace("dagSearch-feature-", "");
+				var feat = app.plugins.DAGsearch.featureStore[featureStoreId];
+				var checked = $('.dagSearchCheck:input:checkbox:checked').length;
+				$("#dagSearch-overlay-sendAll-btn").text("Send Selected ("+checked+")");
+			});
+			
+			// Add hover event handlers to all of the features
+			$(".dagSearch-treeview-feature").hover(
+				function(){
+					// Get the feature
+					var featureStoreId = this.id.replace("dagSearch-feature-", "");
+					var feature = app.plugins.DAGsearch.featureStore[featureStoreId];
+					var olFeature = convertToOpenLayersFeature("GeoJSON", feature);
+					
+					// Highlight it
+					highlightFeature(olFeature);
+				},
+				function(){
+					clearHighlightedFeatures();
+				}
+			);
+			
+		// Show no results
+		} else {
+			$("#dagSearch-no-results").show();
+		}		
+	}
+		
+	/**
+	 * Function: addPlugin
+	 * @param () none
+	 * @returns () nothing
+	 * Function that adds the plugin tab to the sidebar
+	 */
+	addPlugin() {
+		// Bail if map is opened from an application page
+		if (openedWithAppObjId()){
+			logger("INFO",  this.name +"Opened from an application, exiting");
+			return;
+		}
+
+		// Define Callback
+		var callback = function(success, tabNav, tabContent){
+			// Bail if failed
+			if (!success) {
+				logger("ERROR", app.plugins.DAGsearch.name + ": Plugin failed to initialize");
+				return;
+			}
+			
+			// Set class variables
+			app.plugins.DAGsearch.tabNav = tabNav;
+			app.plugins.DAGsearch.tabContent = tabContent;
+			
+			// Register the get location from map buttons
+			$(".dagSearch-get-location-from-map-btn").click(function(){ 
+				const active = !$(this).prop('disabled');
+				app.plugins.DAGsearch.toggleVector(true);
+			});
+
+			// Register the clear input buttons
+			$(".dagSearch-search-point .dagSearch-clear-input-btn").click(function(){ 
+				$("#dagSearch-overlay-search-btn").prop('disabled', true);
+				$("#dagSearch-overlay-sendAll-btn").prop('disabled', true);
+				$("#dagSearch-overlay-sendAll-btn").text("Send Selected");
+				// Clear results
+				$("#dagSearch-results").empty();
+				$("#dagSearch-no-results").hide();
+				app.plugins.DAGsearch.toggleVector(false);
+			});
+			
+			// Register search button
+			$("#dagSearch-overlay-search-btn").click(function(){
+				// Disable search button
+				$("#dagSearch-overlay-search-btn").prop('disabled', true);
+				
+				// Clear results
+				$("#dagSearch-results").empty();
+				$("#dagSearch-no-results").hide();
+										
+				app.plugins.DAGsearch.findFeatures();
+				$("#dagSearch-overlay-sendAll-btn").prop('disabled', false);
+				
+			});
+			
+			// Register sendAll button
+			$("#dagSearch-overlay-sendAll-btn").click(function(){
+		
+				/* 
+				 * JSESSION kludge: Selected locations API
+				 * requires an authenticated session with DAG.
+				 * This simple jQuery request is good enough to satisfy that requirement.
+				 * It's placed here b/c the auth should occur before sending that request
+				 */
+				var sessionId = getSessionId();
+				var thisURL = document.URL.toString();
+				var dagURL =  thisURL.replace("twm/?c=dag","dag/Launch.do?site=dev_tech&sessionId="+sessionId);
+				$.ajax({
+					type: "POST",
+					url: dagURL,
+					dataType: "json",
+					xhrFields: {
+						withCredentials: true
+					},
+					async: false
+				})		
+				// Handle the response
+				.done(function(response) {
+					app.plugins.DAGsearch.sendIds();
+				})
+				.always(function(response) {
+					app.plugins.DAGsearch.sendIds();
+				});				
+				
+			// We are done so disable button
+			$("#dagSearch-overlay-sendAll-btn").prop('disabled', true);
+			$("#dagSearch-overlay-sendAll-btn").text('Send Selected');
+			
+			// Clear results
+			$("#dagSearch-results").empty();
+			$("#dagSearch-no-results").hide();
+			app.plugins.DAGsearch.toggleVector(false);					
+										
+			});
+			
+			// Set up filter controls
+			app.plugins.DAGsearch.addFilterControls();
+			
+			// Log success
+			logger("INFO", app.plugins.DAGsearch.name + ": Plugin successfully loaded");
+		}
+		
+		// Add the tab
+		addSideBarTab(this.tabName, this.tabContentFile, callback);
+	}
+}

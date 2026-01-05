@@ -1,0 +1,51 @@
+<h4>Chart Plugin Driver</h4>
+	<p>
+		A basic form to exercise a Chart plugin
+	</p>
+	<p>
+	 Note that the <emp>wasClicked</emp> callback function is sitting in the chart-example <emp>app-config.js</emp> but, typically this would live in a driver plugin which is calling the Chart plugin.
+	</p>
+
+	<p style="font-weight: bold;" id="cdp-chart-title">Test Chart</p>
+	
+	<script>
+	// Note that the wasClicked callback function is sitting in the chart-example app-config.js
+	// typically this would live in a driver plugin which is calling the Chart plugin
+
+	
+	
+	function openChart(event) { // Open the new Chart window 
+		
+		
+
+		event.preventDefault();
+
+		function sayHello() {
+  			console.log("Hello!");
+		}
+
+		// Split the comma separated values into an array
+		var labels = $("#labels").val().split(',');
+		var data =  $("#data").val().split(',');
+		const title = $("#cdp-chart-title").text();
+		app.plugins.ChartPlugin.open("testId",title,labels,data, sayHello);
+
+		
+	}
+	</script>
+<form>
+	<div class="form-group">
+		<label for="labelData">Label Array</label>
+		<textarea class="form-control" id="labels" rows="3" required>First,Second,Third</textarea>
+	</div>
+	<div class="form-group">
+		<label for="dataData">Data Array</label>
+		<textarea class="form-control" id="data" rows="3" required>10,20,30</textarea>
+	</div>
+	<input type="submit" value="Create" class="btn btn-primary" id="openChart"  />
+	
+</form>
+
+
+	
+	

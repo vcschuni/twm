@@ -1,0 +1,9 @@
+{
+	name: "LayerSearch",				// Plugin Class Name - DO NOT MODIFY [required]
+	tabName: "Layer Search",			// Tab name [required]
+	enabled: true,						// Whether plugin is enabled [required]
+	limitSearchToMapExtent: true,		// Whether to limit searc to map extent [optional]
+	maxResultsPerLayer: 25,				// Max results to return per layer [required].  Should be set very high when the sortResultsByClosest option is set to true.
+	sortResultsByClosest: true	,		// If true, sorts results by closest euclidean distance (give user geoloaction is available) [optional]
+	minimumZoomWhenIdentifying: 14		// Minimum zoom level to zoom to when clicking on a search result [optional]
+}

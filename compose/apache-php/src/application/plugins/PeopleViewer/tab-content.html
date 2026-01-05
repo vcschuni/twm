@@ -1,0 +1,362 @@
+<style>
+	
+
+	/* Card Flip Styles */
+	.flip-card {
+      perspective: 1000px;
+    }
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: transform 0.8s;
+      transform-style: preserve-3d;
+    }
+    .flip-card.flipped .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+    .flip-card-front, .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+    }
+    .flip-card-back {
+      transform: rotateY(180deg);
+      background-color: #f8f9fa;
+    }
+    .profile-photo {
+      object-fit: cover;
+    }
+    .profile-details {
+      padding: 20px;
+    }
+	#person-card{
+		width: 140px;
+	}
+
+  body {
+            font-family: Arial, sans-serif;
+        }
+  .context-menu {
+      position: absolute;
+      background: white;
+      border: 1px solid #ccc;
+      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+      display: none;
+      z-index: 1000;
+      min-width: 150px;
+  }
+  .context-menu ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+  }
+  .context-menu ul li {
+      padding: 8px 12px;
+      cursor: pointer;
+  }
+  .context-menu ul li:hover {
+      background-color: #f0f0f0;
+  }
+
+        
+  .FilterandFind-tab-container{
+    display: flex;
+    
+  }
+  /* #FilterandFind-tab-content{
+    display: flex;
+  } */
+  .filter-menu{
+    font-size: 14px;
+  }
+  #person-container{
+    padding: 10px;
+    background: #ffffff;
+   /*  border: .1px solid #ced4dacc;
+    border-radius: 13px; */
+    overflow: auto;
+    max-height: 100vh;
+    width: -webkit-fill-available;
+
+  }
+  #sidebar-tab-content{
+    background: #f5f5f5;
+    border: .1px solid #ced4dacc;
+    border-radius: 13px;
+
+  }
+  #map{
+    width: 50%;
+  }
+  
+  
+  #chart-filter{
+    border-bottom: 1px solid #000;
+    width:100%;
+    padding-bottom: 5px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  #other-filter{
+    border-bottom: 1px solid #000;
+    width:100%;
+    padding-bottom: 5px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  #contact-info-container{
+    display: flex;
+    justify-content: space-between;
+
+  }
+  .card-img-top{
+    object-fit: cover;
+    height: 120px;
+  }
+/*   .chart-button{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+
+} */
+.chart-contents{
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: flex-start;
+
+}
+.chart-button{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  font-size: 14px;
+
+}
+#chart-button-label{
+  padding-left: 6px;
+  text-align: left;
+
+}
+#skillFilters{
+  position: relative;
+}
+#skillfilter-item{
+  padding: 4px;
+  margin: 2px;
+  font-size: 14px;
+
+}
+.badge-small {
+  font-size: 0.8em;
+  padding: 0.5em 0.7em;
+  margin: 4px;
+  }
+  .badge-medium {
+  font-size: 1em;
+  padding: 0.6em 0.9em;
+  margin: 4px;
+  }
+  .badge-large {
+  font-size: 1.2em;
+  padding: 0.7em 1em;
+  margin: 4px;
+  }
+  .badge-xlarge {
+  font-size: 1.5em;
+  padding: 0.8em 1.2em;
+  margin: 4px;
+  }
+  .btn-toggle.active {
+  background-color: #007bff;
+  color: #fff;
+  }
+  .accordian-tile{
+    font-size: 14px;
+
+  }
+  
+  .editorButtonGroup{
+    display: flex;
+    justify-content: flex-end;
+    padding-bottom: 4px;
+    margin-right: 5px;
+  }
+  .editButtons{
+    margin-left: 8px;
+    margin-right: 2px;
+    background: white;
+    font-size: 14px;
+
+  }
+  
+ #content{
+  display: flex;
+  flex-direction: row-reverse;
+ }
+
+    
+  
+  #person-list{
+    background: #ffffff;
+    width: -webkit-fill-available;
+  }
+  .accordion-collapse{
+    padding: 10px;
+}
+#card-name{
+  font-size: 14px;
+
+
+}
+
+  
+
+
+</style>
+
+
+<div class="filter-menu">
+  <div class="filters">
+    <div class="pp-filter-group input-group input-group-sm mb-3 rf-waypoint ui-sortable-handle" id="pp-filter-group">
+      <input class="form-control" id="pp-filter-input" type="text" placeholder="Filter">
+      <button tabindex="-1" class="btn btn-outline-secondary pp-clear-filter" id="pp-clear-filter" type="button" title="Clear Filters"><span class="oi oi-x text-danger"></span></button>
+    </div>
+    <div class="accordion accordion-flush" id="accordionFlushExample">
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+            <div class="accordian-tile">Work Units:</div>
+          </button>
+        </h2>
+        <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+          <div class="work-unit-filter">
+            <label for="work-unit-filter" id="filter-type"></label>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="flexCheck3">
+              <label class="form-check-label" for="flexCheck3">
+                Data Services
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="flexCheck2">
+              <label class="form-check-label" for="flexCheck2">
+                Design and Client Relations
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="flexCheck4">
+              <label class="form-check-label" for="flexCheck4">
+                Digital Delivery
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="flexCheck6">
+              <label class="form-check-label" for="flexCheck6">
+                Office of MCIO
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="flexCheck1">
+              <label class="form-check-label" for="flexCheck1">
+                Strategy and Governance
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="flexCheck5">
+              <label class="form-check-label" for="flexCheck5">
+                Technology Services
+              </label>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+            <div class="accordian-tile">Job Title:</div>
+          </button>
+        </h2>
+        <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+          <label for="title-filter-label" id="filter-type"></label>
+          <div class="title-filter" id="pp-title-filter"></div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+            <div class="accordian-tile">Skills and Knowledge Areas</div>
+          </button>
+        </h2>
+        <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+          <label for="title-filter-label" id="filter-type"></label>
+    <div class="title-filter" id="pp-skill-filter">
+      <div id="skillFilters" class="skillFilters" data-toggle="buttons"></div>
+    </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
+            <div class="accordian-tile">Charts</div>
+          </button>
+        </h2>
+        <div id="flush-collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+          <div class="charts">
+            <div class="chart-header">
+              <label for="chart-filter" id="chart-filter"></label>
+            </div>
+            <div class="chart-contents">
+                <button type="button" class="chart-button btn" chartType="staff-by-city">
+                  <img src="application/plugins/PeopleViewer/img/bar-chart.png" alt="Custom Image" style="width: 20px; height: 20px;">
+                  <label for="chart-button btn" id="chart-button-label">By City</label>
+                </button>
+                <button type="button" class="chart-button btn" chartType="staff-by-office">
+                  <img src="application/plugins/PeopleViewer/img/bar-chart.png" alt="Custom Image" style="width: 20px; height: 20px;">
+                  <label for="chart-button btn" id="chart-button-label">By Office</label>
+                </button>
+                <button type="button" class="chart-button btn" chartType="staff-by-WorkUnit">
+                  <img src="application/plugins/PeopleViewer/img/bar-chart.png" alt="Custom Image" style="width: 20px; height: 20px;">
+                  <label for="chart-button btn" id="chart-button-label">By Work Unit</label>
+                </button>
+                <button type="button" class="chart-button btn" chartType="staff-by-MOTI-date">
+                  <img src="application/plugins/PeopleViewer/img/bar-chart.png" alt="Custom Image" style="width: 20px; height: 20px;">
+                  <label for="chart-button btn" id="chart-button-label">By IMB Start Date</label>
+                </button>
+                <button type="button" class="chart-button btn" chartType="staff-by-PSA-date">
+                  <img src="application/plugins/PeopleViewer/img/bar-chart.png" alt="Custom Image" style="width: 20px; height: 20px;">
+                  <label for="chart-button btn" id="chart-button-label">By PSA Start Date</label>
+                </button>
+                
+              <!-- <div class="chart1">By City</div>
+              <div class="chart2">By Office</div> -->
+              
+            </div>
+            
+          </div>
+          
+    
+        </div>
+      </div>
+      
+    </div>
+    
+    
+
+  </div>
+
+  
+
+</div>
+
+
+
+
+
+  
+
+	

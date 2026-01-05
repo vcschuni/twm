@@ -1,0 +1,232 @@
+<style>
+	.layer-switcher {
+		margin-bottom: 20px;
+	}
+	.layer-switcher legend {
+		float: none;
+		font-size: 15px;
+		font-weight: bold;
+		margin-bottom: 0px;
+	}
+	.layer-switcher .lc-fs-content {
+		margin: 0px 6px 0px 6px;
+	}
+	.layer-switcher .form-check {
+		font-size: 13px;
+		border-top: 1px solid #DCDCDC;
+	}
+	.layer-switcher .lc-overlay-control {
+		position: relative;
+		padding-right: 5px;
+		padding-top: 1px;
+		margin: 0px;
+	}
+	.layer-switcher .lc-overlay-control:last-child {
+		padding-bottom: 3px;
+		border-bottom: 1px solid #DCDCDC;
+	}
+	
+	/* Start override for when layer controls are in a group */
+	.lc-overlay-group-list .lc-overlay-control {
+		line-height: 1.75;
+	}
+	.lc-overlay-group-list .lc-overlay-control:last-child {
+		padding-bottom: 0px;
+	}
+	/* End override for when layer controls are in a group */
+
+	.layer-switcher .lc-baselayer-control {
+		padding-right: 5px;
+		padding-top: 1px;
+		margin: 0px;
+	}
+	.layer-switcher .lc-baselayer-control:last-child {
+		padding-bottom: 3px;
+		border-bottom: 1px solid #DCDCDC;
+	}
+	.layer-switcher .form-check .form-check-label {
+		margin-right: 60px;
+	}
+	.lc-overlay-chkbox {
+		margin-top: 4px;
+		margin-bottom: 4px;
+	}
+	.lc-layer-toolbox {
+		position: absolute;
+		top: 0px;
+		right: 2px;
+	}
+	.lc-layer-toolbox .lc-menu-icon {
+		font-size: 13px;
+		margin-right: 7px;
+		text-align: center;
+		width: 20px;
+	}
+	.lc-overlay-error-btn {
+		font-size: 10px;
+		margin-left: 2px;
+		cursor: pointer;
+		color: red;
+	}
+	.lc-overlay-working {
+		font-size: 10px;
+		margin-left: 2px;
+		animation: lc-layer-working-animation 2s infinite linear;	
+	}
+	@keyframes lc-layer-working-animation {
+		0% {
+			transform: rotate(0deg);
+		}
+		100% {
+			transform: rotate(359deg);
+		}
+	}
+	.lc-overlay-group {
+		margin-bottom: 10px;
+		position: relative;
+	}
+	.lc-overlay-group-list {
+    	padding-left: 0;
+		margin-bottom: 8px;
+		min-height: 24px;
+	}
+	.lc-overlay-group .ui-accordion-content {
+		padding: 8px 8px 0px 8px;	
+		overflow: visible;
+	}
+	.lc-overlay-group .ui-accordion-header {
+		font-size: 14px;
+	}
+	.lc-overlay-group .ui-accordion-header.ui-state-active { 
+		border: 1px solid #003366;
+		background: #003366; 
+	}
+	.lc-modify-overlay-btn {
+		font-size: 10px;
+		cursor: pointer;
+		margin-left: 2px;
+	}
+	.lc-overlay-legend-btn {
+		font-size: 10px;
+		cursor: pointer;
+		margin-left: 2px;
+	}
+	.lc-overlay-more-btn {
+		font-size: 10px;
+		cursor: pointer;
+		margin-left: 2px;
+	}
+	.lc-overlay-btn-disabled {
+		color: #d3d3d3;
+		cursor: default;
+	}
+	.lc-baselayer-radio {
+		margin-top: 4px;
+	}
+	.lc-baselayer-toolbox {
+		position: absolute;
+		top: 0px;
+		right: 2px;
+	}
+	.lc-remove-baselayer-btn {
+		font-size: 10px;
+		cursor: pointer;
+		margin-left: 2px;
+	}
+	#lc-matching-layers {
+		height: 150px;
+	}
+	#lc-layer-details legend {
+		font-size: 12px;
+		color: grey;
+		margin-bottom: 0px;		
+	}
+	#lc-layer-details-content table {
+		width: 95%;
+		max-width: 95%;
+		margin: 0px auto 2px auto;
+		word-wrap: break-all;
+		table-layout: fixed;
+	}
+	#lc-layer-details-content table td {
+		font-size: 12px;
+		padding: 1px;
+	}
+	.lc-layer-details-content-td-label {
+		width: 65px;
+		text-align: right;
+		vertical-align: top;
+		font-weight: bold;
+	}
+	.lc-overlay-menu-btn {
+		padding: 0.1rem 0.4rem;
+	}
+</style>
+
+<fieldset class="border p-2 layer-switcher lc-fs-overlays" style="display:none;">
+	<legend class="w-auto">Layers</legend>
+	<div class="lc-fs-content" id="lc-fs-overlay-content">
+		<!-- overlay layers automatically inserted here -->
+	</div>
+</fieldset>
+<fieldset class="border p-2 layer-switcher lc-fs-baselayers" style="display:none;">
+	<legend class="w-auto">Backgrounds</legend>
+	<div class="lc-fs-content">
+		<!-- base layers automatically inserted here -->
+	</div>
+</fieldset>
+
+<!-- Add additional layers (hidden by default) -->
+<fieldset class="border p-2 layer-switcher lc-fs-layer-adder" style="display:none;">
+	<legend class="w-auto">Layer Adder</legend>
+	<div class="input-group input-group-sm mb-2">
+		<input id="lc-filter-input" type="text" class="form-control" placeholder="Filter" readonly>
+		<button id="lc-clear-filter-btn" class="btn btn-secondary" type="button" title="Clear"><span class="oi oi-x"></span></button>
+	</div>
+	<div id="lc-addable-layers-ig" class="input-group input-group-sm mb-2">
+		<select id="lc-matching-layers" class="form-select form-select-sm" size="10"></select>
+	</div>
+	<div id="lc-filter-input-context-menu" class="dropdown-menu dropdown-menu-sm">
+		<button id="lc-add-all-filtered-layers" class="dropdown-item" type="button">Add all filtered layers</button>
+	</div>
+	<fieldset id="lc-layer-details" class="border p-2 mb-2" style="display:none;">
+		<legend class="w-auto">Selected Layer Detail</legend>
+		<div id="lc-layer-details-content">
+			<!-- will be populated with layer metadata when layer is selected -->
+		</div>
+	</fieldset>
+	<div class="text-end">
+		<button id="lc-add-layer-btn" class="btn btn-sm btn-success" type="button" disabled>Add Layer</button>
+	</div>
+</fieldset>
+
+<!-- Hidden template for base layer control -->
+<div class="form-check lc-baselayer-control lc-baselayer-template" style="display:none;">
+	<input type="radio" layerId="" name="lc-base-layer-options" class="form-check-input lc-baselayer-radio">
+	<label class="form-check-label"></label>
+	<div class="lc-baselayer-toolbox">
+		<span class="oi oi-x lc-remove-baselayer-btn" title="Remove Layer" style="display:none;"></span>
+	</div>
+</div>
+
+<!-- Hidden template for overlay layer control -->
+<div class="form-check lc-overlay-control lc-overlay-template" style="display:none;">
+	<input type="checkbox" class="form-check-input lc-overlay-chkbox">
+	<label class="form-check-label"></label>
+	<div class="lc-layer-toolbox">
+		<span class="oi oi-bug lc-overlay-error-btn" title="Layer has errors! Click to refresh" style="display:none;"></span>
+		<span class="oi oi-cog lc-overlay-working" title="Loading" style="display:none;"></span>
+		<span class="oi oi-pencil lc-modify-overlay-btn" title="Modify Layer Properties"></span>
+		<span class="oi oi-list lc-overlay-legend-btn" title="Toggle Legend"></span>
+		<span class="oi oi-ellipses lc-overlay-more-btn" title="More..." data-bs-toggle="dropdown"></span>
+		<div class="dropdown-menu dropdown-menu-end">
+			<button class="dropdown-item lc-overlay-menu-btn lc-overlay-remove-menu-btn" type="button" style="display:none;"><span class="oi oi-x lc-menu-icon"></span>Remove</button>
+			<button class="dropdown-item lc-overlay-menu-btn lc-overlay-refresh-menu-btn" type="button"><span class="oi oi-loop-circular lc-menu-icon"></span>Refresh</button>
+			<button class="dropdown-item lc-overlay-menu-btn lc-overlay-metadata-menu-btn" type="button"><span class="oi oi-info lc-menu-icon"></span>View MetaData</button>
+			<button class="dropdown-item lc-overlay-menu-btn lc-overlay-download-menu-btn" type="button" style="display:none;"><span class="oi oi-data-transfer-download lc-menu-icon"></span>Download</button>
+		</div>
+	</div>	
+	<div class="lc-legend" style="display:none;"><img/></div>
+</div>
+
+

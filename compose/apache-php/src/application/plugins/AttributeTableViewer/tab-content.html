@@ -1,0 +1,183 @@
+<style>
+
+
+.ATV-table-content {
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 0%;
+    min-height: 0;
+    min-width: 0;
+    overflow: auto;
+}
+
+.ATV-horizontal-toolbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px;
+    border-bottom: 1px solid #ddd;
+    background-color: #fff;
+    flex: 0 0 auto;
+}
+@media (max-width: 600px) {
+    .ATV-horizontal-toolbar {
+       display: flex;
+        justify-content: space-between;
+        padding: 6px;
+        border-bottom: 1px solid #ddd;
+        background-color: #fff;
+        flex: 0 0 auto;
+        flex-direction: column;
+        align-items: center;
+    }
+    .ATV-search-bar,
+    .ATV-pagination-controls {
+        width: 100%;
+        text-align-last: center;
+        justify-content: space-between;
+    }
+    .ATV-pagination-controls {
+        margin-top: 4px;
+    }
+}
+
+.ATV-pagination-controls button {
+    margin-left: 5px;
+}
+
+.ATV-content-area {
+    display: flex;
+    flex: 1 1 0%;
+    min-height: 0;
+    min-width: 0;
+    overflow: hidden;
+}
+
+.ATV-vertical-toolbar {
+    display: flex;
+    flex-direction: column;
+    padding: 6px;
+    border-right: 1px solid #ddd;
+    background-color: #fff;
+    flex: 0 0 auto;
+}
+    
+.table-responsive {
+    flex: 1 1 0%;
+    min-width: 0;
+    min-height: 0;
+    overflow-x: auto;
+    overflow-y: auto;
+    max-height: 100%;
+    max-width: 100%;
+}
+
+#ATV-layer-list{
+	padding: 6px;
+	display: flex;
+    flex-direction: row;
+}
+
+.ATV-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 0;
+}
+
+.ATV-layer-list {
+    flex: 0 0 auto;
+}
+#ATV-search-input{
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.ATV-search-bar{
+    display: flex; 
+}
+.ATV-search-clear-btn{
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+#ATV-feature-table{
+    font-size: .875rem;
+}
+.ATV-pagination-info{
+    font-size: .875rem;
+}
+.ATV-layer-button{
+    font-size: .875rem;
+}
+#ATV-search-input{
+    font-size: .875rem;
+}
+
+
+
+
+</style>
+
+<div class="ATV-content">
+   
+    <div class="ATV-layer-list">
+        <ul class="list-group list-group-flush" id="ATV-layer-list">
+            <!-- Insert Layer List Here -->
+        </ul>
+    </div>
+
+    <div class="ATV-table-content">
+        <!-- Horizontal Toolbar with Pagination -->
+        <div class="ATV-horizontal-toolbar">
+			
+			<div class="ATV-search-bar">
+        		<input type="text" class="form-control" id="ATV-search-input" placeholder="Search...">
+                <button tabindex="-1" class="btn btn-outline-secondary ATV-search-clear-btn" type="button" id="ATV-search-clear-btn" title="Clear search"><span class="oi oi-x text-danger"></span></button>
+   			</div>
+			
+            <div class="ATV-pagination-controls">
+                <button type="button" class="btn btn-light" title="Previous Page" id="ATV-pagination-prev">
+                    <span class="oi oi-chevron-left"></span>
+                </button>
+				<span class="ATV-pagination-info" id="ATV-pagination-info">1 of 1</span>
+                <button type="button" class="btn btn-light" title="Next Page" id="ATV-pagination-next">
+                    <span class="oi oi-chevron-right"></span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Content Area: Vertical Toolbar and Table -->
+        <div class="ATV-content-area">
+            <!-- Vertical Toolbar -->
+            <div class="ATV-vertical-toolbar">
+                <button type="button" class="btn btn-light btn-med" title="Refresh" id="ATV-attribute-refresh" style="margin-bottom: 10px;">
+                    <span class="oi oi-loop-circular"></span>
+                </button>
+                <button type="button" class="btn btn-light btn-med" title="Show Selected Records" id="ATV-show-selected" style="margin-bottom: 10px;">
+                    <span class="oi oi-task"></span>
+                </button>
+               <!--  <button type="button" class="btn btn-light btn-med" title="Clear Selection" id="ATV-attribute-clear" disabled>
+                    <span class="oi oi-x"></span>
+                </button> -->
+            </div>
+            <!-- Table -->
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered table-hover" id="ATV-feature-table" style="width:max-content">
+                    <!-- Insert Table Here -->
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+

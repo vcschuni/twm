@@ -1,0 +1,30 @@
+<style>
+	.sp-downloader-form-label{
+		width: 82px;
+	}
+	.sp-downloader-details {
+		font-size: 0.75em;
+		padding: 0px 40px 0px 40px;
+	}
+</style>
+<form class="sp-download-form">
+
+	<!-- Layer to Download (readonly) -->
+	<div class="input-group input-group-sm mb-3">
+		<span class="input-group-text sp-downloader-form-label">Collection</span>
+		<select id="sp-output-layer" type="text" class="form-control"></select>
+	</div>
+
+	<!-- Output Format Chooser -->
+	<div class="input-group input-group-sm mb-3">
+		<span class="input-group-text sp-downloader-form-label">Format</span>
+		<input id="sp-output-format" class="form-control" readonly>
+	</div>
+	
+	<p class="sp-downloader-details">
+	* Only features within the map extent will be downloaded.<br>
+	* The number of features available for download may be restricted.<br>
+	* Downloads may take a few moments to begin.
+	</p>
+	
+</form>

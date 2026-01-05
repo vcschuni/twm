@@ -1,0 +1,88 @@
+<style>
+	.dag-with-chevron[aria-expanded='true'] span {
+		display: block;
+		transform: rotate(180deg) !important;
+	}
+	.dag-instructions {
+		font-size: 13px;
+		font-style: italic;
+	}
+	.dag-instructions ul {
+		margin-top: 5px;
+		list-style-type: none;
+		padding-left: 1.2em;
+	}
+	.dag-instructions ul li span {
+		width: 15px;
+		text-align: center;
+	}
+	.dag-message {
+		font-size: 13px;
+		font-style: italic;
+		text-align: center;
+		margin: 25px 0px 0px 0px;
+	}
+	.dag-treeview-layer {
+		font-size: 13px;
+	}
+	.dag-treeview-feature {
+		font-size: 13px;
+		color: blue
+	}
+
+</style>
+
+<!-- Instructions -->
+<div class="mb-3">
+	<a data-bs-toggle="collapse" href="#dag-intructions-panel" role="button" aria-expanded="false" aria-controls="dag-intructions-panel" class="btn btn-sm btn-light btn-block col-12 shadow-sm dag-with-chevron">
+		<p class="d-flex align-items-center justify-content-between mb-0">Instructions<span class="oi oi-chevron-bottom"></span></p>
+	</a>
+	<div id="dag-intructions-panel" class="collapse shadow-sm">
+		<div class="card">
+			<div class="card-body dag-instructions">
+				<b>Query the map for nearby features by:</b>
+				<ul>
+					<li>- Defining a location to search from:
+						<ul>
+							<li><span class="oi oi-map-marker"></span> - Select a location from the map or;</li>
+							<li><span class="oi oi-info"></span> - Enter keywords or;</li>
+							<li><span class="oi oi-location"></span> - Use your current location</li>
+						</ul>
+					</li>
+					<li>- Setting a search radius</li>
+					<li>- Click/tap the search button</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+<form id="dag-form">
+
+	<!-- Search location -->
+	<div class="input-group input-group-sm mb-3 dag-search-point">
+		<button class="btn btn-outline-secondary dag-get-location-from-map-btn" type="button" title="Define from map"><span class="oi oi-map-marker text-success"></span></button>
+		<input type="text" class="form-control dag-location-input" placeholder="Define a location to search from">
+		<button class="btn btn-outline-secondary dag-get-geolocation-btn" type="button" title="Use current location"><span class="oi oi-location text-success"></span></button>
+		<button class="btn btn-outline-secondary dag-clear-input-btn" type="button" title="Clear"><span class="oi oi-x"></span></button>
+	</div>
+	
+	<!-- Search distance -->
+	<div class="input-group input-group-sm mb-3">
+		<span class="input-group-text">Search Distance</span>
+		<input id="dag-search-distance-input" type="number" class="form-control" aria-label="Enter Search Distance" value="">
+		<span class="input-group-text">metres</span>
+	</div>
+	
+	<!-- Search button -->
+	<div class="text-end mb-3">
+		<button id="dag-overlay-search-btn" class="btn btn-sm btn-success" type="button" disabled>Search</button>
+	</div>
+	
+	<!-- No Results Message DIV -->
+	<div id="dag-no-results" class="dag-message" style="display:none;">Sorry, couldn't find anything...</div>
+	
+	<!-- Results Message DIV -->
+	<div id="dag-results" class=""></div>
+	
+</form>

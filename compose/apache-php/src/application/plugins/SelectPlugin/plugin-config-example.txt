@@ -1,0 +1,9 @@
+{
+	name: "SelectPlugin",				// Plugin Class Name - DO NOT MODIFY [required]
+	tabName: "Select",					// Tab name [required]
+	maxResults: 10,						// Max results to return per layer [required]
+	requestTimeout: 7500,				// AJAX Timeout in milliseconds [optional - defaults to 5000]
+	enabled: true						// Whether plugin is enabled [required]
+}
+
+// Note: When configured, it looks for an HTML file @ configuration/<config-name>/home-tab-content.html

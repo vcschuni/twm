@@ -1,0 +1,41 @@
+{
+	"applications": [
+		{
+			"name": "Transportation Web Map (Generic)",
+			"config": "default",
+			"advertised": true,
+			"test": true
+		},
+		{
+			"name": "Vehicle Inspection Program",
+			"config": "vip",
+			"advertised": true,
+			"test": true
+		},
+		{
+			"name": "Commercial Vehicle Routing Tool",
+			"config": "cvrt",
+			"advertised": true,
+			"test": true
+		},
+		{
+			"name": "Variable Speed Limit Signs",
+			"config": "vsls",
+			"advertised": true,
+			"test": true
+		},
+		{
+			"name": "Development Services Area Offices",
+			"config": "DAGoffices",
+			"advertised": true,
+			"test": true
+		},
+		{
+			"name": "Traffic Data Program",
+			"config": "tdp",
+			"advertised": true,
+			"test": true
+		}
+
+	]
+}

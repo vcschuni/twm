@@ -1,0 +1,103 @@
+<style>
+	.ss-table th {
+		vertical-align: middle !important;
+		text-align: center;
+		font-weight: bold;
+		font-size: 11px;
+		font-style: italic;
+		color: silver;
+	}
+	.ss-td-spacer {
+		height: 25px;
+	}
+	.ss-td-realm {
+		vertical-align: middle !important;
+		text-align: center;
+		font-weight: bold;
+		color: #FFFFFF;
+		background-color: #003366;
+		border-left: 1px solid #003366;
+		border-right: 1px solid #003366;
+		border-bottom: 2px solid #F6BD14;
+	}
+	.ss-td-endpoint-name {
+		width: 125px;
+		height: 75px;
+		vertical-align: middle !important;
+		text-align: center;
+		font-weight: bold;
+	}
+	.ss-td-endpoint {
+		width: 100px;
+		height: 75px;
+		vertical-align: middle !important;
+		text-align: center;
+		font-size: 11px;
+		font-style: italic;
+		color: silver;
+	}
+	.ss-td-endpoint img {
+		max-height: 50px;
+		max-width: 50px;
+	}
+	.ss-td-endpoint-hover {
+		background-color: #d7d7d7;
+		cursor: pointer;
+	}
+</style>
+
+<table class="table table-sm ss-table">
+	<tbody>
+	
+		<!-- Internal -->
+		<tr><td class="ss-td-realm" colspan=4>Internal GeoServer</td></tr>
+		<tr><th></th><th>Development</th><th>Test</th><th>Production</th></tr>
+		<tr realm="internal" server="fortsteele">
+			<td class="ss-td-endpoint-name">Fortsteele</td>
+			<td class="ss-td-endpoint" environment="dev"></td>
+			<td class="ss-td-endpoint" environment="tst"></td>
+			<td class="ss-td-endpoint" environment="prd"></td>
+		</tr>
+		<tr realm="internal" server="waldo">
+			<td class="ss-td-endpoint-name">Waldo</td>
+			<td class="ss-td-endpoint" environment="dev"></td>
+			<td class="ss-td-endpoint" environment="tst"></td>
+			<td class="ss-td-endpoint" environment="prd"></td>
+		</tr>
+		<tr realm="internal" server="loadbalancer">
+			<td class="ss-td-endpoint-name">Load Balancer</td>
+			<td class="ss-td-endpoint" environment="dev"></td>
+			<td class="ss-td-endpoint" environment="tst"></td>
+			<td class="ss-td-endpoint" environment="prd"></td>
+		</tr>
+		
+		<!-- spacer -->
+		<tr><td class="ss-td-spacer" colspan=4></td></tr>
+		
+		<!-- Public -->
+		<tr><td class="ss-td-realm" colspan=4>Public GeoServer</td></tr>
+		<tr><th></th><th>Development</th><th>Test</th><th>Production</th></tr>
+		<tr realm="public" server="fortsteele">
+			<td class="ss-td-endpoint-name">Fortsteele</td>
+			<td class="ss-td-endpoint" environment="dev"></td>
+			<td class="ss-td-endpoint" environment="tst"></td>
+			<td class="ss-td-endpoint" environment="prd"></td>
+		</tr>
+		<tr realm="public" server="waldo">
+			<td class="ss-td-endpoint-name">Waldo</td>
+			<td class="ss-td-endpoint" environment="dev"></td>
+			<td class="ss-td-endpoint" environment="tst"></td>
+			<td class="ss-td-endpoint" environment="prd"></td>
+		</tr>
+		<tr realm="public" server="loadbalancer">
+			<td class="ss-td-endpoint-name">Load Balancer</td>
+			<td class="ss-td-endpoint" environment="dev"></td>
+			<td class="ss-td-endpoint" environment="tst"></td>
+			<td class="ss-td-endpoint" environment="prd"></td>
+		</tr>
+		
+		<!-- spacer -->
+		<tr><td class="ss-td-spacer" colspan=4></td></tr>
+
+	</tbody>
+</table>

@@ -1,0 +1,9 @@
+{
+	name: "ZoomToGeoLocation",				// Plugin Class Name - DO NOT MODIFY [required]
+	enabled: true,						// Whether plugin is enabled [required]
+	showBlip: true,						// Whether user blip should be shown on the map [required]
+	buttonLocatedRight: false,				// default is true
+	buttonLocatedTop: true,				// default is false
+	buttonLocationOffset:'5.0em'			// how far from Top or Bottom of map frame
+	
+}

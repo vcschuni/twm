@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "noEmit": true,
+    "allowJs": true,
+    "checkJs": true,
+    "target": "ES5",
+    "moduleResolution": "node",
+    "module": "ESNext",
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": "./",
+    "lib": [
+      "es2015",
+      "dom",
+      "webworker"
+    ]
+  },
+  "include": [
+    "src/**/*.js"
+  ]
+}

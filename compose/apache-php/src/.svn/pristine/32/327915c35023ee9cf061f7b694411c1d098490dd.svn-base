@@ -1,0 +1,73 @@
+<style>
+	.home-welcome {
+		margin: 10px 0px 25px 0px;
+		font-weight: 750;
+	}
+	.home-icons-small {
+		height: 20px;
+	}
+	.home-icons-big {
+		height: 30px;
+	}
+</style>
+
+<center><h5 class="home-welcome">Welcome to the Traffic Data Program GIS Application</h5></center>
+
+<p>
+   The Traffic Data Program GIS Application allows you to find data associated with traffic count sites 
+   along BC highways over multiple years. Once you have located a site along a highway of interest, you 
+   can view the data associated with that site.
+</p>
+
+<p>
+	<img class="home-icons-big" src="configuration/tdp/img/red_icon.png"> &amp; <img class="home-icons-big" src="configuration/tdp/img/green_icon.png"> <b>2004 – Present Traffic Data:</b><br>
+	The Ministry monitors traffic volumes in two ways: 
+</p>
+
+<ol>
+	<li>Continuously at 120 permanent count stations.</li>
+	<li>Over a 48-hour period every three years at 500+ short count stations.</li>
+</ol>
+
+<p>
+	Traffic data is published by Traffic Measurement Site (TMSite), a location where data from one or more 
+	traffic count stations represents a cross section of roadway.
+</p>
+
+<p>
+	<img class="home-icons-small" src="configuration/tdp/img/red_icon.png"> <b>Red Icon</b><br>
+	Permanent count sites are identified by the character “P” in the site code (eg. P-16-1NS). Data collected 
+	includes volumes for all sites, and speed and classification data for approximately 60 of these sites. Published data available include daily, monthly and annual reports.
+</p>
+
+<p>
+	<img class="home-icons-small" src="configuration/tdp/img/green_icon.png"> <b>Green Icon</b><br> 
+	Short count sites are identified by a five digit number with direction (eg. 11-036NS). Data collected 
+	includes volumes for all sites, and speed and classification data for a few of these sites. Published data 
+	available includes daily reports and an estimated Annual Average Daily Traffic (AADT). 
+</p>
+
+<p>
+	<img class="home-icons-big" src="configuration/tdp/img/blue_icon.png"> <b>1994 – 2003 Traffic Data:</b><br> 
+	This layer provides summary Annual Average Daily Traffic (AADT) and Summer Average Daily Traffic (SADT) 
+	statistics from permanent and short count stations. AADT represents the average number of vehicles passing 
+	a point on the roadway in a day for a given year. SADT refers to traffic data collected in July and August only. 
+</p>
+
+<p>
+	<img class="home-icons-big" src="configuration/tdp/img/orange_icon.png"> <b>Turning Movement Counts:</b><br> 
+	This layer shows turning movement counts and traffic data collected with signal controllers at various 
+	intersections around BC. Many of these reports identify turning and through-traffic volumes during peak 
+	hours of the day.
+</p>
+
+<p>
+	<img class="home-icons-big" src="configuration/tdp/img/road_icon.png"> <b>Uniform Traffic Volume Segments (UTVS):</b><br> 
+	The coloured lines represent segments of the provincial highway network within which the traffic volume is 
+	deemed to be consistent. Each UTVS is represented by a traffic measurement site, which determines a cross 
+	section of the roadway to provide the Average Annual Daily Traffic statistic. 
+</p>
+
+<hr>
+
+<p>For more information, or to send us some feedback, please <a href="mailto:TrafficDataProgram@gov.bc.ca">contact us</a></p>

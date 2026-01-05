@@ -1,0 +1,6 @@
+{
+	name: "DAG",			// DO NOT USE THIS PLUGIN YET--DEVELOPMENT STILL IN PROGRESS Plugin Class Name - DO NOT MODIFY [required]
+	tabName: "DAG",				// Tab name [required]
+	enabled: true,						// Whether plugin is enabled [required]
+	visibleLayerSearchEnabled: true,	// Enable/disable layer search in typeahead autocomplete [optional - default false]
+}

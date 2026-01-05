@@ -1,0 +1,10 @@
+{
+	name: "SelectTool",						// Plugin Class Name - DO NOT MODIFY [required]
+	tabName: "Select",						// Tab name [required]
+	enabled: true,							// Whether plugin is enabled [required]
+	geoCoderEnabled: true					// Turn on/off the ability to add way points [optional - default false]
+	geoCoderApiKey: "xyz1",					// API Key for DataBC GeoCoder [required]
+	geoCoderMaxResults: 5,					// Max geocoder search results to display [required]
+	
+}
+

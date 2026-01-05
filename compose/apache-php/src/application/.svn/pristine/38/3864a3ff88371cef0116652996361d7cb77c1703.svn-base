@@ -1,0 +1,88 @@
+<style>
+	.fp-with-chevron[aria-expanded='true'] span {
+		display: block;
+		transform: rotate(180deg) !important;
+	}
+	.fp-instructions {
+		font-size: 13px;
+		font-style: italic;
+	}
+	.fp-instructions ul {
+		margin-top: 5px;
+		list-style-type: none;
+		padding-left: 1.2em;
+	}
+	.fp-instructions ul li span {
+		width: 15px;
+		text-align: center;
+	}
+	.fp-message {
+		font-size: 13px;
+		font-style: italic;
+		text-align: center;
+		margin: 25px 0px 0px 0px;
+	}
+	.fp-treeview-layer {
+		font-size: 13px;
+	}
+	.fp-treeview-feature {
+		font-size: 13px;
+		/*color: blue*/
+	}
+</style>
+
+<!-- Instructions -->
+<div class="mb-3">
+	<a data-bs-toggle="collapse" href="#fp-intructions-panel" role="button" aria-expanded="false" aria-controls="fp-intructions-panel" class="btn btn-sm btn-light btn-block col-12 shadow-sm fp-with-chevron">
+		<p class="d-flex align-items-center justify-content-between mb-0">Instructions<span class="oi oi-chevron-bottom"></span></p>
+	</a>
+	
+	<div id="fp-intructions-panel" class="collapse shadow-sm">
+		<div class="card">
+			<div class="card-body fp-instructions">
+				<b>Discover features in proximity to a location by:</b>
+				<ul>
+					<li>- Defining a location to search from:
+						<ul>
+							<li><span class="oi oi-map-marker"></span> - Select a location from the map or;</li>
+							<li><span class="oi oi-info"></span> - Enter keywords or;</li>
+							<li><span class="oi oi-location"></span> - Use your current location</li>
+						</ul>
+					</li>
+					<li>- Setting a search radius</li>
+					<li>- Click/tap the search button</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+<form id="fp-form">
+
+	<!-- Search location -->
+	<div class="input-group input-group-sm mb-3 fp-search-point">
+		<button class="btn btn-outline-secondary fp-get-location-from-map-btn" type="button" title="Define from map"><span class="oi oi-map-marker text-success"></span></button>
+		<input type="text" class="form-control fp-location-input" placeholder="Define a location to search from">
+		<button class="btn btn-outline-secondary fp-get-geolocation-btn" type="button" title="Use current location"><span class="oi oi-location text-success"></span></button>
+		<button class="btn btn-outline-secondary fp-clear-input-btn" type="button" title="Clear"><span class="oi oi-x"></span></button>
+	</div>
+	
+	<!-- Search distance -->
+	<div class="input-group input-group-sm mb-3">
+		<span class="input-group-text">Search Distance</span>
+		<input id="fp-search-distance-input" type="number" class="form-control" aria-label="Enter Search Distance" value="">
+		<span class="input-group-text">km</span>
+	</div>
+	
+	<!-- Search button -->
+	<div class="text-end mb-3">
+		<button id="fp-overlay-search-btn" class="btn btn-sm btn-success col-12" type="button" disabled>Search</button>
+	</div>
+	
+	<!-- No Results Message DIV -->
+	<div id="fp-no-results" class="fp-message" style="display:none;">Sorry, couldn't find anything...</div>
+	
+	<!-- Results Message DIV -->
+	<div id="fp-results" class=""></div>
+	
+</form>

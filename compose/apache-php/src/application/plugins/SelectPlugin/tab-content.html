@@ -1,0 +1,152 @@
+<style>
+    .sp-tab-container{
+       visibility: visible;
+    }
+	.sp-selection-container{
+		display: block;
+	}
+	.sp-results-container{
+		display: none;
+	}
+	.sp-results-header{
+		display: flex;
+		justify-content: space-between;
+		
+	}
+	.sp-button-container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+	.sp-found-selections{
+		padding-top: 15px;
+
+	}
+
+	.sp-selection-set{
+		padding-top: 15px;
+
+	}
+	.sp-content-error{
+		visibility: hidden;
+	}
+	.sp-content-container{
+		visibility: hidden;
+	}
+	.sp-selection-error{
+		font-size: 15px;
+		color: #808080;
+		text-align: center;
+	}
+	.sp-treeview-layer{
+		font-size: 13px;
+	}
+	.sp-selection-feature {
+		font-size: 13px;
+	}
+	.sp-result-feature {
+		font-size: 13px;
+	}
+	.sp-selection-set-feature {
+		font-size: 13px;
+	}
+	.sp-selection-set-tree-container{
+		padding-bottom: 10px;
+	}
+	.sp-header-text{
+		font-size: 20px;
+		padding: 5px;
+	}
+	.sp-spinner-screen{
+		display: none;
+		width: 100%;
+		height: 100%;
+	}
+	.sp-download-button{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border-radius: 10px;
+		gap: 3px;
+		padding-left: 5px;
+		padding-right: 5px;
+		cursor: pointer;
+		
+
+	}
+
+	.sp-download-button:hover{
+		background-color: #e9ecef;
+	}
+	#sp-back-arrow{
+		margin-top: 5px;
+		cursor: pointer;
+	}
+	
+</style>
+
+<div class="sp-selection-container">
+
+	<!-- Instructions -->
+	<div class="mb-3">
+		<a data-bs-toggle="collapse" href="#fp-intructions-panel" role="button" aria-expanded="false" aria-controls="fp-intructions-panel" class="btn btn-sm btn-light btn-block col-12 shadow-sm fp-with-chevron">
+			<p class="d-flex align-items-center justify-content-between mb-0">Instructions<span class="oi oi-chevron-bottom"></span></p>
+		</a>
+		<div id="fp-intructions-panel" class="collapse shadow-sm">
+			<div class="card">
+				<div class="card-body fp-instructions">
+					<b>Discover features by:</b>
+					<ul>
+						<li>- Selecting a layer on the map</li>
+						<li>- Add the desired features to the selection set. Remove features from the selection set by clicking on them if need be</li>
+						<li>- Click/tap the search button to conduct the intersection search</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Search Query Section -->
+	<div class="sp-tab-container">
+		<div class="sp-button-container">
+			<button title="Select from map" class="btn btn-sm btn-success" id="sp-select-layer-button">Select Layer</button>
+		</div>
+
+		<div class="sp-content-error"></div>
+		
+		<div class="sp-content-container">
+			<div class="sp-found-selections">
+				<h4 class="sp-header-text">Found Selections</h4>
+				<div class="sp-selection-tree-container"></div>
+			</div>
+
+			<div class="sp-selection-set">
+				<h4 class="sp-header-text">Selection Set</h4>
+				<div class="sp-selection-set-tree-container"></div>
+				<div class="sp-button-container">
+					<button title="Search" class="btn btn-sm btn-success" type="submit" id="sp-search-button">Search</button>
+				</div>
+			</div>
+
+
+		</div>
+	</div>
+
+
+</div>
+
+<div class="sp-spinner-screen"> </div>
+
+<div class="sp-results-container">
+	<i class="oi oi-arrow-thick-left" id="sp-back-arrow"></i>
+	<div class="sp-results-header">
+		<h4 class="sp-header-text">Results</h4>
+		<div class="sp-download-button"><span class="oi oi-data-transfer-download lc-menu-icon"></span>Download</div>
+
+	</div>
+	<div class="sp-results-tree-container"></div>
+
+
+</div>
+

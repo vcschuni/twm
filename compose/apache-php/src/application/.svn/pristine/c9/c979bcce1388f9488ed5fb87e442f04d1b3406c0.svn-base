@@ -1,0 +1,55 @@
+{
+	name: "AdvancedExporter",		// Plugin Class Name - DO NOT MODIFY [required]
+	tabName: "Exporter",			// Tab name [required]
+	enabled: true,					// Whether plugin is enabled [required]
+}
+
+USAGE: see below for advancedExporter object in this example layer from an app-config.js
+
+			new ol.layer.Image({
+				title: "Culverts",
+				type: "overlay",
+				visible: false,
+				source: new ol.source.ImageWMS({
+					url: returnEnvironmentUrl("ogs-public") + "/ows",
+
+					params: {
+						LAYERS: "hwy:XBC_LRDW_SDO_CULV"
+					},
+					transition: 0
+				}),
+
+				advancedExporter: {
+					types: [
+						{
+							name: "Comma Delimited Textfile (CSV)",
+							url: returnEnvironmentUrl("ogs-public") + "/ows/wfs?service=WFS&version=1.0.0&request=GetFeature&typeName=hwy:CWR_CULV_REPORT&maxFeatures=50000&outputFormat=csv"
+						}
+					],
+					criteria: [
+						{
+							field: "CULVERT_TYPE",
+							label: "Culvert Type",
+							type: "select",
+							options: [
+								{ name: "All Types", cql: "" },
+								{ name: "Down Drain", cql: "CULVERT_TYPE='D'" },
+								{ name: "Entrance", cql: "CULVERT_TYPE='E'" },
+								{ name: "Flume", cql: "CULVERT_TYPE='F'" },
+								{ name: "Horizontal", cql: "CULVERT_TYPE='H'" },
+								{ name: "Other", cql: "CULVERT_TYPE='N'" },
+								{ name: "Roadway", cql: "CULVERT_TYPE='R'" },
+								{ name: "Unknown", cql: "CULVERT_TYPE='Z'" }
+							]
+						},
+						{
+							field: "RFI_UNIQUE",
+							label: "RFI Unique ID",
+							placeholder:"S-A-S-H-H-H",
+							type: "text",
+							cql: "RFI_UNIQUE = '{{value}}'"
+						}
+
+					]
+				}
+			}),

@@ -1,0 +1,93 @@
+<style>
+
+	.dso-offices {	
+		font-size: 13px;
+		line-height: 1.7;
+	}
+	.dso-offices .phone {
+		width: 35%
+	}
+
+	.card-header {
+		display: flex;
+    	color: white;
+    	background-color: #003366;
+    	justify-content: center;
+	}
+	#AMA-filter-container {
+		display: flex;
+		flex-direction: column;
+    	
+	}
+
+	.AMA-filter-group{
+		display: flex;
+   		justify-content: center;
+    	padding-top: 16px;
+
+	}
+	.context-menu {
+            position: absolute;
+            background: white;
+            border: 1px solid #ccc;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+            display: none;
+            z-index: 1000;
+            min-width: 150px;
+        }
+        .context-menu ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .context-menu ul li {
+            padding: 8px 12px;
+            cursor: pointer;
+        }
+        .context-menu ul li:hover {
+            background-color: #f0f0f0;
+        }
+</style>
+
+<!--Contact List -->
+
+ <!-- Custom Context Menu -->
+ <div class="context-menu" id="customMenu">
+	<ul>
+		<li onclick="showCoordinates()">Show Coordinates</li>
+		<li onclick="addMarker()">Add Marker</li>
+		<li onclick="alert('Another Option Clicked')">Another Option</li>
+	</ul>
+</div>
+<div id="AMA-contact-container" class="">
+	
+	
+		<h6>Contact Filter</h6>
+		<div id="AMA-filter-container" class="">
+			<div class="AMA-filter-group input-group input-group-sm mb-3 rf-waypoint ui-sortable-handle" id="AMA-filter-group">
+				<button class="btn btn-outline-secondary"id="AMA-RFI-Button" type="button">RFI</button>
+				
+					<!--<select class="form-select" id="inputGroupSelect01">
+						<option selected>Choose...</option>
+						<option value="1">Name</option>
+						<option value="2">Region</option>
+						<option value="3">Service Area</option>
+						<option value="3">RFI Road Name</option>
+						
+					</select>
+					-->
+				<input class="form-control" id="myInput" type="text" placeholder="Filter">
+				<button tabindex="-1" class="btn btn-outline-secondary AMA-get-geolocation-btn" type="button" title="Use current location"><span class="oi oi-location text-success"></span></button>
+				<button tabindex="-1" class="btn btn-outline-secondary AMA-clear-filter" type="button" title="Clear Filter"><span class="oi oi-x text-danger"></span></button>
+			</div>
+			<div id="AMA-message" class="" style="color: red;font-weight: bold;"></div>
+		</div>
+	
+	<div id="AMA-contact-list" class="card-deck mt-4"></div>
+</div>
+
+	
+	
+
+
+

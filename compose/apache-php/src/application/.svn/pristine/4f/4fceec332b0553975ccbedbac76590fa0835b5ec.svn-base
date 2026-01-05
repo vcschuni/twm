@@ -1,0 +1,17 @@
+<!-- User Manager -->
+<div id="rdm-user-manager">
+	<!-- Filter/search -->
+	<div class="input-group input-group-sm mb-2">
+		<input id="rdm-user-filter-input" type="text" class="form-control" placeholder="Filter" readonly>
+		<button id="rdm-reset-user-filter-btn" class="btn btn-secondary" type="button" title="Reset"><span class="oi oi-x"></span></button>
+	</div>
+	<div class="input-group input-group-sm">
+		<select id="rdm-matching-users" class="form-select form-select-sm" size="10"></select>
+	</div>
+	
+	<!-- Buttons -->
+	<div class="mt-2 mb-0 text-center">
+		<button id="rdm-fm-edit-user-button" class="btn btn-sm btn-secondary col-5" type="button" DISABLED>Edit</button>
+		<button id="rdm-fm-create-user-button" class="btn btn-sm btn-success col-5" type="button">Create</button>
+	</div>
+</div>
