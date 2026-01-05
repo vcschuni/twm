@@ -46,23 +46,27 @@ oc project "$PROJECT"
 # -----------------------------
 echo
 echo ">>> Pods"
-oc get pods -l app="$APP" -o wide || echo "No pods found for $APP"
+oc get pods -o wide || echo "No pods found"
 
 echo
 echo ">>> Deployments"
-oc get deployments -l app="$APP" || echo "No deployments found for $APP"
+oc get deployments || echo "No deployments found"
 
 echo
 echo ">>> Services"
-oc get svc -l app="$APP" || echo "No services found for $APP"
+oc get svc || echo "No services found"
 
 echo
 echo ">>> Routes"
-oc get routes -l app="$APP" || echo "No routes found for $APP"
+oc get routes || echo "No routes found"
 
 echo
 echo ">>> Builds"
-oc get builds -l app="$APP" || echo "No builds found for $APP"
+oc get builds || echo "No builds found"
+
+echo
+echo ">>> ImageStreams"
+oc get is || echo "No image streams found"
 
 echo
 echo ">>> Status check complete for environment: $ENVIRONMENT"
