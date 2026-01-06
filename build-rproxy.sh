@@ -52,7 +52,7 @@ fi
 # ----------------------------
 # Deploy Nginx
 # ----------------------------
-echo ">>> Deploying Nginx (external, port 8080)..."
+echo ">>> Deploying Nginx (port 8080)..."
 oc new-app "$REPO" \
   --name="${APP}" \
   --context-dir="compose/${APP}" \
@@ -73,7 +73,10 @@ oc expose deployment "${APP}" \
 # Expose Service
 # ----------------------------
 echo ">>> Creating external route..."
-oc expose service "${APP}" --name="${APP}" --labels=app="${APP}"
+oc expose service "${APP}" \
+  --name="${APP}" \
+  --hostname="${PROJ}.apps.silver.devops.gov.bc.ca" \
+  --labels=app="${APP}"
 
 # ----------------------------
 # Final status

@@ -52,7 +52,7 @@ fi
 # ----------------------------
 # Deploy Apache
 # ----------------------------
-echo ">>> Deploying Apache (internal, port 8081)..."
+echo ">>> Deploying Apache (port 8080)..."
 oc new-app "$REPO" \
   --name="${APP}" \
   --context-dir="compose/${APP}" \
@@ -62,10 +62,10 @@ oc new-app "$REPO" \
 echo ">>> Waiting for Apache deployment rollout..."
 oc rollout status deployment/"${APP}" --timeout=300s
 
-echo ">>> Exposing Apache internally on port 8081..."
+echo ">>> Exposing Apache internally on port 8080..."
 oc expose deployment "${APP}" \
   --name="${APP}" \
-  --port=8081 \
+  --port=8080 \
   --dry-run=client -o yaml \
   --labels=app="${APP}" | oc apply -f -
 

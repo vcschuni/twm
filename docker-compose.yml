@@ -3,16 +3,16 @@ version: "3.9"
 services:
   apache:
     build:
-      context: ./compose/apache-php
+      context: ./compose/twm-apache
     container_name: twm-apache
     ports:
-      - "8081:8081"   # optional for debugging
+      - "8080:8080"   # optional for debugging
     restart: unless-stopped
 
   nginx:
     build:
-      context: ./compose/nginx
-    container_name: twm-nginx
+      context: ./compose/rproxy-nginx
+    container_name: rproxy-nginx
     ports:
       - "8080:8080"
     depends_on:
