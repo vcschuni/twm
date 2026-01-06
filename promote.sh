@@ -60,7 +60,7 @@ echo "Cleaning old resources in $DST_PROJ..."
 oc delete all -l app="${APP}" --ignore-not-found --wait=true
 oc delete builds -l app="${APP}" --ignore-not-found --wait=true
 oc delete is -l app="${APP}" --ignore-not-found --wait=true
-
+exit
 # -----------------------------
 # Tag source images into destination
 # -----------------------------
