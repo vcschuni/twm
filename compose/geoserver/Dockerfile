@@ -1,11 +1,10 @@
 FROM docker.osgeo.org/geoserver:2.28.0
 
-#USER root
+# OpenShift runs with a random UID → fix permissions
+USER root
+RUN chgrp -R 0 /opt && \
+    chmod -R g=u /opt
 
-# OpenShift arbitrary UID compatibility
-#RUN chgrp -R 0 /usr/local/geoserver /usr/local/tomcat && \
-#    chmod -R g=u /usr/local/geoserver /usr/local/tomcat
-
-#USER 1001
+USER 1001
 
 EXPOSE 8080

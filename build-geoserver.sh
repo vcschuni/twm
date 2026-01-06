@@ -94,12 +94,12 @@ oc expose deployment "${APP}" \
 # ----------------------------
 # Attach PVC
 # ----------------------------
-# echo ">>> Attaching PVC..."
-# oc set volume deployment/"$APP" \
-    # --add \
-    # --type=pvc \
-    # --claim-name="${APP}-data" \
-    # --mount-path=/usr/local/geoserver/data_dir
+echo ">>> Attaching PVC..."
+oc set volume deployment/"$APP" \
+    --add \
+    --type=pvc \
+    --claim-name="${APP}-data" \
+    --mount-path=/opt/geoserver_data
 
 # ----------------------------
 # Expose route
