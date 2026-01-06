@@ -5,48 +5,49 @@ set -euo pipefail
 # Config
 # ----------------------------
 APP="geoserver"
-PROJ="80c8d5-dev"
-REPO="https://github.com/vcschuni/twm.git"
+PROJ="80c8d5-dev"           # fixed project
+PVC_SIZE="10Gi"             # persistent storage
+GEOSERVER_IMAGE="docker.osgeo.org/geoserver:2.28.0"
 
 # ----------------------------
 # Verify passed arg and show help if required
 # ----------------------------
 OPTIONS=("deploy" "remove")
 ACTION="${1:-}"
-if [[ ! " ${OPTIONS[*]} " =~ " ${ACTION} " ]]; then
+ADMIN_PASSWORD="${2:-}"
+if [[ ! " ${OPTIONS[*]} " =~ " ${ACTION} " ]] || ([[ "${ACTION}" == "deploy" ]] && [[ -z "$ADMIN_PASSWORD" ]]); then
     echo
-    echo "USAGE: $(basename "$0") <${OPTIONS[*]// /|}>"
-    echo "EXAMPLE: $(basename "$0") ${OPTIONS[0]}"
+    echo "USAGE: $(basename "$0") <${OPTIONS[*]// /|}> [admin-password-for-deploy]"
+    echo "EXAMPLE: $(basename "$0") deploy MySecretPassword"
+    echo "EXAMPLE: $(basename "$0") remove"
     echo
     exit 1
 fi
 
 # ----------------------------
-# Switch to DEV project
+# Switch to project
 # ----------------------------
 echo ">>> Switching to project $PROJ"
 oc project "$PROJ"
 
 # ----------------------------
-# Cleanup
+# Cleanup old resources
 # ----------------------------
-echo ">>> Removing old ${APP} resources..."
+echo ">>> Cleaning ALL old GeoServer resources..."
 oc delete all -l app="${APP}" --ignore-not-found --wait=true
-oc delete builds -l app="${APP}" --ignore-not-found --wait=true
-oc delete is -l app="${APP}" --ignore-not-found --wait=true
 
 # ----------------------------
 # Stop here if remove was requested
 # ----------------------------
 if [[ "${ACTION}" == "remove" ]]; then
-	oc get pods -o wide
-	oc get svc
-	oc get routes
-	oc get builds
-	echo ""
-	echo ">>> Remove completed successfully"
-	echo ""
-	exit
+    oc get pods -o wide
+    oc get svc
+    oc get routes
+    oc get pvc
+    echo ""
+    echo ">>> Remove completed successfully"
+    echo ""
+    exit
 fi
 
 # ----------------------------
@@ -73,22 +74,13 @@ fi
 # ----------------------------
 # Deploy GeoServer
 # ----------------------------
-echo ">>> Deploying GeoServer (internal, port 8080)..."
-oc new-app "$REPO" \
-  --name="${APP}" \
-  --context-dir="compose/${APP}" \
-  --strategy=docker \
-  --labels=app="${APP}"
-
-echo ">>> Waiting for GeoServer deployment rollout..."
-oc rollout status deployment/"${APP}" --timeout=300s
-
-echo ">>> Exposing GeoServer internally on port 8080..."
-oc expose deployment "${APP}" \
-  --name="${APP}" \
-  --port=8080 \
-  --dry-run=client -o yaml \
-  --labels=app="${APP}" | oc apply -f -
+echo ">>> Deploying GeoServer..."
+oc new-app --docker-image="$GEOSERVER_IMAGE" \
+    --name="${APP}" \
+    -e GEOSERVER_ADMIN_PASSWORD="$ADMIN_PASSWORD" \
+    -e GEOSERVER_DATA_DIR="/opt/geoserver/data_dir" \
+    --labels app="${APP}" \
+    --allow-missing-images
 
 # ----------------------------
 # Attach PVC
@@ -113,13 +105,12 @@ echo ">>> Waiting for rollout..."
 oc rollout status deployment/"$APP" --timeout=300s
 
 # ----------------------------
-# Final status
+# Show final status
 # ----------------------------
-echo ">>> Current Resources:"
+echo ">>> Current resources in $PROJ:"
 oc get pods -o wide
 oc get svc
 oc get routes
-oc get builds
 oc get pvc
 
-echo ">>> COMPLETE — ${APP} deployed!"
+echo ">>> COMPLETE — GeoServer deployed!"
