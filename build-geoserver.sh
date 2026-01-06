@@ -7,6 +7,7 @@ set -euo pipefail
 APP="geoserver"
 PROJ="80c8d5-dev"
 REPO="https://github.com/vcschuni/twm.git"
+PVC_SIZE="10Gi"
 
 # ----------------------------
 # Verify passed arg and show help if required
@@ -98,7 +99,7 @@ oc set volume deployment/"$APP" \
     --add \
     --type=pvc \
     --claim-name="${APP}-data" \
-    --mount-path=/opt/geoserver/data_dir
+    --mount-path=/usr/local/geoserver/data_dir
 
 # ----------------------------
 # Expose route
